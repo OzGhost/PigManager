@@ -1,0 +1,6 @@
+
+edit physical diagram:
+    add low level on food table and medicine table
+    add new feature: sick history
+    add new table: sick - medicine (store which medicine for which sick)
+
