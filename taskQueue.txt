@@ -5,4 +5,7 @@ edit physical diagram:
     add new table: sick - medicine (store which medicine for which sick)
     merge food and medicine (if possible)
     remove field ngayBatDauXay in chuong table
+    update account table -> link to providers table
+    update chuong table -> add position
+    update pig -> add ear tag
 
