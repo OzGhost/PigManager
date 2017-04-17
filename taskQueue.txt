@@ -9,7 +9,3 @@ edit physical diagram:
     update chuong table -> add position
     update pig -> add ear tag
 
-edit doc:
-    add pig update info
-    change xuat kho -> link to update repo info
-
