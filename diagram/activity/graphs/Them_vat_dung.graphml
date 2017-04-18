@@ -90,7 +90,7 @@
           <y:Geometry height="35.0" width="174.0" x="275.0" y="109.0"/>
           <y:Fill hasColor="false" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="DejaVu Sans" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="135.07421875" x="19.462890625" y="8.515625">Yeu cau them chuong<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="DejaVu Sans" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="144.12109375" x="14.939453125" y="8.515625">Yeu cau them vat dung<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -125,7 +125,7 @@
           <y:Geometry height="35.0" width="220.0" x="651.5" y="109.0"/>
           <y:Fill hasColor="false" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="DejaVu Sans" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="194.6171875" x="12.69140625" y="8.515625">Hien thi man hinh them chuong<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="DejaVu Sans" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="203.6640625" x="8.16796875" y="8.515625">Hien thi man hinh them vat dung<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -142,7 +142,7 @@
           <y:Geometry height="35.0" width="220.0" x="275.0" y="187.0"/>
           <y:Fill hasColor="false" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="DejaVu Sans" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="168.068359375" x="25.9658203125" y="8.515625">Nhap thong tin chuong moi<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="DejaVu Sans" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="150.935546875" x="34.5322265625" y="8.515625">Nhap thong tin vat dung<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -159,7 +159,7 @@
           <y:Geometry height="35.0" width="174.0" x="674.5" y="220.0"/>
           <y:Fill hasColor="false" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="DejaVu Sans" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="161.41796875" x="6.291015625" y="8.515625">Kiem tra thong tin chuong<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="DejaVu Sans" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="170.46484375" x="1.767578125" y="8.515625">Kiem tra thong tin vat dung<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -176,7 +176,7 @@
           <y:Geometry height="35.0" width="202.19999999999993" x="660.4" y="353.1"/>
           <y:Fill hasColor="false" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="DejaVu Sans" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="179.470703125" x="11.364648437500023" y="8.515625">Luu tru thong tin chuong moi<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="DejaVu Sans" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="162.337890625" x="19.931054687500023" y="8.515625">Luu tru thong tin vat dung<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -211,7 +211,7 @@
           <y:Geometry height="35.0" width="228.19999999999993" x="647.4" y="418.1"/>
           <y:Fill hasColor="false" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="DejaVu Sans" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="200.25390625" x="13.973046875000023" y="8.515625">Thong bao ket qua them chuong<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="DejaVu Sans" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="209.30078125" x="9.449609375000023" y="8.515625">Thong bao ket qua them vat dung<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
