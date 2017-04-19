@@ -237,7 +237,7 @@
       <data key="d4"/>
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="50.0" width="179.0" x="1205.222436238532" y="966.3618577981738"/>
+          <y:Geometry height="50.0" width="179.0" x="1003.3141793577981" y="911.0774541284491"/>
           <y:Fill color="#FFFF99" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="DejaVu Sans" fontSize="13" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="19.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="153.8173828125" x="12.59130859375" y="15.43359375">Cap nhat thong tin kho<y:LabelModel>
@@ -507,24 +507,6 @@
       <data key="d4"/>
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="50.0" width="123.47706422018359" x="550.5134963302752" y="1019.4352522935867"/>
-          <y:Fill color="#FFFF99" transparent="false"/>
-          <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="DejaVu Sans" fontSize="13" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="19.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="75.4619140625" x="24.007575078841796" y="15.43359375">Liet ke kho<y:LabelModel>
-              <y:SmartNodeLabelModel distance="4.0"/>
-            </y:LabelModel>
-            <y:ModelParameter>
-              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
-            </y:ModelParameter>
-          </y:NodeLabel>
-          <y:Shape type="ellipse"/>
-        </y:ShapeNode>
-      </data>
-    </node>
-    <node id="n28">
-      <data key="d4"/>
-      <data key="d6">
-        <y:ShapeNode>
           <y:Geometry height="50.0" width="148.0" x="-238.9206775611607" y="-6.940403287462203"/>
           <y:Fill color="#FFFF99" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
@@ -539,14 +521,14 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n29">
+    <node id="n28">
       <data key="d4"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="50.0" width="130.85284403669726" x="255.550642201835" y="-177.39843749999733"/>
           <y:Fill color="#FFFF99" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="DejaVu Sans" fontSize="13" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="19.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="79.61962890625" x="25.61660756522363" y="15.43359375">Liet ke NCC<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="DejaVu Sans" fontSize="13" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="19.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="79.61962890625" x="25.616607565223603" y="15.43359375">Liet ke NCC<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -603,11 +585,11 @@
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
-          <y:EdgeLabel alignment="center" anchorX="-183.76670876010417" anchorY="56.62133142815904" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="0.39210507860788973" upY="0.9199204353257409" verticalTextPosition="bottom" visible="true" width="76.24609375" x="-253.9070485144914" y="56.62133142815904">&lt;&lt;extend&gt;&gt;<y:LabelModel>
+          <y:EdgeLabel alignment="center" anchorX="-183.76670876010348" anchorY="56.621331428158754" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="0.39210507860788973" upY="0.9199204353257409" verticalTextPosition="bottom" visible="true" width="76.24609375" x="-253.90704851449073" y="56.621331428158754">&lt;&lt;extend&gt;&gt;<y:LabelModel>
               <y:RotatedSliderEdgeLabelModel angle="0.0" autoRotationEnabled="true" distance="2.0" distanceRelativeToEdge="true" mode="side_slider"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:RotatedSliderEdgeLabelModelParameter invertingSign="false" ratio="0.5000000000000013" segment="0"/>
+              <y:RotatedSliderEdgeLabelModelParameter invertingSign="false" ratio="0.4999999999999992" segment="0"/>
             </y:ModelParameter>
             <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="relative_to_edge_flow" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
@@ -622,11 +604,11 @@
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
-          <y:EdgeLabel alignment="center" anchorX="41.40728199158616" anchorY="-130.00058646274374" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="-0.9869922765185851" upY="-0.16076767738777845" verticalTextPosition="bottom" visible="true" width="76.24609375" x="23.672264522892835" y="-208.14368631176734">&lt;&lt;extend&gt;&gt;<y:LabelModel>
+          <y:EdgeLabel alignment="center" anchorX="41.40728199158616" anchorY="-130.00058646274368" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="-0.9869922765185851" upY="-0.16076767738777845" verticalTextPosition="bottom" visible="true" width="76.24609375" x="23.672264522892835" y="-208.14368631176728">&lt;&lt;extend&gt;&gt;<y:LabelModel>
               <y:RotatedSliderEdgeLabelModel angle="0.0" autoRotationEnabled="true" distance="2.0" distanceRelativeToEdge="true" mode="side_slider"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:RotatedSliderEdgeLabelModelParameter invertingSign="false" ratio="0.5000000000000012" segment="0"/>
+              <y:RotatedSliderEdgeLabelModelParameter invertingSign="false" ratio="0.5000000000000011" segment="0"/>
             </y:ModelParameter>
             <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="relative_to_edge_flow" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
@@ -698,11 +680,11 @@
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
-          <y:EdgeLabel alignment="center" anchorX="85.86094081192846" anchorY="79.3118312854134" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="0.6910062776709184" upY="-0.7228487561166456" verticalTextPosition="bottom" visible="true" width="76.24609375" x="85.86094081192846" y="66.32314269894243">&lt;&lt;extend&gt;&gt;<y:LabelModel>
+          <y:EdgeLabel alignment="center" anchorX="54.06853789187528" anchorY="79.3118312854134" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="0.6910062776709184" upY="-0.7228487561166456" verticalTextPosition="bottom" visible="true" width="76.24609375" x="54.06853789187528" y="66.32314269894243">&lt;&lt;extend&gt;&gt;<y:LabelModel>
               <y:RotatedSliderEdgeLabelModel angle="0.0" autoRotationEnabled="true" distance="2.0" distanceRelativeToEdge="true" mode="side_slider"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:RotatedSliderEdgeLabelModelParameter invertingSign="true" ratio="0.49999999999999967" segment="0"/>
+              <y:RotatedSliderEdgeLabelModelParameter invertingSign="false" ratio="0.4999999999999995" segment="0"/>
             </y:ModelParameter>
             <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="relative_to_edge_flow" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
@@ -717,11 +699,11 @@
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
-          <y:EdgeLabel alignment="center" anchorX="-274.38126225449037" anchorY="59.55295640226768" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="0.2810721258880989" upY="0.9596866468013112" verticalTextPosition="bottom" visible="true" width="76.24609375" x="-347.55362029712626" y="59.55295640226768">&lt;&lt;extend&gt;&gt;<y:LabelModel>
+          <y:EdgeLabel alignment="center" anchorX="-274.38126225449173" anchorY="59.55295640226802" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="0.2810721258880989" upY="0.9596866468013112" verticalTextPosition="bottom" visible="true" width="76.24609375" x="-347.5536202971276" y="59.55295640226802">&lt;&lt;extend&gt;&gt;<y:LabelModel>
               <y:RotatedSliderEdgeLabelModel angle="0.0" autoRotationEnabled="true" distance="2.0" distanceRelativeToEdge="true" mode="side_slider"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:RotatedSliderEdgeLabelModelParameter invertingSign="false" ratio="0.49999999999999967" segment="0"/>
+              <y:RotatedSliderEdgeLabelModelParameter invertingSign="false" ratio="0.5000000000000023" segment="0"/>
             </y:ModelParameter>
             <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="relative_to_edge_flow" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
@@ -736,11 +718,11 @@
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
-          <y:EdgeLabel alignment="center" anchorX="-218.5775452101933" anchorY="-77.45491404966754" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="-0.342125040131514" upY="0.9396544348402821" verticalTextPosition="bottom" visible="true" width="76.24609375" x="-296.3700846564919" y="-103.54061193375746">&lt;&lt;extend&gt;&gt;<y:LabelModel>
+          <y:EdgeLabel alignment="center" anchorX="-122.02548921463108" anchorY="-48.00730066129063" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="-0.38025707862416097" upY="0.9248808324082722" verticalTextPosition="bottom" visible="true" width="76.24609375" x="-199.37678425153814" y="-77.00041752716953">&lt;&lt;extend&gt;&gt;<y:LabelModel>
               <y:RotatedSliderEdgeLabelModel angle="0.0" autoRotationEnabled="true" distance="2.0" distanceRelativeToEdge="true" mode="side_slider"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:RotatedSliderEdgeLabelModelParameter invertingSign="true" ratio="0.49999999999999833" segment="0"/>
+              <y:RotatedSliderEdgeLabelModelParameter invertingSign="true" ratio="0.4999999999999972" segment="0"/>
             </y:ModelParameter>
             <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="relative_to_edge_flow" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
@@ -759,7 +741,7 @@
               <y:RotatedSliderEdgeLabelModel angle="0.0" autoRotationEnabled="true" distance="2.0" distanceRelativeToEdge="true" mode="side_slider"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:RotatedSliderEdgeLabelModelParameter invertingSign="false" ratio="0.5000000000000001" segment="0"/>
+              <y:RotatedSliderEdgeLabelModelParameter invertingSign="false" ratio="0.5" segment="0"/>
             </y:ModelParameter>
             <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="relative_to_edge_flow" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
@@ -774,11 +756,11 @@
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
-          <y:EdgeLabel alignment="center" anchorX="7.675867340276909" anchorY="114.34691363585648" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="0.9708217563970757" upY="-0.2398022462490645" verticalTextPosition="bottom" visible="true" width="76.24609375" x="7.675867340276909" y="110.0379670235686">&lt;&lt;extend&gt;&gt;<y:LabelModel>
+          <y:EdgeLabel alignment="center" anchorX="7.675867340276909" anchorY="114.34691363585634" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="0.9708217563970757" upY="-0.2398022462490645" verticalTextPosition="bottom" visible="true" width="76.24609375" x="7.675867340276909" y="110.03796702356846">&lt;&lt;extend&gt;&gt;<y:LabelModel>
               <y:RotatedSliderEdgeLabelModel angle="0.0" autoRotationEnabled="true" distance="2.0" distanceRelativeToEdge="true" mode="side_slider"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:RotatedSliderEdgeLabelModelParameter invertingSign="false" ratio="0.5000000000000002" segment="0"/>
+              <y:RotatedSliderEdgeLabelModelParameter invertingSign="false" ratio="0.49999999999999967" segment="0"/>
             </y:ModelParameter>
             <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="relative_to_edge_flow" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
@@ -831,11 +813,11 @@
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
-          <y:EdgeLabel alignment="center" anchorX="46.87490436690328" anchorY="-19.4085154668534" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="-0.3458339283333831" upY="-0.938295739100152" verticalTextPosition="bottom" visible="true" width="76.24609375" x="40.6607009671628" y="-62.63700315044717">&lt;&lt;extend&gt;&gt;<y:LabelModel>
+          <y:EdgeLabel alignment="center" anchorX="25.609386970638084" anchorY="-11.57054166741436" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="-0.3458339283333831" upY="-0.938295739100152" verticalTextPosition="bottom" visible="true" width="76.24609375" x="19.395183570897608" y="-54.79902935100813">&lt;&lt;extend&gt;&gt;<y:LabelModel>
               <y:RotatedSliderEdgeLabelModel angle="0.0" autoRotationEnabled="true" distance="2.0" distanceRelativeToEdge="true" mode="side_slider"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:RotatedSliderEdgeLabelModelParameter invertingSign="true" ratio="0.5" segment="0"/>
+              <y:RotatedSliderEdgeLabelModelParameter invertingSign="true" ratio="0.0" segment="0"/>
             </y:ModelParameter>
             <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="relative_to_edge_flow" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
@@ -888,11 +870,11 @@
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
-          <y:EdgeLabel alignment="center" anchorX="87.72424553689268" anchorY="-105.95906036348947" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="-0.8546867794291201" upY="-0.5191440157307784" verticalTextPosition="bottom" visible="true" width="76.24609375" x="72.36659246902568" y="-180.45395770739015">&lt;&lt;extend&gt;&gt;<y:LabelModel>
+          <y:EdgeLabel alignment="center" anchorX="87.72424553689274" anchorY="-105.95906036348953" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="-0.8546867794291201" upY="-0.5191440157307784" verticalTextPosition="bottom" visible="true" width="76.24609375" x="72.36659246902573" y="-180.4539577073902">&lt;&lt;extend&gt;&gt;<y:LabelModel>
               <y:RotatedSliderEdgeLabelModel angle="0.0" autoRotationEnabled="true" distance="2.0" distanceRelativeToEdge="true" mode="side_slider"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:RotatedSliderEdgeLabelModelParameter invertingSign="false" ratio="0.5" segment="0"/>
+              <y:RotatedSliderEdgeLabelModelParameter invertingSign="false" ratio="0.5000000000000004" segment="0"/>
             </y:ModelParameter>
             <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="relative_to_edge_flow" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
@@ -907,11 +889,11 @@
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
-          <y:EdgeLabel alignment="center" anchorX="105.0513829067994" anchorY="116.36548855956107" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="0.7507590953269262" upY="-0.6605760976480267" verticalTextPosition="bottom" visible="true" width="76.24609375" x="105.0513829067994" y="104.49576180494809">&lt;&lt;extend&gt;&gt;<y:LabelModel>
+          <y:EdgeLabel alignment="center" anchorX="105.05138290679974" anchorY="116.36548855956136" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="0.7507590953269262" upY="-0.6605760976480267" verticalTextPosition="bottom" visible="true" width="76.24609375" x="105.05138290679974" y="104.49576180494837">&lt;&lt;extend&gt;&gt;<y:LabelModel>
               <y:RotatedSliderEdgeLabelModel angle="0.0" autoRotationEnabled="true" distance="2.0" distanceRelativeToEdge="true" mode="side_slider"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:RotatedSliderEdgeLabelModelParameter invertingSign="true" ratio="0.4999999999999992" segment="0"/>
+              <y:RotatedSliderEdgeLabelModelParameter invertingSign="true" ratio="0.5000000000000007" segment="0"/>
             </y:ModelParameter>
             <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="relative_to_edge_flow" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
@@ -926,11 +908,11 @@
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
-          <y:EdgeLabel alignment="center" anchorX="235.7167457587159" anchorY="-56.075595566247614" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="-0.3108254015668247" upY="-0.9504670271718121" verticalTextPosition="bottom" visible="true" width="83.470703125" x="230.131601824312" y="-99.09911477863444">&lt;&lt;include&gt;&gt;<y:LabelModel>
+          <y:EdgeLabel alignment="center" anchorX="307.3092783980708" anchorY="-79.48806235431533" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="-0.3108254015668247" upY="-0.9504670271718121" verticalTextPosition="bottom" visible="true" width="83.470703125" x="301.72413446366687" y="-122.51158156670216">&lt;&lt;include&gt;&gt;<y:LabelModel>
               <y:RotatedSliderEdgeLabelModel angle="0.0" autoRotationEnabled="true" distance="2.0" distanceRelativeToEdge="true" mode="side_slider"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:RotatedSliderEdgeLabelModelParameter invertingSign="false" ratio="0.5" segment="0"/>
+              <y:RotatedSliderEdgeLabelModelParameter invertingSign="false" ratio="0.6666666666666689" segment="0"/>
             </y:ModelParameter>
             <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="relative_to_edge_flow" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
@@ -945,11 +927,11 @@
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
-          <y:EdgeLabel alignment="center" anchorX="-83.08690451400821" anchorY="-23.819046440750917" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="-0.0460366748450442" upY="0.9989397502198076" verticalTextPosition="bottom" visible="true" width="76.24609375" x="-160.07937986099114" y="-27.329163066924423">&lt;&lt;extend&gt;&gt;<y:LabelModel>
+          <y:EdgeLabel alignment="center" anchorX="-83.08690451400844" anchorY="-23.819046440750924" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="-0.0460366748450442" upY="0.9989397502198076" verticalTextPosition="bottom" visible="true" width="76.24609375" x="-160.07937986099137" y="-27.32916306692443">&lt;&lt;extend&gt;&gt;<y:LabelModel>
               <y:RotatedSliderEdgeLabelModel angle="0.0" autoRotationEnabled="true" distance="2.0" distanceRelativeToEdge="true" mode="side_slider"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:RotatedSliderEdgeLabelModelParameter invertingSign="false" ratio="0.49999999999999856" segment="0"/>
+              <y:RotatedSliderEdgeLabelModelParameter invertingSign="false" ratio="0.5" segment="0"/>
             </y:ModelParameter>
             <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="relative_to_edge_flow" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
@@ -964,11 +946,11 @@
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
-          <y:EdgeLabel alignment="center" anchorX="232.17325544704795" anchorY="147.06483695415295" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="0.4723139601774704" upY="-0.8814303846711179" verticalTextPosition="bottom" visible="true" width="76.24609375" x="232.17325544704795" y="131.2266347295938">&lt;&lt;extend&gt;&gt;<y:LabelModel>
+          <y:EdgeLabel alignment="center" anchorX="232.17325544704818" anchorY="147.06483695415318" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="0.4723139601774704" upY="-0.8814303846711179" verticalTextPosition="bottom" visible="true" width="76.24609375" x="232.17325544704818" y="131.22663472959402">&lt;&lt;extend&gt;&gt;<y:LabelModel>
               <y:RotatedSliderEdgeLabelModel angle="0.0" autoRotationEnabled="true" distance="2.0" distanceRelativeToEdge="true" mode="side_slider"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:RotatedSliderEdgeLabelModelParameter invertingSign="false" ratio="0.49999999999999895" segment="0"/>
+              <y:RotatedSliderEdgeLabelModelParameter invertingSign="false" ratio="0.4999999999999998" segment="0"/>
             </y:ModelParameter>
             <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="relative_to_edge_flow" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
@@ -983,11 +965,11 @@
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
-          <y:EdgeLabel alignment="center" anchorX="112.09429398721386" anchorY="-60.53921533029853" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="-0.6072407354125322" upY="-0.7945178973790629" verticalTextPosition="bottom" visible="true" width="83.470703125" x="101.18293702276992" y="-125.50251994985472">&lt;&lt;include&gt;&gt;<y:LabelModel>
+          <y:EdgeLabel alignment="center" anchorX="112.09429398721386" anchorY="-60.53921533029839" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="-0.6072407354125322" upY="-0.7945178973790629" verticalTextPosition="bottom" visible="true" width="83.470703125" x="101.18293702276992" y="-125.50251994985457">&lt;&lt;include&gt;&gt;<y:LabelModel>
               <y:RotatedSliderEdgeLabelModel angle="0.0" autoRotationEnabled="true" distance="2.0" distanceRelativeToEdge="true" mode="side_slider"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:RotatedSliderEdgeLabelModelParameter invertingSign="false" ratio="0.5000000000000018" segment="0"/>
+              <y:RotatedSliderEdgeLabelModelParameter invertingSign="false" ratio="0.5000000000000004" segment="0"/>
             </y:ModelParameter>
             <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="relative_to_edge_flow" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
@@ -1004,11 +986,11 @@
           </y:Path>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
-          <y:EdgeLabel alignment="center" anchorX="203.71586079568806" anchorY="-162.4023197986241" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="0.8180870765180194" upY="-0.5750943707203195" verticalTextPosition="bottom" visible="true" width="76.24609375" x="203.71586079568806" y="-172.73604677250484">&lt;&lt;extend&gt;&gt;<y:LabelModel>
+          <y:EdgeLabel alignment="center" anchorX="203.7158607956885" anchorY="-162.4023197986238" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="0.8180870765180194" upY="-0.5750943707203195" verticalTextPosition="bottom" visible="true" width="76.24609375" x="203.7158607956885" y="-172.73604677250455">&lt;&lt;extend&gt;&gt;<y:LabelModel>
               <y:RotatedSliderEdgeLabelModel angle="0.0" autoRotationEnabled="true" distance="2.0" distanceRelativeToEdge="true" mode="side_slider"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:RotatedSliderEdgeLabelModelParameter invertingSign="true" ratio="0.4999999999999995" segment="-1"/>
+              <y:RotatedSliderEdgeLabelModelParameter invertingSign="true" ratio="0.5000000000000009" segment="-1"/>
             </y:ModelParameter>
             <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="relative_to_edge_flow" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
@@ -1023,11 +1005,11 @@
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="83.470703125" x="226.20074689023022" y="-19.96873566513534">&lt;&lt;include&gt;&gt;<y:LabelModel>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="83.470703125" x="226.20074689022977" y="-19.96873566513534">&lt;&lt;include&gt;&gt;<y:LabelModel>
               <y:RotatedSliderEdgeLabelModel angle="0.0" autoRotationEnabled="true" distance="2.0" distanceRelativeToEdge="true" mode="side_slider"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:RotatedSliderEdgeLabelModelParameter invertingSign="true" ratio="0.5" segment="0"/>
+              <y:RotatedSliderEdgeLabelModelParameter invertingSign="true" ratio="0.4999999999999992" segment="0"/>
             </y:ModelParameter>
             <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="relative_to_edge_flow" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
@@ -1042,11 +1024,11 @@
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
-          <y:EdgeLabel alignment="center" anchorX="107.64571599834312" anchorY="-174.51598913748478" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="-0.8459496674929576" upY="-0.5332627495602467" verticalTextPosition="bottom" visible="true" width="83.470703125" x="92.44505791057904" y="-254.71006772264258">&lt;&lt;include&gt;&gt;<y:LabelModel>
+          <y:EdgeLabel alignment="center" anchorX="107.64571599834312" anchorY="-174.51598913748467" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="-0.8459496674929576" upY="-0.5332627495602467" verticalTextPosition="bottom" visible="true" width="83.470703125" x="92.44505791057904" y="-254.71006772264246">&lt;&lt;include&gt;&gt;<y:LabelModel>
               <y:RotatedSliderEdgeLabelModel angle="0.0" autoRotationEnabled="true" distance="2.0" distanceRelativeToEdge="true" mode="side_slider"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:RotatedSliderEdgeLabelModelParameter invertingSign="true" ratio="0.5000000000000004" segment="0"/>
+              <y:RotatedSliderEdgeLabelModelParameter invertingSign="true" ratio="0.5000000000000001" segment="0"/>
             </y:ModelParameter>
             <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="relative_to_edge_flow" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
@@ -1061,11 +1043,11 @@
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
-          <y:EdgeLabel alignment="center" anchorX="103.71621639617888" anchorY="96.12970609689154" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="0.56939796415776" upY="-0.8220620161599721" verticalTextPosition="bottom" visible="true" width="83.470703125" x="103.71621639617888" y="81.35827924401704">&lt;&lt;include&gt;&gt;<y:LabelModel>
+          <y:EdgeLabel alignment="center" anchorX="-0.6076831895452415" anchorY="23.870174736242518" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="0.56939796415776" upY="-0.8220620161599721" verticalTextPosition="bottom" visible="true" width="83.470703125" x="-0.6076831895452415" y="9.09874788336802">&lt;&lt;include&gt;&gt;<y:LabelModel>
               <y:RotatedSliderEdgeLabelModel angle="0.0" autoRotationEnabled="true" distance="2.0" distanceRelativeToEdge="true" mode="side_slider"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:RotatedSliderEdgeLabelModelParameter invertingSign="false" ratio="0.5" segment="0"/>
+              <y:RotatedSliderEdgeLabelModelParameter invertingSign="false" ratio="0.0" segment="0"/>
             </y:ModelParameter>
             <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="relative_to_edge_flow" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
@@ -1099,11 +1081,11 @@
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
-          <y:EdgeLabel alignment="center" anchorX="326.46798127051943" anchorY="-55.22778172668376" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="-0.16083887814022016" upY="-0.9869806762437628" verticalTextPosition="bottom" visible="true" width="83.470703125" x="323.5779076789373" y="-86.38792500113924">&lt;&lt;include&gt;&gt;<y:LabelModel>
+          <y:EdgeLabel alignment="center" anchorX="484.1435928248334" anchorY="-80.92268040391548" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="-0.16083887814022016" upY="-0.9869806762437628" verticalTextPosition="bottom" visible="true" width="83.470703125" x="481.25351923325127" y="-112.08282367837096">&lt;&lt;include&gt;&gt;<y:LabelModel>
               <y:RotatedSliderEdgeLabelModel angle="0.0" autoRotationEnabled="true" distance="2.0" distanceRelativeToEdge="true" mode="side_slider"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:RotatedSliderEdgeLabelModelParameter invertingSign="true" ratio="0.49999999999999944" segment="0"/>
+              <y:RotatedSliderEdgeLabelModelParameter invertingSign="true" ratio="0.7500000000000016" segment="0"/>
             </y:ModelParameter>
             <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="relative_to_edge_flow" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
@@ -1120,11 +1102,11 @@
           </y:Path>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
-          <y:EdgeLabel alignment="center" anchorX="-13.124966867026387" anchorY="323.56723679777184" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="0.9996299712807615" upY="-0.027201480055763047" verticalTextPosition="bottom" visible="true" width="76.24609375" x="-13.124966867026387" y="323.07846020301986">&lt;&lt;extend&gt;&gt;<y:LabelModel>
+          <y:EdgeLabel alignment="center" anchorX="11.005337128654219" anchorY="402.70355900469394" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="0.9996299712807615" upY="-0.027201480055763047" verticalTextPosition="bottom" visible="true" width="76.24609375" x="11.005337128654219" y="402.21478240994196">&lt;&lt;extend&gt;&gt;<y:LabelModel>
               <y:RotatedSliderEdgeLabelModel angle="0.0" autoRotationEnabled="true" distance="2.0" distanceRelativeToEdge="true" mode="side_slider"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:RotatedSliderEdgeLabelModelParameter invertingSign="false" ratio="0.4999999999999997" segment="0"/>
+              <y:RotatedSliderEdgeLabelModelParameter invertingSign="true" ratio="0.6249999999999996" segment="0"/>
             </y:ModelParameter>
             <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="relative_to_edge_flow" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
@@ -1160,11 +1142,11 @@
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
-          <y:EdgeLabel alignment="center" anchorX="-38.75459581229575" anchorY="143.7806126997342" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="0.961958359932739" upY="0.2731961086024378" verticalTextPosition="bottom" visible="true" width="83.470703125" x="-61.558467088355094" y="143.7806126997342">&lt;&lt;include&gt;&gt;<y:LabelModel>
+          <y:EdgeLabel alignment="center" anchorX="-105.19642290763363" anchorY="123.00752214011982" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="0.751895298306383" upY="0.6592825345667479" verticalTextPosition="bottom" visible="true" width="83.470703125" x="-160.2271996259522" y="123.00752214011982">&lt;&lt;include&gt;&gt;<y:LabelModel>
               <y:RotatedSliderEdgeLabelModel angle="0.0" autoRotationEnabled="true" distance="2.0" distanceRelativeToEdge="true" mode="side_slider"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:RotatedSliderEdgeLabelModelParameter invertingSign="true" ratio="0.5000000000000001" segment="0"/>
+              <y:RotatedSliderEdgeLabelModelParameter invertingSign="true" ratio="0.4999999999999996" segment="0"/>
             </y:ModelParameter>
             <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="relative_to_edge_flow" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
@@ -1200,11 +1182,11 @@
           </y:Path>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
-          <y:EdgeLabel alignment="center" anchorX="942.8825455587081" anchorY="-267.10881074815825" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="0.1893286859439763" upY="-0.9819137684535884" verticalTextPosition="bottom" visible="true" width="83.470703125" x="942.8825455587081" y="-284.75257377505864">&lt;&lt;include&gt;&gt;<y:LabelModel>
+          <y:EdgeLabel alignment="center" anchorX="942.8825455587082" anchorY="-267.10881074815825" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="0.1893286859439763" upY="-0.9819137684535884" verticalTextPosition="bottom" visible="true" width="83.470703125" x="942.8825455587082" y="-284.75257377505864">&lt;&lt;include&gt;&gt;<y:LabelModel>
               <y:RotatedSliderEdgeLabelModel angle="0.0" autoRotationEnabled="true" distance="2.0" distanceRelativeToEdge="true" mode="side_slider"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:RotatedSliderEdgeLabelModelParameter invertingSign="true" ratio="0.49999999999999956" segment="-1"/>
+              <y:RotatedSliderEdgeLabelModelParameter invertingSign="true" ratio="0.49999999999999967" segment="-1"/>
             </y:ModelParameter>
             <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="relative_to_edge_flow" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
@@ -1287,11 +1269,11 @@
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
-          <y:EdgeLabel alignment="center" anchorX="192.2314506917071" anchorY="-34.1920596890792" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="-0.16502642737685447" upY="-0.9862891453662216" verticalTextPosition="bottom" visible="true" width="83.470703125" x="189.26613207477925" y="-65.68931469723128">&lt;&lt;include&gt;&gt;<y:LabelModel>
+          <y:EdgeLabel alignment="center" anchorX="281.3715125569058" anchorY="-26.83287492228419" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="-0.16502642737685447" upY="-0.9862891453662216" verticalTextPosition="bottom" visible="true" width="83.470703125" x="278.406193939978" y="-58.33012993043627">&lt;&lt;include&gt;&gt;<y:LabelModel>
               <y:RotatedSliderEdgeLabelModel angle="0.0" autoRotationEnabled="true" distance="2.0" distanceRelativeToEdge="true" mode="side_slider"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:RotatedSliderEdgeLabelModelParameter invertingSign="true" ratio="0.4999999999999996" segment="0"/>
+              <y:RotatedSliderEdgeLabelModelParameter invertingSign="false" ratio="0.7500000000000019" segment="0"/>
             </y:ModelParameter>
             <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="relative_to_edge_flow" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
@@ -1323,11 +1305,11 @@
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
-          <y:EdgeLabel alignment="center" anchorX="45.8266145127331" anchorY="-252.97119841339259" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="-0.9948574458430773" upY="-0.10128505541583312" verticalTextPosition="bottom" visible="true" width="76.24609375" x="27.950269782740307" y="-330.64515833653263">&lt;&lt;extend&gt;&gt;<y:LabelModel>
+          <y:EdgeLabel alignment="center" anchorX="45.82661451273316" anchorY="-252.97119841339293" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="-0.9948574458430773" upY="-0.10128505541583312" verticalTextPosition="bottom" visible="true" width="76.24609375" x="27.950269782740364" y="-330.645158336533">&lt;&lt;extend&gt;&gt;<y:LabelModel>
               <y:RotatedSliderEdgeLabelModel angle="0.0" autoRotationEnabled="true" distance="2.0" distanceRelativeToEdge="true" mode="side_slider"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:RotatedSliderEdgeLabelModelParameter invertingSign="false" ratio="0.5000000000000004" segment="0"/>
+              <y:RotatedSliderEdgeLabelModelParameter invertingSign="false" ratio="0.5000000000000011" segment="0"/>
             </y:ModelParameter>
             <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="relative_to_edge_flow" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
@@ -1341,11 +1323,11 @@
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
-          <y:EdgeLabel alignment="center" anchorX="-177.330065724547" anchorY="107.88140487641203" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="0.5114848186942635" upY="0.8592923136193505" verticalTextPosition="bottom" visible="true" width="83.470703125" x="-249.0557993322622" y="107.88140487641203">&lt;&lt;include&gt;&gt;<y:LabelModel>
+          <y:EdgeLabel alignment="center" anchorX="-259.4403546917666" anchorY="156.75670097726402" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="0.5114848186942635" upY="0.8592923136193505" verticalTextPosition="bottom" visible="true" width="83.470703125" x="-331.16608829948177" y="156.75670097726402">&lt;&lt;include&gt;&gt;<y:LabelModel>
               <y:RotatedSliderEdgeLabelModel angle="0.0" autoRotationEnabled="true" distance="2.0" distanceRelativeToEdge="true" mode="side_slider"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:RotatedSliderEdgeLabelModelParameter invertingSign="true" ratio="0.49999999999999967" segment="0"/>
+              <y:RotatedSliderEdgeLabelModelParameter invertingSign="true" ratio="0.7500000000000004" segment="0"/>
             </y:ModelParameter>
             <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="relative_to_edge_flow" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
@@ -1359,11 +1341,11 @@
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
-          <y:EdgeLabel alignment="center" anchorX="23.77380473005428" anchorY="46.19232004805809" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="0.6449448935666399" upY="-0.7642290783935898" verticalTextPosition="bottom" visible="true" width="83.470703125" x="23.77380473005428" y="32.460078795673276">&lt;&lt;include&gt;&gt;<y:LabelModel>
+          <y:EdgeLabel alignment="center" anchorX="-5.222519388947376" anchorY="21.721867795622217" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="0.6449448935666399" upY="-0.7642290783935898" verticalTextPosition="bottom" visible="true" width="83.470703125" x="-5.222519388947376" y="7.989626543237399">&lt;&lt;include&gt;&gt;<y:LabelModel>
               <y:RotatedSliderEdgeLabelModel angle="0.0" autoRotationEnabled="true" distance="2.0" distanceRelativeToEdge="true" mode="side_slider"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:RotatedSliderEdgeLabelModelParameter invertingSign="false" ratio="1.0" segment="0"/>
+              <y:RotatedSliderEdgeLabelModelParameter invertingSign="false" ratio="0.0" segment="0"/>
             </y:ModelParameter>
             <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="relative_to_edge_flow" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
@@ -1381,11 +1363,11 @@
           </y:Path>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
-          <y:EdgeLabel alignment="center" anchorX="124.66913556927148" anchorY="105.65196146053441" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="0.9668665699652647" upY="-0.2552822670762777" verticalTextPosition="bottom" visible="true" width="83.470703125" x="124.66913556927148" y="101.06485822400754">&lt;&lt;include&gt;&gt;<y:LabelModel>
+          <y:EdgeLabel alignment="center" anchorX="83.6355491122265" anchorY="61.2738762144096" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="0.5501573327309607" upY="-0.8350610212687184" verticalTextPosition="bottom" visible="true" width="83.470703125" x="83.6355491122265" y="46.268873488487316">&lt;&lt;include&gt;&gt;<y:LabelModel>
               <y:RotatedSliderEdgeLabelModel angle="0.0" autoRotationEnabled="true" distance="2.0" distanceRelativeToEdge="true" mode="side_slider"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:RotatedSliderEdgeLabelModelParameter invertingSign="true" ratio="0.5" segment="-1"/>
+              <y:RotatedSliderEdgeLabelModelParameter invertingSign="true" ratio="1.0" segment="0"/>
             </y:ModelParameter>
             <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="relative_to_edge_flow" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
@@ -1419,23 +1401,23 @@
       <data key="d10">
         <y:SplineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
-            <y:Point x="1597.1213883772914" y="-529.5376198165136"/>
-            <y:Point x="1857.3937069094015" y="-319.8027522935753"/>
+            <y:Point x="1486.4617480103188" y="-409.04156697247686"/>
+            <y:Point x="1787.7191185301965" y="-252.58726703363646"/>
           </y:Path>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
-          <y:EdgeLabel alignment="center" anchorX="683.908114330201" anchorY="-377.5560729562841" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="0.6274584467341444" upY="-0.7786500482386004" verticalTextPosition="bottom" visible="true" width="83.470703125" x="683.908114330201" y="-391.54744101057145">&lt;&lt;include&gt;&gt;<y:LabelModel>
+          <y:EdgeLabel alignment="center" anchorX="512.6078934824814" anchorY="-316.32213955551265" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="0.4608899910208154" upY="-0.8874572756909668" verticalTextPosition="bottom" visible="true" width="83.470703125" x="512.6078934824814" y="-332.2686374780847">&lt;&lt;include&gt;&gt;<y:LabelModel>
               <y:RotatedSliderEdgeLabelModel angle="0.0" autoRotationEnabled="true" distance="2.0" distanceRelativeToEdge="true" mode="side_slider"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:RotatedSliderEdgeLabelModelParameter invertingSign="true" ratio="0.5000000000000013" segment="1"/>
+              <y:RotatedSliderEdgeLabelModelParameter invertingSign="true" ratio="0.24999999999999975" segment="1"/>
             </y:ModelParameter>
             <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="relative_to_edge_flow" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
         </y:SplineEdge>
       </data>
     </edge>
-    <edge id="e48" source="n27" target="n9">
+    <edge id="e48" source="n23" target="n26">
       <data key="d8"/>
       <data key="d9"><![CDATA[<<extend>>]]></data>
       <data key="d10">
@@ -1443,94 +1425,18 @@
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
-          <y:EdgeLabel alignment="center" anchorX="45.521863293132924" anchorY="-70.1215636128212" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="-0.9445367974532973" upY="-0.32840560022123366" verticalTextPosition="bottom" visible="true" width="76.24609375" x="28.549717713893987" y="-148.03984295074537">&lt;&lt;extend&gt;&gt;<y:LabelModel>
+          <y:EdgeLabel alignment="center" anchorX="20.160060634431403" anchorY="90.38610258670849" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="0.9061153275446479" upY="-0.42303074733245527" verticalTextPosition="bottom" visible="true" width="83.470703125" x="20.160060634431403" y="82.78476884557844">&lt;&lt;include&gt;&gt;<y:LabelModel>
               <y:RotatedSliderEdgeLabelModel angle="0.0" autoRotationEnabled="true" distance="2.0" distanceRelativeToEdge="true" mode="side_slider"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:RotatedSliderEdgeLabelModelParameter invertingSign="false" ratio="0.5" segment="0"/>
+              <y:RotatedSliderEdgeLabelModelParameter invertingSign="false" ratio="0.5000000000000006" segment="0"/>
             </y:ModelParameter>
             <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="relative_to_edge_flow" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
         </y:SplineEdge>
       </data>
     </edge>
-    <edge id="e49" source="n12" target="n27">
-      <data key="d8"/>
-      <data key="d9"><![CDATA[<<extend>>]]></data>
-      <data key="d10">
-        <y:SplineEdge>
-          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
-          <y:LineStyle color="#000000" type="dashed" width="1.0"/>
-          <y:Arrows source="none" target="plain"/>
-          <y:EdgeLabel alignment="center" anchorX="-227.98194867135112" anchorY="19.735420054078986" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="0.07753249622086052" upY="0.9969898254394386" verticalTextPosition="bottom" visible="true" width="83.470703125" x="-311.2013904092521" y="19.735420054078986">&lt;&lt;include&gt;&gt;<y:LabelModel>
-              <y:RotatedSliderEdgeLabelModel angle="0.0" autoRotationEnabled="true" distance="2.0" distanceRelativeToEdge="true" mode="side_slider"/>
-            </y:LabelModel>
-            <y:ModelParameter>
-              <y:RotatedSliderEdgeLabelModelParameter invertingSign="true" ratio="0.5000000000000004" segment="0"/>
-            </y:ModelParameter>
-            <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="relative_to_edge_flow" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
-          </y:EdgeLabel>
-        </y:SplineEdge>
-      </data>
-    </edge>
-    <edge id="e50" source="n11" target="n27">
-      <data key="d8"/>
-      <data key="d9"><![CDATA[<<extend>>]]></data>
-      <data key="d10">
-        <y:SplineEdge>
-          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
-          <y:LineStyle color="#000000" type="dashed" width="1.0"/>
-          <y:Arrows source="none" target="plain"/>
-          <y:EdgeLabel alignment="center" anchorX="-347.6300006256256" anchorY="182.75766795049321" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="0.5097388403681381" upY="0.8603291896827318" verticalTextPosition="bottom" visible="true" width="83.470703125" x="-419.44228300740474" y="182.75766795049321">&lt;&lt;include&gt;&gt;<y:LabelModel>
-              <y:RotatedSliderEdgeLabelModel angle="0.0" autoRotationEnabled="true" distance="2.0" distanceRelativeToEdge="true" mode="side_slider"/>
-            </y:LabelModel>
-            <y:ModelParameter>
-              <y:RotatedSliderEdgeLabelModelParameter invertingSign="false" ratio="0.49999999999999867" segment="0"/>
-            </y:ModelParameter>
-            <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="relative_to_edge_flow" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
-          </y:EdgeLabel>
-        </y:SplineEdge>
-      </data>
-    </edge>
-    <edge id="e51" source="n10" target="n27">
-      <data key="d8"/>
-      <data key="d9"><![CDATA[<<extend>>]]></data>
-      <data key="d10">
-        <y:SplineEdge>
-          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
-          <y:LineStyle color="#000000" type="dashed" width="1.0"/>
-          <y:Arrows source="none" target="plain"/>
-          <y:EdgeLabel alignment="center" anchorX="40.3201894513017" anchorY="193.74463493781764" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="0.9534682034604536" upY="-0.30149359029653544" verticalTextPosition="bottom" visible="true" width="83.470703125" x="40.3201894513017" y="188.32717198717677">&lt;&lt;include&gt;&gt;<y:LabelModel>
-              <y:RotatedSliderEdgeLabelModel angle="0.0" autoRotationEnabled="true" distance="2.0" distanceRelativeToEdge="true" mode="side_slider"/>
-            </y:LabelModel>
-            <y:ModelParameter>
-              <y:RotatedSliderEdgeLabelModelParameter invertingSign="false" ratio="0.5000000000000002" segment="0"/>
-            </y:ModelParameter>
-            <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="relative_to_edge_flow" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
-          </y:EdgeLabel>
-        </y:SplineEdge>
-      </data>
-    </edge>
-    <edge id="e52" source="n23" target="n26">
-      <data key="d8"/>
-      <data key="d9"><![CDATA[<<extend>>]]></data>
-      <data key="d10">
-        <y:SplineEdge>
-          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
-          <y:LineStyle color="#000000" type="dashed" width="1.0"/>
-          <y:Arrows source="none" target="plain"/>
-          <y:EdgeLabel alignment="center" anchorX="20.16006063443143" anchorY="90.38610258670849" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="0.9061153275446479" upY="-0.42303074733245527" verticalTextPosition="bottom" visible="true" width="83.470703125" x="20.16006063443143" y="82.78476884557844">&lt;&lt;include&gt;&gt;<y:LabelModel>
-              <y:RotatedSliderEdgeLabelModel angle="0.0" autoRotationEnabled="true" distance="2.0" distanceRelativeToEdge="true" mode="side_slider"/>
-            </y:LabelModel>
-            <y:ModelParameter>
-              <y:RotatedSliderEdgeLabelModelParameter invertingSign="false" ratio="0.5000000000000007" segment="0"/>
-            </y:ModelParameter>
-            <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="relative_to_edge_flow" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
-          </y:EdgeLabel>
-        </y:SplineEdge>
-      </data>
-    </edge>
-    <edge id="e53" source="n22" target="n26">
+    <edge id="e49" source="n22" target="n26">
       <data key="d8"/>
       <data key="d9"><![CDATA[<<extend>>]]></data>
       <data key="d10">
@@ -1540,18 +1446,18 @@
           </y:Path>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
-          <y:EdgeLabel alignment="center" anchorX="-72.55076765076234" anchorY="215.82657349658905" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="0.48772160187866126" upY="-0.8729992205385482" verticalTextPosition="bottom" visible="true" width="83.470703125" x="-72.55076765076234" y="200.139868752537">&lt;&lt;include&gt;&gt;<y:LabelModel>
+          <y:EdgeLabel alignment="center" anchorX="-12.173138563735435" anchorY="249.55795982909274" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="0.48772160187866126" upY="-0.8729992205385482" verticalTextPosition="bottom" visible="true" width="83.470703125" x="-12.173138563735435" y="233.8712550850407">&lt;&lt;include&gt;&gt;<y:LabelModel>
               <y:RotatedSliderEdgeLabelModel angle="0.0" autoRotationEnabled="true" distance="2.0" distanceRelativeToEdge="true" mode="side_slider"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:RotatedSliderEdgeLabelModelParameter invertingSign="true" ratio="0.2499999999999998" segment="-1"/>
+              <y:RotatedSliderEdgeLabelModelParameter invertingSign="true" ratio="0.4999999999999996" segment="-1"/>
             </y:ModelParameter>
             <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="relative_to_edge_flow" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
         </y:SplineEdge>
       </data>
     </edge>
-    <edge id="e54" source="n28" target="n17">
+    <edge id="e50" source="n27" target="n17">
       <data key="d8"/>
       <data key="d9"><![CDATA[<<extend>>]]></data>
       <data key="d10">
@@ -1559,18 +1465,18 @@
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
-          <y:EdgeLabel alignment="center" anchorX="131.6972984295587" anchorY="6.716419043602844" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="0.06607380295248273" upY="-0.9978147385980007" verticalTextPosition="bottom" visible="true" width="76.24609375" x="131.6972984295587" y="-11.213064540579982">&lt;&lt;extend&gt;&gt;<y:LabelModel>
+          <y:EdgeLabel alignment="center" anchorX="131.6972984295587" anchorY="6.716419043602841" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="0.06607380295248273" upY="-0.9978147385980007" verticalTextPosition="bottom" visible="true" width="76.24609375" x="131.6972984295587" y="-11.213064540579985">&lt;&lt;extend&gt;&gt;<y:LabelModel>
               <y:RotatedSliderEdgeLabelModel angle="0.0" autoRotationEnabled="true" distance="2.0" distanceRelativeToEdge="true" mode="side_slider"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:RotatedSliderEdgeLabelModelParameter invertingSign="true" ratio="0.5" segment="0"/>
+              <y:RotatedSliderEdgeLabelModelParameter invertingSign="true" ratio="0.49999999999999994" segment="0"/>
             </y:ModelParameter>
             <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="relative_to_edge_flow" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
         </y:SplineEdge>
       </data>
     </edge>
-    <edge id="e55" source="n19" target="n28">
+    <edge id="e51" source="n19" target="n27">
       <data key="d8"/>
       <data key="d9"><![CDATA[<<extend>>]]></data>
       <data key="d10">
@@ -1578,18 +1484,18 @@
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
-          <y:EdgeLabel alignment="center" anchorX="-37.79511489166697" anchorY="-20.493179277292285" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="-0.5170356073912942" upY="0.8559638898280204" verticalTextPosition="bottom" visible="true" width="83.470703125" x="-118.53350619553419" y="-63.65050496690505">&lt;&lt;include&gt;&gt;<y:LabelModel>
+          <y:EdgeLabel alignment="center" anchorX="-63.84675923176181" anchorY="-36.22938954853302" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="-0.5170356073912942" upY="0.8559638898280204" verticalTextPosition="bottom" visible="true" width="83.470703125" x="-144.58515053562903" y="-79.3867152381458">&lt;&lt;include&gt;&gt;<y:LabelModel>
               <y:RotatedSliderEdgeLabelModel angle="0.0" autoRotationEnabled="true" distance="2.0" distanceRelativeToEdge="true" mode="side_slider"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:RotatedSliderEdgeLabelModelParameter invertingSign="true" ratio="0.0" segment="0"/>
+              <y:RotatedSliderEdgeLabelModelParameter invertingSign="true" ratio="1.0" segment="0"/>
             </y:ModelParameter>
             <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="relative_to_edge_flow" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
         </y:SplineEdge>
       </data>
     </edge>
-    <edge id="e56" source="n29" target="n13">
+    <edge id="e52" source="n28" target="n13">
       <data key="d8"/>
       <data key="d9"><![CDATA[<<extend>>]]></data>
       <data key="d10">
@@ -1608,7 +1514,7 @@
         </y:SplineEdge>
       </data>
     </edge>
-    <edge id="e57" source="n15" target="n29">
+    <edge id="e53" source="n15" target="n28">
       <data key="d8"/>
       <data key="d9"><![CDATA[<<extend>>]]></data>
       <data key="d10">
@@ -1627,7 +1533,7 @@
         </y:SplineEdge>
       </data>
     </edge>
-    <edge id="e58" source="n28" target="n18">
+    <edge id="e54" source="n27" target="n18">
       <data key="d8"/>
       <data key="d9"><![CDATA[<<extend>>]]></data>
       <data key="d10">
@@ -1635,18 +1541,12 @@
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="86.013671875" x="62.58758378152925" y="-39.551650393829945">&lt;&lt;extend&gt;&gt;<y:LabelModel>
-              <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
-            </y:LabelModel>
-            <y:ModelParameter>
-              <y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="right" ratio="0.5" segment="0"/>
-            </y:ModelParameter>
-            <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="side_slider" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="76.24609375" x="77.79949686561605" y="-47.33090557357984">&lt;&lt;extend&gt;&gt;<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="relative_to_edge_flow" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
         </y:SplineEdge>
       </data>
     </edge>
-    <edge id="e59" source="n26" target="n21">
+    <edge id="e55" source="n26" target="n21">
       <data key="d8"/>
       <data key="d9"><![CDATA[<<extend>>]]></data>
       <data key="d10">
@@ -1656,13 +1556,7 @@
           </y:Path>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="86.013671875" x="-260.9551187047376" y="-62.84935156324639">&lt;&lt;extend&gt;&gt;<y:LabelModel>
-              <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
-            </y:LabelModel>
-            <y:ModelParameter>
-              <y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="right" ratio="0.5" segment="0"/>
-            </y:ModelParameter>
-            <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="side_slider" preferredPlacement="center_on_edge" ratio="0.2790317459660694" textColor="#000000" verticalTextPosition="bottom" visible="true" width="76.24609375" x="-307.27248155614933" y="-22.34746679948921">&lt;&lt;extend&gt;&gt;<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="relative_to_edge_flow" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
         </y:SplineEdge>
       </data>

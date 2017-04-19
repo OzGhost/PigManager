@@ -9,3 +9,6 @@ edit physical diagram:
     update chuong table -> add position
     update pig -> add ear tag
 
+edit document:
+    add list function for each object managed
+
