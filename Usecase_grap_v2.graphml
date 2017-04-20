@@ -183,7 +183,7 @@
       <data key="d4"/>
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="50.0" width="110.0" x="650.3191917072817" y="751.7621057912843"/>
+          <y:Geometry height="50.0" width="110.0" x="597.3999990467312" y="782.5290782683485"/>
           <y:Fill color="#FFFF99" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="DejaVu Sans" fontSize="13" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="19.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="81.96826171875" x="14.015869140625" y="15.43359375">Quan ly kho<y:LabelModel>
@@ -680,7 +680,7 @@
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
-          <y:EdgeLabel alignment="center" anchorX="54.06853789187528" anchorY="79.3118312854134" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="0.6910062776709184" upY="-0.7228487561166456" verticalTextPosition="bottom" visible="true" width="76.24609375" x="54.06853789187528" y="66.32314269894243">&lt;&lt;extend&gt;&gt;<y:LabelModel>
+          <y:EdgeLabel alignment="center" anchorX="39.97752227834894" anchorY="88.03003059956245" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="0.8054722644028823" upY="-0.5926334712768873" verticalTextPosition="bottom" visible="true" width="76.24609375" x="39.97752227834894" y="77.38114791255589">&lt;&lt;extend&gt;&gt;<y:LabelModel>
               <y:RotatedSliderEdgeLabelModel angle="0.0" autoRotationEnabled="true" distance="2.0" distanceRelativeToEdge="true" mode="side_slider"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -699,7 +699,7 @@
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
-          <y:EdgeLabel alignment="center" anchorX="-274.38126225449173" anchorY="59.55295640226802" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="0.2810721258880989" upY="0.9596866468013112" verticalTextPosition="bottom" visible="true" width="76.24609375" x="-347.5536202971276" y="59.55295640226802">&lt;&lt;extend&gt;&gt;<y:LabelModel>
+          <y:EdgeLabel alignment="center" anchorX="-302.1317588595284" anchorY="73.61618186234728" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="0.2986303648346529" upY="0.9543688517542481" verticalTextPosition="bottom" visible="true" width="76.24609375" x="-374.89865580246266" y="73.61618186234728">&lt;&lt;extend&gt;&gt;<y:LabelModel>
               <y:RotatedSliderEdgeLabelModel angle="0.0" autoRotationEnabled="true" distance="2.0" distanceRelativeToEdge="true" mode="side_slider"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -718,7 +718,7 @@
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
-          <y:EdgeLabel alignment="center" anchorX="-122.02548921463108" anchorY="-48.00730066129063" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="-0.38025707862416097" upY="0.9248808324082722" verticalTextPosition="bottom" visible="true" width="76.24609375" x="-199.37678425153814" y="-77.00041752716953">&lt;&lt;extend&gt;&gt;<y:LabelModel>
+          <y:EdgeLabel alignment="center" anchorX="-136.4631594457104" anchorY="-37.747540357010166" configuration="AutoFlippingLabel" distance="2.0" fontFamily="DejaVu Sans Mono" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="center_on_edge" ratio="0.5" textColor="#000000" upX="-0.28018929969371065" upY="0.9599447673367192" verticalTextPosition="bottom" visible="true" width="76.24609375" x="-214.6898496497592" y="-59.11087996920368">&lt;&lt;extend&gt;&gt;<y:LabelModel>
               <y:RotatedSliderEdgeLabelModel angle="0.0" autoRotationEnabled="true" distance="2.0" distanceRelativeToEdge="true" mode="side_slider"/>
             </y:LabelModel>
             <y:ModelParameter>
