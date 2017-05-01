@@ -3,5 +3,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="/zz/u/launching/PigManager/eclipse_project/lib/ojdbc7.jar"/>
+	<classpathentry kind="lib" path="/zz/u/launching/PigManager/eclipse_project/lib/JTattoo-1.6.11.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
