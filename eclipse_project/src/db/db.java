@@ -1,8 +1,6 @@
 package db;
 
 import java.sql.*;
-import java.util.List;
-import java.util.ArrayList;
 
 /**
  * Static class holding connection to db during app life circle
@@ -56,24 +54,25 @@ public abstract class db {
     /**
      * Query sender
      */
-    public static List<Object> send (String sqlcmd) {
+    public static ResultSet sendForResult (String sqlcmd) {
         // for debug only
-        System.out.println("---- db.send(?) : " + sqlcmd);
-        ArrayList<Object> result = new ArrayList<>();
+        System.out.println("---- db.sendForResult(?) : " + sqlcmd);
         try {
             db.rs = db.stm.executeQuery(sqlcmd);
-            while (db.rs.next()) {
-                System.out.println(
-                            db.rs.getString(1) + ", "
-                            + db.rs.getString(2) + ", "
-                            + db.rs.getString(3) + ", "
-                            + db.rs.getInt(4)
-                        );
-            }
         } catch (Exception e) {
             System.out.println("---- Execute query failure !");
             e.printStackTrace();
         }
-        return result;
+        return db.rs;
+    }
+    public static void send (String sqlcmd) {
+        // for debug only
+        System.out.println("---- db.send(?) : " + sqlcmd);
+        try {
+            db.rs = db.stm.executeQuery(sqlcmd);
+        } catch (Exception e) {
+            System.out.println("---- Execute query failure !");
+            e.printStackTrace();
+        }
     }
 }
