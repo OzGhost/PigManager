@@ -4,9 +4,9 @@ import java.lang.reflect.Method;
 import java.sql.ResultSet;
 import java.util.List;
 
-public class EntityConvertor<T> {
-    public Object toObject(ResultSet r, List<Field> columns) {
-        final KhachHang rs = new KhachHang();
+public class EntityConvertor<T extends Object> {
+    public T toObject(ResultSet r, List<Field> columns) {
+        final T rs = T.class.newInstance();
         try {
             if (r.next()){
                 columns.forEach(field -> {
@@ -14,8 +14,6 @@ public class EntityConvertor<T> {
                         Method m = rs.getClass().getMethod("set" + field.getFunctionName(), field.getDataType());
                         Object param = null;
                         short currentDataTypeCode = field.getDataTypeCode();
-                        
-                        System.out.println(field.getLabel());
                         
                         if (currentDataTypeCode == Field.DATA_TYPE_STRING){
                             param = (Object) r.getString(field.getLabel());
