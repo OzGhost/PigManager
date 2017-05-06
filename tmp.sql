@@ -67,7 +67,7 @@ CREATE TYPE ThucAn_objtyp AS OBJECT (
     MaThucAn        Char(12),
     NhaCungCap_ref  REF NhaCungCap_objtyp,
     LoaiThucAn_ref  REF LoaiThucAn_objtyp,
-    ConLai          Number(3),
+    ConLai          Number(3,2),
     NgaySanXuat     Date,
     NgayHetHan      Date
 )
@@ -409,5 +409,45 @@ INSERT INTO ThucAn VALUES (
     '1',
     TO_DATE('2017-04-01', 'yyyy-mm-dd'),
     TO_DATE('2017-06-01', 'yyyy-mm-dd')
+);
+INSERT INTO ThucAn VALUES (
+    '201702010022',
+    (SELECT REF(ncc) FROM NhaCungCap ncc WHERE ncc.MaNCC='201704120001'),
+    (SELECT REF(lta) FROM LoaiThucAn lta WHERE lta.MaLoaiThucAn='201702050009'),
+    '1',
+    TO_DATE('2017-04-07', 'yyyy-mm-dd'),
+    TO_DATE('2017-06-08', 'yyyy-mm-dd')
+);
+INSERT INTO ThucAn VALUES (
+    '201702010222',
+    (SELECT REF(ncc) FROM NhaCungCap ncc WHERE ncc.MaNCC='201704120001'),
+    (SELECT REF(lta) FROM LoaiThucAn lta WHERE lta.MaLoaiThucAn='201702050009'),
+    '0.5',
+    TO_DATE('2017-04-21', 'yyyy-mm-dd'),
+    TO_DATE('2017-06-11', 'yyyy-mm-dd')
+);
+INSERT INTO ThucAn VALUES (
+    '201702010013',
+    (SELECT REF(ncc) FROM NhaCungCap ncc WHERE ncc.MaNCC='201704120001'),
+    (SELECT REF(lta) FROM LoaiThucAn lta WHERE lta.MaLoaiThucAn='201702050009'),
+    '1',
+    TO_DATE('2017-04-01', 'yyyy-mm-dd'),
+    TO_DATE('2017-06-01', 'yyyy-mm-dd')
+);
+INSERT INTO ThucAn VALUES (
+    '201702010112',
+    (SELECT REF(ncc) FROM NhaCungCap ncc WHERE ncc.MaNCC='201704120007'),
+    (SELECT REF(lta) FROM LoaiThucAn lta WHERE lta.MaLoaiThucAn='201702050920'),
+    '0.7',
+    TO_DATE('2017-04-01', 'yyyy-mm-dd'),
+    TO_DATE('2017-06-01', 'yyyy-mm-dd')
+);
+INSERT INTO ThucAn VALUES (
+    '201702010092',
+    (SELECT REF(ncc) FROM NhaCungCap ncc WHERE ncc.MaNCC='201704120007'),
+    (SELECT REF(lta) FROM LoaiThucAn lta WHERE lta.MaLoaiThucAn='201702050920'),
+    '1',
+    TO_DATE('2017-03-01', 'yyyy-mm-dd'),
+    TO_DATE('2017-05-01', 'yyyy-mm-dd')
 );
 
