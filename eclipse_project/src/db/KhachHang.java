@@ -97,8 +97,12 @@ public class KhachHang {
     public static void findOne(){
         KhachHang kh = new EntityConvertor<KhachHang>().toObject(
                 db.sendForResult("select * from " + tableName),
-                columns
+                columns,
+                KhachHang.class
         );
         System.out.println(kh.getHoTen());
+        System.out.println(kh.getMa());
+        System.out.println(kh.getGioiTinh());
+        System.out.println(kh.getNgaySinh());
     }
 }

@@ -1,4 +1,3 @@
-SET SERVEROUTPUT ON;
 
 /**
  * Drop table before drop object type
@@ -15,7 +14,6 @@ DROP TABLE LichSuChoAn;
 DROP TABLE ThucAn;
 DROP TABLE LoaiThucAn;
 DROP TABLE NhaCungCap;
-
 /**
  * Drop type before execute remain script
  */
@@ -43,7 +41,6 @@ DROP TYPE LichSuXuatKhoThucAn_objtyp;
 DROP TYPE ThucAn_objtyp;
 DROP TYPE LoaiThucAn_objtyp;
 DROP TYPE NhaCungCap_objtyp;
-
 /**
  * Create object type
  */
@@ -60,7 +57,9 @@ CREATE TYPE NhaCungCap_objtyp AS OBJECT (
 CREATE TYPE LoaiThucAn_objtyp AS OBJECT (
     MaLoaiThucAn    Char(12),
     TenLoaiThucAn   Varchar2(64),
-    MoTa            Varchar2(128)
+    MoTa            Varchar2(128),
+    DonVi           Varchar2(32),
+    MucBaoDong      Number(2)
 )
 /
 
@@ -68,11 +67,9 @@ CREATE TYPE ThucAn_objtyp AS OBJECT (
     MaThucAn        Char(12),
     NhaCungCap_ref  REF NhaCungCap_objtyp,
     LoaiThucAn_ref  REF LoaiThucAn_objtyp,
-    DonVi           Varchar2(32),
     ConLai          Number(3),
     NgaySanXuat     Date,
-    NgayHetHan      Date,
-    MucBaoDong      Number(3)
+    NgayHetHan      Date
 )
 /
 
@@ -134,8 +131,7 @@ CREATE TYPE Thuoc_objtyp AS OBJECT (
     ConLai          Number(3),
     NhaCungCap_ref  REF NhaCungCap_objtyp,
     NgaySanXuat     Date,
-    NgayHetHan      Date,
-    MucBaoDong      Number(3)
+    NgayHetHan      Date
 )
 /
 
@@ -240,7 +236,6 @@ CREATE TYPE ThuChi_objtyp AUTHID CURRENT_USER AS OBJECT (
     ChiTiet_ntab    ChiTietThuChi_ntabtyp
 )
 /
-
 /**
  * Create table from object type
  */
@@ -321,11 +316,23 @@ CREATE TABLE ThuChi OF ThuChi_objtyp (MaThuChi PRIMARY KEY)
     OBJECT ID PRIMARY KEY
     NESTED TABLE ChiTiet_ntab STORE AS ChiTietThuChi
 /
-
 /**
  * Insert data
  */
- /*
+DELETE FROM ThuChi;
+DELETE FROM Tinh;
+DELETE FROM BenhAn;
+DELETE FROM Heo;
+DELETE FROM Benh;
+DELETE FROM Thuoc;
+DELETE FROM VatDung;
+DELETE FROM Chuong;
+DELETE FROM LichSuChoAn;
+DELETE FROM ThucAn;
+DELETE FROM LoaiThucAn;
+DELETE FROM NhaCungCap;
+
+
 INSERT INTO NhaCungCap VALUES (
     '201704120001',
     'Trung tam Cam 2n',
@@ -359,4 +366,48 @@ INSERT INTO NhaCungCap VALUES (
     0
 );
 
-*/
+INSERT INTO LoaiThucAn VALUES (
+    '201702050009',
+    'Con co 00-09',
+    'Thuc an tap an cho heo con tu 7 ngay tuoi - 9 kg',
+    'Bao',
+    3
+);
+INSERT INTO LoaiThucAn VALUES (
+    '201702090920',
+    'Con co 09-20',
+    'Thuc an hon hop cho heo con tu 9kg - 20kg',
+    'Bao',
+    8
+);
+INSERT INTO LoaiThucAn VALUES (
+    '201702052050',
+    'Delice 15',
+    'Thuc an hon hop san pham cao cap cho trang trai heo tu 20kg - 50kg',
+    'Bao',
+    10
+);
+INSERT INTO LoaiThucAn VALUES (
+    '201704050180',
+    'Con co C18A',
+    'Hon hop dung cho heo nai mang thai',
+    'Bao',
+    3
+);
+INSERT INTO LoaiThucAn VALUES (
+    '201704020012',
+    'Porcy 18B',
+    'Hon hop dun cho heo nai nuoi con',
+    'Bao',
+    3
+);
+
+INSERT INTO ThucAn VALUES (
+    '201702010012',
+    (SELECT REF(ncc) FROM NhaCungCap ncc WHERE ncc.MaNCC='201704120001'),
+    (SELECT REF(lta) FROM LoaiThucAn lta WHERE lta.MaLoaiThucAn='201702050009'),
+    '1',
+    TO_DATE('2017-04-01', 'yyyy-mm-dd'),
+    TO_DATE('2017-06-01', 'yyyy-mm-dd')
+);
+

@@ -4,9 +4,17 @@ import java.lang.reflect.Method;
 import java.sql.ResultSet;
 import java.util.List;
 
-public class EntityConvertor<T extends Object> {
-    public T toObject(ResultSet r, List<Field> columns) {
-        final T rs = T.class.newInstance();
+public class EntityConvertor<T> {
+    public T toObject(ResultSet r, List<Field> columns, Class<T> rsType) {
+        T typ = null;
+        try {
+            typ = (T) rsType.newInstance();
+        } catch (InstantiationException e1) {
+            e1.printStackTrace();
+        } catch (IllegalAccessException e1) {
+            e1.printStackTrace();
+        }
+        final T rs = typ;
         try {
             if (r.next()){
                 columns.forEach(field -> {
