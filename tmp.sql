@@ -75,7 +75,7 @@ CREATE TYPE ThucAn_objtyp AS OBJECT (
 
 CREATE TYPE LichSuXuatKhoThucAn_objtyp AS OBJECT (
     ThucAn_ref      REF ThucAn_objtyp,
-    SoLuong         Number(3),
+    SoLuong         Number(3,2),
     DonVi           Varchar2(32)
 )
 /
@@ -95,7 +95,7 @@ CREATE TYPE Chuong_objtyp AS OBJECT (
 CREATE TYPE ChiTietChoAn_objtyp AS OBJECT (
     Chuong_ref      REF Chuong_objtyp,
     LoaiThucAn_ref  REF LoaiThucAn_objtyp,
-    SoLuong         Number(3),
+    SoLuong         Number(3,2),
     DonVi           Varchar2(32)
 )
 /
@@ -261,9 +261,15 @@ CREATE TABLE Chuong OF Chuong_objtyp (MaChuong PRIMARY KEY)
 
 CREATE TABLE LichSuChoAn OF LichSuChoAn_objtyp (MaLSCA PRIMARY KEY)
     OBJECT ID PRIMARY KEY
-    NESTED TABLE ThucAn_ntab STORE AS DanhSachThucAnDaDung
-    NESTED TABLE Chuong_ntab STORE AS DanhSachChuongChoAn
+    NESTED TABLE ThucAn_ntab STORE AS DanhSachThucAnDaDung 
+    RETURN AS LOCATOR
+    NESTED TABLE Chuong_ntab STORE AS DanhSachChuongChoAn 
+    RETURN AS LOCATOR
 /
+ALTER TABLE DanhSachThucAnDaDung
+    ADD (SCOPE FOR (ThucAn_ref) IS ThucAn);
+ALTER TABLE DanhSachChuongChoAn
+    ADD (SCOPE FOR (Chuong_ref) IS Chuong);
 
 CREATE TABLE  VatDung OF VatDung_objtyp (
         PRIMARY KEY (MaVatDung),
@@ -294,6 +300,9 @@ CREATE TABLE Heo OF Heo_objtyp (
     OBJECT ID PRIMARY KEY
     NESTED TABLE LSDiChuyen_ntab STORE AS LichSuDiChuyen
 /
+ALTER TABLE LichSuDiChuyen
+    ADD (SCOPE FOR (ChuongNguon_ref) IS Chuong,
+         SCOPE FOR (ChuongDich_ref) IS Chuong);
 
 CREATE TABLE BenhAn OF BenhAn_objtyp (
         PRIMARY KEY (MaBenhAn),
@@ -303,6 +312,10 @@ CREATE TABLE BenhAn OF BenhAn_objtyp (
     NESTED TABLE LSDungThuoc_ntab STORE AS LichSuSuDungThuoc,
     NESTED TABLE ChiTietBenh_ntab STORE AS ChiTietBenh
 /
+ALTER TABLE LichSuSuDungThuoc
+    ADD (SCOPE FOR (Thuoc_ref) IS Thuoc);
+ALTER TABLE ChiTietBenh
+    ADD (SCOPE FOR (Benh_ref) IS Benh);
 
 CREATE TABLE Tinh OF Tinh_objtyp (
         PRIMARY KEY (MaTinh),
@@ -316,6 +329,7 @@ CREATE TABLE ThuChi OF ThuChi_objtyp (MaThuChi PRIMARY KEY)
     OBJECT ID PRIMARY KEY
     NESTED TABLE ChiTiet_ntab STORE AS ChiTietThuChi
 /
+
 /**
  * Insert data
  */
@@ -406,7 +420,7 @@ INSERT INTO ThucAn VALUES (
     '201702010012',
     (SELECT REF(ncc) FROM NhaCungCap ncc WHERE ncc.MaNCC='201704120001'),
     (SELECT REF(lta) FROM LoaiThucAn lta WHERE lta.MaLoaiThucAn='201702050009'),
-    '1',
+    0.5,
     TO_DATE('2017-04-01', 'yyyy-mm-dd'),
     TO_DATE('2017-06-01', 'yyyy-mm-dd')
 );
@@ -414,7 +428,7 @@ INSERT INTO ThucAn VALUES (
     '201702010022',
     (SELECT REF(ncc) FROM NhaCungCap ncc WHERE ncc.MaNCC='201704120001'),
     (SELECT REF(lta) FROM LoaiThucAn lta WHERE lta.MaLoaiThucAn='201702050009'),
-    '1',
+    1,
     TO_DATE('2017-04-07', 'yyyy-mm-dd'),
     TO_DATE('2017-06-08', 'yyyy-mm-dd')
 );
@@ -422,7 +436,7 @@ INSERT INTO ThucAn VALUES (
     '201702010222',
     (SELECT REF(ncc) FROM NhaCungCap ncc WHERE ncc.MaNCC='201704120001'),
     (SELECT REF(lta) FROM LoaiThucAn lta WHERE lta.MaLoaiThucAn='201702050009'),
-    '0.5',
+    0.5,
     TO_DATE('2017-04-21', 'yyyy-mm-dd'),
     TO_DATE('2017-06-11', 'yyyy-mm-dd')
 );
@@ -430,7 +444,7 @@ INSERT INTO ThucAn VALUES (
     '201702010013',
     (SELECT REF(ncc) FROM NhaCungCap ncc WHERE ncc.MaNCC='201704120001'),
     (SELECT REF(lta) FROM LoaiThucAn lta WHERE lta.MaLoaiThucAn='201702050009'),
-    '1',
+    1,
     TO_DATE('2017-04-01', 'yyyy-mm-dd'),
     TO_DATE('2017-06-01', 'yyyy-mm-dd')
 );
@@ -438,7 +452,7 @@ INSERT INTO ThucAn VALUES (
     '201702010112',
     (SELECT REF(ncc) FROM NhaCungCap ncc WHERE ncc.MaNCC='201704120007'),
     (SELECT REF(lta) FROM LoaiThucAn lta WHERE lta.MaLoaiThucAn='201702050920'),
-    '0.7',
+    0.7,
     TO_DATE('2017-04-01', 'yyyy-mm-dd'),
     TO_DATE('2017-06-01', 'yyyy-mm-dd')
 );
@@ -446,8 +460,24 @@ INSERT INTO ThucAn VALUES (
     '201702010092',
     (SELECT REF(ncc) FROM NhaCungCap ncc WHERE ncc.MaNCC='201704120007'),
     (SELECT REF(lta) FROM LoaiThucAn lta WHERE lta.MaLoaiThucAn='201702050920'),
-    '1',
+    1,
     TO_DATE('2017-03-01', 'yyyy-mm-dd'),
     TO_DATE('2017-05-01', 'yyyy-mm-dd')
 );
+INSERT INTO LichSuChoAn VALUES (
+    '201705060001',
+    SYSDATE,
+    'Cho heo con an',
+    LSXuatKhoTA_ntabtyp(),
+    CTChoAn_ntabtyp()
+);
+INSERT INTO TABLE (
+    SELECT l.ThucAn_ntab
+    FROM LichSuChoAn l
+    WHERE l.MaLSCA = '201705060001'
+)
+    SELECT REF(ta), 0.5, 'Bao'
+    FROM ThucAn ta
+    WHERE ta.MaThucAn = '201702010222'
+;
 
