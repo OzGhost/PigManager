@@ -236,6 +236,7 @@ CREATE TYPE ThuChi_objtyp AUTHID CURRENT_USER AS OBJECT (
     ChiTiet_ntab    ChiTietThuChi_ntabtyp
 )
 /
+
 /**
  * Create table from object type
  */
@@ -269,7 +270,8 @@ CREATE TABLE LichSuChoAn OF LichSuChoAn_objtyp (MaLSCA PRIMARY KEY)
 ALTER TABLE DanhSachThucAnDaDung
     ADD (SCOPE FOR (ThucAn_ref) IS ThucAn);
 ALTER TABLE DanhSachChuongChoAn
-    ADD (SCOPE FOR (Chuong_ref) IS Chuong);
+    ADD (SCOPE FOR (Chuong_ref) IS Chuong,
+         SCOPE FOR (LoaiThucAn_ref) IS LoaiThucAn);
 
 CREATE TABLE  VatDung OF VatDung_objtyp (
         PRIMARY KEY (MaVatDung),
@@ -333,20 +335,6 @@ CREATE TABLE ThuChi OF ThuChi_objtyp (MaThuChi PRIMARY KEY)
 /**
  * Insert data
  */
-DELETE FROM ThuChi;
-DELETE FROM Tinh;
-DELETE FROM BenhAn;
-DELETE FROM Heo;
-DELETE FROM Benh;
-DELETE FROM Thuoc;
-DELETE FROM VatDung;
-DELETE FROM Chuong;
-DELETE FROM LichSuChoAn;
-DELETE FROM ThucAn;
-DELETE FROM LoaiThucAn;
-DELETE FROM NhaCungCap;
-
-
 INSERT INTO NhaCungCap VALUES (
     '201704120001',
     'Trung tam Cam 2n',
@@ -416,6 +404,35 @@ INSERT INTO LoaiThucAn VALUES (
     3
 );
 
+INSERT INTO Chuong VALUES (
+    '201702051001',
+    1,
+    20,
+    'Phia trong day trai',
+    'Chuong nuoi heo thit'
+);
+INSERT INTO Chuong VALUES (
+    '201703241024',
+    1,
+    10,
+    'Ben trai cua vao',
+    'Chuong nuoi heo con tach bay'
+);
+INSERT INTO Chuong VALUES (
+    '201703052016',
+    0,
+    1,
+    'Phia trong day ben phai',
+    'Chuong nuoi heo nai'
+);
+INSERT INTO Chuong VALUES (
+    '201703021234',
+    2,
+    1,
+    'Phia ngoai day ben phai',
+    'Chuong nuoi heo nai'
+);
+
 INSERT INTO ThucAn VALUES (
     '201702010012',
     (SELECT REF(ncc) FROM NhaCungCap ncc WHERE ncc.MaNCC='201704120001'),
@@ -479,5 +496,100 @@ INSERT INTO TABLE (
     SELECT REF(ta), 0.5, 'Bao'
     FROM ThucAn ta
     WHERE ta.MaThucAn = '201702010222'
+    UNION ALL
+    SELECT REF(ta), 0.5, 'Bao'
+    FROM ThucAn ta
+    WHERE ta.MaThucAn = '201702010012'
 ;
+INSERT INTO TABLE (
+    SELECT l.Chuong_ntab
+    FROM LichSuChoAn l
+    WHERE l.MaLSCA = '201705060001'
+)
+    SELECT REF(c), REF(lta), 0.2, 'Bao'
+    FROM Chuong c, LoaiThucAn lta
+    WHERE c.MaChuong = '201703241024' AND lta.MaLoaiThucAn = '201702050009'
+    UNION ALL
+    SELECT REF(c), REF(lta), 0.8, 'Bao'
+    FROM Chuong c, LoaiThucAn lta
+    WHERE c.MaChuong = '201702051001' AND lta.MaLoaiThucAn = '201702050009'
+;
+
+INSERT INTO VatDung VALUES (
+    '201701011011',
+    'Quat gio',
+    210,
+    'Quat treo tuong, dung cho heo nai',
+    (SELECT REF(ncc) FROM NhaCungCap ncc WHERE ncc.MaNCC='201704120007'),
+    (SELECT REF(c) FROM CHUONG c WHERE c.MaChuong='201703052016')
+);
+INSERT INTO VatDung VALUES (
+    '201701011019',
+    'Bong den suoi',
+    180,
+    'Bong suoi cho heo con duoi 8 tuan tuoi',
+    (SELECT REF(ncc) FROM NhaCungCap ncc WHERE ncc.MaNCC='201704120007'),
+    (SELECT REF(c) FROM CHUONG c WHERE c.MaChuong='201703052016')
+);
+INSERT INTO VatDung VALUES (
+    '201701012919',
+    'Mang an tu dong',
+    280,
+    'Mang an tu dong bang inoc, 50kg',
+    (SELECT REF(ncc) FROM NhaCungCap ncc WHERE ncc.MaNCC='201704120001'),
+    (SELECT REF(c) FROM CHUONG c WHERE c.MaChuong='201702051001')
+);
+
+INSERT INTO Thuoc VALUES (
+    '201701020023',
+    'Bocin-pharm',
+    'Florphenicol 15%, DOxycyclin 7.5%',
+    'Suyen, tu huyet trung, MMA',
+    'ml',
+    50,
+    (SELECT REF(ncc) FROM NhaCungCap ncc WHERE ncc.MaNCC='201704120005'),
+    TO_DATE('2017-05-01', 'yyyy-mm-dd'),
+    TO_DATE('2017-08-01', 'yyyy-mm-dd')
+);
+INSERT INTO Thuoc VALUES (
+    '201701020203',
+    'Pharcolapi',
+    'Ampicillin 10%, colistin 25MUI',
+    'Hon dich khang sinh tong hop da gia',
+    'ml',
+    50,
+    (SELECT REF(ncc) FROM NhaCungCap ncc WHERE ncc.MaNCC='201704120005'),
+    TO_DATE('2017-05-01', 'yyyy-mm-dd'),
+    TO_DATE('2017-08-01', 'yyyy-mm-dd')
+);
+INSERT INTO Thuoc VALUES (
+    '201701020403',
+    'Phartocin',
+    'Oxytocin 10UI/ml',
+    'Tiem thuc de, kich sua, tri viem vu',
+    'ml',
+    50,
+    (SELECT REF(ncc) FROM NhaCungCap ncc WHERE ncc.MaNCC='201704120005'),
+    TO_DATE('2017-05-01', 'yyyy-mm-dd'),
+    TO_DATE('2017-08-01', 'yyyy-mm-dd')
+);
+
+INSERT INTO Benh VALUES (
+    '201702042012',
+    'Dich ta lon',
+    'u ru, bo an, sot cao 40-42 0C, cac phan da mong ung do',
+    'Nguy hiem'
+);
+INSERT INTO Benh VALUES (
+    '201702041022',
+    'Pho thuong han',
+    'Giam an, bu it, uong nhieu nuoc lanh, gam tuong, long xu, dung run run, sot caao',
+    'Tuong doi nguy hiem'
+);
+INSERT INTO Benh VALUES (
+    '201702040011',
+    'Dong dau lon',
+    'De non, bieng an, tai hoi xam',
+    'Bao dong'
+);
 
