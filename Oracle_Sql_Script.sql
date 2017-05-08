@@ -219,7 +219,7 @@ CREATE TYPE Tinh_objtyp AS OBJECT (
 CREATE TYPE ChiTietThuChi_objtyp AS OBJECT (
     MaDoiTuongThuChi    Char(12),
     LoaiDoiTuongThuChi  Char(1),
-    Gia                 Number(1),
+    Gia                 Number(4),
     GhiChu              Varchar2(256)
 )
 /
@@ -232,7 +232,7 @@ CREATE TYPE ThuChi_objtyp AUTHID CURRENT_USER AS OBJECT (
     NgayThuChi      Date,
     GhiChu          Varchar2(256),
     LoaiThuChi      Number(1),
-    TriGia          Number(3),
+    TriGia          Number(5),
     ChiTiet_ntab    ChiTietThuChi_ntabtyp
 )
 /
