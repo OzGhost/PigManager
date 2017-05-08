@@ -66,19 +66,20 @@ public class CashFlowView extends ViewBase {
         note.setLineWrap(true);
         
         // init table
-        
-        
         final String[] colNames = {"Mã ĐT", "Loại ĐT", "Mô tả", "Giá", "Ghi chú"};
-        final Object[][] data = new Object[payObjects.size()][5];
-        
-        for (int i = 0; i < payObjects.size(); i++){
-            data[i][0] = payObjects.get(i).getId();
-            data[i][1] = payObjects.get(i).getType();
-            data[i][2] = payObjects.get(i).getDescription();
-            data[i][3] = "";
-            data[i][4] = "";
+        if (payObjects != null) {
+            final Object[][] data = new Object[payObjects.size()][5];
+            for (int i = 0; i < payObjects.size(); i++){
+                data[i][0] = payObjects.get(i).getId();
+                data[i][1] = payObjects.get(i).getType();
+                data[i][2] = payObjects.get(i).getDescription();
+                data[i][3] = "";
+                data[i][4] = "";
+            }
+            detailtab = new JTable(data, colNames);
+        } else {
+            detailtab = new JTable(new Object[0][0], colNames);
         }
-        detailtab = new JTable(data, colNames);
         detailtab.setFillsViewportHeight(true);
         
         TableColumnModel tcm = detailtab.getColumnModel();
