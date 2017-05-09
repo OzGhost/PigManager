@@ -75,4 +75,14 @@ public abstract class db {
             e.printStackTrace();
         }
     }
+
+    public static void saveAutoId(String cmd) {
+        try {
+            CallableStatement callStm = db.con.prepareCall(cmd);
+            callStm.execute();
+        } catch(Exception e) {
+            System.out.println("---- Call failure !");
+            e.printStackTrace();
+        }
+    }
 }

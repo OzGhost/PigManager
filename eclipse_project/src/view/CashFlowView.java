@@ -10,7 +10,6 @@ import java.util.Observable;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
-import javax.swing.DefaultCellEditor;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -19,7 +18,6 @@ import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
@@ -37,6 +35,8 @@ import db.CashFlowDetail;
 public class CashFlowView extends ViewBase {
     private static final long serialVersionUID = 1L;
     
+    public static final short SAVE_DONE_CODE = 0;
+    public static final short SAVE_FAILURE_CODE = 1;
     public static final String SAVE_COMMAND = "save";
     public static final String CANCEL_COMMAND = "cancel";
     public static final String ADD_COMMAND = "add";
@@ -213,6 +213,25 @@ public class CashFlowView extends ViewBase {
             }
         }
         return rs;
+    }
+    public void notice(short code) {
+        if (code == SAVE_DONE_CODE) {
+            JOptionPane.showMessageDialog(
+                this,
+                "Ghi nhận thu chi hoàn tất!",
+                "Xong rồi...",
+                JOptionPane.PLAIN_MESSAGE
+            );
+        } else if
+        (code == SAVE_FAILURE_CODE) {
+            JOptionPane.showMessageDialog(
+                this,
+                "Quá trình lưu trữ xảy ra lỗi. Vui lòng liên hệ bộ phận hỗ trợ để được trợ giúp!",
+                "Chưa lưu đâu ...",
+                JOptionPane.ERROR_MESSAGE
+            );
+
+        }
     }
     
     @Override

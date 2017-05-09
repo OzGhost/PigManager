@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 import common.Payable;
-import db.CashFlow;
 import model.CashFlowModel;
 import view.CashFlowView;
 
@@ -23,7 +22,15 @@ public class CashFlowController
         if (CashFlowView.SAVE_COMMAND.equals(cmd)){
             model.setNote(view.getNote());
             model.setCashFlowDetail(view.getCashFlow());
-            model.saveDown();
+            if (model.saveDown()) {
+                view.notice(CashFlowView.SAVE_DONE_CODE);
+                view.dispose();
+                view = null;
+                model = null;
+                System.gc();
+            } else {
+                view.notice(CashFlowView.SAVE_FAILURE_CODE);
+            }
             return;
         }
         if (CashFlowView.CANCEL_COMMAND.equals(cmd)){

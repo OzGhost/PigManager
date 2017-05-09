@@ -6,6 +6,10 @@ import db.db;
 
 public class CashFlow {
 
+    public static String TABLE_NAME = "ThuChi";
+    public static String ID_COLUMN = "MaThuChi";
+    public static String OBJ_TYPE_NAME = "ThuChi_objtyp";
+
     public static boolean save(CashFlow cf) {
         if (cf == null)
             return false;
@@ -30,7 +34,7 @@ public class CashFlow {
                 prefix = ", ";
             }
         }
-        String cmd = "INSERT INTO ThuChi VALUES ( " +
+        String cmd = OBJ_TYPE_NAME + "( " +
             "'" + cf.getId() + "', " +
             "CURRENT_DATE, " +
             "'" + cf.getNote() + "', " +
@@ -39,7 +43,14 @@ public class CashFlow {
             "ChiTietThuChi_ntabtyp("+ detailBuffer.toString() +")" +
         ")";
 
-        db.send(cmd);
+        db.saveAutoId(
+            Entity.idGenner(
+                TABLE_NAME,
+                ID_COLUMN,
+                OBJ_TYPE_NAME,
+                cmd
+            )
+        );
         return true;
     }
 

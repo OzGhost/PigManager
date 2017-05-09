@@ -1,6 +1,5 @@
 package model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import common.Payable;
@@ -35,10 +34,10 @@ public class CashFlowModel extends ModelBase {
         this.payObjs = pObjs;
     }
     
-    public void saveDown() {
+    public boolean saveDown() {
         if (cashFlow == null)
-            return;
-        CashFlow.save(cashFlow);
+            return false;
+        return CashFlow.save(cashFlow);
     }
     
     @Override
