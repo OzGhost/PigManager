@@ -17,6 +17,7 @@ DROP TABLE NhaCungCap;
 /**
  * Drop type before execute remain script
  */
+DROP TYPE idAssembling;
 DROP TYPE ThuChi_objtyp;
 DROP TYPE ChiTietThuChi_ntabtyp;
 DROP TYPE ChiTietThuChi_objtyp;
@@ -41,6 +42,32 @@ DROP TYPE LichSuXuatKhoThucAn_objtyp;
 DROP TYPE ThucAn_objtyp;
 DROP TYPE LoaiThucAn_objtyp;
 DROP TYPE NhaCungCap_objtyp;
+/**
+ * Utility
+ */
+CREATE TYPE idAssembling AS OBJECT (
+    prefix  Varchar2(8),
+    last_seq Number
+)
+/
+
+CREATE OR REPLACE FUNCTION numberToSequenceChars(n IN Number)
+RETURN Varchar2 AS
+BEGIN
+    IF (n < 10) THEN
+        return '000' || TO_CHAR(n);
+    ELSIF (n < 100) THEN
+        return '00' || TO_CHAR(n);
+    ELSIF (n < 1000) THEN
+        return '0' || TO_CHAR(n);
+    ELSIF (n < 10000) THEN
+        return TO_CHAR(n);
+    ELSE
+        return '0000';
+    END IF;
+END;
+/
+
 /**
  * Create object type
  */
