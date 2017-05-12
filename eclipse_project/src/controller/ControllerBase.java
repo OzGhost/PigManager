@@ -1,6 +1,12 @@
 package controller;
 
-
+/**
+ * Base class for controller
+ * @author ducnh
+ * create: 12-05-2017
+ * @param <M>
+ * @param <V>
+ */
 public class ControllerBase<M, V> {
     protected M model;
     protected V view;

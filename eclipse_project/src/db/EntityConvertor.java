@@ -4,7 +4,20 @@ import java.lang.reflect.Method;
 import java.sql.ResultSet;
 import java.util.List;
 
+/**
+ * Helper class: convert info inside result set to defined object(s)
+ * @author ducnh
+ * create: 15-04-2017
+ * @param <T>
+ */
 public class EntityConvertor<T> {
+    /**
+     * Convert only first row in result set to defined object
+     * @param r
+     * @param columns
+     * @param rsType
+     * @return
+     */
     public T toObject(ResultSet r, List<Field> columns, Class<T> rsType) {
         T typ = null;
         try {

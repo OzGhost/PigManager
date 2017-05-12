@@ -1,5 +1,12 @@
 package db;
 
+/**
+ * Store info of defined object: use to retrieve data
+ * from result set
+ * parameter of EntityConvertor methods
+ * @author ducnh
+ * create: 15-04-2017
+ */
 public class Field {
     
     public static final short DATA_TYPE_INT = 4;

@@ -2,7 +2,13 @@ package db;
 
 import common.Constants;
 import common.Payable;
-
+/**
+ * Store data for each row of pig table
+ * table name: Heo
+ * nested table: MoveHistory
+ * @author ducnh
+ * create: 15-04-2017
+ */
 public class Pig implements Payable {
     
     private String id;
@@ -18,6 +24,9 @@ public class Pig implements Payable {
 //    private Pasture pasture;
 //    private List<MoveHistory> moveHistory;
     
+    /**
+     * Default constructor
+     */
     public Pig() {
         this.id = "";
         this.weight = 0;
@@ -25,7 +34,6 @@ public class Pig implements Payable {
     }
     /**
      * Lite constructor for pay log
-     * 
      * @param id
      * @param weight
      * @param eartag
@@ -37,6 +45,18 @@ public class Pig implements Payable {
         this.earTag = eartag;
         this.provider = provider;
     }
+    
+    /**
+     * All argument constructor
+     * @param id
+     * @param height
+     * @param width
+     * @param weight
+     * @param inDate
+     * @param outDate
+     * @param earTag
+     * @param source
+     */
     public Pig(String id, float height, float width, float weight, String inDate, String outDate, String earTag, Pig source){
         this.id = id;
         this.height = height;

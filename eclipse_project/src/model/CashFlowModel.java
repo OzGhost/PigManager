@@ -6,16 +6,25 @@ import common.Payable;
 import db.CashFlow;
 import db.CashFlowDetail;
 
+/**
+ * Model for cash flow view
+ * @author ducnh
+ * create: 15-04-2017
+ */
 public class CashFlowModel extends ModelBase {
     
     private CashFlow cashFlow;
     private List<Payable> payObjs;
     
+    /**
+     * Default constructor
+     */
     public CashFlowModel(){
         cashFlow = new CashFlow();
         cashFlow.setPayout(true);
     }
     
+    // Setter
     public void setNote(String note){
         cashFlow.setNote(note);
     }
@@ -34,6 +43,10 @@ public class CashFlowModel extends ModelBase {
         this.payObjs = pObjs;
     }
     
+    /**
+     * Save cash flow info to database
+     * @return
+     */
     public boolean saveDown() {
         if (cashFlow == null)
             return false;

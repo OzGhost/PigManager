@@ -29,9 +29,15 @@ import javax.swing.table.TableModel;
 import common.Constants;
 import common.Genner;
 import common.Payable;
+import common.Layer;
 import controller.CashFlowController;
 import db.CashFlowDetail;
 
+/**
+ * Cash flow view
+ * @author ducnh
+ * create: 15-04-2017
+ */
 public class CashFlowView extends ViewBase {
     private static final long serialVersionUID = 1L;
     
@@ -55,6 +61,10 @@ public class CashFlowView extends ViewBase {
     private JButton cancelbt;
     private JPanel panel;
     
+    /**
+     * Construct view with list of pay object
+     * @param payObjects
+     */
     public CashFlowView (List<Payable> payObjects) {
         payOut = new JRadioButton("Pay out", true);
         payOut.setActionCommand(PAYOUT_SELECTED_COMMAND);
@@ -119,7 +129,10 @@ public class CashFlowView extends ViewBase {
         final Border bd = BorderFactory.createLineBorder(Color.gray);
         
         final JPanel topLeft = new JPanel();
-        final TitledBorder tlBorder = BorderFactory.createTitledBorder(bd, " Loại phiếu ");
+        final TitledBorder tlBorder = BorderFactory.createTitledBorder(
+                bd,
+                " Loại phiếu "
+        );
         topLeft.setBorder(tlBorder);
         topLeft.setLayout(new BoxLayout(topLeft, BoxLayout.Y_AXIS));
         topLeft.setPreferredSize(new Dimension(150, 80));
@@ -127,13 +140,18 @@ public class CashFlowView extends ViewBase {
         topLeft.add(payIn);
 
         final JPanel topRight = new JPanel();
-        final TitledBorder trBorder = BorderFactory.createTitledBorder(bd, " Ghi chú thu chi ");
+        final TitledBorder trBorder = BorderFactory.createTitledBorder(
+                bd,
+                " Ghi chú thu chi "
+        );
         topRight.setBorder(trBorder);
         topRight.setLayout(new BorderLayout());
         topRight.add(note, BorderLayout.CENTER);
         
         final JPanel center = new JPanel();
-        final TitledBorder ctBorder = BorderFactory.createTitledBorder(bd, " Đối tượng thu chi ");
+        final TitledBorder ctBorder = BorderFactory.createTitledBorder(
+                bd,
+                " Đối tượng thu chi ");
         center.setBorder(ctBorder);
         center.setLayout(new BorderLayout());
         center.add(new JScrollPane(detailtab), BorderLayout.CENTER);
@@ -149,26 +167,27 @@ public class CashFlowView extends ViewBase {
         panel.add(addbt);
         panel.add(savebt);
         
-        layout.putConstraint(SpringLayout.NORTH, topLeft, 5, SpringLayout.NORTH, panel);
-        layout.putConstraint(SpringLayout.WEST, topLeft, 5, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, topRight, 5, SpringLayout.NORTH, panel);
-        layout.putConstraint(SpringLayout.WEST, topRight, 5, SpringLayout.EAST, topLeft);
-        layout.putConstraint(SpringLayout.EAST, topRight, -5, SpringLayout.EAST, panel);
-        layout.putConstraint(SpringLayout.SOUTH, savebt, -5, SpringLayout.SOUTH, panel);
-        layout.putConstraint(SpringLayout.EAST, savebt, -5, SpringLayout.EAST, panel);
-        layout.putConstraint(SpringLayout.SOUTH, addbt, -15, SpringLayout.SOUTH, panel);
-        layout.putConstraint(SpringLayout.EAST, addbt, -5, SpringLayout.WEST, savebt);
-        layout.putConstraint(SpringLayout.SOUTH, removebt, -15, SpringLayout.SOUTH, panel);
-        layout.putConstraint(SpringLayout.EAST, removebt, -5, SpringLayout.WEST, addbt);
-        layout.putConstraint(SpringLayout.SOUTH, cancelbt, -15, SpringLayout.SOUTH, panel);
-        layout.putConstraint(SpringLayout.EAST, cancelbt, -5, SpringLayout.WEST, removebt);
-        layout.putConstraint(SpringLayout.SOUTH, homebt, -15, SpringLayout.SOUTH, panel);
-        layout.putConstraint(SpringLayout.WEST, homebt, 5, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, center, 5, SpringLayout.SOUTH, topLeft);
-        layout.putConstraint(SpringLayout.SOUTH, center, -5, SpringLayout.NORTH, savebt);
-        layout.putConstraint(SpringLayout.WEST, center, 5, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.EAST, center, -5, SpringLayout.EAST, panel);
-        layout.putConstraint(SpringLayout.SOUTH, topRight, -5, SpringLayout.NORTH, center);
+        Layer.put(topLeft).atTopLeft(panel).in(layout).withMargin(5);
+        Layer.put(topRight).in(layout)
+            .atTopRight(panel).withMargin(5)
+            .leftOf(topLeft).withMargin(5)
+            .topOf(center).withMargin(5);
+        Layer.put(center).in(layout)
+            .bottomOf(topLeft).withMargin(5)
+            .atLeft(panel).withMargin(5)
+            .atRight(panel).withMargin(5)
+            .topOf(savebt).withMargin(5);
+        Layer.put(homebt).atBottomLeft(panel).in(layout).withMargin(15, 5);
+        Layer.put(cancelbt).in(layout)
+            .atBottom(panel).withMargin(15)
+            .rightOf(removebt).withMargin(5);
+        Layer.put(removebt).in(layout)
+            .atBottom(panel).withMargin(15)
+            .rightOf(addbt).withMargin(5);
+        Layer.put(addbt).in(layout)
+            .atBottom(panel).withMargin(15)
+            .rightOf(savebt).withMargin(5);
+        Layer.put(savebt).atBottomRight(panel).in(layout).withMargin(5);
         
         setSize(size);
         setTitle("Ghi nhận thu chi");
@@ -177,6 +196,10 @@ public class CashFlowView extends ViewBase {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     
+    /**
+     * Add controller (aka listener) for components of view
+     * @param cfc
+     */
     public void setController(CashFlowController cfc){
         this.payOut.addActionListener(cfc);
         this.payIn.addActionListener(cfc);
@@ -187,10 +210,18 @@ public class CashFlowView extends ViewBase {
         this.cancelbt.addActionListener(cfc);
     }
     
+    /**
+     * Get text which user input to note frame
+     * @return
+     */
     public String getNote(){
         return this.note.getText();
     }
     
+    /**
+     * Get payable object list on center table
+     * @return
+     */
     public List<CashFlowDetail> getCashFlow(){
         List<CashFlowDetail> rs = new ArrayList<>();
         TableModel tm = detailtab.getModel();
@@ -205,15 +236,19 @@ public class CashFlowView extends ViewBase {
                     (String) tm.getValueAt(i, 4)
                 ));
             } catch(Exception e) {
-                JOptionPane.showMessageDialog(this,
+                JOptionPane.showMessageDialog(
+                        this,
                         "Enter number only into 'Cost' column please!",
                         "Input invalid",
-                        JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.ERROR_MESSAGE
+                );
                 return null;
             }
         }
         return rs;
     }
+    
+    @Override
     public void notice(short code) {
         if (code == SAVE_DONE_CODE) {
             JOptionPane.showMessageDialog(
@@ -226,7 +261,8 @@ public class CashFlowView extends ViewBase {
         (code == SAVE_FAILURE_CODE) {
             JOptionPane.showMessageDialog(
                 this,
-                "Quá trình lưu trữ xảy ra lỗi. Vui lòng liên hệ bộ phận hỗ trợ để được trợ giúp!",
+                "Quá trình lưu trữ xảy ra lỗi."
+                + " Vui lòng liên hệ bộ phận hỗ trợ để được trợ giúp!",
                 "Chưa lưu đâu ...",
                 JOptionPane.ERROR_MESSAGE
             );

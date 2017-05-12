@@ -1,7 +1,20 @@
 
 package db;
-
+/**
+ * Helper class for entity operations
+ * @author ducnh
+ * create: 15-04-2017
+ */
 public class Entity {
+    /**
+     * Generate PS/SQL block: generate id automation
+     * and insert record to table specified in parameter
+     * @param tableName
+     * @param idColumn
+     * @param objtyp
+     * @param objQuery
+     * @return
+     */
     public static String idGenner(
             String tableName,
             String idColumn,

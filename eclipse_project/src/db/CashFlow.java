@@ -4,12 +4,26 @@ import java.util.List;
 import common.Constants;
 import db.db;
 
+/**
+ * Store data for each row of cash flow info
+ * table in database: ThuChi
+ * object type in database: ThuChi_objtyp
+ * nested table: cash flow detail (ChiTietThuChi_objtyp)
+ * @author duchn
+ * create: 12-05-2017
+ */
 public class CashFlow {
 
     public static String TABLE_NAME = "ThuChi";
     public static String ID_COLUMN = "MaThuChi";
     public static String OBJ_TYPE_NAME = "ThuChi_objtyp";
 
+    /**
+     * Save new data into database
+     * generate object relation constructor code first
+     * @param cf
+     * @return
+     */
     public static boolean save(CashFlow cf) {
         if (cf == null)
             return false;
@@ -43,6 +57,7 @@ public class CashFlow {
             "ChiTietThuChi_ntabtyp("+ detailBuffer.toString() +")" +
         ")";
 
+        // insert to table
         db.saveAutoId(
             Entity.idGenner(
                 TABLE_NAME,

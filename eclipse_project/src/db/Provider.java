@@ -1,5 +1,11 @@
 package db;
 
+/**
+ * Store data for a record of provider table
+ * table name: NhaCungCap
+ * @author ducnh
+ * create: 15-04-2017
+ */
 public class Provider {
     private String id;
     private String name;
@@ -18,6 +24,8 @@ public class Provider {
         this.id = id;
         this.name = name;
     }
+    
+    // Getter
     public String getName() {
         return this.name;
     }

@@ -16,14 +16,19 @@ import db.Provider;
 import model.CashFlowModel;
 import view.CashFlowView;
 
+/**
+ * For demo only
+ * @author ducnh
+ * create: 12-05-2017
+ */
 public class DemoGUI {
     public static void main (String[] args) {
         // Database global connection initial
-        db.init("orcBase", "c##oz", "ngaymai");
+        // db.init("orcBase", "c##oz", "ngaymai");
         
         // Change look and feel
         try {
-            UIManager.setLookAndFeel("com.jtattoo.plaf.hifi.HiFiLookAndFeel");
+            UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
         } catch(Exception e) {
             e.printStackTrace();
         }
@@ -47,6 +52,7 @@ public class DemoGUI {
         pigs.add(new Pig("201701229292", 210, "12asddb", pv));
         pigs.add(new Pig("201701023292", 190, "123adfb", pv));
         
+        // Pull up cash flow log
         CashFlowController cfc = new CashFlowController();
         CashFlowModel cfm = new CashFlowModel();
         CashFlowView cfv = new CashFlowView(pigs);
@@ -57,5 +63,8 @@ public class DemoGUI {
         cfm.addObserver(cfv);
         cfv.setController(cfc);
         cfv.setVisible(true);
+        
+        // Close connection
+        db.destroy();
     }
 }
