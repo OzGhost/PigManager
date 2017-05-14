@@ -24,17 +24,22 @@ import view.CashFlowView;
 public class DemoGUI {
     public static void main (String[] args) {
         // Database global connection initial
-        // db.init("orcBase", "c##oz", "ngaymai");
+        db.init("orcBase", "c##oz", "ngaymai");
         
         // Change look and feel
         try {
-            UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
+            UIManager.setLookAndFeel("com.jtattoo.plaf" +
+                    ".aluminium.AluminiumLookAndFeel");
         } catch(Exception e) {
             e.printStackTrace();
         }
         
         // Font setting
-        FontUIResource f = new FontUIResource(Constants.globalFontName,Font.PLAIN,13);
+        FontUIResource f = new FontUIResource(
+                Constants.globalFontName,
+                Font.PLAIN,
+                13
+        );
         Enumeration<Object> keys = UIManager.getDefaults().keys();
         while (keys.hasMoreElements()) {
           Object key = keys.nextElement();
@@ -63,6 +68,13 @@ public class DemoGUI {
         cfm.addObserver(cfv);
         cfv.setController(cfc);
         cfv.setVisible(true);
+
+        boolean rs = Provider.find("20171023").set("TenNCC = 'noob'").go();
+        if (!rs) {
+            System.out.println("Query failure");
+        } else {
+            System.out.println("Query success");
+        }
         
         // Close connection
         db.destroy();

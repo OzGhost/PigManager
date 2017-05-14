@@ -2,6 +2,7 @@ package db;
 
 import java.util.List;
 import common.Constants;
+import common.Payable;
 import db.db;
 
 /**
@@ -33,16 +34,16 @@ public class CashFlow {
         String prefix = "";
         StringBuffer detailBuffer = new StringBuffer();
         if (cf.getDetail() != null) {
-            for (CashFlowDetail cfd: cf.getDetail()) {
-                cost += cfd.getPrice();
+            for (Payable p: cf.getDetail()) {
+                cost += p.getPrice();
                 detailBuffer.append( prefix +
                     "ChiTietThuChi_objtyp(" +
-                        "'" + cfd.getPayableObjectId() + "', " +
+                        "'" + p.getId() + "', " +
                         "'" + Constants.getPayableCode(
-                                cfd.getPayableType()
+                                p.getType()
                             )+ "', " +
-                        cfd.getPrice() + ", " +
-                        "'" + cfd.getNote() + "'" +
+                        p.getPrice() + ", " +
+                        "'" + p.getPayNote() + "'" +
                     ")"
                 );
                 prefix = ", ";
@@ -74,7 +75,7 @@ public class CashFlow {
     private String note;
     private boolean payout;
     private int cost;
-    private List<CashFlowDetail> detail;
+    private List<Payable> detail;
     
 
     // Getter
@@ -87,7 +88,7 @@ public class CashFlow {
     public boolean getPayout(){
         return this.payout;
     }
-    public List<CashFlowDetail> getDetail() {
+    public List<Payable> getDetail() {
         return this.detail;
     }
     
@@ -98,7 +99,7 @@ public class CashFlow {
     public void setPayout(boolean payout){
         this.payout = payout;
     }
-    public void setDetail(List<CashFlowDetail> detail) {
+    public void setDetail(List<Payable> detail) {
         this.detail = detail;
     }
 

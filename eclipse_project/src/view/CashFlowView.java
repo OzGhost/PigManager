@@ -3,7 +3,6 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 
@@ -31,7 +30,6 @@ import common.Genner;
 import common.Payable;
 import common.Layer;
 import controller.CashFlowController;
-import db.CashFlowDetail;
 
 /**
  * Cash flow view
@@ -222,19 +220,20 @@ public class CashFlowView extends ViewBase {
      * Get payable object list on center table
      * @return
      */
-    public List<CashFlowDetail> getCashFlow(){
-        List<CashFlowDetail> rs = new ArrayList<>();
-        TableModel tm = detailtab.getModel();
-        for (int i = 0; i < tm.getRowCount(); i++){
+    public Object[][] getCashFlowDetail(){
+
+        final TableModel tm = detailtab.getModel();
+        final int nrow = tm.getRowCount();
+        final Object[][] rs = new Object[4][nrow];
+
+        for (int i = 0; i < nrow; i++){
             String c3 = (String) tm.getValueAt(i,  3);
-            c3.trim();
+            c3 = c3.trim();
+            rs[0][i] = tm.getValueAt(i, 0);
+            rs[1][i] = tm.getValueAt(i, 1);
+            rs[3][i] = tm.getValueAt(i, 4);
             try {
-                rs.add(new CashFlowDetail(
-                    (String) tm.getValueAt(i, 0),
-                    (String) tm.getValueAt(i, 1),
-                    (c3.isEmpty() ? 0 : Integer.parseInt(c3)),
-                    (String) tm.getValueAt(i, 4)
-                ));
+                rs[2][i] = (Object) Integer.parseInt(c3);
             } catch(Exception e) {
                 JOptionPane.showMessageDialog(
                         this,

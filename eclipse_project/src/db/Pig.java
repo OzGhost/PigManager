@@ -9,7 +9,7 @@ import common.Payable;
  * @author ducnh
  * create: 15-04-2017
  */
-public class Pig implements Payable {
+public class Pig extends Payable {
     
     private String id;
     private float height;
@@ -57,7 +57,9 @@ public class Pig implements Payable {
      * @param earTag
      * @param source
      */
-    public Pig(String id, float height, float width, float weight, String inDate, String outDate, String earTag, Pig source){
+    public Pig(String id, float height,
+            float width, float weight, String inDate,
+            String outDate, String earTag, Pig source){
         this.id = id;
         this.height = height;
         this.width = width;
@@ -82,7 +84,13 @@ public class Pig implements Payable {
     public String getDescription() {
         return "Ear tag: " + this.earTag
                 + "; Weight: " + this.weight
-                + "; Provider: " + (this.provider == null ? "null" : this.provider.getName());
+                + "; Provider: " + (this.provider == null
+                        ? "null"
+                        : this.provider.getName());
     }
 
+    @Override
+    public String getProviderId() {
+        return provider == null ? "" : provider.getId();
+    }
 }

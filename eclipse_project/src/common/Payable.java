@@ -7,9 +7,28 @@ package common;
  * @author ducnh
  * create: 12-05-2017
  */
-public interface Payable {
+public abstract class Payable {
+
+    protected String payNote;
+    protected int price;
+
     // Getter
-    public String getId();
-    public String getType();
-    public String getDescription();
+    public abstract String getId();
+    public abstract String getType();
+    public abstract String getDescription();
+    public abstract String getProviderId();
+    public String getPayNote() {
+        return this.payNote;
+    }
+    public int getPrice() {
+        return this.price;
+    }
+
+    // Setter
+    public void setPayNote(String payNote) {
+        this.payNote = payNote;
+    }
+    public void setPrice(int price) {
+        this.price = price;
+    }
 }

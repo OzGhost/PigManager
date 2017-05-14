@@ -76,15 +76,18 @@ public abstract class db {
      * Send query to database: use for insert, delete, update command
      * @param sqlcmd
      */
-    public static void send (String sqlcmd) {
+    public static boolean send (String sqlcmd) {
         // for debug only
-        System.out.println("---- db.send(?) : " + sqlcmd);
+        // System.out.println("---- db.send(?) : " + sqlcmd);
+        boolean rs = true;
         try {
             db.rs = db.stm.executeQuery(sqlcmd);
         } catch (Exception e) {
             System.out.println("---- Execute query failure !");
             e.printStackTrace();
+            rs = false;
         }
+        return rs;
     }
 
     /**

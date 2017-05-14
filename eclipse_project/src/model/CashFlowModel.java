@@ -1,10 +1,12 @@
 package model;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import common.Payable;
 import db.CashFlow;
-import db.CashFlowDetail;
+import db.db;
 
 /**
  * Model for cash flow view
@@ -33,9 +35,19 @@ public class CashFlowModel extends ModelBase {
         cashFlow.setPayout(payout);
     }
     
-    public void setCashFlowDetail(List<CashFlowDetail> cfd){
-        if (cashFlow != null) {
-            cashFlow.setDetail(cfd);
+    public void setCashFlowDetail(Object[][] cfd){
+        if (payObjs == null)
+            return;
+        for (Payable p: payObjs) {
+            for (Object[] o: cfd) {
+                if (
+                        p.getId().equals((String) o[0]) &&
+                        p.getType().equals((String) o[1])
+                   ) {
+                    p.setPrice((Integer) o[2]);
+                    p.setPayNote((String) o[3]);
+                }
+            }
         }
     }
     
@@ -48,9 +60,41 @@ public class CashFlowModel extends ModelBase {
      * @return
      */
     public boolean saveDown() {
-        if (cashFlow == null)
+        if (
+                cashFlow == null ||
+                cashFlow.getDetail() == null ||
+                cashFlow.getDetail().isEmpty()
+            )
             return false;
-        return CashFlow.save(cashFlow);
+        boolean cashFlowSaveResult = CashFlow.save(cashFlow);
+
+        // save cash flow failure case
+        if (!cashFlowSaveResult)
+            return false;
+
+        // get owe per provider
+        boolean owe_log = true;
+        int pointer = 1;
+        final Map<String, Integer> providerIndex = new HashMap<>();
+        final int nrow = cashFlow.getDetail().size();
+        final int[] owe = new int[nrow];
+        for (Payable p: cashFlow.getDetail()) {
+            String prvId = p.getProviderId();
+            if (providerIndex.containsKey(prvId)) {
+                owe[ providerIndex.get(prvId) ] += p.getPrice();
+            } else {
+                providerIndex.put(prvId, pointer);
+                owe[ pointer ] = p.getPrice();
+                pointer++;
+            }
+        }
+        for (String k: providerIndex.keySet()) {
+            owe_log = owe_log &&
+                db.send("UPDATE NhaCungCap SET owe = owe + "
+                    + owe[ providerIndex.get(k) ]
+                    + " WHERE MaNCC = " + k);
+        }
+        return owe_log;
     }
     
     @Override

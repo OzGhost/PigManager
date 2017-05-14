@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 import common.Payable;
-import db.CashFlowDetail;
 import model.CashFlowModel;
 import view.CashFlowView;
 
@@ -35,8 +34,8 @@ public class CashFlowController
         // Save button clicked case
         if (CashFlowView.SAVE_COMMAND.equals(cmd)){
             model.setNote(view.getNote());
-            List<CashFlowDetail> cfd = view.getCashFlow();
-            if (cfd == null || cfd.isEmpty()){
+            Object[][] cfd = view.getCashFlowDetail();
+            if (cfd == null || cfd.length < 1){
                 return;
             }
             model.setCashFlowDetail(cfd);
