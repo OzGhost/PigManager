@@ -1,20 +1,8 @@
 package controller;
 
-import java.awt.Font;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.List;
+import java.sql.ResultSet;
 
-import javax.swing.UIManager;
-import javax.swing.plaf.FontUIResource;
-
-import common.Constants;
-import common.Payable;
-import db.Pig;
 import db.db;
-import db.Provider;
-import model.CashFlowModel;
-import view.CashFlowView;
 
 /**
  * For demo only
@@ -24,7 +12,17 @@ import view.CashFlowView;
 public class DemoGUI {
     public static void main (String[] args) {
         // Database global connection initial
-        db.init("orcBase", "c##oz", "ngaymai");
+//        db.init("orcBase", "c##oz", "ngaymai");
+        
+        db.init("orcBase", "c##tester", "ngaymai");
+        ResultSet rs = db.sendForResult("select * from taikhoan");
+        try {
+            rs.next();
+            System.out.println(rs.getString(2) + rs.getString(1));
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        /*
         
         // Change look and feel
         try {
@@ -75,7 +73,8 @@ public class DemoGUI {
         } else {
             System.out.println("Query success");
         }
-        
+
+        */
         // Close connection
         db.destroy();
     }

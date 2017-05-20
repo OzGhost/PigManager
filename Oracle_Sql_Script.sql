@@ -5,6 +5,7 @@
 DROP TABLE ThuChi;
 DROP TABLE Tinh;
 DROP TABLE BenhAn;
+DROP TABLE LichSuThaiKy;
 DROP TABLE Heo;
 DROP TABLE Benh;
 DROP TABLE Thuoc;
@@ -23,6 +24,7 @@ DROP TYPE ChiTietThuChi_ntabtyp;
 DROP TYPE ChiTietThuChi_objtyp;
 DROP TYPE Tinh_objtyp;
 DROP TYPE BenhAn_objtyp;
+DROP TYPE LichSuThaiKy_objtyp;
 DROP TYPE Heo_objtyp;
 DROP TYPE LichSuDiChuyen_ntabtyp;
 DROP TYPE LichSuDiChuyen_objtyp;
@@ -207,9 +209,9 @@ CREATE TYPE LichSuDiChuyen_ntabtyp AS TABLE OF LichSuDiChuyen_objtyp
 
 CREATE TYPE Heo_objtyp AS OBJECT (
     MaHeo               Char(12),
-    ChieuCao            Number(3,2),
-    ChieuDai            Number(3,2),
-    CanNang             Number(3,2),
+    ChieuCao            Number(5,2),
+    ChieuDai            Number(5,2),
+    CanNang             Number(5,2),
     NgayBatDauNuoi      Date,
     NgayKetThuc         Date,
     Nguon_ref           REF Heo_objtyp,
@@ -218,6 +220,14 @@ CREATE TYPE Heo_objtyp AS OBJECT (
     Chuong_ref          REF Chuong_objtyp,
     MaTheTai            Varchar2(12),
     LSDiChuyen_ntab     LichSuDiChuyen_ntabtyp
+)
+/
+
+CREATE TYPE LichSuThaiKy_objtyp AS OBJECT (
+    MaLSTK          Char(12),
+    NgayGhiNhan     Date,
+    NoiDung         Varchar2(128),
+    Heo_ref         REF Heo_objtyp
 )
 /
 
@@ -231,15 +241,14 @@ CREATE TYPE BenhAn_objtyp AUTHID CURRENT_USER AS OBJECT (
 /
 
 CREATE TYPE Tinh_objtyp AS OBJECT (
-    MaTinh          Char(12),
-    TenTinh         Varchar2(64),
-    NguonGoc        Varchar2(64),
-    DacDiem         Varchar2(128),
-    NhaCungCap_ref  REF NhaCungCap_objtyp,
-    NgaySanXuat     Date,
-    NgayHetHan      Date,
-    NgayTha         Date,
-    Heo_ref         REF Heo_objtyp
+    MaTinh              Char(12),
+    TenTinh             Varchar2(64),
+    NguonGoc            Varchar2(64),
+    DacDiem             Varchar2(128),
+    NhaCungCap_ref      REF NhaCungCap_objtyp,
+    NgaySanXuat         Date,
+    NgayHetHan          Date,
+    LichSuThaiKy_ref    REF LichSuThaiKy_objtyp
 )
 /
 
@@ -333,6 +342,13 @@ ALTER TABLE LichSuDiChuyen
     ADD (SCOPE FOR (ChuongNguon_ref) IS Chuong,
          SCOPE FOR (ChuongDich_ref) IS Chuong);
 
+CREATE TABLE LichSuThaiKy OF LichSuThaiKy_objtyp (
+    PRIMARY KEY (MaLSTK),
+    FOREIGN KEY (Heo_ref) REFERENCES Heo
+    )
+    OBJECT ID PRIMARY KEY
+/
+
 CREATE TABLE BenhAn OF BenhAn_objtyp (
         PRIMARY KEY (MaBenhAn),
         FOREIGN KEY (Heo_ref) REFERENCES Heo
@@ -349,7 +365,7 @@ ALTER TABLE ChiTietBenh
 CREATE TABLE Tinh OF Tinh_objtyp (
         PRIMARY KEY (MaTinh),
         FOREIGN KEY (NhaCungCap_ref) REFERENCES NhaCungCap,
-        FOREIGN KEY (Heo_ref) REFERENCES Heo
+        FOREIGN KEY (LichSuThaiKy_ref) REFERENCES LichSuThaiKy
     )
     OBJECT ID PRIMARY KEY
 /
@@ -620,3 +636,49 @@ INSERT INTO Benh VALUES (
     'Bao dong'
 );
 
+INSERT INTO HEO VALUES (
+    '201701029382',
+    2.5,
+    1.9,
+    1.2,
+    '20-DEC-16',
+    '12-JUN-17',
+    null,
+    (SELECT REF(ncc) FROM NhaCungCap ncc WHERE ncc.MaNCC='201704120003'),
+    (SELECT REF(lta) FROM LoaiThucAn lta WHERE lta.MaLoaiThucAn='201704050180'),
+    (SELECT REF(c) FROM Chuong c WHERE c.MaChuong='201703021234'),
+    'thetaiso1',
+    LichSuDiChuyen_ntabtyp()
+);
+INSERT INTO HEO VALUES (
+    '201701229322',
+    2.5,
+    1.9,
+    120.21,
+    '20-MAY-16',
+    '12-JUN-17',
+    null,
+    (SELECT REF(ncc) FROM NhaCungCap ncc WHERE ncc.MaNCC='201704120003'),
+    (SELECT REF(lta) FROM LoaiThucAn lta WHERE lta.MaLoaiThucAn='201704050180'),
+    (SELECT REF(c) FROM Chuong c WHERE c.MaChuong='201703021234'),
+    'thetaiso1',
+    LichSuDiChuyen_ntabtyp()
+);
+
+INSERT INTO LichSuThaiKy VALUES (
+    '201710109293',
+    '12-MAY-17',
+    'Tha tinh dot 1',
+    (SELECT REF(h) FROM HEO h WHERE h.MaHeo='201701029382')
+);
+
+INSERT INTO Tinh VALUES (
+    '201710202923',
+    'MaRock',
+    'VietNam',
+    'Heo bo',
+    (SELECT REF(ncc) FROM NhaCungCap ncc WHERE ncc.MaNCC='201704120003'),
+    '18-MAY-17',
+    '20-MAY-17',
+    (SELECT REF(lstk) FROM LichSuThaiKy lstk WHERE lstk.MaLSTK='201710109293')
+);
