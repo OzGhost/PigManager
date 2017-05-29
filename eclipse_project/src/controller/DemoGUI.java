@@ -75,7 +75,14 @@ public class DemoGUI {
         }
 
         */
+	// block call Them chuong frame
+        //StablesView sv = new StablesView();
+        //StablesController sc = new StablesController();
+        //sv.setController(sc);
+        //sv.setVisible(true);
+        //sc.setView(sv);
         // Close connection
+	
         db.destroy();
     }
 }
