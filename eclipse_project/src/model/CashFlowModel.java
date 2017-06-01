@@ -1,5 +1,6 @@
 package model;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,9 +15,12 @@ import db.db;
  * create: 15-04-2017
  */
 public class CashFlowModel extends ModelBase {
+
+    public static final short PAY_OBJ_REMOVED = 1;
     
     private CashFlow cashFlow;
     private List<Payable> payObjs;
+    private int[] victimInds;
     
     /**
      * Default constructor
@@ -43,9 +47,10 @@ public class CashFlowModel extends ModelBase {
                 if (
                         p.getId().equals((String) o[0]) &&
                         p.getType().equals((String) o[1])
-                   ) {
+                ) {
                     p.setPrice((Integer) o[2]);
                     p.setPayNote((String) o[3]);
+                    break;
                 }
             }
         }
@@ -95,6 +100,23 @@ public class CashFlowModel extends ModelBase {
                     + " WHERE MaNCC = " + k);
         }
         return owe_log;
+    }
+
+    public int[] getVictimIndexs () {
+        return victimInds;
+    }
+
+    public void removeVictims (int[] victimIndexs) {
+        if (victimIndexs.length < 1)
+            return;
+
+        victimInds = victimIndexs;
+        Arrays.sort(victimInds);
+        for (int i = victimInds.length - 1; i >= 0; i--) {
+            payObjs.remove( victimInds[i] );
+        }
+        setChanged();
+        notifyObservers(PAY_OBJ_REMOVED);
     }
     
     @Override

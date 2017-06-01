@@ -2,8 +2,11 @@ package common;
 
 import java.awt.Dimension;
 import java.awt.Font;
+import java.text.NumberFormat;
 
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
+import javax.swing.JTextField;
 /**
  * Class for create common view component
  * 
@@ -41,6 +44,34 @@ public abstract class Genner {
         }
         rs.setPreferredSize(btSize);
         rs.setFont(btFont);
+        return rs;
+    }
+
+    public static JTextField createTextField (short size) {
+        JTextField rs = new JTextField();
+        Dimension psize = null;
+        Font font = null;
+        if (size == MEDIUM_SIZE) {
+            font = Constants.fontSizeMd;
+            psize = new Dimension(Constants.MEDIUM_LONG_WIDTH, Constants.MEDIUM_HEIGHT);
+        }
+        rs.setPreferredSize(psize);
+        rs.setFont(font);
+        rs.setHorizontalAlignment(JTextField.RIGHT);
+        return rs;
+    }
+
+    public static JFormattedTextField createNumberField (short size) {
+        JFormattedTextField rs = new JFormattedTextField(NumberFormat.getNumberInstance());
+        Dimension psize = null;
+        Font font = null;
+        if (size == MEDIUM_SIZE) {
+            font = Constants.fontSizeMd;
+            psize = new Dimension(Constants.MEDIUM_LONG_WIDTH, Constants.MEDIUM_HEIGHT);
+        }
+        rs.setPreferredSize(psize);
+        rs.setFont(font);
+        rs.setHorizontalAlignment(JTextField.RIGHT);
         return rs;
     }
 }

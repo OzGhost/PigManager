@@ -29,8 +29,9 @@ public class DemoGUI {
         
         // Change look and feel
         try {
-            UIManager.setLookAndFeel("com.jtattoo.plaf" +
-                    ".aluminium.AluminiumLookAndFeel");
+//            UIManager.setLookAndFeel("com.jtattoo.plaf" +
+//                    ".aluminium.AluminiumLookAndFeel");
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch(Exception e) {
             e.printStackTrace();
         }
@@ -52,11 +53,11 @@ public class DemoGUI {
         // Prepare data for cash flow log
         List<Payable> pigs = new ArrayList<>();
         Provider pv = new Provider("201704120003", "Trai heo giong 9g");
-        pigs.add(new Pig("201701029292", 250, "123asdb", pv));
-        pigs.add(new Pig("201712291923", 210, "12as2db", pv));
-        pigs.add(new Pig("201702939232", 150, "92ddb43", pv));
-        pigs.add(new Pig("201701229292", 210, "12asddb", pv));
-        pigs.add(new Pig("201701023292", 190, "123adfb", pv));
+        pigs.add(new Pig("201701010001", 250, "123asdb", pv));
+        pigs.add(new Pig("201701010002", 210, "12as2db", pv));
+        pigs.add(new Pig("201701010003", 150, "92ddb43", pv));
+        pigs.add(new Pig("201701010004", 210, "12asddb", pv));
+        pigs.add(new Pig("201701010005", 190, "123adfb", pv));
         
         // Pull up cash flow log
         CashFlowController cfc = new CashFlowController();
@@ -68,7 +69,7 @@ public class DemoGUI {
         cfc.init(pigs);
         cfm.addObserver(cfv);
         cfv.setController(cfc);
-        cfv.setVisible(true);
+        cfv.showUp();
 
         /*
     	// block call Them chuong frame

@@ -231,7 +231,6 @@ public class StablesView extends ViewBase {
        //add main panel into frame 
        add(panel);
        //
-       setSize(size);
        setTitle("Quản lý chuồng");
        this.getRootPane().setDefaultButton(searchBt);
        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

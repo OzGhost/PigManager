@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+import common.Constants;
 import common.Payable;
 import common.Watcher;
 import model.CashFlowModel;
@@ -32,7 +33,7 @@ public class CashFlowController
         // Get command of event fire object
         String cmd = e.getActionCommand();
         // Save button clicked case
-        if (CashFlowView.SAVE_COMMAND.equals(cmd)){
+        if (Constants.AC_DONE.equals(cmd)){
             model.setNote(view.getNote());
             Object[][] cfd = view.getCashFlowDetail();
             if (cfd == null || cfd.length < 1){
@@ -51,7 +52,7 @@ public class CashFlowController
             return;
         }
         // Cancel button clicked case
-        if (CashFlowView.CANCEL_COMMAND.equals(cmd)){
+        if (Constants.AC_CANCEL.equals(cmd)){
             this.view.setVisible(false);
             this.view.dispose();
             return;
@@ -67,11 +68,20 @@ public class CashFlowController
             return;
         }
         // Add button clicked case
-        if (CashFlowView.ADD_COMMAND.equals(cmd)){
+        if (Constants.AC_ADD.equals(cmd)){
             return;
         }
         // Remove button clicked case
-        if (CashFlowView.REMOVE_COMMAND.equals(cmd)){
+        if (Constants.AC_RM.equals(cmd)){
+            model.removeVictims( view.getVictims() );
+            return;
+        }
+        if (CashFlowView.AC_FLOOR_COST.equals(cmd)) {
+            view.floorTheCost(true);
+            return;
+        }
+        if (CashFlowView.AC_EST_TOTAL.equals(cmd)) {
+            view.floorTheCost(false);
             return;
         }
         super.actionPerformed(e);
