@@ -1,8 +1,21 @@
 package controller;
 
-import java.sql.ResultSet;
+import java.awt.Font;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.List;
 
+import javax.swing.UIManager;
+import javax.swing.plaf.FontUIResource;
+
+import common.Constants;
+import common.Payable;
+import db.Pig;
+import db.Provider;
 import db.db;
+import model.CashFlowModel;
+import view.CashFlowView;
+import view.StablesView;
 
 /**
  * For demo only
@@ -12,17 +25,7 @@ import db.db;
 public class DemoGUI {
     public static void main (String[] args) {
         // Database global connection initial
-//        db.init("orcBase", "c##oz", "ngaymai");
-        
-        db.init("orcBase", "c##tester", "ngaymai");
-        ResultSet rs = db.sendForResult("select * from taikhoan");
-        try {
-            rs.next();
-            System.out.println(rs.getString(2) + rs.getString(1));
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-        /*
+        // db.init("orcBase", "c##oz", "ngaymai");
         
         // Change look and feel
         try {
@@ -67,22 +70,13 @@ public class DemoGUI {
         cfv.setController(cfc);
         cfv.setVisible(true);
 
-        boolean rs = Provider.find("20171023").set("TenNCC = 'noob'").go();
-        if (!rs) {
-            System.out.println("Query failure");
-        } else {
-            System.out.println("Query success");
-        }
-
+        /*
+    	// block call Them chuong frame
+        StablesView sv = new StablesView();
+        StablesController sc = new StablesController();
+        sv.setController(sc);
+        sv.setVisible(true);
+        sc.setView(sv);
         */
-	// block call Them chuong frame
-        //StablesView sv = new StablesView();
-        //StablesController sc = new StablesController();
-        //sv.setController(sc);
-        //sv.setVisible(true);
-        //sc.setView(sv);
-        // Close connection
-	
-        db.destroy();
     }
 }

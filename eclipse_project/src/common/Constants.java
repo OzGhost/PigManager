@@ -2,8 +2,10 @@ package common;
 
 import java.awt.Dimension;
 import java.awt.Font;
-import java.util.HashMap;
-import java.util.Map;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.io.File;
+import java.net.URL;
 
 /**
  * Class store general configurations, constants
@@ -12,8 +14,21 @@ import java.util.Map;
  * create: 12-05-2017
  */
 public class Constants {
+    
+    public static Image APP_ICON;
+    
+    static {
+        // app icon
+        try {
+            URL url = ClassLoader.getSystemResource("res/icon.png");
+            APP_ICON = Toolkit.getDefaultToolkit().createImage(url);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
     // Font configuration
-    public static final String globalFontName = "Dejavu Sans";
+    public static final String globalFontName = "Monospace";
     
     // Button size configuration template
     public static final Dimension buttonSizeBg = new Dimension(120, 50);
@@ -32,6 +47,9 @@ public class Constants {
     
     // Observable change code
     public static final short OBSERVABLE_STATE_CHANGED = 1;
+
+    // Action command
+    public static final String AC_HOME = "go_home";
 
     /**
      * Get payable represent code by full code

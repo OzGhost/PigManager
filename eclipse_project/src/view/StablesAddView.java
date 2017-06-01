@@ -112,8 +112,4 @@ public class StablesAddView extends ViewBase{
         refresh_bt.addActionListener(sac);
         
     }
-    @Override
-    void notice(short code) {
-        
-    }
 }

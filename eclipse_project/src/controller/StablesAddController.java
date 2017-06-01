@@ -16,7 +16,7 @@ import db.db;
  *
  * @author duyphuoc
  */
-public class StablesAddController extends ControllerBase<StablesAddModel, StablesAddView> implements ActionListener{
+public class StablesAddController extends ControllerBase<StablesAddModel, StablesAddView>{
 
     
     @Override
@@ -48,5 +48,6 @@ public class StablesAddController extends ControllerBase<StablesAddModel, Stable
                     }   
                 JOptionPane.showMessageDialog(null,"Success");
         }
+        super.actionPerformed(ae);
     }
 }

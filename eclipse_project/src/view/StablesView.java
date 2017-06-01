@@ -36,7 +36,7 @@ import java.util.logging.Logger;
  *
  * @author duyphuoc
  */
-public class StablesView extends ViewBase{
+public class StablesView extends ViewBase {
     
     
     private JLabel status;
@@ -247,9 +247,5 @@ public class StablesView extends ViewBase{
         cancelBt.addActionListener(sc);
         gridTb.setModel(dtm);
         gridTb.addMouseListener(sc);
-    }
-    @Override
-    void notice(short code) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

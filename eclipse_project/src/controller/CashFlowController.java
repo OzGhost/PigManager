@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 import common.Payable;
+import common.Watcher;
 import model.CashFlowModel;
 import view.CashFlowView;
 
@@ -14,8 +15,7 @@ import view.CashFlowView;
  * create: 12-05-2017
  */
 public class CashFlowController
-        extends ControllerBase<CashFlowModel, CashFlowView>
-        implements ActionListener {
+        extends ControllerBase<CashFlowModel, CashFlowView> {
     
     /**
      * Initial class: set pay objects for model
@@ -40,13 +40,13 @@ public class CashFlowController
             }
             model.setCashFlowDetail(cfd);
             if (model.saveDown()) {
-                view.notice(CashFlowView.SAVE_DONE_CODE);
+                view.noticeSaveResult(true);
                 view.dispose();
                 view = null;
                 model = null;
                 System.gc();
             } else {
-                view.notice(CashFlowView.SAVE_FAILURE_CODE);
+                view.noticeSaveResult(false);
             }
             return;
         }
@@ -74,5 +74,6 @@ public class CashFlowController
         if (CashFlowView.REMOVE_COMMAND.equals(cmd)){
             return;
         }
+        super.actionPerformed(e);
     }
 }

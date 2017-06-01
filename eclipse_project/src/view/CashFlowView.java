@@ -235,41 +235,18 @@ public class CashFlowView extends ViewBase {
             try {
                 rs[2][i] = (Object) Integer.parseInt(c3);
             } catch(Exception e) {
-                JOptionPane.showMessageDialog(
-                        this,
-                        "Enter number only into 'Cost' column please!",
-                        "Input invalid",
-                        JOptionPane.ERROR_MESSAGE
-                );
+                noticeError("Enter number only into 'Cost' column please!");
                 return null;
             }
         }
         return rs;
     }
-    
-    @Override
-    public void notice(short code) {
-        if (code == SAVE_DONE_CODE) {
-            JOptionPane.showMessageDialog(
-                this,
-                "Ghi nhận thu chi hoàn tất!",
-                "Xong rồi...",
-                JOptionPane.PLAIN_MESSAGE
-            );
-        } else if
-        (code == SAVE_FAILURE_CODE) {
-            JOptionPane.showMessageDialog(
-                this,
-                "Quá trình lưu trữ xảy ra lỗi."
-                + " Vui lòng liên hệ bộ phận hỗ trợ để được trợ giúp!",
-                "Chưa lưu đâu ...",
-                JOptionPane.ERROR_MESSAGE
-            );
 
-        }
-    }
-    
-    @Override
-    public void update(Observable o, Object arg) {
+    public void noticeSaveResult(boolean rs) {
+        noticeResult(
+                rs,
+                "Save done",
+                "Save failse!"
+        );
     }
 }

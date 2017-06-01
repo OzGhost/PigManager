@@ -55,19 +55,32 @@ public abstract class db {
             e.printStackTrace();
         }
     }
+    public static boolean ready () {
+        if (
+                con == null ||
+                stm == null
+        ) {
+            System.out.println("---- ERROR: Connection not ready !!!");
+            return false;
+        }
+        return true;
+    }
     /**
      * Send query to database: use for select command only
      * @param sqlcmd
      * @return
      */
     public static ResultSet sendForResult (String sqlcmd) {
+        if (! ready()) {
+            return null;
+        }
         // for debug only
         System.out.println("---- db.sendForResult(?) : " + sqlcmd);
         try {
             db.rs = db.stm.executeQuery(sqlcmd);
         } catch (Exception e) {
-            System.out.println("---- Execute query failure !");
             e.printStackTrace();
+            System.out.println("---- Execute query failure !");
         }
         return db.rs;
     }
@@ -77,14 +90,17 @@ public abstract class db {
      * @param sqlcmd
      */
     public static boolean send (String sqlcmd) {
+        if (! ready()) {
+            return false;
+        }
         // for debug only
-        // System.out.println("---- db.send(?) : " + sqlcmd);
+        System.out.println("---- db.send(?) : " + sqlcmd);
         boolean rs = true;
         try {
             db.rs = db.stm.executeQuery(sqlcmd);
         } catch (Exception e) {
-            System.out.println("---- Execute query failure !");
             e.printStackTrace();
+            System.out.println("---- Execute query failure !");
             rs = false;
         }
         return rs;
@@ -96,6 +112,9 @@ public abstract class db {
      * @param cmd
      */
     public static void saveAutoId(String cmd) {
+        if (! ready()) {
+            return;
+        }
         try {
             CallableStatement callStm = db.con.prepareCall(cmd);
             callStm.execute();
