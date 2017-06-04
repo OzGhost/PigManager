@@ -115,6 +115,7 @@ public abstract class db {
         if (! ready()) {
             return;
         }
+        System.out.println("---- db.saveAutoId(?): " + cmd);
         try {
             CallableStatement callStm = db.con.prepareCall(cmd);
             callStm.execute();

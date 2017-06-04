@@ -6,6 +6,8 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
@@ -60,6 +62,9 @@ public class Constants {
     public static final Border BD_GREYLINE = BorderFactory
         .createLineBorder(Color.gray);
 
+    // Time period parser
+    public static final Map<String, String> TIME_STAGE = new HashMap<>();
+
     /**
      * Get payable represent code by full code
      * 
@@ -88,6 +93,12 @@ public class Constants {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        // load time period
+        TIME_STAGE.put("Năm", "Y");
+        TIME_STAGE.put("Quý", "Q");
+        TIME_STAGE.put("Tháng","MON");
+        TIME_STAGE.put("Tuần","WW");
+        TIME_STAGE.put("Ngày","J");
     }
 
 }

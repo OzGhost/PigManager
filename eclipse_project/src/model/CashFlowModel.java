@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -18,16 +19,16 @@ public class CashFlowModel extends ModelBase {
 
     public static final short PAY_OBJ_REMOVED = 1;
     
-    private CashFlow cashFlow;
-    private List<Payable> payObjs;
+    private final CashFlow cashFlow = new CashFlow();
+    private final List<Payable> payObjs = new ArrayList<>();
     private int[] victimInds;
     
     /**
      * Default constructor
      */
     public CashFlowModel(){
-        cashFlow = new CashFlow();
         cashFlow.setPayout(true);
+        cashFlow.setDetail(payObjs);
     }
     
     // Setter
@@ -57,7 +58,9 @@ public class CashFlowModel extends ModelBase {
     }
     
     public void setPayObjs(List<Payable> pObjs){
-        this.payObjs = pObjs;
+        if (pObjs != null) {
+            this.payObjs.addAll(pObjs);
+        }
     }
     
     /**
@@ -69,17 +72,21 @@ public class CashFlowModel extends ModelBase {
                 cashFlow == null ||
                 cashFlow.getDetail() == null ||
                 cashFlow.getDetail().isEmpty()
-            )
+            ) {
+            System.out.println("invalid model store");
             return false;
+        }
         boolean cashFlowSaveResult = CashFlow.save(cashFlow);
 
         // save cash flow failure case
-        if (!cashFlowSaveResult)
+        if (!cashFlowSaveResult) {
+            System.out.println("query false");
             return false;
+        }
 
         // get owe per provider
         boolean owe_log = true;
-        int pointer = 1;
+        int pointer = 0;
         final Map<String, Integer> providerIndex = new HashMap<>();
         final int nrow = cashFlow.getDetail().size();
         final int[] owe = new int[nrow];
@@ -95,9 +102,12 @@ public class CashFlowModel extends ModelBase {
         }
         for (String k: providerIndex.keySet()) {
             owe_log = owe_log &&
-                db.send("UPDATE NhaCungCap SET owe = owe + "
+                db.send("UPDATE NhaCungCap SET NoPhaiTra = NoPhaiTra + "
                     + owe[ providerIndex.get(k) ]
                     + " WHERE MaNCC = " + k);
+        }
+        if (!owe_log) {
+            System.out.println("update own false");
         }
         return owe_log;
     }

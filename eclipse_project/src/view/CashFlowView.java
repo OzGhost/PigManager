@@ -268,19 +268,29 @@ public class CashFlowView extends ViewBase {
 
         final TableModel tm = detailtab.getModel();
         final int nrow = tm.getRowCount();
-        final Object[][] rs = new Object[4][nrow];
+        final Object[][] rs = new Object[nrow][4];
 
         for (int i = 0; i < nrow; i++){
-            String c3 = (String) tm.getValueAt(i,  3);
-            c3 = c3.trim();
-            rs[0][i] = tm.getValueAt(i, 0);
-            rs[1][i] = tm.getValueAt(i, 1);
-            rs[3][i] = tm.getValueAt(i, 4);
-            try {
-                rs[2][i] = (Object) Float.parseFloat(c3);
-            } catch(Exception e) {
-                noticeError("Enter number only into 'Cost' column please!");
-                return null;
+            
+            rs[i][0] = tm.getValueAt(i, 0);
+            rs[i][1] = tm.getValueAt(i, 1);
+            rs[i][3] = tm.getValueAt(i, 4);
+            
+            Object c3 = tm.getValueAt(i,  3);
+            
+            if (c3 instanceof String) {
+                try {
+                    rs[i][2] = Integer.parseInt(((String)c3).trim());
+                } catch(Exception e) {
+                    noticeError("Enter number only into 'Cost' column please!");
+                    return null;
+                }
+            } else if
+            (c3 instanceof Integer) {
+                rs[i][2] = c3;
+            } else {
+                noticeError("Cost column value unacceptable!");
+                System.out.println("c3 type: " + c3.getClass().toString());
             }
         }
         return rs;

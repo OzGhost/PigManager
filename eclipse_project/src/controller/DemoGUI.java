@@ -1,21 +1,13 @@
 package controller;
 
-import java.awt.Font;
-import java.util.ArrayList;
-import java.util.Enumeration;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
-import javax.swing.UIManager;
-import javax.swing.plaf.FontUIResource;
-
-import common.Constants;
-import common.Payable;
-import db.Pig;
-import db.Provider;
+import common.CashFlowReportDto;
 import db.db;
-import model.CashFlowModel;
-import view.CashFlowView;
-import view.StablesView;
+import model.CashFlowReportModel;
 
 /**
  * For demo only
@@ -25,8 +17,9 @@ import view.StablesView;
 public class DemoGUI {
     public static void main (String[] args) {
         // Database global connection initial
-        // db.init("orcBase", "c##oz", "ngaymai");
+        db.init("orcBase", "c##oz", "ngaymai");
         
+        /*
         // Change look and feel
         try {
 //            UIManager.setLookAndFeel("com.jtattoo.plaf" +
@@ -70,6 +63,7 @@ public class DemoGUI {
         cfm.addObserver(cfv);
         cfv.setController(cfc);
         cfv.showUp();
+        */
 
         /*
     	// block call Them chuong frame
@@ -79,5 +73,18 @@ public class DemoGUI {
         sv.setVisible(true);
         sc.setView(sv);
         */
+
+        
+        // test report model
+        try {
+            DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+            Date from = df.parse("16-05-2017");
+            Date to = df.parse("16-06-2017");
+            List<CashFlowReportDto> l = CashFlowReportModel.getData(from, to, "Ngày");
+            l.forEach(e -> System.out.println(String.format("%s, %s", e.getTime(), e.getCash())));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
     }
 }
