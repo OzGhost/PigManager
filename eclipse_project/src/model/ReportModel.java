@@ -27,6 +27,7 @@ public class ReportModel {
                 param,
                 new JRBeanCollectionDataSource(data));
 
+        // file name process
         final String fileName = outputFile.getName();
         final int s = fileName.length();
         final String absoFile = outputFile.getAbsolutePath();

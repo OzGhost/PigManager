@@ -1,11 +1,16 @@
 package model;
 
+import java.io.File;
 import java.sql.ResultSet;
 import java.text.DateFormat;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import common.CashFlowReportDto;
 import common.Constants;
@@ -35,7 +40,7 @@ public class CashFlowReportModel {
         ;
     }
 
-    public static List<CashFlowReportDto> getData (
+    public static List<Object> getData (
             Date from,
             Date to,
             String period
@@ -45,7 +50,7 @@ public class CashFlowReportModel {
             return new ArrayList<>(0);
         }
         
-        final List<CashFlowReportDto> rs = new ArrayList<>();
+        final List<Object> rs = new ArrayList<>();
         final String q = PrepareRetrieveQuery(
                 from,
                 to,
@@ -66,5 +71,43 @@ public class CashFlowReportModel {
         return rs;
     }
 
-
+    public static void BuildReport (
+            Date from,
+            Date to,
+            String period,
+            File outputFile
+    ) throws Exception {
+        DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        String template = new File("").getAbsolutePath() + "/src/res/CashFlowReport.jrxml";
+        
+        // pull data from database
+        List<Object> data = getData(from, to, period);
+        
+        // set label display inside report
+        List<String> label = new ArrayList<>(9);
+        label.addAll(Arrays.asList("BÁO CÁO THU CHI", 
+                "Ngày kết xuất:", 
+                "Từ ngày:", 
+                "Đến ngày:", 
+                "Cộng dồn theo:", 
+                period, 
+                "Loại", 
+                "Ngày phát sinh", 
+                "Số tiền"));
+        
+        // parameters mapping
+        Map<String, Object> param = new HashMap<>();
+        param.put("date4mat", df);
+        param.put("from", from);
+        param.put("to", to);
+        param.put("label", label);
+        param.put("number4mat", NumberFormat.getInstance());
+        
+        ReportModel.reportPrinter(
+                template, 
+                outputFile, 
+                data, 
+                param
+        );
+    }
 }

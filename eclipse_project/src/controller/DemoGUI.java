@@ -1,13 +1,8 @@
 package controller;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-
-import common.CashFlowReportDto;
+import common.RefPayload;
+import db.Entity;
 import db.db;
-import model.CashFlowReportModel;
 
 /**
  * For demo only
@@ -74,7 +69,7 @@ public class DemoGUI {
         sc.setView(sv);
         */
 
-        
+        /*
         // test report model
         try {
             DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
@@ -82,6 +77,24 @@ public class DemoGUI {
             Date to = df.parse("16-06-2017");
             List<CashFlowReportDto> l = CashFlowReportModel.getData(from, to, "Ngày");
             l.forEach(e -> System.out.println(String.format("%s, %s", e.getTime(), e.getCash())));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        */
+        
+        // test report model 2
+        try {
+            db.saveAutoId(
+                Entity.idGenner(
+                    "THUOC", 
+                    "MATHUOC", 
+                    "Thuoc_objtyp", 
+                    "Thuoc_objtyp('111', '1','1','1','1',1,null,"
+                    + "TO_DATE('2017-05-01', 'yyyy-mm-dd'),"
+                    + "TO_DATE('2017-08-01', 'yyyy-mm-dd'))",
+                    new RefPayload("NhaCungCap", "MaNCC", "201704120005", "NhaCungCap_ref")
+                )
+            ); 
         } catch (Exception e) {
             e.printStackTrace();
         }
