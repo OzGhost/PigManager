@@ -29,8 +29,8 @@ import common.Constants;
 import common.FinalTableModel;
 import common.Genner;
 import common.Layer;
-import common.Payable;
 import controller.CashFlowController;
+import db.Payable;
 import model.CashFlowModel;
 
 /**

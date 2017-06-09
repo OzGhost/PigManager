@@ -6,6 +6,8 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -57,6 +59,10 @@ public class Constants {
     public static final String AC_CANCEL = "terminated";
     public static final String AC_ADD = "one_more";
     public static final String AC_RM = "one_less";
+
+    // Date format
+    public static final String FORMAT_OF_DATE = "yyyy-MM-dd HH:mm:ss";
+    public static final DateFormat DATE4MAT = new SimpleDateFormat(FORMAT_OF_DATE);
 
     // Border style
     public static final Border BD_GREYLINE = BorderFactory

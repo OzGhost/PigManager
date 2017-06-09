@@ -2,7 +2,6 @@ package db;
 
 import java.util.List;
 import common.Constants;
-import common.Payable;
 import db.db;
 
 /**

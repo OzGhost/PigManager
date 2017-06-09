@@ -1,4 +1,4 @@
-package common;
+package db;
 
 /**
  * Primary class use for cash flow log
@@ -7,13 +7,12 @@ package common;
  * @author ducnh
  * create: 12-05-2017
  */
-public abstract class Payable {
+public abstract class Payable extends Entity {
 
     protected String payNote;
     protected int price;
 
     // Getter
-    public abstract String getId();
     public abstract String getType();
     public abstract String getDescription();
     public abstract String getProviderId();
@@ -22,6 +21,11 @@ public abstract class Payable {
     }
     public int getPrice() {
         return this.price;
+    }
+    
+    protected Payable(){}
+    protected Payable(String id) {
+        super(id);
     }
 
     // Setter

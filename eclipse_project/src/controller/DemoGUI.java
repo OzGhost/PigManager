@@ -1,10 +1,6 @@
 package controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import common.RefPayload;
-import db.Entity;
+import db.Pig;
 import db.db;
 
 /**
@@ -87,17 +83,18 @@ public class DemoGUI {
         
         // test report model 2
         try {
-//            db.saveAutoId(
-//                Entity.idGenner(
-//                    "THUOC", 
-//                    "MATHUOC", 
-//                    "Thuoc_objtyp", 
-//                    "Thuoc_objtyp('111', '1','1','1','1',1,null,"
-//                    + "TO_DATE('2017-05-01', 'yyyy-mm-dd'),"
-//                    + "TO_DATE('2017-08-01', 'yyyy-mm-dd'))",
-//                    new RefPayload("NhaCungCap", "MaNCC", "201704120005", "NhaCungCap_ref")
-//                )
-//            );
+            /*
+            db.saveAutoId(
+                Entity.idGenner(
+                    "THUOC", 
+                    "MATHUOC", 
+                    "Thuoc_objtyp", 
+                    "Thuoc_objtyp('111', '1','1','1','1',1,null,"
+                    + "TO_DATE('2017-05-01', 'yyyy-mm-dd'),"
+                    + "TO_DATE('2017-08-01', 'yyyy-mm-dd'))",
+                    new RefPayload("NhaCungCap", "MaNCC", "201704120005", "NhaCungCap_ref")
+                )
+            );
             List<RefPayload> ref = new ArrayList<>();
             ref.add(new RefPayload("NhaCungCap", "MaNCC", "201704120007", "NhaCungCap_ref"));
             ref.add(new RefPayload("lichsuthaiky", "malstk", "201710109293", "lichsuthaiky_ref"));
@@ -111,10 +108,15 @@ public class DemoGUI {
                         + "TO_DATE('2017-12-12', 'yyyy-mm-dd'), null)",
                         ref
                     )
-            ); 
+            );
+            */ 
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        Pig p = new Pig("201704177692");
+        p.selfCompleteLiteVersion();
+        System.out.println(p);
         
     }
 }

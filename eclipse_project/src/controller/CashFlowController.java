@@ -5,8 +5,8 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 import common.Constants;
-import common.Payable;
 import common.Watcher;
+import db.Payable;
 import model.CashFlowModel;
 import view.CashFlowView;
 

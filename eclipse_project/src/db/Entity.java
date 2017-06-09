@@ -87,7 +87,42 @@ public class Entity {
             String objtyp,
             String objQuery,
             RefPayload ref
-        ){
-            return idGenner(tableName, idColumn, objtyp, objQuery, Arrays.asList(ref));
-        } 
+    ){
+        return idGenner(tableName, idColumn, objtyp, objQuery, Arrays.asList(ref));
+    } 
+
+    // Fields
+    protected String id;
+    private boolean fullState;
+
+    // Constructors
+    public Entity () {
+        this.id = "";
+        fullState = false;
+    }
+
+    public Entity (String id) {
+        this.id = id;
+        fullState = false;
+    }
+
+    // Getter
+    public String getId () {
+        return this.id;
+    }
+
+    // Setter
+    public void setId (String id) {
+        this.id = id;
+    }
+
+    // Methods
+    protected boolean isFullState () {
+        return this.fullState;
+    }
+    protected void selfCompleteLiteVersion () {
+    }
+    protected void selfCompleteFullVersion () {
+        this.fullState = true;
+    }
 }
