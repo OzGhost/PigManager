@@ -1,7 +1,24 @@
 package controller;
 
+import java.awt.Font;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.List;
+
+import javax.swing.UIManager;
+import javax.swing.plaf.FontUIResource;
+
+import common.Constants;
+//import common.Payable;
 import db.Pig;
+import db.Provider;
 import db.db;
+import model.CashFlowModel;
+import model.StablesModel;
+import model.ToolModel;
+import view.CashFlowView;
+import view.StablesView;
+import view.ToolView;
 
 /**
  * For demo only
@@ -11,14 +28,12 @@ import db.db;
 public class DemoGUI {
     public static void main (String[] args) {
         // Database global connection initial
-        db.init("orcBase", "c##oz", "ngaymai");
+         db.init("xdb", "c##java", "1807");
         
-        /*
         // Change look and feel
         try {
-//            UIManager.setLookAndFeel("com.jtattoo.plaf" +
-//                    ".aluminium.AluminiumLookAndFeel");
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+           UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
+           //UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch(Exception e) {
             e.printStackTrace();
         }
@@ -36,7 +51,7 @@ public class DemoGUI {
           if (value != null && value instanceof javax.swing.plaf.FontUIResource)
             UIManager.put (key, f);
         }
-
+/*
         // Prepare data for cash flow log
         List<Payable> pigs = new ArrayList<>();
         Provider pv = new Provider("201704120003", "Trai heo giong 9g");
@@ -57,66 +72,25 @@ public class DemoGUI {
         cfm.addObserver(cfv);
         cfv.setController(cfc);
         cfv.showUp();
-        */
-
-        /*
-    	// block call Them chuong frame
+*/
+        
+/*    	// block call Them chuong frame
         StablesView sv = new StablesView();
         StablesController sc = new StablesController();
-        sv.setController(sc);
-        sv.setVisible(true);
+        StablesModel sm= new StablesModel();
         sc.setView(sv);
-        */
+        sc.setModel(sm);
+        sv.setController(sc); 
+	sv.showUp();
+*/      
+        //block call vatdung frame
+        ToolView tv= new ToolView();
+        ToolController tc = new ToolController();
+        ToolModel tm = new ToolModel();
+        tc.setView(tv);
+        tc.setModel(tm);
+        tv.setController(tc);
+        tv.showUp();
 
-        /*
-        // test report model
-        try {
-            DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
-            Date from = df.parse("16-05-2017");
-            Date to = df.parse("16-06-2017");
-            List<CashFlowReportDto> l = CashFlowReportModel.getData(from, to, "Ngày");
-            l.forEach(e -> System.out.println(String.format("%s, %s", e.getTime(), e.getCash())));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        */
-        
-        // test report model 2
-        try {
-            /*
-            db.saveAutoId(
-                Entity.idGenner(
-                    "THUOC", 
-                    "MATHUOC", 
-                    "Thuoc_objtyp", 
-                    "Thuoc_objtyp('111', '1','1','1','1',1,null,"
-                    + "TO_DATE('2017-05-01', 'yyyy-mm-dd'),"
-                    + "TO_DATE('2017-08-01', 'yyyy-mm-dd'))",
-                    new RefPayload("NhaCungCap", "MaNCC", "201704120005", "NhaCungCap_ref")
-                )
-            );
-            List<RefPayload> ref = new ArrayList<>();
-            ref.add(new RefPayload("NhaCungCap", "MaNCC", "201704120007", "NhaCungCap_ref"));
-            ref.add(new RefPayload("lichsuthaiky", "malstk", "201710109293", "lichsuthaiky_ref"));
-            db.saveAutoId(
-                    Entity.idGenner(
-                        "TINH", 
-                        "MATINH", 
-                        "Tinh_objtyp", 
-                        "Tinh_objtyp('111', 'men', 'vn', 'ko co', null,"
-                        + "TO_DATE('2017-12-01', 'yyyy-mm-dd'),"
-                        + "TO_DATE('2017-12-12', 'yyyy-mm-dd'), null)",
-                        ref
-                    )
-            );
-            */ 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        Pig p = new Pig("201704177692");
-        p.selfCompleteLiteVersion();
-        System.out.println(p);
-        
     }
 }

@@ -43,11 +43,12 @@ public class StablesAddController extends ControllerBase<StablesAddModel, Stable
                 describe = view.describe_tx.getText();
                 db.saveAutoId(Entity.idGenner("CHUONG","MACHUONG","CHUONG_objtyp",
                             "CHUONG_objtyp('abc','2','"+number+"','"+location+"','"+describe+"')"));
+                JOptionPane.showMessageDialog(null,"Success");
                     }catch(NumberFormatException e){
                         JOptionPane.showMessageDialog(null,"Failed, 'Số lượng tối đa' values must be number");
                     }   
-                JOptionPane.showMessageDialog(null,"Success");
+                
         }
-        super.actionPerformed(ae);
+        //super.actionPerformed(ae);
     }
 }
