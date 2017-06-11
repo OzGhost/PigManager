@@ -49,8 +49,8 @@ public class WarehouseManagerController extends ControllerBase<WarehouseManagerM
 	public void LoadThuocLenTable(int luachon, String tenthuoc)
 	{
 		final String[] _columnsTBKho =
-		{ "Mã thuốc", "Tên thuốc", "Thành phần", "Chỉ định", "Đơn vị", "Còn lại", "Mã nhà cung cấp", "Nhà cung cấp",
-				"Ngày sản xuất", "Ngày hết hạn" };
+		{ "Ma thuoc", "Ten thuoc", "Thanh phan", "Chi dinh", "Don vi", "Con lai", "Ma nha cung cap", "Nha cung cap",
+				"Ngay san xuat", "Ngay het han" };
 		view.dtm = new DefaultTableModel(_columnsTBKho, 0);
 
 		view._tbKho.setModel(view.dtm);
@@ -100,8 +100,8 @@ public class WarehouseManagerController extends ControllerBase<WarehouseManagerM
 	{
 
 		final String[] _columnsTBKho =
-		{ "Mã thức ăn", "Mã loại thức ăn", "Loại thức ăn", "Còn lại", "Đơn vị", "Ngày sản xuất", "Ngày hết hạn",
-				"Mã nhà cung cấp", "Nhà cung cấp" };
+		{ "Ma thuc an", "Ma loai thuc an", "Loai thuc an", "Con lai", "Don vi", "Ngay san xuat", "Ngay het han",
+				"Ma nha cung cap", "Nha cung cap" };
 		view.dtm = new DefaultTableModel(_columnsTBKho, 0);
 
 		view._tbKho.setModel(view.dtm);
@@ -159,11 +159,11 @@ public class WarehouseManagerController extends ControllerBase<WarehouseManagerM
 					+ "ngaysanxuat = TO_DATE('" + datensx + "', 'yyyy-mm-dd'), ngayhethan = TO_DATE('" + datenhh
 					+ "', 'yyyy-mm-dd') " + "where mathuoc = '" + mathuoc + "'";
 			WarehouseManagerModel.editData(query);
-			JOptionPane.showMessageDialog(null, "Cập nhật thành công");
+			JOptionPane.showMessageDialog(null, "Cap nhat thanh cong");
 		}
 		catch (Exception e)
 		{
-			JOptionPane.showMessageDialog(null, "Cập nhật không thành công");
+			JOptionPane.showMessageDialog(null, "Cap nhat khong thanh cong");
 		}
 
 	}
@@ -180,11 +180,11 @@ public class WarehouseManagerController extends ControllerBase<WarehouseManagerM
 					+ "', 'yyyy-mm-dd'), " + "ngayhethan = TO_DATE('" + datenhh + "', 'yyyy-mm-dd') "
 					+ "where MATHUCAN = '" + mathucan + "' ";
 			WarehouseManagerModel.editData(query);
-			JOptionPane.showMessageDialog(null, "Cập nhật thành công");
+			JOptionPane.showMessageDialog(null, "Cap nhat thanh cong");
 		}
 		catch (Exception e)
 		{
-			JOptionPane.showMessageDialog(null, "Cập nhật không thành công");
+			JOptionPane.showMessageDialog(null, "Cap nhat khong thanh cong");
 		}
 	}
 
@@ -289,7 +289,7 @@ public class WarehouseManagerController extends ControllerBase<WarehouseManagerM
 								+ view._txtfConLai.getText() + ",null," + "TO_DATE('" + datensx + "', 'yyyy-mm-dd'),"
 								+ "TO_DATE('" + datenhh + "', 'yyyy-mm-dd'))",
 						new RefPayload("NhaCungCap", "MaNCC", "" + view._txtfMaNCC.getText() + "", "NhaCungCap_ref")));
-				JOptionPane.showMessageDialog(null, "Thêm thành công");
+				JOptionPane.showMessageDialog(null, "Them thanh cong");
 				LoadThuocLenTable(0, "");
 			}
 			else
@@ -303,7 +303,7 @@ public class WarehouseManagerController extends ControllerBase<WarehouseManagerM
 								"ThucAn_objtyp('111', null, null, " + view._txtfConLai.getText() + "," + "TO_DATE('"
 										+ datensx + "', 'yyyy-mm-dd')," + "TO_DATE('" + datenhh + "', 'yyyy-mm-dd'))",
 								ref));
-				JOptionPane.showMessageDialog(null, "Thêm thành công");
+				JOptionPane.showMessageDialog(null, "Them thanh cong");
 				LoadThucAnLenTable(0, "");
 			}
 
@@ -319,12 +319,12 @@ public class WarehouseManagerController extends ControllerBase<WarehouseManagerM
 				row = view._tbKho.getSelectedRow();
 				if (row == -1)
 				{
-					JOptionPane.showMessageDialog(null, "Chọn dòng muốn xóa");
+					JOptionPane.showMessageDialog(null, "Chon dong muon xoa");
 				}
 				String id = view._tbKho.getModel().getValueAt(row, 0).toString();
 
 				WarehouseManagerModel.editData("DELETE FROM THUOC WHERE MATHUOC = '" + id + "'");
-				JOptionPane.showMessageDialog(null, "Xóa thành công");
+				JOptionPane.showMessageDialog(null, "Xoa thanh cong");
 				LoadThuocLenTable(0, "");
 			}
 			else
@@ -332,11 +332,11 @@ public class WarehouseManagerController extends ControllerBase<WarehouseManagerM
 				row = view._tbKho.getSelectedRow();
 				if (row == -1)
 				{
-					JOptionPane.showMessageDialog(null, "Chọn dòng muốn xóa");
+					JOptionPane.showMessageDialog(null, "Chon dong muon xoa");
 				}
 				String id = view._tbKho.getModel().getValueAt(row, 0).toString();
 				WarehouseManagerModel.editData("DELETE FROM THUCAN WHERE MATHUCAN = '" + id + "'");
-				JOptionPane.showMessageDialog(null, "Xóa thành công");
+				JOptionPane.showMessageDialog(null, "Xoa thanh cong");
 				LoadThucAnLenTable(0, "");
 			}
 			return;
@@ -353,7 +353,7 @@ public class WarehouseManagerController extends ControllerBase<WarehouseManagerM
 				row = view._tbKho.getSelectedRow();
 				if (row == -1)
 				{
-					JOptionPane.showMessageDialog(null, "Chọn dòng muốn cập nhật");
+					JOptionPane.showMessageDialog(null, "Chon dong muon cap nhat");
 				}
 				else
 				{
@@ -422,7 +422,7 @@ public class WarehouseManagerController extends ControllerBase<WarehouseManagerM
 				}
 				view.dtmXK.removeRow(row);
 			}
-			JOptionPane.showMessageDialog(null, "Xuất kho thành công");
+			JOptionPane.showMessageDialog(null, "Xuat kho thanh cong");
 			return;
 		}
 
@@ -434,7 +434,7 @@ public class WarehouseManagerController extends ControllerBase<WarehouseManagerM
 
 			if (row == -1)
 			{
-				JOptionPane.showMessageDialog(null, "Chọn dòng muốn thao tác");
+				JOptionPane.showMessageDialog(null, "Chon dong muon thao tac");
 			}
 			else
 			{
@@ -442,7 +442,7 @@ public class WarehouseManagerController extends ControllerBase<WarehouseManagerM
 
 				if (view._rdbtThuoc.isSelected())
 				{
-					_giamconlai = Float.parseFloat(JOptionPane.showInputDialog(view, "Nhập số lượng"));
+					_giamconlai = Float.parseFloat(JOptionPane.showInputDialog(view, "Nhap so luong"));
 					if (f >= _giamconlai && _giamconlai != 0)
 					{
 						view.dtmXK.addRow(new Object[]
@@ -453,15 +453,14 @@ public class WarehouseManagerController extends ControllerBase<WarehouseManagerM
 					}
 					else
 					{
-						JOptionPane.showMessageDialog(null, "Số lượng quá nhỏ hoặc quá lớn");
+						JOptionPane.showMessageDialog(null, "So luong qua nho hoac qua lon");
 					}
 				}
 				else
 				{
-					_giamconlai = Float.parseFloat(JOptionPane.showInputDialog(view, "Nhập số lượng"));
+					_giamconlai = Float.parseFloat(JOptionPane.showInputDialog(view, "Nhap so luong"));
 					if (f >= _giamconlai && _giamconlai != 0)
 					{
-						JOptionPane.showMessageDialog(null, "ok");
 						view.dtmXK.addRow(new Object[]
 						{ "Thức ăn", view._tbKho.getModel().getValueAt(row, 0),
 								view._tbKho.getModel().getValueAt(row, 2), _giamconlai,
@@ -470,7 +469,7 @@ public class WarehouseManagerController extends ControllerBase<WarehouseManagerM
 					}
 					else
 					{
-						JOptionPane.showMessageDialog(null, "Số lượng quá nhỏ hoặc quá lớn");
+						JOptionPane.showMessageDialog(null, "So luong qua nho hoac qua lon");
 					}
 				}
 			}
@@ -485,7 +484,7 @@ public class WarehouseManagerController extends ControllerBase<WarehouseManagerM
 			int row = view._tbXuatKho.getSelectedRow();
 			if (row == -1)
 			{
-				JOptionPane.showMessageDialog(null, "Chọn dòng muốn thao tác");
+				JOptionPane.showMessageDialog(null, "Chon dong muon thao tac");
 			}
 			else
 			{

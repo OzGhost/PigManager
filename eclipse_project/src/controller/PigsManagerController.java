@@ -44,8 +44,8 @@ public class PigsManagerController extends ControllerBase<PigsManagerModel, Pigs
 	public void LoadHeo(int luachon, String txttimkiem)
 	{
 		final String[] _columnsTBHeo =
-		{ "Mã heo", "Chiều cao", "Chiều dài", "Cân nặng", "Ngày nuôi", "Ngày bán", "Mã thẻ tai", "Mã nguồn",
-				"Mã nhà cung cấp", "Nhà cung cấp", "Mã loại thức ăn", "Tên loại thức ăn", "Mã chuồng" };
+		{ "Ma heo", "Chieu cao", "Chieu dai", "Can nang", "Ngay nuoi", "Ngay ban", "Ma the tai", "Ma nguon",
+				"Ma nha cung cap", "Nha cung cap", "Ma loai thuc an", "Ten loai thuc an", "Ma chuong" };
 		view.dtm = new DefaultTableModel(_columnsTBHeo, 0);
 
 		view._tbHeo.setModel(view.dtm);
@@ -156,12 +156,12 @@ public class PigsManagerController extends ControllerBase<PigsManagerModel, Pigs
 		if (PigsManagerView.ADD_COMMAND.equals(cmd))
 		{
 			List<RefPayload> ref = new ArrayList<>();
-			if (view._txtfMaNguon.getText().toString().isEmpty())
+			if (!view._cbMaNguon.isSelected())
 			{
 				if (view._txtfMaNCC.getText() == "" || view._txtfMaLoaiThucAn.getText() == ""
 						|| view._txtfMaChuong.getText() == "")
 				{
-					JOptionPane.showMessageDialog(null, "Thông tin chưa đầy đủ");
+					JOptionPane.showMessageDialog(null, "Thong tin chua day du");
 					return;
 				}
 				ref.add(new RefPayload("NhaCungCap", "MaNCC", "" + view._txtfMaNCC.getText() + "", "NhaCungCap_ref"));
@@ -193,7 +193,7 @@ public class PigsManagerController extends ControllerBase<PigsManagerModel, Pigs
 								+ "', TO_DATE('" + dateNgayNuoi + "', 'yyyy-mm-dd'), null, null, null, null, null, '"
 								+ view._txtfMaHeo.getText() + "',LichSuDiChuyen_ntabtyp())",
 						ref));
-				JOptionPane.showMessageDialog(null, "Thêm thành công");
+				JOptionPane.showMessageDialog(null, "Them thanh cong");
 				LoadHeo(0, "");
 				ResetText();
 			}
@@ -209,20 +209,37 @@ public class PigsManagerController extends ControllerBase<PigsManagerModel, Pigs
 		{
 			int row = -1;
 			row = view._tbHeo.getSelectedRow();
+			String query= "";
 			if (row == -1)
 			{
-				JOptionPane.showMessageDialog(null, "Chọn dòng muốn cập nhật");
+				JOptionPane.showMessageDialog(null, "Chon dong muon cap nhat");
 				return;
 			}
-			String query = "update heo set CHIEUCAO = " + view._txtfChieuCao.getText() + ", ChieuDai = "
-					+ view._txtfChieuDai.getText() + ", cannang = " + view._txtfCanNang.getText()
-					+ ", NGUON_REF = (select ref(h) from heo h where maheo = '" + view._txtfMaNguon.getText()
-					+ "'), loaithucan_ref = (select ref(lta) from loaithucan lta where maloaithucan = '"
-					+ view._txtfMaLoaiThucAn.getText()
-					+ "'), Chuong_ref = (select ref(c) from chuong c where machuong = '" + view._txtfMaChuong.getText()
-					+ "') where maheo = '" + view._txtfMaHeo.getText() + "'";
+			//check vao ma nguon
+			if (!view._cbMaNguon.isSelected())
+			{
+				query = "update heo set CHIEUCAO = " + view._txtfChieuCao.getText() + ", ChieuDai = "
+						+ view._txtfChieuDai.getText() + ", cannang = " + view._txtfCanNang.getText()
+						+ ", NHACUNGCAP_REF = (select ref(ncc) from nhacungcap ncc where mancc = '" + view._txtfMaNCC.getText()
+						+ "'), loaithucan_ref = (select ref(lta) from loaithucan lta where maloaithucan = '"
+						+ view._txtfMaLoaiThucAn.getText()
+						+ "'), Chuong_ref = (select ref(c) from chuong c where machuong = '" + view._txtfMaChuong.getText()
+						+ "') where maheo = '" + view._txtfMaHeo.getText() + "'";
+			}
+			else
+			{
+				query = "update heo set CHIEUCAO = " + view._txtfChieuCao.getText() + ", ChieuDai = "
+						+ view._txtfChieuDai.getText() + ", cannang = " + view._txtfCanNang.getText()
+						+ ", NGUON_REF = (select ref(h) from heo h where maheo = '" + view._txtfMaNguon.getText()
+						+ "'), loaithucan_ref = (select ref(lta) from loaithucan lta where maloaithucan = '"
+						+ view._txtfMaLoaiThucAn.getText()
+						+ "'), Chuong_ref = (select ref(c) from chuong c where machuong = '" + view._txtfMaChuong.getText()
+						+ "') where maheo = '" + view._txtfMaHeo.getText() + "'";				
+			}
+			
+			
 			PigsManagerModel.editData(query);
-			JOptionPane.showMessageDialog(null, "Cập nhật thành công");
+			JOptionPane.showMessageDialog(null, "Cap nhat thanh cong");
 			LoadHeo(1, view._txtfTimKiem.getText());
 			ResetText();
 			return;
@@ -234,13 +251,13 @@ public class PigsManagerController extends ControllerBase<PigsManagerModel, Pigs
 			int row = view._tbHeo.getSelectedRow();
 			if (row < 0)
 			{
-				JOptionPane.showMessageDialog(null, "Chọn dòng muốn xóa");
+				JOptionPane.showMessageDialog(null, "Chon dong muon xoa");
 			}
 			else
 			{
 				String query = "delete from heo where maheo = '" + view._tbHeo.getModel().getValueAt(row, 0) + "'";
 				PigsManagerModel.editData(query);
-				JOptionPane.showMessageDialog(null, "Xóa thành công");
+				JOptionPane.showMessageDialog(null, "Xoa thanh cong");
 				LoadHeo(0, "");
 				ResetText();
 			}
@@ -282,7 +299,7 @@ public class PigsManagerController extends ControllerBase<PigsManagerModel, Pigs
 		// Cho an
 		if (PigsManagerView.EAT_COMMAND.equals(cmd))
 		{
-			JOptionPane.showMessageDialog(null, "Chức năng chưa hoàn thiện");
+			JOptionPane.showMessageDialog(null, "Chua nang chua hoan thien");
 			return;
 		}
 
@@ -306,7 +323,7 @@ public class PigsManagerController extends ControllerBase<PigsManagerModel, Pigs
 			int row = view._tbHeo.getSelectedRow();
 			if (row == -1)
 			{
-				JOptionPane.showMessageDialog(null, "Cần chọn heo");
+				JOptionPane.showMessageDialog(null, "Can chon heo");
 				return;
 			}
 			String var = view._tbHeo.getModel().getValueAt(row, 0).toString();

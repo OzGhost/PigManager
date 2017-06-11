@@ -8,8 +8,6 @@ import javax.swing.plaf.FontUIResource;
 
 import common.Constants;
 import db.db;
-import model.PigsManagerModel;
-import view.PigsManagerView;
 
 /**
  * For demo only
@@ -93,13 +91,13 @@ public class DemoGUI {
 //        whv.showUp();
         
         
-        PigsManagerModel pmm = new PigsManagerModel();
-        PigsManagerView pmv = new PigsManagerView();
-        PigsManagerController pmc = new PigsManagerController();
-        pmc.setView(pmv);
-        pmc.setModel(pmm);
-        pmv.setController(pmc);
-        pmv.showUp(); 
+//        PigsManagerModel pmm = new PigsManagerModel();
+//        PigsManagerView pmv = new PigsManagerView();
+//        PigsManagerController pmc = new PigsManagerController();
+//        pmc.setView(pmv);
+//        pmc.setModel(pmm);
+//        pmv.setController(pmc);
+//        pmv.showUp(); 
         
         
 //        BenhAnView bav=new BenhAnView();

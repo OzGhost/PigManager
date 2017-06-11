@@ -37,7 +37,7 @@ public class ProviderManagerController extends ControllerBase<ProviderManagerMod
 	{
 		final String[] _columnsTBKho =
             {
-                "Mã", "Tên nhà cung cấp", "Địa chỉ", "Số điện thoại", "Mô tả", "Nợ phải trả"
+                "Ma", "Ten nha cung cap", "Dia chi", "So dien thoai", "Mo ta", "No phai tra"
             };
             view.dtm = new DefaultTableModel(_columnsTBKho,0);
 
@@ -90,7 +90,7 @@ public class ProviderManagerController extends ControllerBase<ProviderManagerMod
         {
             if ("".equals(view._txtfTenNCC.getText()) || "".equals(view._txtfSDT.getText()) || "".equals(view._txtfDiaChi.getText()))
             {
-                JOptionPane.showMessageDialog(null, "Thông tin chưa đầy đủ");
+                JOptionPane.showMessageDialog(null, "Thong tin chua day du");
             }
             else
             {
@@ -98,12 +98,12 @@ public class ProviderManagerController extends ControllerBase<ProviderManagerMod
                 {
                     int _nophaitra = Integer.parseInt(view._txtfNoPhaiTra.getText());
                     db.saveAutoId(Entity.idGenner("NHACUNGCAP","MANCC","NhaCungCap_objtyp","NhaCungCap_objtyp('123', '"+ view._txtfTenNCC.getText() +"', '"+ view._txtfDiaChi.getText()+ "', '"+ view._txtfSDT.getText() +"', '"+ view._txtaMoTa.getText() +"', '"+ _nophaitra +"')"));   
-                    JOptionPane.showMessageDialog(null, "Thêm thành công!");
+                    JOptionPane.showMessageDialog(null, "Them thanh cong!");
                     LoadProvider();
                 }
                 catch (NumberFormatException b)
                 {
-                    JOptionPane.showMessageDialog(null, "Nợ phải trả là giá trị số");
+                    JOptionPane.showMessageDialog(null, "No phai tra la so");
                 }
             }
             return;
@@ -115,7 +115,7 @@ public class ProviderManagerController extends ControllerBase<ProviderManagerMod
             int row = view._tbNCC.getSelectedRow();
             if (row == -1)
             {
-                JOptionPane.showMessageDialog(null, "Cần chọn nhà cung cấp muốn cập nhật thông tin");
+                JOptionPane.showMessageDialog(null, "Chon nha cung cap muon cap nhat thong tin");
             }
             else
             {
@@ -123,7 +123,7 @@ public class ProviderManagerController extends ControllerBase<ProviderManagerMod
                 String _maNCC = view._tbNCC.getModel().getValueAt(row, 0).toString();
                 String _query = "update NHACUNGCAP SET TENNCC = '"+ view._txtfTenNCC.getText() +"', DIACHI = '"+ view._txtfDiaChi.getText() +"',SODIENTHOAI='"+ view._txtfSDT.getText() +"',MOTA='"+ view._txtaMoTa.getText() +"',NOPHAITRA='"+ _nophaitra +"' where MANCC = "+_maNCC;
                 db.send(_query);   
-                JOptionPane.showMessageDialog(null, "Cập nhật thành công");
+                JOptionPane.showMessageDialog(null, "Cap nhat thanh cong");
                 LoadProvider();
             }
             return;
@@ -135,14 +135,14 @@ public class ProviderManagerController extends ControllerBase<ProviderManagerMod
             int row = view._tbNCC.getSelectedRow();
             if (row == -1)
             {
-                JOptionPane.showMessageDialog(null, "Cần chọn nhà cung cấp muốn cập nhật thông tin");
+                JOptionPane.showMessageDialog(null, "Chon nha cung cap muon xoa");
             }
             else
             {
                 String _maNCC = view._tbNCC.getModel().getValueAt(row, 0).toString();
                 String _query = "DELETE FROM NHACUNGCAP WHERE MANCC ="+_maNCC;
                 db.send(_query);   
-                JOptionPane.showMessageDialog(null, "Xóa thành công");
+                JOptionPane.showMessageDialog(null, "Xoa thanh cong");
                 LoadProvider();
             }
             return;
@@ -153,7 +153,7 @@ public class ProviderManagerController extends ControllerBase<ProviderManagerMod
             int row = view._tbNCC.getSelectedRow();
             if (row == -1)
             {
-                JOptionPane.showMessageDialog(null, "Cần chọn nhà cung cấp");
+                JOptionPane.showMessageDialog(null, "Can chon nha cung cap");
                 return;
             }
             String var = view._tbNCC.getModel().getValueAt(row, 0).toString();

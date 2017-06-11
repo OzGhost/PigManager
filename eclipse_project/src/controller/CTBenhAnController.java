@@ -72,29 +72,29 @@ public class CTBenhAnController extends ControllerBase<CTBenhAnModel, CTBenhAnVi
 			{
 				switch (view.cbxTimKiem.getSelectedItem().toString())
 				{
-				case "Mã bệnh":
+				case "Ma benh":
 				{
 					rs = CTBenhAnModel.getData("SELECT ls.benh_ref.mabenh,ls.ngayphatbenh,ls.ngayhetbenh,ls.tinhtrang,ls.ghichu"
 							+ " FROM BenhAn b, TABLE (b.chitietbenh_ntab) ls " + " WHERE MABENHAN='" + view.mabenhan
 							+ "'" + " and ls.benh_ref.mabenh like '%" + view.txtTimKiem.getText() + "%'");
 					break;
 				}
-				case "Tình trạng":
+				case "Tinh trang":
 				{
 					String TinhTrang;
 					switch (view.cbxTinhTrang.getSelectedItem().toString())
 					{
-					case "Chưa chữa trị":
+					case "Chua chua tri":
 					{
 						TinhTrang = "CCT";
 						break;
 					}
-					case "Đang chữa trị":
+					case "Dang chua tri":
 					{
 						TinhTrang = "DCT";
 						break;
 					}
-					case "Không chữa được":
+					case "Khong chua duoc":
 					{
 						TinhTrang = "KCD";
 						break;
@@ -138,11 +138,12 @@ public class CTBenhAnController extends ControllerBase<CTBenhAnModel, CTBenhAnVi
 			}
 			return;
 		}
+		
 		// insert button event
 		if (CTBenhAnView.INSERT_COMMAND.equals(cmd))
 		{
 			if (view.dateNgayPhatHien.getDate() == null || view.txtMaBenh.getText().isEmpty())
-				JOptionPane.showMessageDialog(null, "Mã bệnh và ngày phát hiện không được để trống!");
+				JOptionPane.showMessageDialog(null, "Ma benh va ngay phat hien khong duoc de trong!");
 			else
 			{
 				try
@@ -152,17 +153,17 @@ public class CTBenhAnController extends ControllerBase<CTBenhAnModel, CTBenhAnVi
 					String query;
 					switch (view.cbxTinhTrang.getSelectedItem().toString())
 					{
-					case "Chưa chữa trị":
+					case "Chua chua tri":
 					{
 						TinhTrang = "CCT";
 						break;
 					}
-					case "Đang chữa trị":
+					case "Dang chua tri":
 					{
 						TinhTrang = "DCT";
 						break;
 					}
-					case "Không chữa được":
+					case "Khong chua duoc":
 					{
 						TinhTrang = "KCD";
 						break;
@@ -180,16 +181,19 @@ public class CTBenhAnController extends ControllerBase<CTBenhAnModel, CTBenhAnVi
 							+ "'" + dateHB + "', " + "'" + TinhTrang + "', " + "'" + view.txtGhiChu.getText() + "' "
 							+ "from benh b where b.mabenh='" + view.txtMaBenh.getText() + "'";
 					db.send(query);
-					JOptionPane.showMessageDialog(null, "Thêm thành công");
+					JOptionPane.showMessageDialog(null, "Them thanh cong");
 					loadData();
 				}
 				catch (Exception e1)
 				{
 					e1.printStackTrace();
-					JOptionPane.showMessageDialog(null, "Quá trình thêm xảy ra lỗi");
+					JOptionPane.showMessageDialog(null, "Qua trinh them xay ra loi");
 				}
 			}
+			return;
 		}
+		
+		
 		// delete button event
 		if (CTBenhAnView.DELETE_COMMAND.equals(cmd))
 		{
@@ -197,7 +201,7 @@ public class CTBenhAnController extends ControllerBase<CTBenhAnModel, CTBenhAnVi
 			row = view.tbCTBenh.getSelectedRowCount();
 			if (row == -1)
 			{
-				JOptionPane.showMessageDialog(null, "Hãy chọn dòng cần xóa!");
+				JOptionPane.showMessageDialog(null, "Hay chon dong can xoa!");
 			}
 			else
 			{
@@ -209,12 +213,12 @@ public class CTBenhAnController extends ControllerBase<CTBenhAnModel, CTBenhAnVi
 							+ "where b.mabenhan='" + view.mabenhan + "') t " + "Where t.NgayPhatBenh='" + datePH + "' "
 							+ "and t.benh_ref.mabenh='" + view.txtMaBenh.getText() + "'";
 					db.send(query);
-					JOptionPane.showMessageDialog(null, "Đã xóa thành công!");
+					JOptionPane.showMessageDialog(null, "Da xoa thanh cong!");
 					loadData();
 				}
 				catch (Exception e1)
 				{
-					JOptionPane.showMessageDialog(null, "Xảy ra lỗi!");
+					JOptionPane.showMessageDialog(null, "Xay ra loi!");
 				}
 			}
 		}

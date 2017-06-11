@@ -66,7 +66,7 @@ public class BenhAnController extends ControllerBase<BenhAnModel, BenhAnView> im
 			{
 				switch (view.cbxTimKiem.getSelectedItem().toString())
 				{
-				case "Mã bệnh án":
+				case "Ma benh an":
 				{
 					rs = BenhAnModel.getData("SELECT BA.MABENHAN,BA.HEO_REF.MAHEO,BA.NGAYTAO FROM BENHAN BA"
 							+ " WHERE BA.MABENHAN LIKE '%" + view.txtTimKiem.getText() + "%'");
@@ -103,7 +103,7 @@ public class BenhAnController extends ControllerBase<BenhAnModel, BenhAnView> im
 		if (BenhAnView.INSERT_COMMAND.equals(cmd))
 		{
 			if (view.dateNgayTao.getDate() == null)
-				JOptionPane.showMessageDialog(null, "Bạn cần phải điền đầy đủ các thông tin cần thiết!");
+				JOptionPane.showMessageDialog(null, "Ban can phai dien day du cac thong tin can thiet!");
 			else
 			{
 				try
@@ -114,13 +114,13 @@ public class BenhAnController extends ControllerBase<BenhAnModel, BenhAnView> im
 							"BenhAn_objtyp('111', null, TO_DATE('" + dateNgayTao
 									+ "','yyyy-mm-dd'), LichSuDungThuoc_ntabtyp(), ChiTietBenh_ntabtyp())",
 							new RefPayload("HEO", "MAHEO", "201701029382", "HEO_ref")));
-					JOptionPane.showMessageDialog(null, "Thêm thành công");
+					JOptionPane.showMessageDialog(null, "Them thanh cong");
 					loadData();
 				}
 				catch (Exception e1)
 				{
 					e1.printStackTrace();
-					JOptionPane.showMessageDialog(null, "Quá trình thêm xảy ra lỗi");
+					JOptionPane.showMessageDialog(null, "Qua trinh them xay ra loi");
 				}
 			}
 			return;
@@ -132,14 +132,14 @@ public class BenhAnController extends ControllerBase<BenhAnModel, BenhAnView> im
 			int row = view.tbBenhAn.getSelectedRow();
 			if (row == -1)
 			{
-				JOptionPane.showMessageDialog(null, "Bạn chưa chọn dòng");
+				JOptionPane.showMessageDialog(null, "Ban chua chon dong");
 			}
 			else
 			{
 				String query = "DELETE FROM BENHAN WHERE MABENHAN = '"
 						+ view.tbBenhAn.getModel().getValueAt(row, 0).toString() + "' ";
 				BenhAnModel.editData(query);
-				JOptionPane.showMessageDialog(null, "Đã xóa thành công!");
+				JOptionPane.showMessageDialog(null, "Xoa thanh cong!");
 				loadData();
 			}
 			return;
@@ -153,7 +153,7 @@ public class BenhAnController extends ControllerBase<BenhAnModel, BenhAnView> im
 			row = view.tbBenhAn.getSelectedRow();
 			if (row == -1)
 			{
-				JOptionPane.showMessageDialog(null, "Hãy chọn một dòng!");
+				JOptionPane.showMessageDialog(null, "Hay chon 1 dong!");
 			}
 			else
 			{
@@ -161,7 +161,7 @@ public class BenhAnController extends ControllerBase<BenhAnModel, BenhAnView> im
 						+ view.txtMaSoHeo.getText() + "'), NGAYTAO = TO_DATE('" + datensx
 						+ "', 'yyyy-mm-dd') where MABENHAN ='" + view.txtMaBenhAn.getText() + "'";
 				db.send(query);
-				JOptionPane.showMessageDialog(null, "Đã cập nhật!");
+				JOptionPane.showMessageDialog(null, "Da cap nhat!");
 				loadData();
 			}
 			return;
@@ -174,7 +174,7 @@ public class BenhAnController extends ControllerBase<BenhAnModel, BenhAnView> im
 			row = view.tbBenhAn.getSelectedRow();
 			if (row == -1)
 			{
-				JOptionPane.showMessageDialog(null, "Hãy chọn một bệnh án!");
+				JOptionPane.showMessageDialog(null, "Hay chon 1 benh an!");
 			}
 			else
 			{
@@ -197,7 +197,7 @@ public class BenhAnController extends ControllerBase<BenhAnModel, BenhAnView> im
 			row = view.tbBenhAn.getSelectedRow();
 			if (row == -1)
 			{
-				JOptionPane.showMessageDialog(null, "Hãy chọn một bệnh án!");
+				JOptionPane.showMessageDialog(null, "Hay chon 1 benh an!");
 			}
 			else
 			{
