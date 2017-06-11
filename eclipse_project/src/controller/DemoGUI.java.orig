@@ -27,6 +27,8 @@ import model.ToolModel;
 import view.CashFlowView;
 import view.StablesView;
 import view.ToolView;
+>>>>>>> ffafe9a9db0386c53a90289da9e270e90159c252
+
 /**
  * For demo only
  * @author ducnh
@@ -79,19 +81,17 @@ public class DemoGUI {
         cfm.addObserver(cfv);
         cfv.setController(cfc);
         cfv.showUp();
-        */
+*/
         
-        /*
-    	// block call Them chuong frame
+/*    	// block call Them chuong frame
         StablesView sv = new StablesView();
         StablesController sc = new StablesController();
         StablesModel sm= new StablesModel();
         sc.setView(sv);
         sc.setModel(sm);
         sv.setController(sc); 
-	    sv.showUp();
-        */
-        
+	sv.showUp();
+*/      
         //block call vatdung frame
         ToolView tv= new ToolView();
         ToolController tc = new ToolController();
@@ -101,6 +101,7 @@ public class DemoGUI {
         tv.setController(tc);
         tv.showUp();
 
+<<<<<<< HEAD
         /*
         List<SickLog> sls = SickLog.findAllLiteVersion();
         SickLog s = sls.get(1);
@@ -126,5 +127,7 @@ public class DemoGUI {
         } catch (Exception e) {
             e.printStackTrace();
         }
+=======
+>>>>>>> ffafe9a9db0386c53a90289da9e270e90159c252
     }
 }

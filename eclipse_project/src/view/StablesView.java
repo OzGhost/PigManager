@@ -49,6 +49,7 @@ public class StablesView extends ViewBase {
     private JButton addBt;
     private JButton deleteBt;
     private JButton cancelBt;
+    private JButton selectBt;
     private JPanel panel;
     private JLabel stables_id_lb;
     private JLabel status_lb;
@@ -67,6 +68,7 @@ public class StablesView extends ViewBase {
     public static final String ADD_COMMAND="add";
     public static final String DELETE_COMMAND="delete";
     public static final String CANCEL_COMMAND="cancel";
+    public static final String SELECT_COMMAND="select";
     
     public static DefaultTableModel dtm;
      
@@ -120,6 +122,8 @@ public class StablesView extends ViewBase {
        deleteBt.setActionCommand(DELETE_COMMAND);
        cancelBt = Genner.createButton("Hủy", Genner.BIG_SIZE);
        cancelBt.setActionCommand(CANCEL_COMMAND);
+       selectBt = Genner.createButton("Chọn", Genner.BIG_SIZE);
+       selectBt.setActionCommand(SELECT_COMMAND);
        //panel
        panel = new JPanel();
        
@@ -163,9 +167,9 @@ public class StablesView extends ViewBase {
        final JPanel centerPanel = new JPanel();
        final TitledBorder cPanel = BorderFactory.createTitledBorder(colorBD, "Chuồng");
        centerPanel.setBorder(cPanel);
+       centerPanel.setLayout(new BorderLayout());
        //---> add item
        JScrollPane jsp= new JScrollPane(gridTb);
-       centerPanel.setLayout(new BorderLayout());
        centerPanel.add(jsp, BorderLayout.CENTER);
        dtm = new DefaultTableModel(colNames,0);
        
@@ -181,6 +185,7 @@ public class StablesView extends ViewBase {
        panel.add(addBt);
        panel.add(deleteBt);
        panel.add(cancelBt);
+       panel.add(selectBt);
        //set location top left panel 
        Layer.put(topLeftPanel).atTop(panel).in(MainLayout).withMargin(78)
                .atLeft(panel).withMargin(3);
@@ -227,10 +232,12 @@ public class StablesView extends ViewBase {
        Layer.put(deleteBt).in(MainLayout).atBottom(panel).withMargin(23).rightOf(searchBt).withMargin(7);
        Layer.put(searchBt).in(MainLayout).atBottom(panel).withMargin(23).rightOf(cancelBt).withMargin(7);
        Layer.put(cancelBt).atBottomRight(panel).in(MainLayout).withMargin(15);
+       Layer.put(selectBt).atBottomLeft(panel).in(MainLayout).withMargin(15);
        
        //add main panel into frame 
        add(panel);
        //
+       
        setTitle("Quản lý chuồng");
        this.getRootPane().setDefaultButton(searchBt);
        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -244,6 +251,7 @@ public class StablesView extends ViewBase {
         addBt.addActionListener(sc);
         deleteBt.addActionListener(sc);
         cancelBt.addActionListener(sc);
+        selectBt.addActionListener(sc);
         gridTb.setModel(dtm);
         gridTb.addMouseListener(sc);
     }

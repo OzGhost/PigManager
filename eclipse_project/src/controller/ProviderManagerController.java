@@ -29,15 +29,9 @@ import view.WarehouseManagerView;
  */
 public class ProviderManagerController extends ControllerBase<ProviderManagerModel, ProviderManagerView> implements ActionListener, MouseListener
 {
-    private ProviderManagerView view;
-    private ProviderManagerModel model;
     
-    public ProviderManagerController(ProviderManagerView v, ProviderManagerModel m)
-    {
-        this.view = v;
-        this.model = m;
-    }
-
+ 
+    @Override
     public void actionPerformed(ActionEvent e)
     {
         String _cmd = e.getActionCommand();
@@ -152,12 +146,11 @@ public class ProviderManagerController extends ControllerBase<ProviderManagerMod
             if (row == -1)
             {
                 JOptionPane.showMessageDialog(null, "Cần chọn nhà cung cấp");
+                return;
             }
-            else
-            {
-                WarehouseManagerView._txtfMaNCC.setText(view._txtfMaNCC.getText());
-                view.dispose();
-            }
+            String var = view._tbNCC.getModel().getValueAt(row, 0).toString();
+            watcher.beNoticed(var, 1);
+            view.dispose();
             return;
         }
     }
