@@ -24,18 +24,22 @@ public class CashFlowReportModel {
             String timeStage
     ) {
         DateFormat df = new SimpleDateFormat("dd-MMM-yy");
-        return "SELECT time, SUM(TriGia) as cash"
-            + " FROM ("
-            + String.format("SELECT TRUNC(NgayThuChi,'%s') as time,", timeStage)
-            + "     TriGia"
-            + "     FROM ThuChi "
+        return "SELECT type, time, SUM(TriGia) as cash\n"
+            + " FROM (\n"
+            + String.format("SELECT TRUNC(NgayThuChi,'%s') as time,\n", timeStage)
+            + "     TriGia,\n"
+            + "     CASE LoaiThuChi\n"
+            + "         WHEN 0 THEN 'Thu'\n"
+            + "         ELSE 'Chi'\n"
+            + "     END as type\n"
+            + "     FROM ThuChi\n"
             + String.format(
-                    "WHERE NgayThuChi BETWEEN '%s' AND '%s'",
+                    "WHERE NgayThuChi BETWEEN '%s' AND '%s'\n",
                     df.format(from),
                     df.format(to)
             )
-            + " )"
-            + " GROUP BY time"
+            + " )\n"
+            + " GROUP BY type, time\n"
             + " ORDER BY time"
         ;
     }
@@ -62,6 +66,7 @@ public class CashFlowReportModel {
             while (result.next()) {
                 CashFlowReportDto cfrd = new CashFlowReportDto();
                 cfrd.setTime( df.parse(result.getString("time")) );
+                cfrd.setType(result.getString("type"));
                 cfrd.setCash(result.getLong("cash"));
                 rs.add(cfrd);
             }
@@ -77,8 +82,8 @@ public class CashFlowReportModel {
             String period,
             File outputFile
     ) throws Exception {
-        DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
-        String template = new File("").getAbsolutePath() + "/src/res/CashFlowReport.jrxml";
+        String template = new File("").getAbsolutePath()
+            + "/src/res/CashFlowReport.jrxml";
         
         // pull data from database
         List<Object> data = getData(from, to, period);
@@ -97,7 +102,7 @@ public class CashFlowReportModel {
         
         // parameters mapping
         Map<String, Object> param = new HashMap<>();
-        param.put("date4mat", df);
+        param.put("date4mat", Constants.DATE4MAT);
         param.put("from", from);
         param.put("to", to);
         param.put("label", label);

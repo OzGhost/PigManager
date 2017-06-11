@@ -75,12 +75,12 @@ public abstract class db {
             return null;
         }
         // for debug only
-        System.out.println("---- db.sendForResult(?) : " + sqlcmd);
+        System.out.println("---- db.sendForResult(?):\n" + sqlcmd);
         try {
             db.rs = db.stm.executeQuery(sqlcmd);
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("---- Execute query failure !");
+            System.out.println("---- ERROR: Execute query failure !");
         }
         return db.rs;
     }
@@ -94,13 +94,13 @@ public abstract class db {
             return false;
         }
         // for debug only
-        System.out.println("---- db.send(?) : " + sqlcmd);
+        System.out.println("---- db.send(?):\n" + sqlcmd);
         boolean rs = true;
         try {
             db.rs = db.stm.executeQuery(sqlcmd);
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("---- Execute query failure !");
+            System.out.println("---- ERROR: Execute query failure !");
             rs = false;
         }
         return rs;
@@ -115,12 +115,12 @@ public abstract class db {
         if (! ready()) {
             return;
         }
-        System.out.println("---- db.saveAutoId(?): " + cmd);
+        System.out.println("---- db.saveAutoId(?):\n" + cmd);
         try {
             CallableStatement callStm = db.con.prepareCall(cmd);
             callStm.execute();
         } catch(Exception e) {
-            System.out.println("---- Call failure !");
+            System.out.println("---- ERROR: Call failure !");
             e.printStackTrace();
         }
     }

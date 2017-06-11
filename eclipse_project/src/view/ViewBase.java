@@ -12,8 +12,6 @@ public class ViewBase extends JFrame implements Observer {
 
     private static final long serialVersionUID = 1L;
     
- 
-
     public ViewBase () {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setIconImage(Constants.APP_ICON);

@@ -120,8 +120,6 @@ public class Entity {
     protected boolean isFullState () {
         return this.fullState;
     }
-    protected void selfCompleteLiteVersion () {
-    }
     protected void selfCompleteFullVersion () {
         this.fullState = true;
     }

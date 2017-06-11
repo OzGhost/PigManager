@@ -185,6 +185,7 @@ CREATE TYPE Benh_objtyp AS OBJECT (
 /
 
 CREATE TYPE ChiTietBenh_objtyp AS OBJECT (
+    id              Number(3),
     Benh_ref        REF Benh_objtyp,
     NgayPhatBenh    Date,
     NgayHetBenh     Date,
@@ -237,7 +238,29 @@ CREATE TYPE BenhAn_objtyp AUTHID CURRENT_USER AS OBJECT (
     NgayTao             Date,
     LSDungThuoc_ntab    LichSuDungThuoc_ntabtyp,
     ChiTietBenh_ntab    ChiTietBenh_ntabtyp,
-)
+    MEMBER FUNCTION themChiTietBenh RETURN NUMBER
+);
+/
+
+CREATE OR REPLACE TYPE BODY BenhAn_objtyp AS
+    MEMBER FUNCTION themChiTietBenh RETURN NUMBER AS
+        NUMBER nextId;
+    BEGIN
+        SELECT MAX(id) INTO nextId FROM TABLE(ChiTietBenh_ntab);
+        nextId := nextId + 1;
+        /*
+        INSERT INTO TABLE(ChiTietBenh_ntab) VALUES (
+            nextId,
+            (SELECT REF(b) FROM Benh WHERE MaBenh=benhId)
+            ngayPhatBenh,
+            ngayHetBenh,
+            tinhTrang,
+            ghiChu
+        );
+        */
+        RETURN nextId;
+    END;
+END;
 /
 
 CREATE TYPE Tinh_objtyp AS OBJECT (

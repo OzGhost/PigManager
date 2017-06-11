@@ -1,6 +1,7 @@
 package model;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.util.List;
@@ -20,6 +21,10 @@ public class ReportModel {
             List<Object> data,
             Map<String, Object> param
     ) throws Exception {
+        // load logo image
+        param.put("logo", new FileInputStream(
+            new File("").getAbsolutePath() + "/src/res/icon.png")
+        );
 
         // get printer from template, data and params
         final JasperPrint jPrint = JasperFillManager.fillReport(

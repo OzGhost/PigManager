@@ -135,7 +135,6 @@ public class Pig extends Payable {
         this.earTag = p.getEarTag();
     }
 
-    @Override
     public void selfCompleteLiteVersion () {
         clone( find(this.id) );
     }

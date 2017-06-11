@@ -53,7 +53,10 @@ public abstract class Genner {
         Font font = null;
         if (size == MEDIUM_SIZE) {
             font = Constants.fontSizeMd;
-            psize = new Dimension(Constants.MEDIUM_LONG_WIDTH, Constants.MEDIUM_HEIGHT);
+            psize = new Dimension(
+                Constants.MEDIUM_LONG_WIDTH,
+                Constants.MEDIUM_HEIGHT
+            );
         }
         rs.setPreferredSize(psize);
         rs.setFont(font);
@@ -62,12 +65,16 @@ public abstract class Genner {
     }
 
     public static JFormattedTextField createNumberField (short size) {
-        JFormattedTextField rs = new JFormattedTextField(NumberFormat.getNumberInstance());
+        JFormattedTextField rs
+            = new JFormattedTextField(NumberFormat.getNumberInstance());
         Dimension psize = null;
         Font font = null;
         if (size == MEDIUM_SIZE) {
             font = Constants.fontSizeMd;
-            psize = new Dimension(Constants.MEDIUM_LONG_WIDTH, Constants.MEDIUM_HEIGHT);
+            psize = new Dimension(
+                Constants.MEDIUM_LONG_WIDTH,
+                Constants.MEDIUM_HEIGHT
+            );
         }
         rs.setPreferredSize(psize);
         rs.setFont(font);

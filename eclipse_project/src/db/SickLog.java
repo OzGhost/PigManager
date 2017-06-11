@@ -14,11 +14,44 @@ public class SickLog extends Entity {
         + " FROM BenhAn b"
     ;
 
-    public static List<SickLog> findAllLiteVersion () {
+    private static final String RETRIEVE_LITE_VERSION_BY_PIG_IDS
+        = RETRIEVE_ALL_LITE_VERSION + "\n"
+        + "WHERE DEREF(b.Heo_ref).MaHeo in %s"
+    ;
+
+    private static final String RETRIEVE_SICK_DETAIL_REPORT_VERSION_BY_ID
+        = " SELECT DEREF(s.Benh_ref).MaBenh mb,\n"
+        + "     DEREF(s.Benh_ref).TenBenh tb,\n"
+        + "     s.NgayPhatBenh npb,\n"
+        + "     s.NgayHetBenh nhb\n"
+        + " FROM BenhAn b, TABLE(b.ChiTietBenh_ntab) s\n"
+        + " WHERE b.MaBenhAn = '%s'\n"
+        + " ORDER BY s.NgayPhatBenh"
+    ;
+    
+    private static String listToQList (List<String> pigIds) {
+        if (pigIds == null || pigIds.isEmpty()) {
+            return null;
+        }
+        String prefix = "";
+        final StringBuilder sb = new StringBuilder();
+        sb.append("(");
+        for (String id: pigIds) {
+            sb.append(prefix);
+            sb.append("'");
+            sb.append(id);
+            sb.append("'");
+            prefix = ",";
+        }
+        sb.append(")");
+        return sb.toString();
+    }
+
+    private static List<SickLog> findLiteVersion (String cmd) {
         List<SickLog> rs = new ArrayList<>();
         ResultSet qResult = null;
         try {
-            qResult = db.sendForResult(RETRIEVE_ALL_LITE_VERSION);
+            qResult = db.sendForResult(cmd);
             while (qResult.next()) {
                 rs.add(
                     new SickLog(
@@ -36,9 +69,45 @@ public class SickLog extends Entity {
         return rs;
     }
 
-    private static List<SickDetail> findSickDetails (String id) {
+    public static List<SickLog> findAllLiteVersion () {
+        return findLiteVersion(RETRIEVE_ALL_LITE_VERSION);
+    }
+
+    public static List<SickLog> findLiteVersionByPigIds (List<String> pigIds) {
+        String qList = listToQList(pigIds);
+        if (qList == null) {
+            return null;
+        }
+        return findLiteVersion(
+            String.format(
+                RETRIEVE_LITE_VERSION_BY_PIG_IDS,
+                qList
+            )
+        );
+    }
+
+    private static List<SickDetail> findSickDetailsReportVersion (String id) {
         String sickLogId = id.replaceAll("[^0-9]", "");
         List<SickDetail> rs = new ArrayList<>();
+        ResultSet qRs = null;
+        try {
+            qRs = db.sendForResult(String.format(RETRIEVE_SICK_DETAIL_REPORT_VERSION_BY_ID, id));
+            while (qRs.next()) {
+                Sick s = new Sick(qRs.getString("mb"));
+                s.setName(qRs.getString("tb"));
+                rs.add(
+                    new SickDetail(
+                        s,
+                        Constants.DATE4MAT.parse( qRs.getString("npb") ),
+                        Constants.DATE4MAT.parse( qRs.getString("nhb") )
+                    )
+                );
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try { qRs.close(); } catch (Exception e) {}
+        }
         return rs;
     }
 
@@ -57,18 +126,29 @@ public class SickLog extends Entity {
         this.medicinesTake = new ArrayList<>();
         this.sickDetails = new ArrayList<>();
     }
+    
+    // Getters
+    public List<SickDetail> getSickDetails () {
+        if (!isFullState()) {
+            System.out.println("---- WARNING: Data maybe not ready yet");
+        }
+        return this.sickDetails;
+    }
+    public Pig getPig() {
+        return this.pig;
+    }
 
     // Methods
     @Override
     public String toString() {
+        sickDetails.forEach(System.out::println);
         return "\nid: " + id
             + " pigId: " + pig.getId()
             + " createDate: " + createDate;
     }
 
-    @Override
-    public void selfCompleteLiteVersion () {
+    public void selfCompleteReportVersion () {
         pig.selfCompleteLiteVersion();
-        sickDetails.addAll( findSickDetails(this.id) );
+        sickDetails.addAll( findSickDetailsReportVersion(this.id) );
     }
 }

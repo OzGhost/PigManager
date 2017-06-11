@@ -8,6 +8,7 @@
 	<parameter name="to" class="java.util.Date"/>
 	<parameter name="label" class="java.util.List"/>
 	<parameter name="number4mat" class="java.text.NumberFormat"/>
+	<parameter name="logo" class="java.io.InputStream"/>
 	<field name="time" class="java.util.Date"/>
 	<field name="cash" class="java.lang.Integer"/>
 	<field name="type" class="java.lang.String"/>
@@ -26,7 +27,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Times New Roman" size="14" isUnderline="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{type}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{type} == null || $F{type}.isEmpty() ? "----" : $F{type}]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>
@@ -108,7 +109,7 @@
 				</chart>
 				<categoryDataset>
 					<categorySeries>
-						<seriesExpression><![CDATA[$F{type}]]></seriesExpression>
+						<seriesExpression><![CDATA[$F{type} == null || $F{type}.isEmpty() ? "----" : $F{type}]]></seriesExpression>
 						<categoryExpression><![CDATA[$P{date4mat}.format( $F{time} )]]></categoryExpression>
 						<valueExpression><![CDATA[$F{cash}]]></valueExpression>
 					</categorySeries>
@@ -123,6 +124,10 @@
 					</valueAxisFormat>
 				</linePlot>
 			</lineChart>
+			<image onErrorType="Blank">
+				<reportElement x="435" y="1" width="100" height="50" uuid="8579fb90-5b4f-4e3f-b3c8-24d8beba163f"/>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<columnHeader>

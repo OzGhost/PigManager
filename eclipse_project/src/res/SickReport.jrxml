@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rp" language="groovy" pageWidth="595" pageHeight="842" columnWidth="499" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c5cac307-746c-48d9-a69c-b9161e21158f">
+	<property name="ireport.zoom" value="1.2100000000000133"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="date4mat" class="java.text.DateFormat"/>
+	<parameter name="label" class="java.util.List"/>
+	<parameter name="number4mat" class="java.text.NumberFormat"/>
+	<parameter name="logo" class="java.io.InputStream"/>
+	<field name="earTag" class="java.lang.String"/>
+	<field name="sickName" class="java.lang.String"/>
+	<field name="sickDate" class="java.util.Date"/>
+	<field name="healDate" class="java.util.Date"/>
+	<group name="typeGroup">
+		<groupExpression><![CDATA[$F{earTag}]]></groupExpression>
+		<groupHeader>
+			<band height="21">
+				<line>
+					<reportElement x="13" y="0" width="521" height="1" forecolor="#CCCCCC" uuid="08f1b862-0835-4ca5-a57e-19d7e661d1dd"/>
+					<graphicElement>
+						<pen lineStyle="Dashed"/>
+					</graphicElement>
+				</line>
+				<textField pattern="" isBlankWhenNull="false">
+					<reportElement mode="Transparent" x="12" y="0" width="99" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="94d83be6-5b5e-4c2e-82e5-3bb3e5691458"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+						<font fontName="Times New Roman" size="14" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+						<paragraph lineSpacing="Single"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{earTag}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<title>
+		<band height="523" splitType="Stretch">
+			<textField>
+				<reportElement x="11" y="0" width="413" height="51" uuid="94282e96-903c-4ec5-9436-9904732af241"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="28" isBold="true" isItalic="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{label}.get( 0 )]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="111" y="51" width="214" height="20" uuid="b8db66c0-e54f-44d7-b2d7-b03a78e2e6c1"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isItalic="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{date4mat}.format( new java.util.Date() )]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="11" y="51" width="100" height="20" uuid="fbbaf554-4bb9-4f8b-8cc4-a8626b9e5b04"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{label}.get( 1 )]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="-20" y="81" width="593" height="5" forecolor="#FFFFFF" backcolor="#FF6666" uuid="c61859f4-d4f2-4328-a5ac-19a19fed5844"/>
+			</rectangle>
+			<image>
+				<reportElement x="434" y="1" width="100" height="50" uuid="2b351f1d-778d-4ae4-964a-6ea803aa0bb8"/>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+			<ganttChart>
+				<chart evaluationTime="Report">
+					<reportElement stretchType="RelativeToBandHeight" x="0" y="99" width="555" height="398" uuid="4b9c215a-da22-459b-9c2a-5af9f771dc92"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<ganttDataset>
+					<ganttSeries>
+						<seriesExpression><![CDATA[$F{sickName}]]></seriesExpression>
+						<taskExpression><![CDATA[$F{earTag}]]></taskExpression>
+						<subtaskExpression><![CDATA[$F{earTag}]]></subtaskExpression>
+						<startDateExpression><![CDATA[$F{sickDate}]]></startDateExpression>
+						<endDateExpression><![CDATA[$F{healDate}]]></endDateExpression>
+					</ganttSeries>
+				</ganttDataset>
+				<barPlot>
+					<plot/>
+					<itemLabel/>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</barPlot>
+			</ganttChart>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<frame>
+				<reportElement stretchType="RelativeToTallestObject" mode="Opaque" x="12" y="0" width="522" height="20" forecolor="#CCFFCC" backcolor="#CCFFCC" uuid="1750fd62-f867-4b66-852b-7272785aa75e"/>
+				<textField>
+					<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="99" height="20" uuid="1acd8c00-9474-4254-9e1c-73a5c89d33c9"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="14" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{label}.get( 2 )]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement stretchType="RelativeToTallestObject" x="99" y="0" width="137" height="20" uuid="1bfc71e6-19e1-4d68-991a-c956f1660b6e"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="14" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{label}.get( 3 )]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement stretchType="RelativeToTallestObject" x="236" y="0" width="140" height="20" uuid="a32bdb82-2303-4798-982d-f9c2941bc252"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="14" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{label}.get( 4 )]]></textFieldExpression>
+				</textField>
+				<textField pattern="" isBlankWhenNull="false">
+					<reportElement mode="Transparent" x="376" y="0" width="146" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="ba21393e-98d7-4929-90e8-478495d3944f"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+						<font fontName="Times New Roman" size="14" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+						<paragraph lineSpacing="Single"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{label}.get( 5 )]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<line>
+				<reportElement mode="Opaque" x="13" y="0" width="521" height="1" forecolor="#CCCCCC" backcolor="#FFFFFF" uuid="3000e833-3e9e-4954-b23f-e9334f4c449b"/>
+				<graphicElement fill="Solid">
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement mode="Transparent" x="111" y="0" width="137" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="dbf25ce4-5301-4f14-8088-dd953b55835a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="14" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sickName}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement mode="Transparent" x="388" y="0" width="146" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="749953f1-4c35-415e-b62b-fca7b4e0403d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="14" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{date4mat}.format( $F{healDate} )]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement mode="Transparent" x="248" y="0" width="140" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="eb96f36c-9cd5-4b56-8e83-9e1421699000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="14" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{date4mat}.format( $F{sickDate} )]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

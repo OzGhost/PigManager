@@ -1,7 +1,11 @@
 package controller;
 
-import db.Pig;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import db.db;
+import model.SickReportModel;
 
 /**
  * For demo only
@@ -114,9 +118,30 @@ public class DemoGUI {
             e.printStackTrace();
         }
 
-        Pig p = new Pig("201704177692");
-        p.selfCompleteLiteVersion();
-        System.out.println(p);
-        
+        /*
+        List<SickLog> sls = SickLog.findAllLiteVersion();
+        SickLog s = sls.get(1);
+        s.selfCompleteReportVersion();
+        System.out.println(s);
+        SickLogReportDto.cast(s).forEach(System.out::println);
+        */
+
+        File outputFile = new File("/zz/t/tmp/sickLogrp.pdf");
+        try {
+            SickReportModel.BuildReport(
+                    Arrays.asList(
+                            "201709152645",
+                            "201702042179",
+                            "201704234233",
+                            "201710183960"
+                    ), outputFile);
+//            CashFlowReportModel.BuildReport(
+//                    Constants.DATE4MAT.parse("2017-01-01 00:00:00"),
+//                    Constants.DATE4MAT.parse("2018-01-01 00:00:00"),
+//                    "Ngày",
+//                    outputFile);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
