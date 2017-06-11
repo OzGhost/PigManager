@@ -284,7 +284,7 @@ public class WarehouseManagerController extends ControllerBase<WarehouseManagerM
             
             ProviderManagerView pmv = new ProviderManagerView();
             ProviderManagerModel pmm = new ProviderManagerModel();
-            ProviderManagerController pmc = new ProviderManagerController(pmv, pmm);
+            ProviderManagerController pmc = new ProviderManagerController();
             
             pmv.setController(pmc);
             pmv.setVisible(true);

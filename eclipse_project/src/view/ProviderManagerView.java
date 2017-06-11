@@ -144,7 +144,7 @@ public class ProviderManagerView extends ViewBase
         _panelMidRight.setLayout(sl_panelMidRight);
 
         JLabel _lblMoTa = new JLabel("Mô tả");
-        _txtaMoTa = new JTextArea(8, 48);
+        _txtaMoTa = new JTextArea(8, 40);
         _txtaMoTa.setLineWrap(true);
         _txtaMoTa.setWrapStyleWord(true);
         JScrollPane _scrollMoTa = new JScrollPane(_txtaMoTa, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
@@ -212,7 +212,7 @@ public class ProviderManagerView extends ViewBase
                 .leftOf(_btnSua).withMargin(150).bottomOf(_panelBot).withMargin(5);
 
         //set form
-        setSize(new Dimension(1366, 730));
+        setPreferredSize(new Dimension(1366, 730));
         setResizable(false);
         setTitle("Quản lý nhà cung cấp");
         setContentPane(new JScrollPane(contentpane));
