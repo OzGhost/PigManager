@@ -1,24 +1,15 @@
 package controller;
 
 import java.awt.Font;
-import java.util.ArrayList;
 import java.util.Enumeration;
-import java.util.List;
 
 import javax.swing.UIManager;
 import javax.swing.plaf.FontUIResource;
 
 import common.Constants;
-//import common.Payable;
-import db.Pig;
-import db.Provider;
 import db.db;
-import model.CashFlowModel;
-import model.StablesModel;
-import model.ToolModel;
-import view.CashFlowView;
-import view.StablesView;
-import view.ToolView;
+import model.PigsManagerModel;
+import view.PigsManagerView;
 
 /**
  * For demo only
@@ -28,7 +19,7 @@ import view.ToolView;
 public class DemoGUI {
     public static void main (String[] args) {
         // Database global connection initial
-         db.init("xdb", "c##java", "1807");
+         db.init("orcl", "c##java", "123");
         
         // Change look and feel
         try {
@@ -84,13 +75,54 @@ public class DemoGUI {
 	sv.showUp();
 */      
         //block call vatdung frame
-        ToolView tv= new ToolView();
-        ToolController tc = new ToolController();
-        ToolModel tm = new ToolModel();
-        tc.setView(tv);
-        tc.setModel(tm);
-        tv.setController(tc);
-        tv.showUp();
+//        ToolView tv= new ToolView();
+//        ToolController tc = new ToolController();
+//        ToolModel tm = new ToolModel();
+//        tc.setView(tv);
+//        tc.setModel(tm);
+//        tv.setController(tc);
+//        tv.showUp();
 
+        
+//        WarehouseManagerModel whm = new WarehouseManagerModel();
+//        WarehouseManagerView whv = new WarehouseManagerView();
+//        WarehouseManagerController whc = new WarehouseManagerController();
+//        whc.setView(whv);
+//        whc.setModel(whm);
+//        whv.setController(whc);
+//        whv.showUp();
+        
+        
+        PigsManagerModel pmm = new PigsManagerModel();
+        PigsManagerView pmv = new PigsManagerView();
+        PigsManagerController pmc = new PigsManagerController();
+        pmc.setView(pmv);
+        pmc.setModel(pmm);
+        pmv.setController(pmc);
+        pmv.showUp(); 
+        
+        
+//        BenhAnView bav=new BenhAnView();
+//        BenhAnController bac =new BenhAnController();
+//        bav.setController(bac);
+//        bac.setView(bav);
+//        bac.loadData();
+//        bav.showUp();
+        
+        
+//        ThaTinhController ttc= new ThaTinhController();
+//        ThaTinhView ttv=new ThaTinhView();
+//        ttv.setController(ttc);
+//        ttc.setView(ttv);
+//        ttc.loaddata();
+//        ttv.showUp();
+        
+        
+//        LichSuThaiKyController lsc=new LichSuThaiKyController();
+//        LichSuThaiKyView lsv=new LichSuThaiKyView();
+//        lsv.setController(lsc);
+//        lsc.setView(lsv);
+//        lsc.loaddata();
+//        lsv.showUp();
     }
 }

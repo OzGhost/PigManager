@@ -5,10 +5,8 @@
  */
 package view;
 
-import com.toedter.calendar.JDateChooser;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 
 import javax.swing.BorderFactory;
@@ -27,19 +25,13 @@ import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
+import javax.swing.table.DefaultTableModel;
+
+import com.toedter.calendar.JDateChooser;
 
 import common.Genner;
 import common.Layer;
-
 import controller.WarehouseManagerController;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemListener;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellRenderer;
-import javax.swing.table.TableColumn;
-
-import static view.StablesView.dtm;
 
 /**
  *
@@ -47,354 +39,376 @@ import static view.StablesView.dtm;
  */
 public class WarehouseManagerView extends ViewBase
 {
-    /**
+	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -6402052758461371632L;
-	public static final String CANCEL_COMMAND = "cancel";
-    public static final String ADD_COMMAND = "add";
-    public static final String REMOVE_COMMAND = "remove";
-    public static final String FOOD_SELECTED_COMMAND = "food_switched";
-    public static final String DRUG_SELECTED_COMMAND = "drug_switched";
-    
-    public static final String UPDATE_COMMAND = "update";
-    public static final String EXPORT_COMMAND = "export";
-    public static final String TRANSFER_TO_RIGHT_COMMAND = "transfer to right";
-    public static final String TRANSFER_TO_LEFT_COMMAND = "transfer to left";
-    public static final String SEARCH_COMMAND = "search";
-    public static final String SELECT_PROVIDER_COMMAND = "select provider";
-    public static final String SELECT_FOOD_COMMAND = "select food";
-    public static final String SELECT_NSX_COMMAND = "select nsx";
-    public static final String SELECT_NHH_COMMAND = "select nhh";
-    
-    
-    
-    public JPanel contentpane, _panelTopLeft, _panelTopRight, _panelMidLeft, _panelMidCenter,_panelMidRight, _panelBotLeft, _panelBotRight;
-    final private Border _border = BorderFactory.createLineBorder(Color.gray);
-    final private TitledBorder _titleQuanLy, _titleTimKiem, _titleBotLeft, _titleBotRight; 
-    public JRadioButton _rdbtThuoc, _rdbtThucAn; 
-    public JComboBox _cbxTimKiem; 
-    public static JTextField _txtfMaNCC, _txtfMaLoaiThucAn;
-    public JTextField _txtfTimKiem, _txtfMa, _txtfTen, _txtfDonVi, _txtfConLai; 
-    public JButton _btnTimKiem, _btnChonNCC, _btnChonThucAn, _btnThem, _btnXoa, _btnCapNhat, _btnXuatKho, _btnChuyenSangPhai, _btnChuyenSangTrai;
-    public JLabel _lblMaNCC, _lblMa, _lblTen, _lblDonVi, _lblConLai, _lblNSX, _lblNHH, _lblMaLoaiThucAn, _lblThanhPhan, _lblChiDinh ; 
-    public JTextArea _txtaThanhPhan, _txtaChiDinh; 
-    public JScrollPane _scrollThanhPhan, _scrollChiDinh, _scrolltbKho, _scrolltbXuatKho; 
-    public JTable _tbKho, _tbXuatKho; 
-    public DefaultTableModel dtm, dtmXK;
-    public JDateChooser _dateNSX, _dateNHH;
-    
-    
+	private static final long	serialVersionUID			= -6402052758461371632L;
+	public static final String	CANCEL_COMMAND				= "cancel";
+	public static final String	ADD_COMMAND					= "add";
+	public static final String	REMOVE_COMMAND				= "remove";
+	public static final String	FOOD_SELECTED_COMMAND		= "food_switched";
+	public static final String	DRUG_SELECTED_COMMAND		= "drug_switched";
 
-    public WarehouseManagerView()
-    {
-        contentpane = new JPanel();
-        SpringLayout sl_contentpane = new SpringLayout();
-        contentpane.setLayout(sl_contentpane);
+	public static final String	UPDATE_COMMAND				= "update";
+	public static final String	EXPORT_COMMAND				= "export";
+	public static final String	TRANSFER_TO_RIGHT_COMMAND	= "transfer to right";
+	public static final String	TRANSFER_TO_LEFT_COMMAND	= "transfer to left";
+	public static final String	SEARCH_COMMAND				= "search";
+	public static final String	SELECT_PROVIDER_COMMAND		= "select provider";
+	public static final String	SELECT_FOOD_COMMAND			= "select food";
+	public static final String	SELECT_NSX_COMMAND			= "select nsx";
+	public static final String	SELECT_NHH_COMMAND			= "select nhh";
 
-        
-        //_panelTopLeft
-        _titleQuanLy = BorderFactory.createTitledBorder(_border, "Quản lý");
-        _panelTopLeft = new JPanel();
-        _panelTopLeft.setBorder(_titleQuanLy);
-        _panelTopLeft.setLayout(new BoxLayout(_panelTopLeft, BoxLayout.X_AXIS));
-        _panelTopLeft.setPreferredSize(new Dimension(200, 80));
+	public JPanel				contentpane, _panelTopLeft, _panelTopRight, _panelMidLeft, _panelMidCenter,
+			_panelMidRight, _panelBotLeft, _panelBotRight;
+	final private Border		_border						= BorderFactory.createLineBorder(Color.gray);
+	final private TitledBorder	_titleQuanLy, _titleTimKiem, _titleBotLeft, _titleBotRight;
+	public JRadioButton			_rdbtThuoc, _rdbtThucAn;
+	public JComboBox<String>			_cbxTimKiem;
+	public JTextField			_txtfMaNCC, _txtfMaLoaiThucAn;
+	public JTextField			_txtfTimKiem, _txtfMa, _txtfTen, _txtfDonVi, _txtfConLai;
+	public JButton				_btnTimKiem, _btnChonNCC, _btnChonThucAn, _btnThem, _btnXoa, _btnCapNhat, _btnXuatKho,
+			_btnChuyenSangPhai, _btnChuyenSangTrai;
+	public JLabel				_lblMaNCC, _lblMa, _lblTen, _lblDonVi, _lblConLai, _lblNSX, _lblNHH, _lblMaLoaiThucAn,
+			_lblThanhPhan, _lblChiDinh;
+	public JTextArea			_txtaThanhPhan, _txtaChiDinh;
+	public JScrollPane			_scrollThanhPhan, _scrollChiDinh, _scrolltbKho, _scrolltbXuatKho;
+	public JTable				_tbKho, _tbXuatKho;
+	public DefaultTableModel	dtm, dtmXK;
+	public JDateChooser			_dateNSX, _dateNHH;
 
-        _rdbtThuoc = new JRadioButton("Thuốc", true);
-        _rdbtThuoc.setActionCommand(DRUG_SELECTED_COMMAND);
-        _rdbtThucAn = new JRadioButton("Thức ăn", false);
-        _rdbtThucAn.setActionCommand(FOOD_SELECTED_COMMAND);
+	public WarehouseManagerView() {
+		contentpane = new JPanel();
+		SpringLayout sl_contentpane = new SpringLayout();
+		contentpane.setLayout(sl_contentpane);
 
-        ButtonGroup _btngroup = new ButtonGroup();
-        _btngroup.add(_rdbtThuoc);
-        _btngroup.add(_rdbtThucAn);
+		// _panelTopLeft
+		_titleQuanLy = BorderFactory.createTitledBorder(_border, "Quản lý");
+		_panelTopLeft = new JPanel();
+		_panelTopLeft.setBorder(_titleQuanLy);
+		_panelTopLeft.setLayout(new BoxLayout(_panelTopLeft, BoxLayout.X_AXIS));
+		_panelTopLeft.setPreferredSize(new Dimension(200, 80));
 
-        _panelTopLeft.add(_rdbtThuoc);
-        _panelTopLeft.add(_rdbtThucAn);
+		_rdbtThuoc = new JRadioButton("Thuốc", true);
+		_rdbtThuoc.setActionCommand(DRUG_SELECTED_COMMAND);
+		_rdbtThucAn = new JRadioButton("Thức ăn", false);
+		_rdbtThucAn.setActionCommand(FOOD_SELECTED_COMMAND);
 
-        contentpane.add(_panelTopLeft);
+		ButtonGroup _btngroup = new ButtonGroup();
+		_btngroup.add(_rdbtThuoc);
+		_btngroup.add(_rdbtThucAn);
 
-        //_panelTopRight
-        _titleTimKiem = BorderFactory.createTitledBorder(_border, "Tìm kiếm");
-        _titleTimKiem.setTitleJustification(TitledBorder.CENTER);
-        _panelTopRight = new JPanel();
-        _panelTopRight.setPreferredSize(new Dimension(200, 80));
-        _panelTopRight.setBorder(_titleTimKiem);
-        SpringLayout sl_panelTopRight = new SpringLayout();
-        _panelTopRight.setLayout(sl_panelTopRight);
+		_panelTopLeft.add(_rdbtThuoc);
+		_panelTopLeft.add(_rdbtThucAn);
 
-        _cbxTimKiem = new JComboBox();
-        _cbxTimKiem.addItem("Tên");
-        _txtfTimKiem = new JTextField(20);
+		contentpane.add(_panelTopLeft);
 
-        _btnTimKiem = Genner.createButton("Tìm kiếm", Genner.MEDIUM_SIZE);
-        _btnTimKiem.setActionCommand(SEARCH_COMMAND);
-        
+		// _panelTopRight
+		_titleTimKiem = BorderFactory.createTitledBorder(_border, "Tìm kiếm");
+		_titleTimKiem.setTitleJustification(TitledBorder.CENTER);
+		_panelTopRight = new JPanel();
+		_panelTopRight.setPreferredSize(new Dimension(200, 80));
+		_panelTopRight.setBorder(_titleTimKiem);
+		SpringLayout sl_panelTopRight = new SpringLayout();
+		_panelTopRight.setLayout(sl_panelTopRight);
 
-        sl_panelTopRight.putConstraint(SpringLayout.HORIZONTAL_CENTER, _txtfTimKiem, 0, SpringLayout.HORIZONTAL_CENTER, _panelTopRight);
-        sl_panelTopRight.putConstraint(SpringLayout.VERTICAL_CENTER, _txtfTimKiem, 0, SpringLayout.VERTICAL_CENTER, _panelTopRight);
+		_cbxTimKiem = new JComboBox<String>();
+		_cbxTimKiem.addItem("Tên");
+		_txtfTimKiem = new JTextField(20);
 
-        Layer.put(_btnTimKiem).in(sl_panelTopRight).leftOf(_txtfTimKiem).withMargin(10);
-        sl_panelTopRight.putConstraint(SpringLayout.VERTICAL_CENTER, _btnTimKiem, 0, SpringLayout.VERTICAL_CENTER, _panelTopRight);
+		_btnTimKiem = Genner.createButton("Tìm kiếm", Genner.MEDIUM_SIZE);
+		_btnTimKiem.setActionCommand(SEARCH_COMMAND);
 
-        Layer.put(_cbxTimKiem).in(sl_panelTopRight).rightOf(_txtfTimKiem).withMargin(10);
-        sl_panelTopRight.putConstraint(SpringLayout.VERTICAL_CENTER, _cbxTimKiem, 0, SpringLayout.VERTICAL_CENTER, _panelTopRight);
+		sl_panelTopRight.putConstraint(SpringLayout.HORIZONTAL_CENTER, _txtfTimKiem, 0, SpringLayout.HORIZONTAL_CENTER,
+				_panelTopRight);
+		sl_panelTopRight.putConstraint(SpringLayout.VERTICAL_CENTER, _txtfTimKiem, 0, SpringLayout.VERTICAL_CENTER,
+				_panelTopRight);
 
-        _panelTopRight.add(_cbxTimKiem);
-        _panelTopRight.add(_txtfTimKiem);
-        _panelTopRight.add(_btnTimKiem);
+		Layer.put(_btnTimKiem).in(sl_panelTopRight).leftOf(_txtfTimKiem).withMargin(10);
+		sl_panelTopRight.putConstraint(SpringLayout.VERTICAL_CENTER, _btnTimKiem, 0, SpringLayout.VERTICAL_CENTER,
+				_panelTopRight);
 
-        contentpane.add(_panelTopRight);
+		Layer.put(_cbxTimKiem).in(sl_panelTopRight).rightOf(_txtfTimKiem).withMargin(10);
+		sl_panelTopRight.putConstraint(SpringLayout.VERTICAL_CENTER, _cbxTimKiem, 0, SpringLayout.VERTICAL_CENTER,
+				_panelTopRight);
 
-        //_panelMidLeft
-        _panelMidLeft = new JPanel();
-        _panelMidLeft.setPreferredSize(new Dimension(400, 170));
-        _panelMidLeft.setBorder(_border);
-        SpringLayout sl_panelMidLeft = new SpringLayout();
-        _panelMidLeft.setLayout(sl_panelMidLeft);
+		_panelTopRight.add(_cbxTimKiem);
+		_panelTopRight.add(_txtfTimKiem);
+		_panelTopRight.add(_btnTimKiem);
 
-        _btnChonNCC = Genner.createButton("Chọn", Genner.MEDIUM_SIZE);
-        _btnChonNCC.setActionCommand(SELECT_PROVIDER_COMMAND);
+		contentpane.add(_panelTopRight);
 
-        _lblMaNCC = new JLabel("Mã NCC");
-        _lblMa = new JLabel("Mã");
-        _lblTen = new JLabel("Tên");
-        _lblDonVi = new JLabel("Đơn vị");
-        
+		// _panelMidLeft
+		_panelMidLeft = new JPanel();
+		_panelMidLeft.setPreferredSize(new Dimension(400, 170));
+		_panelMidLeft.setBorder(_border);
+		SpringLayout sl_panelMidLeft = new SpringLayout();
+		_panelMidLeft.setLayout(sl_panelMidLeft);
 
-        _txtfMaNCC = new JTextField(18);
-        _txtfMaNCC.setEditable(false);
-        _txtfMa = new JTextField(25);
-        _txtfMa.setEditable(false);
-        _txtfMa.setEditable(false);
-        _txtfTen = new JTextField(25);
-        _txtfDonVi = new JTextField(25);
+		_btnChonNCC = Genner.createButton("Chọn", Genner.MEDIUM_SIZE);
+		_btnChonNCC.setActionCommand(SELECT_PROVIDER_COMMAND);
 
+		_lblMaNCC = new JLabel("Mã NCC");
+		_lblMa = new JLabel("Mã");
+		_lblTen = new JLabel("Tên");
+		_lblDonVi = new JLabel("Đơn vị");
 
-        //Chon NCC
-        Layer.put(_lblMaNCC).in(sl_panelMidLeft).atTop(_panelMidLeft).withMargin(10).atLeft(_panelMidLeft).withMargin(10);
-        Layer.put(_lblMa).in(sl_panelMidLeft).bottomOf(_txtfMaNCC).withMargin(20).atLeft(_panelMidLeft).withMargin(10);
-        Layer.put(_lblTen).in(sl_panelMidLeft).bottomOf(_txtfMa).withMargin(20).atLeft(_panelMidLeft).withMargin(10);
-        Layer.put(_lblDonVi).in(sl_panelMidLeft).bottomOf(_txtfTen).withMargin(20).atLeft(_panelMidLeft).withMargin(10);
+		_txtfMaNCC = new JTextField(18);
+		_txtfMaNCC.setEditable(false);
+		_txtfMa = new JTextField(25);
+		_txtfMa.setEditable(false);
+		_txtfMa.setEditable(false);
+		_txtfTen = new JTextField(25);
+		_txtfDonVi = new JTextField(25);
 
-        Layer.put(_txtfMaNCC).in(sl_panelMidLeft).atTop(_panelMidLeft).withMargin(10).atLeft(_panelMidLeft).withMargin(70);
-        Layer.put(_txtfMa).in(sl_panelMidLeft).atLeft(_panelMidLeft).withMargin(70).bottomOf(_txtfMaNCC).withMargin(20);
-        Layer.put(_txtfTen).in(sl_panelMidLeft).atLeft(_panelMidLeft).withMargin(70).bottomOf(_txtfMa).withMargin(20);
-        Layer.put(_txtfDonVi).in(sl_panelMidLeft).atLeft(_panelMidLeft).withMargin(70).bottomOf(_txtfTen).withMargin(20);
+		// Chon NCC
+		Layer.put(_lblMaNCC).in(sl_panelMidLeft).atTop(_panelMidLeft).withMargin(10).atLeft(_panelMidLeft)
+				.withMargin(10);
+		Layer.put(_lblMa).in(sl_panelMidLeft).bottomOf(_txtfMaNCC).withMargin(20).atLeft(_panelMidLeft).withMargin(10);
+		Layer.put(_lblTen).in(sl_panelMidLeft).bottomOf(_txtfMa).withMargin(20).atLeft(_panelMidLeft).withMargin(10);
+		Layer.put(_lblDonVi).in(sl_panelMidLeft).bottomOf(_txtfTen).withMargin(20).atLeft(_panelMidLeft).withMargin(10);
 
-        Layer.put(_btnChonNCC).in(sl_panelMidLeft).atTop(_panelMidLeft).withMargin(10).leftOf(_txtfMaNCC).withMargin(10);
-        sl_panelMidLeft.putConstraint(SpringLayout.EAST, _btnChonNCC, 0, SpringLayout.EAST, _txtfMa);
-        sl_panelMidLeft.putConstraint(SpringLayout.SOUTH, _btnChonNCC, 0, SpringLayout.SOUTH, _txtfMaNCC);
+		Layer.put(_txtfMaNCC).in(sl_panelMidLeft).atTop(_panelMidLeft).withMargin(10).atLeft(_panelMidLeft)
+				.withMargin(70);
+		Layer.put(_txtfMa).in(sl_panelMidLeft).atLeft(_panelMidLeft).withMargin(70).bottomOf(_txtfMaNCC).withMargin(20);
+		Layer.put(_txtfTen).in(sl_panelMidLeft).atLeft(_panelMidLeft).withMargin(70).bottomOf(_txtfMa).withMargin(20);
+		Layer.put(_txtfDonVi).in(sl_panelMidLeft).atLeft(_panelMidLeft).withMargin(70).bottomOf(_txtfTen)
+				.withMargin(20);
 
-       
+		Layer.put(_btnChonNCC).in(sl_panelMidLeft).atTop(_panelMidLeft).withMargin(10).leftOf(_txtfMaNCC)
+				.withMargin(10);
+		sl_panelMidLeft.putConstraint(SpringLayout.EAST, _btnChonNCC, 0, SpringLayout.EAST, _txtfMa);
+		sl_panelMidLeft.putConstraint(SpringLayout.SOUTH, _btnChonNCC, 0, SpringLayout.SOUTH, _txtfMaNCC);
 
-        _panelMidLeft.add(_btnChonNCC);
-        _panelMidLeft.add(_lblMaNCC);
-        _panelMidLeft.add(_lblMa);
-        _panelMidLeft.add(_lblTen);
-        _panelMidLeft.add(_lblDonVi);
-        _panelMidLeft.add(_txtfMaNCC);
-        _panelMidLeft.add(_txtfMa);
-        _panelMidLeft.add(_txtfTen);
-        _panelMidLeft.add(_txtfDonVi);
+		_panelMidLeft.add(_btnChonNCC);
+		_panelMidLeft.add(_lblMaNCC);
+		_panelMidLeft.add(_lblMa);
+		_panelMidLeft.add(_lblTen);
+		_panelMidLeft.add(_lblDonVi);
+		_panelMidLeft.add(_txtfMaNCC);
+		_panelMidLeft.add(_txtfMa);
+		_panelMidLeft.add(_txtfTen);
+		_panelMidLeft.add(_txtfDonVi);
 
+		contentpane.add(_panelMidLeft);
 
+		// _panelMidCenter
+		_panelMidCenter = new JPanel();
+		_panelMidCenter.setPreferredSize(new Dimension(450, 170));
+		_panelMidCenter.setBorder(_border);
+		SpringLayout sl_panelMidCenter = new SpringLayout();
+		_panelMidCenter.setLayout(sl_panelMidCenter);
+		_lblConLai = new JLabel("Còn lại");
+		_lblNSX = new JLabel("Ngày sản xuất");
+		_lblNHH = new JLabel("Ngày hết hạn");
+		_lblMaLoaiThucAn = new JLabel("Mã loại thức ăn");
 
-        contentpane.add(_panelMidLeft);
+		_txtfConLai = new JTextField(25);
+		_dateNSX = new JDateChooser();
+		_dateNHH = new JDateChooser();
 
-        //_panelMidCenter
-        _panelMidCenter=new JPanel();
-        _panelMidCenter.setPreferredSize(new Dimension(450, 170));
-        _panelMidCenter.setBorder(_border);
-        SpringLayout sl_panelMidCenter = new SpringLayout();
-        _panelMidCenter.setLayout(sl_panelMidCenter);
-        _lblConLai = new JLabel("Còn lại");
-        _lblNSX = new JLabel("Ngày sản xuất");
-        _lblNHH = new JLabel("Ngày hết hạn");
-        _lblMaLoaiThucAn = new JLabel("Mã loại thức ăn");
-        
-        _txtfConLai = new JTextField(25);
-        _dateNSX = new JDateChooser();
-        _dateNHH = new JDateChooser();
-        
-        _txtfMaLoaiThucAn = new JTextField(18);
-        _txtfMaLoaiThucAn.setEditable(false);
-        
-        _btnChonThucAn = Genner.createButton("Chọn", Genner.MEDIUM_SIZE);
-        _btnChonThucAn.setActionCommand(SELECT_FOOD_COMMAND);
-        
-        Layer.put(_txtfConLai).in(sl_panelMidCenter).atTop(_panelMidCenter).withMargin(10).atRight(_panelMidCenter).withMargin(30);
-        Layer.put(_lblConLai).in(sl_panelMidCenter).atTop(_panelMidCenter).withMargin(10).rightOf(_txtfConLai).withMargin(10);
-        Layer.put(_dateNSX).in(sl_panelMidCenter).atRight(_panelMidCenter).withMargin(30).bottomOf(_txtfConLai).withMargin(20);
-        sl_panelMidCenter.putConstraint(SpringLayout.WEST, _dateNSX, 0, SpringLayout.WEST, _txtfConLai);
-        Layer.put(_lblNSX).in(sl_panelMidCenter).bottomOf(_txtfConLai).withMargin(20).rightOf(_dateNSX).withMargin(20);
-        Layer.put(_dateNHH).in(sl_panelMidCenter).atRight(_panelMidCenter).withMargin(30).bottomOf(_dateNSX).withMargin(20);
-        Layer.put(_lblNHH).in(sl_panelMidCenter).bottomOf(_dateNSX).withMargin(20).rightOf(_dateNHH).withMargin(10);
-        sl_panelMidCenter.putConstraint(SpringLayout.WEST, _dateNHH, 0, SpringLayout.WEST, _dateNSX);
-        Layer.put(_btnChonThucAn).in(sl_panelMidCenter).atRight(_panelMidCenter).withMargin(30).bottomOf(_dateNHH).withMargin(20);
-        Layer.put(_txtfMaLoaiThucAn).in(sl_panelMidCenter).bottomOf(_dateNHH).withMargin(20).rightOf(_btnChonThucAn).withMargin(10);
-        Layer.put(_lblMaLoaiThucAn).in(sl_panelMidCenter).bottomOf(_dateNHH).withMargin(20).rightOf(_txtfMaLoaiThucAn).withMargin(10);
-        sl_panelMidCenter.putConstraint(SpringLayout.WEST, _txtfMaLoaiThucAn, 0, SpringLayout.WEST, _dateNHH);
-        sl_panelMidCenter.putConstraint(SpringLayout.SOUTH, _btnChonThucAn, 0, SpringLayout.SOUTH, _txtfMaLoaiThucAn);
-        
+		_txtfMaLoaiThucAn = new JTextField(18);
+		_txtfMaLoaiThucAn.setEditable(false);
 
-        _panelMidCenter.add(_lblConLai);
-        _panelMidCenter.add(_lblNSX);
-        _panelMidCenter.add(_lblNHH);
-        _panelMidCenter.add(_lblMaLoaiThucAn);
-        _panelMidCenter.add(_txtfConLai);
-        _panelMidCenter.add(_dateNSX);
-        _panelMidCenter.add(_dateNHH);
-        _panelMidCenter.add(_txtfMaLoaiThucAn);
-        _panelMidCenter.add(_btnChonThucAn);
-        _txtfMaLoaiThucAn.setEditable(false);
-        _btnChonThucAn.setEnabled(false);
-        
-        contentpane.add(_panelMidCenter);
-        
-        
-        
-        //_panelMidRight
-        _panelMidRight = new JPanel();
-        _panelMidRight.setBorder(_border);
-        SpringLayout sl_panelMidRight = new SpringLayout();
-        _panelMidRight.setLayout(sl_panelMidRight);
+		_btnChonThucAn = Genner.createButton("Chọn", Genner.MEDIUM_SIZE);
+		_btnChonThucAn.setActionCommand(SELECT_FOOD_COMMAND);
 
-        _lblThanhPhan = new JLabel("Thành phần");
-        _lblChiDinh = new JLabel("Chỉ định");
-        _txtaThanhPhan = new JTextArea(4, 36);
-        _txtaThanhPhan.setLineWrap(true);
-        _txtaThanhPhan.setWrapStyleWord(true);
-        _scrollThanhPhan = new JScrollPane(_txtaThanhPhan, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		Layer.put(_txtfConLai).in(sl_panelMidCenter).atTop(_panelMidCenter).withMargin(10).atRight(_panelMidCenter)
+				.withMargin(30);
+		Layer.put(_lblConLai).in(sl_panelMidCenter).atTop(_panelMidCenter).withMargin(10).rightOf(_txtfConLai)
+				.withMargin(10);
+		Layer.put(_dateNSX).in(sl_panelMidCenter).atRight(_panelMidCenter).withMargin(30).bottomOf(_txtfConLai)
+				.withMargin(20);
+		sl_panelMidCenter.putConstraint(SpringLayout.WEST, _dateNSX, 0, SpringLayout.WEST, _txtfConLai);
+		Layer.put(_lblNSX).in(sl_panelMidCenter).bottomOf(_txtfConLai).withMargin(20).rightOf(_dateNSX).withMargin(20);
+		Layer.put(_dateNHH).in(sl_panelMidCenter).atRight(_panelMidCenter).withMargin(30).bottomOf(_dateNSX)
+				.withMargin(20);
+		Layer.put(_lblNHH).in(sl_panelMidCenter).bottomOf(_dateNSX).withMargin(20).rightOf(_dateNHH).withMargin(10);
+		sl_panelMidCenter.putConstraint(SpringLayout.WEST, _dateNHH, 0, SpringLayout.WEST, _dateNSX);
+		Layer.put(_btnChonThucAn).in(sl_panelMidCenter).atRight(_panelMidCenter).withMargin(30).bottomOf(_dateNHH)
+				.withMargin(20);
+		Layer.put(_txtfMaLoaiThucAn).in(sl_panelMidCenter).bottomOf(_dateNHH).withMargin(20).rightOf(_btnChonThucAn)
+				.withMargin(10);
+		Layer.put(_lblMaLoaiThucAn).in(sl_panelMidCenter).bottomOf(_dateNHH).withMargin(20).rightOf(_txtfMaLoaiThucAn)
+				.withMargin(10);
+		sl_panelMidCenter.putConstraint(SpringLayout.WEST, _txtfMaLoaiThucAn, 0, SpringLayout.WEST, _dateNHH);
+		sl_panelMidCenter.putConstraint(SpringLayout.SOUTH, _btnChonThucAn, 0, SpringLayout.SOUTH, _txtfMaLoaiThucAn);
 
-        _txtaChiDinh = new JTextArea(4, 36);
-        _txtaChiDinh.setLineWrap(true);
-        _txtaChiDinh.setWrapStyleWord(true);
-        _scrollChiDinh = new JScrollPane(_txtaChiDinh, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		_panelMidCenter.add(_lblConLai);
+		_panelMidCenter.add(_lblNSX);
+		_panelMidCenter.add(_lblNHH);
+		_panelMidCenter.add(_lblMaLoaiThucAn);
+		_panelMidCenter.add(_txtfConLai);
+		_panelMidCenter.add(_dateNSX);
+		_panelMidCenter.add(_dateNHH);
+		_panelMidCenter.add(_txtfMaLoaiThucAn);
+		_panelMidCenter.add(_btnChonThucAn);
+		_txtfMaLoaiThucAn.setEditable(false);
+		_btnChonThucAn.setEnabled(false);
 
-        Layer.put(_scrollThanhPhan).in(sl_panelMidRight).atTopRight(_panelMidRight).withMargin(5);
-        Layer.put(_scrollChiDinh).in(sl_panelMidRight).atTopRight(_panelMidRight).withMargin(5)
-                .bottomOf(_scrollThanhPhan).withMargin(5);
-        Layer.put(_lblThanhPhan).in(sl_panelMidRight).rightOf(_scrollThanhPhan).withMargin(5)
-                .atTop(_panelMidRight).withMargin(5);
-        Layer.put(_lblChiDinh).in(sl_panelMidRight).rightOf(_scrollChiDinh).withMargin(5)
-                .bottomOf(_scrollThanhPhan).withMargin(5);
+		contentpane.add(_panelMidCenter);
 
-        _panelMidRight.add(_scrollChiDinh);
-        _panelMidRight.add(_scrollThanhPhan);
-        _panelMidRight.add(_lblThanhPhan);
-        _panelMidRight.add(_lblChiDinh);
+		// _panelMidRight
+		_panelMidRight = new JPanel();
+		_panelMidRight.setBorder(_border);
+		SpringLayout sl_panelMidRight = new SpringLayout();
+		_panelMidRight.setLayout(sl_panelMidRight);
 
-        contentpane.add(_panelMidRight);
+		_lblThanhPhan = new JLabel("Thành phần");
+		_lblChiDinh = new JLabel("Chỉ định");
+		_txtaThanhPhan = new JTextArea(4, 36);
+		_txtaThanhPhan.setLineWrap(true);
+		_txtaThanhPhan.setWrapStyleWord(true);
+		_scrollThanhPhan = new JScrollPane(_txtaThanhPhan, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
-        //_panelBotLeft
-        _panelBotLeft = new JPanel();
-        _panelBotLeft.setPreferredSize(new Dimension(750, 100));
-        _titleBotLeft = BorderFactory.createTitledBorder(_border);
-        _panelBotLeft.setBorder(_titleBotLeft);
+		_txtaChiDinh = new JTextArea(4, 36);
+		_txtaChiDinh.setLineWrap(true);
+		_txtaChiDinh.setWrapStyleWord(true);
+		_scrollChiDinh = new JScrollPane(_txtaChiDinh, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
-        _tbKho = new JTable();
-        _tbKho.setFillsViewportHeight(true);       
-        _scrolltbKho = new JScrollPane(_tbKho, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		Layer.put(_scrollThanhPhan).in(sl_panelMidRight).atTopRight(_panelMidRight).withMargin(5);
+		Layer.put(_scrollChiDinh).in(sl_panelMidRight).atTopRight(_panelMidRight).withMargin(5)
+				.bottomOf(_scrollThanhPhan).withMargin(5);
+		Layer.put(_lblThanhPhan).in(sl_panelMidRight).rightOf(_scrollThanhPhan).withMargin(5).atTop(_panelMidRight)
+				.withMargin(5);
+		Layer.put(_lblChiDinh).in(sl_panelMidRight).rightOf(_scrollChiDinh).withMargin(5).bottomOf(_scrollThanhPhan)
+				.withMargin(5);
 
+		_panelMidRight.add(_scrollChiDinh);
+		_panelMidRight.add(_scrollThanhPhan);
+		_panelMidRight.add(_lblThanhPhan);
+		_panelMidRight.add(_lblChiDinh);
 
-        BorderLayout bl_BotLeft = new BorderLayout();
-        _panelBotLeft.setLayout(bl_BotLeft);
-        _panelBotLeft.add(_scrolltbKho);
+		contentpane.add(_panelMidRight);
 
-        contentpane.add(_panelBotLeft);
+		// _panelBotLeft
+		_panelBotLeft = new JPanel();
+		_panelBotLeft.setPreferredSize(new Dimension(750, 100));
+		_titleBotLeft = BorderFactory.createTitledBorder(_border);
+		_panelBotLeft.setBorder(_titleBotLeft);
 
-        //_panelBotRight
-        _panelBotRight = new JPanel();
-        _titleBotRight = BorderFactory.createTitledBorder(_border);
-        _panelBotRight.setBorder(_titleBotRight);
+		_tbKho = new JTable();
+		_tbKho.setFillsViewportHeight(true);
+		_scrolltbKho = new JScrollPane(_tbKho, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+				JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 
+		BorderLayout bl_BotLeft = new BorderLayout();
+		_panelBotLeft.setLayout(bl_BotLeft);
+		_panelBotLeft.add(_scrolltbKho);
 
-        _tbXuatKho = new JTable();
-        final String[] _columnsTBXuatKho =
-        {
-        	"Loại", "Mã", "Tên", "Số lượng","Đơn vị", "Nhà cung cấp", "Ngày sản xuất", "Ngày hết hạn"
-        };
-    	dtmXK = new DefaultTableModel(_columnsTBXuatKho,0);
-    	_tbXuatKho.setModel(dtmXK);
-        _tbXuatKho.setFillsViewportHeight(true);
-        _scrolltbXuatKho = new JScrollPane(_tbXuatKho, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        BorderLayout bl_BotRight = new BorderLayout();
-        _panelBotRight.setLayout(bl_BotRight);
-        _panelBotRight.add(_scrolltbXuatKho);
-        contentpane.add(_panelBotRight);
-       
-        
-        
-       
-        //_button on bottom
-        
-        _btnThem = Genner.createButton("Thêm", Genner.MEDIUM_SIZE);
-        _btnThem.setActionCommand(ADD_COMMAND);
-        _btnXoa = Genner.createButton("Xóa", Genner.MEDIUM_SIZE);
-        _btnXoa.setActionCommand(REMOVE_COMMAND);
-        _btnCapNhat = Genner.createButton("Cập nhật", Genner.MEDIUM_SIZE);
-        _btnCapNhat.setActionCommand(UPDATE_COMMAND);
-        _btnXuatKho = Genner.createButton("Xuất kho", Genner.MEDIUM_SIZE);
-        _btnXuatKho.setActionCommand(EXPORT_COMMAND);
-        _btnChuyenSangPhai = Genner.createButton(">>", Genner.SMALL_SIZE);
-        _btnChuyenSangPhai.setActionCommand(TRANSFER_TO_RIGHT_COMMAND);
-        _btnChuyenSangTrai = Genner.createButton("<<", Genner.SMALL_SIZE);
-        _btnChuyenSangTrai.setActionCommand(TRANSFER_TO_LEFT_COMMAND);
+		contentpane.add(_panelBotLeft);
 
-        contentpane.add(_btnThem);
-        contentpane.add(_btnXoa);
-        contentpane.add(_btnCapNhat);
-        contentpane.add(_btnXuatKho);
-        contentpane.add(_btnChuyenSangPhai);
-        contentpane.add(_btnChuyenSangTrai);
+		// _panelBotRight
+		_panelBotRight = new JPanel();
+		_titleBotRight = BorderFactory.createTitledBorder(_border);
+		_panelBotRight.setBorder(_titleBotRight);
 
-        //Set Layer
-        Layer.put(_panelTopLeft).atTopLeft(contentpane).in(sl_contentpane).withMargin(5);
-        Layer.put(_panelTopRight).atTopRight(contentpane).in(sl_contentpane).withMargin(5).leftOf(_panelTopLeft).withMargin(5);
-        Layer.put(_panelMidLeft).bottomOf(_panelTopLeft).in(sl_contentpane).withMargin(5).atLeft(contentpane).withMargin(5);
-        Layer.put(_panelMidCenter).in(sl_contentpane).bottomOf(_panelTopRight).withMargin(5).leftOf(_panelMidLeft).withMargin(5);
-        Layer.put(_panelMidRight).bottomOf(_panelTopRight).in(sl_contentpane).withMargin(5).atRight(contentpane).withMargin(5).leftOf(_panelMidCenter).withMargin(5).topOf(_panelBotLeft).withMargin(5);
-        Layer.put(_panelBotLeft).atBottom(contentpane).in(sl_contentpane).withMargin(50).bottomOf(_panelMidLeft).withMargin(5).atLeft(contentpane).withMargin(5);
-        Layer.put(_panelBotRight).atRight(contentpane).in(sl_contentpane).withMargin(5).atBottom(contentpane).withMargin(50).bottomOf(_panelMidRight).withMargin(5).leftOf(_panelBotLeft).withMargin(110);
-        Layer.put(_btnThem).in(sl_contentpane).atBottom(contentpane).withMargin(5).atLeft(contentpane).withMargin(120).bottomOf(_panelBotLeft).withMargin(5);
-        Layer.put(_btnXoa).in(sl_contentpane).atBottom(contentpane).withMargin(5).leftOf(_btnThem).withMargin(80).bottomOf(_panelBotLeft).withMargin(5);
-        Layer.put(_btnCapNhat).in(sl_contentpane).atBottom(contentpane).withMargin(5).leftOf(_btnXoa).withMargin(80).bottomOf(_panelBotLeft).withMargin(5);
-        
-        sl_contentpane.putConstraint(SpringLayout.HORIZONTAL_CENTER, _btnXuatKho, 0, SpringLayout.HORIZONTAL_CENTER, _panelBotRight);
-        Layer.put(_btnXuatKho).in(sl_contentpane).atBottom(contentpane).withMargin(5).bottomOf(_panelBotRight).withMargin(5);
-        Layer.put(_btnChuyenSangPhai).in(sl_contentpane).leftOf(_panelBotLeft).withMargin(10).rightOf(_panelBotRight).withMargin(10).atBottom(contentpane).withMargin(300);
-        Layer.put(_btnChuyenSangTrai).in(sl_contentpane).leftOf(_panelBotLeft).withMargin(10).rightOf(_panelBotRight).withMargin(10).bottomOf(_btnChuyenSangPhai).withMargin(50);
+		_tbXuatKho = new JTable();
+		final String[] _columnsTBXuatKho =
+		{ "Loại", "Mã", "Tên", "Số lượng", "Đơn vị", "Nhà cung cấp", "Ngày sản xuất", "Ngày hết hạn" };
+		dtmXK = new DefaultTableModel(_columnsTBXuatKho, 0);
+		_tbXuatKho.setModel(dtmXK);
+		_tbXuatKho.setFillsViewportHeight(true);
+		_scrolltbXuatKho = new JScrollPane(_tbXuatKho, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		BorderLayout bl_BotRight = new BorderLayout();
+		_panelBotRight.setLayout(bl_BotRight);
+		_panelBotRight.add(_scrolltbXuatKho);
+		contentpane.add(_panelBotRight);
 
-        //Set form
-        setSize(new Dimension(1366, 730));
-        setResizable(false);
-        setTitle("Quản lý kho");
-        setContentPane(new JScrollPane(contentpane));
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }
+		// _button on bottom
 
-    public void setController(WarehouseManagerController whc)
-    {
-        _btnTimKiem.addActionListener(whc);
-        _btnChonNCC.addActionListener(whc);
-        _btnChonThucAn.addActionListener(whc);
-        _btnThem.addActionListener(whc);
-        _btnXoa.addActionListener(whc);
-        _btnCapNhat.addActionListener(whc);
-        _btnXuatKho.addActionListener(whc);
-        _btnChuyenSangPhai.addActionListener(whc);
-        _btnChuyenSangTrai.addActionListener(whc);
-        _rdbtThucAn.addActionListener(whc);
-        _rdbtThuoc.addActionListener(whc);
-        
-        _cbxTimKiem.addActionListener(whc);
-        _tbKho.addMouseListener(whc);
-    }
-    void notice(short code)
-    {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+		_btnThem = Genner.createButton("Thêm", Genner.MEDIUM_SIZE);
+		_btnThem.setActionCommand(ADD_COMMAND);
+		_btnXoa = Genner.createButton("Xóa", Genner.MEDIUM_SIZE);
+		_btnXoa.setActionCommand(REMOVE_COMMAND);
+		_btnCapNhat = Genner.createButton("Cập nhật", Genner.MEDIUM_SIZE);
+		_btnCapNhat.setActionCommand(UPDATE_COMMAND);
+		_btnXuatKho = Genner.createButton("Xuất kho", Genner.MEDIUM_SIZE);
+		_btnXuatKho.setActionCommand(EXPORT_COMMAND);
+		_btnChuyenSangPhai = Genner.createButton(">>", Genner.SMALL_SIZE);
+		_btnChuyenSangPhai.setActionCommand(TRANSFER_TO_RIGHT_COMMAND);
+		_btnChuyenSangTrai = Genner.createButton("<<", Genner.SMALL_SIZE);
+		_btnChuyenSangTrai.setActionCommand(TRANSFER_TO_LEFT_COMMAND);
+
+		contentpane.add(_btnThem);
+		contentpane.add(_btnXoa);
+		contentpane.add(_btnCapNhat);
+		contentpane.add(_btnXuatKho);
+		contentpane.add(_btnChuyenSangPhai);
+		contentpane.add(_btnChuyenSangTrai);
+
+		// Set Layer
+		Layer.put(_panelTopLeft).atTopLeft(contentpane).in(sl_contentpane).withMargin(5);
+		Layer.put(_panelTopRight).atTopRight(contentpane).in(sl_contentpane).withMargin(5).leftOf(_panelTopLeft)
+				.withMargin(5);
+		Layer.put(_panelMidLeft).bottomOf(_panelTopLeft).in(sl_contentpane).withMargin(5).atLeft(contentpane)
+				.withMargin(5);
+		Layer.put(_panelMidCenter).in(sl_contentpane).bottomOf(_panelTopRight).withMargin(5).leftOf(_panelMidLeft)
+				.withMargin(5);
+		Layer.put(_panelMidRight).bottomOf(_panelTopRight).in(sl_contentpane).withMargin(5).atRight(contentpane)
+				.withMargin(5).leftOf(_panelMidCenter).withMargin(5).topOf(_panelBotLeft).withMargin(5);
+		Layer.put(_panelBotLeft).atBottom(contentpane).in(sl_contentpane).withMargin(50).bottomOf(_panelMidLeft)
+				.withMargin(5).atLeft(contentpane).withMargin(5);
+		Layer.put(_panelBotRight).atRight(contentpane).in(sl_contentpane).withMargin(5).atBottom(contentpane)
+				.withMargin(50).bottomOf(_panelMidRight).withMargin(5).leftOf(_panelBotLeft).withMargin(110);
+		Layer.put(_btnThem).in(sl_contentpane).atBottom(contentpane).withMargin(5).atLeft(contentpane).withMargin(120)
+				.bottomOf(_panelBotLeft).withMargin(5);
+		Layer.put(_btnXoa).in(sl_contentpane).atBottom(contentpane).withMargin(5).leftOf(_btnThem).withMargin(80)
+				.bottomOf(_panelBotLeft).withMargin(5);
+		Layer.put(_btnCapNhat).in(sl_contentpane).atBottom(contentpane).withMargin(5).leftOf(_btnXoa).withMargin(80)
+				.bottomOf(_panelBotLeft).withMargin(5);
+
+		sl_contentpane.putConstraint(SpringLayout.HORIZONTAL_CENTER, _btnXuatKho, 0, SpringLayout.HORIZONTAL_CENTER,
+				_panelBotRight);
+		Layer.put(_btnXuatKho).in(sl_contentpane).atBottom(contentpane).withMargin(5).bottomOf(_panelBotRight)
+				.withMargin(5);
+		Layer.put(_btnChuyenSangPhai).in(sl_contentpane).leftOf(_panelBotLeft).withMargin(10).rightOf(_panelBotRight)
+				.withMargin(10).atBottom(contentpane).withMargin(300);
+		Layer.put(_btnChuyenSangTrai).in(sl_contentpane).leftOf(_panelBotLeft).withMargin(10).rightOf(_panelBotRight)
+				.withMargin(10).bottomOf(_btnChuyenSangPhai).withMargin(50);
+
+		// Set form
+		setPreferredSize(new Dimension(1366, 730));
+		setResizable(false);
+		setTitle("Quản lý kho");
+		setContentPane(new JScrollPane(contentpane));
+		setLocationRelativeTo(null);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+
+	public void setController(WarehouseManagerController whc)
+	{
+		_btnTimKiem.addActionListener(whc);
+		_btnChonNCC.addActionListener(whc);
+		_btnChonThucAn.addActionListener(whc);
+		_btnThem.addActionListener(whc);
+		_btnXoa.addActionListener(whc);
+		_btnCapNhat.addActionListener(whc);
+		_btnXuatKho.addActionListener(whc);
+		_btnChuyenSangPhai.addActionListener(whc);
+		_btnChuyenSangTrai.addActionListener(whc);
+		_rdbtThucAn.addActionListener(whc);
+		_rdbtThuoc.addActionListener(whc);
+
+		_cbxTimKiem.addActionListener(whc);
+		_tbKho.addMouseListener(whc);
+	}
+
+	void notice(short code)
+	{
+		throw new UnsupportedOperationException("Not supported yet."); // To
+																		// change
+																		// body
+																		// of
+																		// generated
+																		// methods,
+																		// choose
+																		// Tools
+																		// |
+																		// Templates.
+	}
 
 }

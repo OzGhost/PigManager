@@ -5,9 +5,6 @@
  */
 package controller;
 
-import db.Entity;
-import db.db;
-import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -17,11 +14,13 @@ import java.sql.SQLException;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
+
+import db.Entity;
+import db.db;
 import model.FoodModel;
 import view.FoodView;
-import view.WarehouseManagerView;
 
 /**
  *
@@ -29,14 +28,7 @@ import view.WarehouseManagerView;
  */
 public class FoodController extends ControllerBase<FoodModel, FoodView> implements ActionListener, MouseListener
 {
-    private FoodView view;
-    private FoodModel model;
-    
-    public  FoodController (FoodModel m, FoodView v)
-    {
-        this.view = v;
-        this.model = m;
-    }
+
     
     @Override
     public void actionPerformed(ActionEvent e)
@@ -45,19 +37,16 @@ public class FoodController extends ControllerBase<FoodModel, FoodView> implemen
         ResultSet resultSet = null;
         Vector rowData;
         
-        if (view.SEARCH_COMMAND.equals(_cmd))
+        if (FoodView.SEARCH_COMMAND.equals(_cmd))
         {
-            
 
-            
-            
             if ("".equals(view._txtfTimKiem.getText()))
             {
-                resultSet = model.getData("select * from loaithucan");
+                resultSet = FoodModel.getData("select * from loaithucan");
             }
             else
             {
-                resultSet = model.getData("SELECT * FROM loaithucan WHERE TENLOAITHUCAN LIKE '%"+view._txtfTimKiem.getText()+"%'");
+                resultSet = FoodModel.getData("SELECT * FROM loaithucan WHERE TENLOAITHUCAN LIKE '%"+view._txtfTimKiem.getText()+"%'");
             }
             if (resultSet != null)
             {
@@ -84,7 +73,7 @@ public class FoodController extends ControllerBase<FoodModel, FoodView> implemen
             return;
         }
         
-        if(view.ADD_COMMAND.equals(_cmd))
+        if(FoodView.ADD_COMMAND.equals(_cmd))
         {
             if ("".equals(view._txtfTenLoai.getText()))
             {
@@ -95,7 +84,7 @@ public class FoodController extends ControllerBase<FoodModel, FoodView> implemen
                 try
                 {
                     int mucbaodong = Integer.parseInt(view._txtfMucBaoDong.getText());
-                    db.saveAutoId(Entity.idGenner("LOAITHUCAN","MALOAITHUCAN","LoaiThucAn_objtyp","LoaiThucAn_objtyp('123', '"+ view._txtfTenLoai.getText() +"', '"+ view._txtaMota.getText()+ "', '"+ view._txtfDonVi.getText() +"', "+mucbaodong+")"));   
+                    db.saveAutoId(Entity.idGenner("LOAITHUCAN","MALOAITHUCAN","LoaiThucAn_objtyp","LoaiThucAn_objtyp('123', '"+ view._txtfTenLoai.getText() +"', '"+ view._txtaMota.getText()+ "', '"+ view._txtfDonVi.getText() +"', "+mucbaodong+")"));
                     JOptionPane.showMessageDialog(null, "Thêm thành công!");
                 }
                 catch (NumberFormatException b)
@@ -107,7 +96,7 @@ public class FoodController extends ControllerBase<FoodModel, FoodView> implemen
         }
         
         
-        if (view.UPDATE_COMMAND.equals(_cmd))
+        if (FoodView.UPDATE_COMMAND.equals(_cmd))
         {
             int row = view._tbThucAn.getSelectedRow();
             if (row == -1)
@@ -126,7 +115,7 @@ public class FoodController extends ControllerBase<FoodModel, FoodView> implemen
         }
         
         //Xóa nhà cung cấp
-        if (view.REMOVE_COMMAND.equals(_cmd))
+        if (FoodView.REMOVE_COMMAND.equals(_cmd))
         {
             int row = view._tbThucAn.getSelectedRow();
             if (row == -1)
@@ -143,18 +132,18 @@ public class FoodController extends ControllerBase<FoodModel, FoodView> implemen
             return;
         }
         
-        if (view.SELECT_FOOD_COMMAND.equals(_cmd))
+        if (FoodView.SELECT_FOOD_COMMAND.equals(_cmd))
         {
             int row = view._tbThucAn.getSelectedRow();
             if (row == -1)
             {
                 JOptionPane.showMessageDialog(null, "Cần chọn loại thức ăn");
+                return;
             }
-            else
-            {
-                WarehouseManagerView._txtfMaLoaiThucAn.setText(view._txtfMaLoai.getText());
-                view.dispose();
-            }
+            String var = view._tbThucAn.getModel().getValueAt(row, 0).toString();
+        	watcher.beNoticed(var, 3);
+            view.dispose();
+      
             return;
         }
         
