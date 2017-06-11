@@ -5,14 +5,10 @@
  */
 package view;
 
-import common.Constants;
-import common.Genner;
-import common.Layer;
-import controller.ProviderManagerController;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.event.MouseListener;
+
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -27,7 +23,10 @@ import javax.swing.SpringLayout;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
+
+import common.Genner;
+import common.Layer;
+import controller.ProviderManagerController;
 
 /**
  *
@@ -36,8 +35,12 @@ import javax.swing.table.TableModel;
 public class ProviderManagerView extends ViewBase
 {
 
-    public JPanel contentpane, _panelTop, _panelMidLeft, _panelMidRight, _panelBot;
-    public JComboBox _cbxTimKiem;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -5095900940267418128L;
+	public JPanel contentpane, _panelTop, _panelMidLeft, _panelMidRight, _panelBot;
+    public JComboBox<String> _cbxTimKiem;
     public JTextField _txtfTimKiem, _txtfMaNCC, _txtfTenNCC, _txtfSDT, _txtfDiaChi, _txtfNoPhaiTra;
     public JButton _btnTimKiem, _btnThem, _btnXoa, _btnSua, _btnChonNCC;
     public JTextArea _txtaMoTa;
@@ -68,7 +71,7 @@ public class ProviderManagerView extends ViewBase
         SpringLayout sl_panelTopRight = new SpringLayout();
         _panelTop.setLayout(sl_panelTopRight);
 
-        _cbxTimKiem = new JComboBox();
+        _cbxTimKiem = new JComboBox<String>();
         _cbxTimKiem.addItem("Tên");
         _txtfTimKiem = new JTextField(20);
 
