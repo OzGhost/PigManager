@@ -1,13 +1,12 @@
 package controller;
 
-<<<<<<< HEAD
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import db.db;
 import model.SickReportModel;
-=======
+
 import java.awt.Font;
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -17,7 +16,6 @@ import javax.swing.UIManager;
 import javax.swing.plaf.FontUIResource;
 
 import common.Constants;
-//import common.Payable;
 import db.Pig;
 import db.Provider;
 import db.db;
