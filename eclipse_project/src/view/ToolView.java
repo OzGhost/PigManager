@@ -24,6 +24,7 @@ import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.xml.bind.annotation.XmlElement;
+import common.*;
 
 /**
  *
@@ -51,6 +52,7 @@ public class ToolView extends ViewBase{
     private JButton delete_bt;
     private JButton update_bt;
     private JButton move_bt;
+    private JButton home_bt;
     
     private final JPanel mainPanel;
     private final JPanel topPanel;
@@ -103,6 +105,8 @@ public class ToolView extends ViewBase{
         update_bt.setActionCommand(UPDATE_COMMAND);
         move_bt = Genner.createButton("Di chuyen", Genner.MEDIUM_SIZE);
         move_bt.setActionCommand(MOVE_COMMAND);
+        home_bt= Genner.createButton("Trang chu", Genner.BIG_SIZE);
+        home_bt.setActionCommand(Constants.AC_HOME);
         
         //panels
         mainPanel = new JPanel();
@@ -153,7 +157,7 @@ public class ToolView extends ViewBase{
         mainPanel.add(delete_bt);
         mainPanel.add(update_bt);
         mainPanel.add(move_bt);
-       
+        mainPanel.add(home_bt);
         
         //set location for all of top panel
         Layer.put(topPanel).in(mainLayout).atTop(mainPanel).withMargin(10)
@@ -202,7 +206,7 @@ public class ToolView extends ViewBase{
         Layer.put(delete_bt).in(mainLayout).atBottom(mainPanel).withMargin(13).rightOf(add_bt).withMargin(7);
         Layer.put(update_bt).in(mainLayout).atBottom(mainPanel).withMargin(13).rightOf(delete_bt).withMargin(7);
         Layer.put(move_bt).in(mainLayout).atBottom(mainPanel).withMargin(13).rightOf(update_bt).withMargin(7);
-        
+        Layer.put(home_bt).in(mainLayout).atBottomLeft(mainPanel).withMargin(5);
 
         //
         add(mainPanel);

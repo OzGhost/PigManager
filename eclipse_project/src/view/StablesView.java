@@ -5,6 +5,7 @@
  */
 package view;
 
+import common.Constants;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
@@ -50,6 +51,7 @@ public class StablesView extends ViewBase {
     private JButton deleteBt;
     private JButton cancelBt;
     private JButton selectBt;
+    private JButton homeBt;
     private JPanel panel;
     private JLabel stables_id_lb;
     private JLabel status_lb;
@@ -122,8 +124,10 @@ public class StablesView extends ViewBase {
        deleteBt.setActionCommand(DELETE_COMMAND);
        cancelBt = Genner.createButton("Huy", Genner.BIG_SIZE);
        cancelBt.setActionCommand(CANCEL_COMMAND);
-       selectBt = Genner.createButton("Chon", Genner.BIG_SIZE);
+       selectBt = Genner.createButton("Chon", Genner.MEDIUM_SIZE);
        selectBt.setActionCommand(SELECT_COMMAND);
+       homeBt=Genner.createButton("Trang chu", Genner.BIG_SIZE);
+       homeBt.setActionCommand(Constants.AC_HOME);
        //panel
        panel = new JPanel();
        
@@ -186,6 +190,7 @@ public class StablesView extends ViewBase {
        panel.add(deleteBt);
        panel.add(cancelBt);
        panel.add(selectBt);
+       panel.add(homeBt);
        //set location top left panel 
        Layer.put(topLeftPanel).atTop(panel).in(MainLayout).withMargin(78)
                .atLeft(panel).withMargin(3);
@@ -230,9 +235,11 @@ public class StablesView extends ViewBase {
        Layer.put(addBt).in(MainLayout).atBottom(panel).withMargin(23).rightOf(saveBt).withMargin(7);
        Layer.put(saveBt).in(MainLayout).atBottom(panel).withMargin(23).rightOf(deleteBt).withMargin(7);
        Layer.put(deleteBt).in(MainLayout).atBottom(panel).withMargin(23).rightOf(searchBt).withMargin(7);
-       Layer.put(searchBt).in(MainLayout).atBottom(panel).withMargin(23).rightOf(cancelBt).withMargin(7);
+       Layer.put(searchBt).in(MainLayout).atBottom(panel).withMargin(23).rightOf(selectBt).withMargin(7);
+       Layer.put(selectBt).in(MainLayout).atBottom(panel).withMargin(23).rightOf(cancelBt).withMargin(7);
        Layer.put(cancelBt).atBottomRight(panel).in(MainLayout).withMargin(15);
-       Layer.put(selectBt).atBottomLeft(panel).in(MainLayout).withMargin(15);
+       Layer.put(homeBt).atBottomLeft(panel).in(MainLayout).withMargin(15);
+       
        
        //add main panel into frame 
        add(panel);
