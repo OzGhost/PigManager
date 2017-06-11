@@ -13,6 +13,7 @@ import java.util.Vector;
 
 import javax.swing.JOptionPane;
 
+import common.Constants;
 import common.RefPayload;
 import db.Entity;
 import db.db;
@@ -212,6 +213,14 @@ public class BenhAnController extends ControllerBase<BenhAnModel, BenhAnView> im
 
 			return;
 		}
+		
+		//Trang chu
+		if (Constants.AC_HOME.equals(cmd))
+		{
+			return;
+		}
+		
+		super.actionPerformed(e);
 
 	}
 

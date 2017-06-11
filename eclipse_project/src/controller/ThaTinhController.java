@@ -15,6 +15,7 @@ import java.util.Vector;
 
 import javax.swing.JOptionPane;
 
+import common.Constants;
 import common.RefPayload;
 import common.Watcher;
 import db.Entity;
@@ -242,6 +243,8 @@ public class ThaTinhController extends ControllerBase<ThaTinhModel, ThaTinhView>
 			pmv.setController(pmc);
 			pmc.setView(pmv);
 			pmc.setModel(pmm);
+			pmc.LoadProvider();
+			pmv._btnChonNCC.setEnabled(true);
 			pmc.setWatcher(this);
 			pmv.showUp();
 			return;
@@ -266,6 +269,14 @@ public class ThaTinhController extends ControllerBase<ThaTinhModel, ThaTinhView>
 			return;
 
 		}
+		
+		//Trang chu
+		if (Constants.AC_HOME.equals(cmd))
+		{
+			return;
+		}
+		
+		super.actionPerformed(e);
 
 	}
 

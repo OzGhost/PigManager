@@ -24,6 +24,7 @@ import javax.swing.table.DefaultTableModel;
 import com.toedter.calendar.JDateChooser;
 
 import common.Genner;
+import common.Constants;
 import common.Layer;
 import controller.PigsManagerController;
 
@@ -286,6 +287,7 @@ public class PigsManagerView extends ViewBase
 		_btnChonMaHeo.setEnabled(false);
 		_btnChonMaHeo.setActionCommand(SELECT_MAHEO_FROM_OTHER_JFRAME_COMMAND);
 		_btnTrangChu  = Genner.createButton("Trang Chu", Genner.BIG_SIZE);
+		_btnTrangChu.setActionCommand(Constants.AC_HOME);
 
 
 		// Layer
@@ -345,6 +347,7 @@ public class PigsManagerView extends ViewBase
 		_btnChoAn.addActionListener(pmc);
 		_btnKhamBenh.addActionListener(pmc);
 		_btnChonMaHeo.addActionListener(pmc);
+		_btnTrangChu.addActionListener(pmc);
 
 		_tbHeo.addMouseListener(pmc);
 	}

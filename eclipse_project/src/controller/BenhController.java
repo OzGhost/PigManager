@@ -204,6 +204,8 @@ public class BenhController extends ControllerBase<BenhModel, BenhView> implemen
 				view.dispose();
 			}
 		}
+		
+		
 	}
 
 	@Override

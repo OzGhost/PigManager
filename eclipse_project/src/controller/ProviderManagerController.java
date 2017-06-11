@@ -18,6 +18,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
+import common.Constants;
 import model.ProviderManagerModel;
 import model.WarehouseManagerModel;
 import view.ProviderManagerView;
@@ -161,6 +163,15 @@ public class ProviderManagerController extends ControllerBase<ProviderManagerMod
             view.dispose();
             return;
         }
+        
+        //Trang chu
+        if (Constants.AC_HOME.equals(_cmd))
+        {
+        	return;
+        }
+        
+        super.actionPerformed(e);
+        
     }
 
     public void mouseClicked(MouseEvent e)

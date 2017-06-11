@@ -21,6 +21,7 @@ import javax.swing.table.DefaultTableModel;
 
 import com.toedter.calendar.JDateChooser;
 
+import common.Constants;
 import common.Genner;
 import common.Layer;
 import controller.BenhAnController;
@@ -36,7 +37,7 @@ public class BenhAnView extends ViewBase
 
 	public static DefaultTableModel	dtm;
 
-	public JButton					btnTimKiem, btnThem, btnXoa, btnCapNhat, btnDungThuoc, btnChonHeo, btnCTBenh;
+	public JButton					btnTimKiem, btnThem, btnXoa, btnCapNhat, btnDungThuoc, btnChonHeo, btnCTBenh, btnTrangChu;
 	public JDateChooser				dateNgayTao, dateNgayPhatHien, dateNgayHetBenh;
 	public JTable					tbBenhAn;
 	public JComboBox<Object>		cbxTimKiem, cbxTinhTrang;
@@ -163,30 +164,36 @@ public class BenhAnView extends ViewBase
 		btnThem.setActionCommand(INSERT_COMMAND);
 
 		btnXoa = Genner.createButton("Xoa", Genner.MEDIUM_SIZE);
-		Layer.put(btnXoa).in(sl_panelMain).leftOf(panelBot).withMargin(50).bottomOf(btnThem).withMargin(30)
+		Layer.put(btnXoa).in(sl_panelMain).leftOf(panelBot).withMargin(50).bottomOf(btnThem).withMargin(20)
 				.atRight(panelMain).withMargin(50);
 		btnXoa.setActionCommand(DELETE_COMMAND);
 
 		btnCapNhat = Genner.createButton("Cap nhat", Genner.MEDIUM_SIZE);
-		Layer.put(btnCapNhat).in(sl_panelMain).leftOf(panelBot).withMargin(50).bottomOf(btnXoa).withMargin(30)
+		Layer.put(btnCapNhat).in(sl_panelMain).leftOf(panelBot).withMargin(50).bottomOf(btnXoa).withMargin(20)
 				.atRight(panelMain).withMargin(50);
 		btnCapNhat.setActionCommand(UPDATE_COMMAND);
 
 		btnCTBenh = Genner.createButton("Chi tiet", Genner.MEDIUM_SIZE);
-		Layer.put(btnCTBenh).in(sl_panelMain).leftOf(panelBot).withMargin(50).bottomOf(btnCapNhat).withMargin(30)
+		Layer.put(btnCTBenh).in(sl_panelMain).leftOf(panelBot).withMargin(50).bottomOf(btnCapNhat).withMargin(20)
 				.atRight(panelMain).withMargin(50);
 		btnCTBenh.setActionCommand(DETAIL_COMMAND);
 
 		btnDungThuoc = Genner.createButton("Dung thuoc", Genner.MEDIUM_SIZE);
-		Layer.put(btnDungThuoc).in(sl_panelMain).leftOf(panelBot).withMargin(50).bottomOf(btnCTBenh).withMargin(30)
+		Layer.put(btnDungThuoc).in(sl_panelMain).leftOf(panelBot).withMargin(50).bottomOf(btnCTBenh).withMargin(20)
 				.atRight(panelMain).withMargin(50);
 		btnDungThuoc.setActionCommand(DRUG_COMMAND);
+		
+		btnTrangChu = Genner.createButton("Trang Chu", Genner.BIG_SIZE);
+		Layer.put(btnTrangChu).in(sl_panelMain).leftOf(panelBot).withMargin(40).atBottom(panelMain).withMargin(10)
+				.atRight(panelMain).withMargin(40);
+		btnTrangChu.setActionCommand(Constants.AC_HOME);
 
 		panelMain.add(btnThem);
 		panelMain.add(btnXoa);
 		panelMain.add(btnCapNhat);
 		panelMain.add(btnDungThuoc);
 		panelMain.add(btnCTBenh);
+		panelMain.add(btnTrangChu);
 
 		// set mainform
 		setSize(new Dimension(800, 600));
@@ -206,6 +213,7 @@ public class BenhAnView extends ViewBase
 		btnCTBenh.addActionListener(bac);
 		btnDungThuoc.addActionListener(bac);
 		btnChonHeo.addActionListener(bac);
+		btnTrangChu.addActionListener(bac);
 		tbBenhAn.setModel(dtm);
 		tbBenhAn.addMouseListener(bac);
 

@@ -21,6 +21,7 @@ import javax.swing.table.DefaultTableModel;
 
 import com.toedter.calendar.JDateChooser;
 
+import common.Constants;
 import common.Genner;
 import common.Layer;
 import controller.LichSuThaiKyController;
@@ -33,7 +34,7 @@ public class LichSuThaiKyView extends ViewBase
 	 */
 	private static final long		serialVersionUID		= 1259601497452384139L;
 	private JPanel					panelMain;
-	public JButton					btnThem, btnXoa, btnChonLS, btnCapNhat, btnTimKiem, btnChonHeo;
+	public JButton					btnThem, btnXoa, btnChonLS, btnCapNhat, btnTimKiem, btnChonHeo, btnTrangChu;
 	public JTextField				txtMaLSTK, txtMaHeo, txtTimKiem;
 	public JComboBox<Object>		cbxTimKiem;
 	public JTextArea				txtNoiDung;
@@ -203,11 +204,16 @@ public class LichSuThaiKyView extends ViewBase
 		Layer.put(btnChonLS).in(sl_panelMain).leftOf(panelBot).withMargin(30).bottomOf(btnCapNhat).withMargin(30);
 		btnChonLS.setActionCommand(CHOOSE_HISTORY_COMMAND);
 		btnChonLS.setEnabled(false);
+		
+		btnTrangChu = Genner.createButton("Trang Chu", Genner.BIG_SIZE);
+		Layer.put(btnTrangChu).in(sl_panelMain).leftOf(panelBot).withMargin(10).atBottom(panelMain).withMargin(50).atRight(panelMain).withMargin(10);;
+		btnTrangChu.setActionCommand(Constants.AC_HOME);
 
 		panelMain.add(btnThem);
 		panelMain.add(btnXoa);
 		panelMain.add(btnCapNhat);
 		panelMain.add(btnChonLS);
+		panelMain.add(btnTrangChu);
 
 		// set mainform
 		setPreferredSize(new Dimension(1000, 720));
@@ -227,6 +233,7 @@ public class LichSuThaiKyView extends ViewBase
 		btnCapNhat.addActionListener(lstkc);
 		btnChonHeo.addActionListener(lstkc);
 		btnTimKiem.addActionListener(lstkc);
+		btnTrangChu.addActionListener(lstkc);
 		tbLSTK.setModel(dtm);
 		tbLSTK.addMouseListener(lstkc);
 

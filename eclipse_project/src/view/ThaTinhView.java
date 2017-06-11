@@ -22,9 +22,10 @@ import javax.swing.SpringLayout;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
-
+import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
 import com.toedter.calendar.JDateChooser;
 
+import common.Constants;
 import common.Genner;
 import common.Layer;
 import controller.ThaTinhController;
@@ -42,7 +43,7 @@ public class ThaTinhView extends ViewBase
 
 	private JPanel					contentpanel;
 
-	public JButton					btnTimKiem, btnChonNCC, btnThem, btnXoa, btnCapNhat, btnLuu, btnChonLSTK;
+	public JButton					btnTimKiem, btnChonNCC, btnThem, btnXoa, btnCapNhat, btnLuu, btnChonLSTK, btnTrangChu;
 	public JDateChooser				dateNgaySX, dateNgayHH;
 	public JTable					tbThaTinh;
 	public JComboBox<Object>		cbxTimKiem;
@@ -267,11 +268,16 @@ public class ThaTinhView extends ViewBase
 		btnLuu = Genner.createButton("Luu", Genner.MEDIUM_SIZE);
 		Layer.put(btnLuu).in(sl_contentpanel).leftOf(panelBot).withMargin(60).bottomOf(btnCapNhat).withMargin(30);
 		btnLuu.setActionCommand(SAVE_COMMAND);
+		
+		btnTrangChu = Genner.createButton("Trang Chu", Genner.BIG_SIZE);
+		Layer.put(btnTrangChu).in(sl_contentpanel).leftOf(panelBot).withMargin(40).atBottom(contentpanel).withMargin(50).atRight(contentpanel).withMargin(40);
+		btnTrangChu.setActionCommand(Constants.AC_HOME);
 
 		contentpanel.add(btnThem);
 		contentpanel.add(btnXoa);
 		contentpanel.add(btnCapNhat);
-		contentpanel.add(btnLuu);
+//		contentpanel.add(btnLuu);
+		contentpanel.add(btnTrangChu);
 		contentpanel.add(panelBot);
 
 		// set mainform
@@ -294,6 +300,7 @@ public class ThaTinhView extends ViewBase
 		btnLuu.addActionListener(ttc);
 		btnChonLSTK.addActionListener(ttc);
 		tbThaTinh.setModel(dtm);
+		btnTrangChu.addActionListener(ttc);
 
 		tbThaTinh.addMouseListener(ttc);
 

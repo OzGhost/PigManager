@@ -122,5 +122,13 @@ public class DemoGUI {
 //        lsc.setView(lsv);
 //        lsc.loaddata();
 //        lsv.showUp();
+        
+//        ProviderManagerView pmv = new ProviderManagerView();
+//        ProviderManagerModel pmm = new ProviderManagerModel();
+//        ProviderManagerController pmc = new ProviderManagerController();
+//        pmc.setModel(pmm);
+//        pmc.setView(pmv);
+//        pmv.setController(pmc);
+//        pmv.showUp();
     }
 }

@@ -23,6 +23,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
+import common.Constants;
 //import com.sun.javafx.scene.layout.region.Margins;
 import common.RefPayload;
 import common.Watcher;
@@ -252,6 +253,8 @@ public class WarehouseManagerController extends ControllerBase<WarehouseManagerM
 			pmv.setController(pmc);
 			pmc.setView(pmv);
 			pmc.setModel(pmm);
+			pmc.LoadProvider();
+			pmv._btnChonNCC.setEnabled(true);
 			pmc.setWatcher(this);
 			pmv.showUp();
 
@@ -492,6 +495,14 @@ public class WarehouseManagerController extends ControllerBase<WarehouseManagerM
 			}
 			return;
 		}
+		
+		//Trang chu
+		if(Constants.AC_HOME.equals(_command))
+		{
+			return;
+		}
+		
+		super.actionPerformed(e);
 	}
 
 	public void mouseClicked(MouseEvent e)

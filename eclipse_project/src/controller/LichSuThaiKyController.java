@@ -15,6 +15,7 @@ import java.util.Vector;
 
 import javax.swing.JOptionPane;
 
+import common.Constants;
 import common.RefPayload;
 import common.Watcher;
 import db.Entity;
@@ -228,6 +229,16 @@ public class LichSuThaiKyController extends ControllerBase<LichSuThaiKyModel, Li
 			pmv.showUp();
 			return;
 		}
+		
+		
+		//Trang chu
+		if (Constants.AC_HOME.equals(cmd))
+		{
+			
+			return;
+		}
+		
+		super.actionPerformed(e);
 	}
 
 	@Override

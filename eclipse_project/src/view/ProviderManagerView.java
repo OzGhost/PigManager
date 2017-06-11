@@ -24,6 +24,7 @@ import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
+import common.Constants;
 import common.Genner;
 import common.Layer;
 import controller.ProviderManagerController;
@@ -42,7 +43,7 @@ public class ProviderManagerView extends ViewBase
 	public JPanel				contentpane, _panelTop, _panelMidLeft, _panelMidRight, _panelBot;
 	public JComboBox<String>	_cbxTimKiem;
 	public JTextField			_txtfTimKiem, _txtfMaNCC, _txtfTenNCC, _txtfSDT, _txtfDiaChi, _txtfNoPhaiTra;
-	public JButton				_btnTimKiem, _btnThem, _btnXoa, _btnSua, _btnChonNCC;
+	public JButton				_btnTimKiem, _btnThem, _btnXoa, _btnSua, _btnChonNCC, _btnTrangChu;
 	public JTextArea			_txtaMoTa;
 	public JTable				_tbNCC;
 	public DefaultTableModel	dtm;
@@ -70,7 +71,7 @@ public class ProviderManagerView extends ViewBase
 		_panelTop.setLayout(sl_panelTopRight);
 
 		_cbxTimKiem = new JComboBox<String>();
-		_cbxTimKiem.addItem("Tên");
+		_cbxTimKiem.addItem("Ten");
 		_txtfTimKiem = new JTextField(20);
 
 		_btnTimKiem = Genner.createButton("Tim kiem", Genner.MEDIUM_SIZE);
@@ -125,7 +126,7 @@ public class ProviderManagerView extends ViewBase
 		Layer.put(_lblDiaChi).in(sl_panelMidLeft).bottomOf(_txtfSDT).withMargin(10).atLeft(_panelMidLeft)
 				.withMargin(70);
 		Layer.put(_lblNoPhaiTra).in(sl_panelMidLeft).bottomOf(_txtfDiaChi).withMargin(10).atLeft(_panelMidLeft)
-				.withMargin(50);
+				.withMargin(70);
 
 		Layer.put(_txtfMaNCC).in(sl_panelMidLeft).atTop(_panelMidLeft).withMargin(5).atLeft(_panelMidLeft)
 				.withMargin(180);
@@ -157,7 +158,7 @@ public class ProviderManagerView extends ViewBase
 		_panelMidRight.setLayout(sl_panelMidRight);
 
 		JLabel _lblMoTa = new JLabel("Mo ta");
-		_txtaMoTa = new JTextArea(8, 40);
+		_txtaMoTa = new JTextArea(8, 45);
 		_txtaMoTa.setLineWrap(true);
 		_txtaMoTa.setWrapStyleWord(true);
 		JScrollPane _scrollMoTa = new JScrollPane(_txtaMoTa, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
@@ -204,11 +205,16 @@ public class ProviderManagerView extends ViewBase
 
 		_btnChonNCC = Genner.createButton("Chon NCC", Genner.MEDIUM_SIZE);
 		_btnChonNCC.setActionCommand(SELECT_PROVIDER_COMMAND);
+		_btnChonNCC.setEnabled(false);
+		
+		_btnTrangChu = Genner.createButton("Trang Chu", Genner.BIG_SIZE);
+		_btnTrangChu.setActionCommand(Constants.AC_HOME);
 
 		contentpane.add(_btnThem);
 		contentpane.add(_btnXoa);
 		contentpane.add(_btnSua);
 		contentpane.add(_btnChonNCC);
+		contentpane.add(_btnTrangChu);
 
 		// set layer
 		Layer.put(_panelTop).in(sl_contentpane).atTop(contentpane).withMargin(30).atLeft(contentpane).withMargin(200)
@@ -220,7 +226,7 @@ public class ProviderManagerView extends ViewBase
 				.withMargin(50).leftOf(_panelMidLeft).withMargin(50);
 		Layer.put(_panelBot).in(sl_contentpane).bottomOf(_panelMidLeft).withMargin(20).atLeft(contentpane)
 				.withMargin(50).atRight(contentpane).withMargin(50).atBottom(contentpane).withMargin(60);
-		Layer.put(_btnThem).in(sl_contentpane).atBottom(contentpane).withMargin(5).atLeft(contentpane).withMargin(250)
+		Layer.put(_btnThem).in(sl_contentpane).atBottom(contentpane).withMargin(5).atLeft(contentpane).withMargin(150)
 				.bottomOf(_panelBot).withMargin(5);
 		Layer.put(_btnXoa).in(sl_contentpane).atBottom(contentpane).withMargin(5).leftOf(_btnThem).withMargin(150)
 				.bottomOf(_panelBot).withMargin(5);
@@ -228,7 +234,8 @@ public class ProviderManagerView extends ViewBase
 				.bottomOf(_panelBot).withMargin(5);
 		Layer.put(_btnChonNCC).in(sl_contentpane).atBottom(contentpane).withMargin(5).leftOf(_btnSua).withMargin(150)
 				.bottomOf(_panelBot).withMargin(5);
-
+		Layer.put(_btnTrangChu).in(sl_contentpane).atBottom(contentpane).withMargin(5).leftOf(_btnChonNCC).withMargin(150)
+		.bottomOf(_panelBot).withMargin(5);
 		// set form
 		setPreferredSize(new Dimension(1366, 730));
 		setResizable(false);
@@ -250,6 +257,7 @@ public class ProviderManagerView extends ViewBase
 		_btnXoa.addActionListener(pmc);
 		_btnSua.addActionListener(pmc);
 		_btnChonNCC.addActionListener(pmc);
+		_btnTrangChu.addActionListener(pmc);
 
 		_tbNCC.addMouseListener(pmc);
 	}

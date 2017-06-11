@@ -29,6 +29,7 @@ import javax.swing.table.DefaultTableModel;
 
 import com.toedter.calendar.JDateChooser;
 
+import common.Constants;
 import common.Genner;
 import common.Layer;
 import controller.WarehouseManagerController;
@@ -64,11 +65,11 @@ public class WarehouseManagerView extends ViewBase
 	final private Border		_border						= BorderFactory.createLineBorder(Color.gray);
 	final private TitledBorder	_titleQuanLy, _titleTimKiem, _titleBotLeft, _titleBotRight;
 	public JRadioButton			_rdbtThuoc, _rdbtThucAn;
-	public JComboBox<String>			_cbxTimKiem;
+	public JComboBox<String>	_cbxTimKiem;
 	public JTextField			_txtfMaNCC, _txtfMaLoaiThucAn;
 	public JTextField			_txtfTimKiem, _txtfMa, _txtfTen, _txtfDonVi, _txtfConLai;
 	public JButton				_btnTimKiem, _btnChonNCC, _btnChonThucAn, _btnThem, _btnXoa, _btnCapNhat, _btnXuatKho,
-			_btnChuyenSangPhai, _btnChuyenSangTrai;
+			_btnChuyenSangPhai, _btnChuyenSangTrai, _btnTrangChu;
 	public JLabel				_lblMaNCC, _lblMa, _lblTen, _lblDonVi, _lblConLai, _lblNSX, _lblNHH, _lblMaLoaiThucAn,
 			_lblThanhPhan, _lblChiDinh;
 	public JTextArea			_txtaThanhPhan, _txtaChiDinh;
@@ -332,6 +333,8 @@ public class WarehouseManagerView extends ViewBase
 		_btnChuyenSangPhai.setActionCommand(TRANSFER_TO_RIGHT_COMMAND);
 		_btnChuyenSangTrai = Genner.createButton("<<", Genner.SMALL_SIZE);
 		_btnChuyenSangTrai.setActionCommand(TRANSFER_TO_LEFT_COMMAND);
+		_btnTrangChu = Genner.createButton("Trang Chu", Genner.BIG_SIZE);
+		_btnTrangChu.setActionCommand(Constants.AC_HOME);
 
 		contentpane.add(_btnThem);
 		contentpane.add(_btnXoa);
@@ -339,6 +342,7 @@ public class WarehouseManagerView extends ViewBase
 		contentpane.add(_btnXuatKho);
 		contentpane.add(_btnChuyenSangPhai);
 		contentpane.add(_btnChuyenSangTrai);
+		contentpane.add(_btnTrangChu);
 
 		// Set Layer
 		Layer.put(_panelTopLeft).atTopLeft(contentpane).in(sl_contentpane).withMargin(5);
@@ -354,7 +358,9 @@ public class WarehouseManagerView extends ViewBase
 				.withMargin(5).atLeft(contentpane).withMargin(5);
 		Layer.put(_panelBotRight).atRight(contentpane).in(sl_contentpane).withMargin(5).atBottom(contentpane)
 				.withMargin(50).bottomOf(_panelMidRight).withMargin(5).leftOf(_panelBotLeft).withMargin(110);
-		Layer.put(_btnThem).in(sl_contentpane).atBottom(contentpane).withMargin(5).atLeft(contentpane).withMargin(120)
+		Layer.put(_btnTrangChu).in(sl_contentpane).atBottom(contentpane).withMargin(5).atLeft(contentpane)
+				.withMargin(90).bottomOf(_panelBotLeft).withMargin(5);
+		Layer.put(_btnThem).in(sl_contentpane).atBottom(contentpane).withMargin(5).leftOf(_btnTrangChu).withMargin(50)
 				.bottomOf(_panelBotLeft).withMargin(5);
 		Layer.put(_btnXoa).in(sl_contentpane).atBottom(contentpane).withMargin(5).leftOf(_btnThem).withMargin(80)
 				.bottomOf(_panelBotLeft).withMargin(5);
@@ -399,7 +405,7 @@ public class WarehouseManagerView extends ViewBase
 
 	void notice(short code)
 	{
-		
+
 	}
 
 }

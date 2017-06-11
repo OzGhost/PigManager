@@ -18,6 +18,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
+import common.Constants;
 import common.RefPayload;
 import common.Watcher;
 import db.Entity;
@@ -275,6 +276,7 @@ public class PigsManagerController extends ControllerBase<PigsManagerModel, Pigs
 			pmc.setView(pmv);
 			pmc.setModel(pmm);
 			pmc.LoadProvider();
+			pmv._btnChonNCC.setEnabled(true);
 			pmc.setWatcher(this);
 			pmv.showUp();
 
@@ -344,6 +346,13 @@ public class PigsManagerController extends ControllerBase<PigsManagerModel, Pigs
 			bac.setView(bav);
 			bav.showUp();
 
+			return;
+		}
+		
+		
+		//Trang chu
+		if (Constants.AC_HOME.equals(cmd))
+		{
 			return;
 		}
 
