@@ -5,29 +5,28 @@
  */
 package view;
 
-import common.Genner;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
+import javax.swing.table.DefaultTableModel;
 
+import common.Genner;
 import common.Layer;
 import controller.FoodController;
-import java.awt.BorderLayout;
-import javax.swing.BoxLayout;
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -35,8 +34,12 @@ import javax.swing.table.DefaultTableModel;
  */
 public class FoodView extends ViewBase
 {
-    public JPanel contentpane, _panelTop, _panelMid, _panelBot;
-    public JComboBox _cbxTimKiem;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -6023624857584267792L;
+	public JPanel contentpane, _panelTop, _panelMid, _panelBot;
+    public JComboBox<String> _cbxTimKiem;
     public JTextField _txtfTimKiem, _txtfMaLoai, _txtfTenLoai, _txtfDonVi, _txtfMucBaoDong;
     public JButton _btnTimKiem, _btnThem, _btnXoa, _btnCapNhat, _btnLuu, _btnChonLoai;
     public JTable _tbThucAn;
@@ -71,7 +74,7 @@ public class FoodView extends ViewBase
         _panelTop.setLayout(sl_panelTop);
         
         
-        _cbxTimKiem = new JComboBox();
+        _cbxTimKiem = new JComboBox<String>();
         _cbxTimKiem.addItem("Tên loại");
         
         _txtfTimKiem = new JTextField(18);
@@ -204,7 +207,7 @@ public class FoodView extends ViewBase
         
         
         //set form
-        setSize(new Dimension(1366, 730));
+        setPreferredSize(new Dimension(1366, 730));
         setTitle("Loại thức ăn");
         setResizable(false);
         setContentPane(contentpane);

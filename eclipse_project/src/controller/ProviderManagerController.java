@@ -29,17 +29,13 @@ import view.WarehouseManagerView;
  */
 public class ProviderManagerController extends ControllerBase<ProviderManagerModel, ProviderManagerView> implements ActionListener, MouseListener
 {
+	
+    public ResultSet resultSet = null;
+    public Vector rowData;
     
- 
-    @Override
-    public void actionPerformed(ActionEvent e)
-    {
-        String _cmd = e.getActionCommand();
-        ResultSet resultSet = null;
-        Vector rowData;
-        if (view.SEARCH_COMMAND.equals(_cmd))
-        {
-            final String[] _columnsTBKho =
+	public void LoadProvider()
+	{
+		final String[] _columnsTBKho =
             {
                 "Mã", "Tên nhà cung cấp", "Địa chỉ", "Số điện thoại", "Mô tả", "Nợ phải trả"
             };
@@ -48,11 +44,11 @@ public class ProviderManagerController extends ControllerBase<ProviderManagerMod
             view._tbNCC.setModel(view.dtm);
             if ("".equals(view._txtfTimKiem.getText()))
             {
-                resultSet = model.getData("select * from nhacungcap");
+                resultSet = ProviderManagerModel.getData("select * from nhacungcap");
             }
             else
             {
-                resultSet = model.getData("SELECT * FROM nhacungcap WHERE TENNCC LIKE '%"+view._txtfTimKiem.getText()+"%'");
+                resultSet = ProviderManagerModel.getData("SELECT * FROM nhacungcap WHERE TENNCC LIKE '%"+view._txtfTimKiem.getText()+"%'");
             }
             if (resultSet != null)
             {
@@ -77,15 +73,24 @@ public class ProviderManagerController extends ControllerBase<ProviderManagerMod
                     Logger.getLogger(StablesController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
+	}
+	
+    @Override
+    public void actionPerformed(ActionEvent e)
+    {
+		String _cmd = e.getActionCommand();
+        if (ProviderManagerView.SEARCH_COMMAND.equals(_cmd))
+        {
+            LoadProvider();
             return;
         }
         
         //Thêm nhà cung cấp
-        if(view.ADD_COMMAND.equals(_cmd))
+        if(ProviderManagerView.ADD_COMMAND.equals(_cmd))
         {
             if ("".equals(view._txtfTenNCC.getText()) || "".equals(view._txtfSDT.getText()) || "".equals(view._txtfDiaChi.getText()))
             {
-                JOptionPane.showMessageDialog(null, "Fill all before you want to add!");
+                JOptionPane.showMessageDialog(null, "Thông tin chưa đầy đủ");
             }
             else
             {
@@ -94,6 +99,7 @@ public class ProviderManagerController extends ControllerBase<ProviderManagerMod
                     int _nophaitra = Integer.parseInt(view._txtfNoPhaiTra.getText());
                     db.saveAutoId(Entity.idGenner("NHACUNGCAP","MANCC","NhaCungCap_objtyp","NhaCungCap_objtyp('123', '"+ view._txtfTenNCC.getText() +"', '"+ view._txtfDiaChi.getText()+ "', '"+ view._txtfSDT.getText() +"', '"+ view._txtaMoTa.getText() +"', '"+ _nophaitra +"')"));   
                     JOptionPane.showMessageDialog(null, "Thêm thành công!");
+                    LoadProvider();
                 }
                 catch (NumberFormatException b)
                 {
@@ -104,7 +110,7 @@ public class ProviderManagerController extends ControllerBase<ProviderManagerMod
         }
         
         //Cập nhật nhà cung cấp
-        if (view.UPDATE_COMMAND.equals(_cmd))
+        if (ProviderManagerView.UPDATE_COMMAND.equals(_cmd))
         {
             int row = view._tbNCC.getSelectedRow();
             if (row == -1)
@@ -118,12 +124,13 @@ public class ProviderManagerController extends ControllerBase<ProviderManagerMod
                 String _query = "update NHACUNGCAP SET TENNCC = '"+ view._txtfTenNCC.getText() +"', DIACHI = '"+ view._txtfDiaChi.getText() +"',SODIENTHOAI='"+ view._txtfSDT.getText() +"',MOTA='"+ view._txtaMoTa.getText() +"',NOPHAITRA='"+ _nophaitra +"' where MANCC = "+_maNCC;
                 db.send(_query);   
                 JOptionPane.showMessageDialog(null, "Cập nhật thành công");
+                LoadProvider();
             }
             return;
         }
         
         //Xóa nhà cung cấp
-        if (view.REMOVE_COMMAND.equals(_cmd))
+        if (ProviderManagerView.REMOVE_COMMAND.equals(_cmd))
         {
             int row = view._tbNCC.getSelectedRow();
             if (row == -1)
@@ -136,11 +143,12 @@ public class ProviderManagerController extends ControllerBase<ProviderManagerMod
                 String _query = "DELETE FROM NHACUNGCAP WHERE MANCC ="+_maNCC;
                 db.send(_query);   
                 JOptionPane.showMessageDialog(null, "Xóa thành công");
+                LoadProvider();
             }
             return;
         }
         
-        if (view.SELECT_PROVIDER_COMMAND.equals(_cmd))
+        if (ProviderManagerView.SELECT_PROVIDER_COMMAND.equals(_cmd))
         {
             int row = view._tbNCC.getSelectedRow();
             if (row == -1)
