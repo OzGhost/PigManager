@@ -24,9 +24,12 @@ import view.CashFlowView;
 import view.StablesView;
 import view.ToolView;
 import db.db;
+<<<<<<< HEAD
 import model.PigsManagerModel;
 import view.*;
 import model.*;
+=======
+>>>>>>> 8ed67713e8e530d59f0b192fbfc46b4321f3c737
 
 /**
  * For demo only
@@ -154,6 +157,7 @@ public class DemoGUI {
 //        whv.setController(whc);
 //        whv.showUp();
         
+<<<<<<< HEAD
 /*       
         PigsManagerModel pmm = new PigsManagerModel();
         PigsManagerView pmv = new PigsManagerView();
@@ -163,6 +167,17 @@ public class DemoGUI {
         pmv.setController(pmc);
         pmv.showUp(); 
 */        
+=======
+        
+//        PigsManagerModel pmm = new PigsManagerModel();
+//        PigsManagerView pmv = new PigsManagerView();
+//        PigsManagerController pmc = new PigsManagerController();
+//        pmc.setView(pmv);
+//        pmc.setModel(pmm);
+//        pmv.setController(pmc);
+//        pmv.showUp(); 
+        
+>>>>>>> 8ed67713e8e530d59f0b192fbfc46b4321f3c737
         
 //        BenhAnView bav=new BenhAnView();
 //        BenhAnController bac =new BenhAnController();
@@ -186,5 +201,13 @@ public class DemoGUI {
 //        lsc.setView(lsv);
 //        lsc.loaddata();
 //        lsv.showUp();
+        
+//        ProviderManagerView pmv = new ProviderManagerView();
+//        ProviderManagerModel pmm = new ProviderManagerModel();
+//        ProviderManagerController pmc = new ProviderManagerController();
+//        pmc.setModel(pmm);
+//        pmc.setView(pmv);
+//        pmv.setController(pmc);
+//        pmv.showUp();
     }
 }

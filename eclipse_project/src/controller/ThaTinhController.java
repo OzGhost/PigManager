@@ -15,6 +15,7 @@ import java.util.Vector;
 
 import javax.swing.JOptionPane;
 
+import common.Constants;
 import common.RefPayload;
 import common.Watcher;
 import db.Entity;
@@ -90,28 +91,28 @@ public class ThaTinhController extends ControllerBase<ThaTinhModel, ThaTinhView>
 			{
 				switch (view.cbxTimKiem.getSelectedItem().toString())
 				{
-				case "Mã tinh":
+				case "Ma tinh":
 				{
 					rs = ThaTinhModel.getData("select T.MATINH, T.TENTINH, T.NGUONGOC, T.DACDIEM,"
 							+ " T.NHACUNGCAP_REF.MANCC, T.NGAYSANXUAT, T.NGAYHETHAN, T.LICHSUTHAIKY_REF.MALSTK "
 							+ "from TINH T" + " WHERE T.MATINH LIKE '%" + view.txtTimKiem.getText() + "%'");
 					break;
 				}
-				case "Tên tinh":
+				case "Ten tinh":
 				{
 					rs = ThaTinhModel.getData("select T.MATINH, T.TENTINH, T.NGUONGOC, T.DACDIEM,"
 							+ " T.NHACUNGCAP_REF.MANCC, T.NGAYSANXUAT, T.NGAYHETHAN, T.LICHSUTHAIKY_REF.MALSTK "
 							+ "from TINH T" + " WHERE T.TENTINH LIKE '%" + view.txtTimKiem.getText() + "%'");
 					break;
 				}
-				case "Nguồn gốc":
+				case "Nguon goc":
 				{
 					rs = ThaTinhModel.getData("select T.MATINH, T.TENTINH, T.NGUONGOC, T.DACDIEM,"
 							+ " T.NHACUNGCAP_REF.MANCC, T.NGAYSANXUAT, T.NGAYHETHAN, T.LICHSUTHAIKY_REF.MALSTK "
 							+ "from TINH T" + " WHERE T.NGUONGOC LIKE '%" + view.txtTimKiem.getText() + "%'");
 					break;
 				}
-				case "Mã nhà cung cấp":
+				case "Ma nha cung cap":
 				{
 					rs = ThaTinhModel.getData("select T.MATINH, T.TENTINH, T.NGUONGOC, T.DACDIEM,"
 							+ " T.NHACUNGCAP_REF.MANCC, T.NGAYSANXUAT, T.NGAYHETHAN, T.LICHSUTHAIKY_REF.MALSTK "
@@ -156,7 +157,7 @@ public class ThaTinhController extends ControllerBase<ThaTinhModel, ThaTinhView>
 			if (view.txtTenTinh.getText().isEmpty() || view.txtNguonGoc.getText().isEmpty()
 					|| view.txtDacDiem.getText().isEmpty() || view.txtNguonGoc.getText().isEmpty()
 					|| view.dateNgaySX.getDate() == null || view.dateNgayHH.getDate() == null)
-				JOptionPane.showMessageDialog(null, "Bạn cần phải điền đầy đủ các thông tin cần thiết!");
+				JOptionPane.showMessageDialog(null, "Ban can phai dien day du thong tin can thiet!");
 			else
 			{
 				try
@@ -165,7 +166,8 @@ public class ThaTinhController extends ControllerBase<ThaTinhModel, ThaTinhView>
 					dateHH = formatdate.format(view.dateNgayHH.getDate());
 					dateSX = formatdate.format(view.dateNgaySX.getDate());
 					List<RefPayload> ref = new ArrayList<>();
-					ref.add(new RefPayload("NhaCungCap", "MaNCC", "" + ThaTinhView.txtMaNCC.getText() + "", "NhaCungCap_ref"));
+					ref.add(new RefPayload("NhaCungCap", "MaNCC", "" + ThaTinhView.txtMaNCC.getText() + "",
+							"NhaCungCap_ref"));
 					ref.add(new RefPayload("lichsuthaiky", "malstk", "" + ThaTinhView.txtMaLS.getText() + "",
 							"lichsuthaiky_ref"));
 					db.saveAutoId(Entity.idGenner("TINH", "MATINH", "Tinh_objtyp",
@@ -173,13 +175,13 @@ public class ThaTinhController extends ControllerBase<ThaTinhModel, ThaTinhView>
 									+ "','" + view.txtDacDiem.getText() + "', null," + "TO_DATE('" + dateHH
 									+ "', 'yyyy-mm-dd')," + "TO_DATE('" + dateSX + "', 'yyyy-mm-dd'), null)",
 							ref));
-					JOptionPane.showMessageDialog(null, "Thêm thành công");
+					JOptionPane.showMessageDialog(null, "Them thanh cong");
 					loaddata();
 				}
 				catch (Exception e1)
 				{
 					e1.printStackTrace();
-					JOptionPane.showMessageDialog(null, "Quá trình thêm xảy ra lỗi");
+					JOptionPane.showMessageDialog(null, "Qua trinh them xay ra loi");
 				}
 			}
 			return;
@@ -194,7 +196,7 @@ public class ThaTinhController extends ControllerBase<ThaTinhModel, ThaTinhView>
 			String id = view.tbThaTinh.getModel().getValueAt(row, 0).toString();
 			if (row == -1)
 			{
-				JOptionPane.showMessageDialog(null, "Hãy chọn dòng cần chỉnh sửa");
+				JOptionPane.showMessageDialog(null, "Hay chon dong can chinh sua");
 			}
 			else
 			{
@@ -207,7 +209,7 @@ public class ThaTinhController extends ControllerBase<ThaTinhModel, ThaTinhView>
 						+ "LICHSUTHAIKY_REF = (select REF(lstk) from lichsuthaiky lstk where malstk = '"
 						+ ThaTinhView.txtMaLS.getText() + "')" + " WHERE MATINH ='" + id + "'";
 				ThaTinhModel.editData(query);
-				JOptionPane.showMessageDialog(null, "Cập nhật thành công");
+				JOptionPane.showMessageDialog(null, "Cap nhat thanh cong");
 				loaddata();
 			}
 			return;
@@ -219,12 +221,12 @@ public class ThaTinhController extends ControllerBase<ThaTinhModel, ThaTinhView>
 			int row = view.tbThaTinh.getSelectedRow();
 			if (row == -1)
 			{
-				JOptionPane.showMessageDialog(null, "Hãy chọn dòng cần xóa!");
+				JOptionPane.showMessageDialog(null, "Hay chon dong can xoa!");
 			}
 			else
 			{
 				db.send("delete from tinh where matinh =" + view.tbThaTinh.getModel().getValueAt(row, 0).toString());
-				JOptionPane.showMessageDialog(null, "Đã xóa thành công!");
+				JOptionPane.showMessageDialog(null, "Da xoa thanh cong!");
 				loaddata();
 
 			}
@@ -241,6 +243,8 @@ public class ThaTinhController extends ControllerBase<ThaTinhModel, ThaTinhView>
 			pmv.setController(pmc);
 			pmc.setView(pmv);
 			pmc.setModel(pmm);
+			pmc.LoadProvider();
+			pmv._btnChonNCC.setEnabled(true);
 			pmc.setWatcher(this);
 			pmv.showUp();
 			return;
@@ -265,6 +269,14 @@ public class ThaTinhController extends ControllerBase<ThaTinhModel, ThaTinhView>
 			return;
 
 		}
+		
+		//Trang chu
+		if (Constants.AC_HOME.equals(cmd))
+		{
+			return;
+		}
+		
+		super.actionPerformed(e);
 
 	}
 

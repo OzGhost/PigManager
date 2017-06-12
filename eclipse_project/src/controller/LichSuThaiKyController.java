@@ -15,6 +15,7 @@ import java.util.Vector;
 
 import javax.swing.JOptionPane;
 
+import common.Constants;
 import common.RefPayload;
 import common.Watcher;
 import db.Entity;
@@ -33,7 +34,8 @@ public class LichSuThaiKyController extends ControllerBase<LichSuThaiKyModel, Li
 
 	public void loaddata()
 	{
-		rs = LichSuThaiKyModel.getData("SELECT L.MALSTK, L.NGAYGHINHAN, L.NOIDUNG, L.HEO_REF.MAHEO " + "FROM LICHSUTHAIKY L");
+		rs = LichSuThaiKyModel
+				.getData("SELECT L.MALSTK, L.NGAYGHINHAN, L.NOIDUNG, L.HEO_REF.MAHEO " + "FROM LICHSUTHAIKY L");
 		if (rs != null)
 		{
 
@@ -82,13 +84,13 @@ public class LichSuThaiKyController extends ControllerBase<LichSuThaiKyModel, Li
 			{
 				switch (view.cbxTimKiem.getSelectedItem().toString())
 				{
-				case "Mã lịch sử thai kỳ":
+				case "Ma lich su thai ky":
 				{
 					rs = LichSuThaiKyModel.getData("SELECT L.MALSTK, L.NGAYGHINHAN, L.NOIDUNG, L.HEO_REF.MAHEO "
 							+ "FROM LICHSUTHAIKY L" + " WHERE L.MALSTK LIKE '%" + view.txtTimKiem.getText() + "%'");
 					break;
 				}
-				case "Mã heo":
+				case "Ma heo":
 				{
 					rs = LichSuThaiKyModel.getData(
 							"SELECT L.MALSTK, L.NGAYGHINHAN, L.NOIDUNG, L.HEO_REF.MAHEO " + "FROM LICHSUTHAIKY L"
@@ -129,14 +131,14 @@ public class LichSuThaiKyController extends ControllerBase<LichSuThaiKyModel, Li
 			int row = view.tbLSTK.getSelectedRow();
 			if (row == -1)
 			{
-				JOptionPane.showMessageDialog(null, "Bạn chưa chọn dòng");
+				JOptionPane.showMessageDialog(null, "Ban chua chon dong");
 			}
 			else
 			{
 				String query = "delete from lichsuthaiky where malstk = '"
 						+ view.tbLSTK.getModel().getValueAt(row, 0).toString() + "' ";
 				LichSuThaiKyModel.editData(query);
-				JOptionPane.showMessageDialog(null, "Đã xóa thành công!");
+				JOptionPane.showMessageDialog(null, "Da xoa thanh cong!");
 				loaddata();
 			}
 			return;
@@ -150,7 +152,7 @@ public class LichSuThaiKyController extends ControllerBase<LichSuThaiKyModel, Li
 			row = view.tbLSTK.getSelectedRow();
 			if (row == -1)
 			{
-				JOptionPane.showMessageDialog(null, "Select please");
+				JOptionPane.showMessageDialog(null, "Ban chua chon dong");
 			}
 			else
 			{
@@ -159,7 +161,7 @@ public class LichSuThaiKyController extends ControllerBase<LichSuThaiKyModel, Li
 						+ "', 'yyyy-mm-dd'), HEO_REF = (select REF(h) from heo h where h.MAHEO='"
 						+ view.txtMaHeo.getText() + "')  where MALSTK ='" + view.txtMaLSTK.getText() + "'";
 				db.send(query);
-				JOptionPane.showMessageDialog(null, "ok");
+				JOptionPane.showMessageDialog(null, "Cap nhat thanh cong");
 				loaddata();
 			}
 			return;
@@ -171,7 +173,7 @@ public class LichSuThaiKyController extends ControllerBase<LichSuThaiKyModel, Li
 
 			if (view.txtMaHeo.getText().isEmpty() || view.txtNoiDung.getText().isEmpty()
 					|| view.dateNgayGhiNhan.getDate() == null)
-				JOptionPane.showMessageDialog(null, "Bạn cần phải điền đầy đủ các thông tin cần thiết!");
+				JOptionPane.showMessageDialog(null, "Ban can phai dien day du cac thong tin can thiet!");
 			else
 			{
 				try
@@ -184,14 +186,14 @@ public class LichSuThaiKyController extends ControllerBase<LichSuThaiKyModel, Li
 							"LichSuThaiKy_objtyp('111'," + "TO_DATE('" + dateGN + "','yyyy-mm-dd'),'"
 									+ view.txtNoiDung.getText() + "', null)",
 							ref));
-					JOptionPane.showMessageDialog(null, "Thêm thành công");
+					JOptionPane.showMessageDialog(null, "Them thanh cong");
 					loaddata();
 					// resetText();
 				}
 				catch (Exception e1)
 				{
 					e1.printStackTrace();
-					JOptionPane.showMessageDialog(null, "Quá trình thêm xảy ra lỗi");
+					JOptionPane.showMessageDialog(null, "Qua trinh them xay ra loi");
 				}
 			}
 			return;
@@ -203,7 +205,7 @@ public class LichSuThaiKyController extends ControllerBase<LichSuThaiKyModel, Li
 			int row = view.tbLSTK.getSelectedRow();
 			if (row == -1)
 			{
-				JOptionPane.showMessageDialog(null, "Cần chọn nhà cung cấp");
+				JOptionPane.showMessageDialog(null, "Can chon nha cung cap");
 				return;
 			}
 			String var = view.tbLSTK.getModel().getValueAt(row, 0).toString();
@@ -211,9 +213,8 @@ public class LichSuThaiKyController extends ControllerBase<LichSuThaiKyModel, Li
 			view.dispose();
 			return;
 		}
-		
-		
-		//select pig
+
+		// select pig
 		if (LichSuThaiKyView.SELECT_PIG.equals(cmd))
 		{
 			PigsManagerView pmv = new PigsManagerView();
@@ -228,6 +229,16 @@ public class LichSuThaiKyController extends ControllerBase<LichSuThaiKyModel, Li
 			pmv.showUp();
 			return;
 		}
+		
+		
+		//Trang chu
+		if (Constants.AC_HOME.equals(cmd))
+		{
+			
+			return;
+		}
+		
+		super.actionPerformed(e);
 	}
 
 	@Override
@@ -291,7 +302,7 @@ public class LichSuThaiKyController extends ControllerBase<LichSuThaiKyModel, Li
 			view.txtMaHeo.setText(var);
 			break;
 		}
-		
+
 	}
 
 }

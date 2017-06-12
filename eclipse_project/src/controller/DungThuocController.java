@@ -32,7 +32,8 @@ public class DungThuocController extends ControllerBase<DungThuocModel, DungThuo
 	public void loadData()
 	{
 		rs = DungThuocModel.getData("SELECT ls.thuoc_ref.mathuoc,ls.ngaydung,ls.lieu,ls.donvi,ls.hinhthucsudung"
-				+ " FROM BenhAn b, TABLE (b.LSdungthuoc_ntab) ls " + " WHERE MABENHAN='" + DungThuocView.mabenhan + "'");
+				+ " FROM BenhAn b, TABLE (b.LSdungthuoc_ntab) ls " + " WHERE MABENHAN='" + DungThuocView.mabenhan
+				+ "'");
 		if (rs != null)
 		{
 
@@ -67,23 +68,28 @@ public class DungThuocController extends ControllerBase<DungThuocModel, DungThuo
 		{
 			if (view.txtTimKiem.getText().isEmpty())
 				rs = DungThuocModel.getData("SELECT ls.thuoc_ref.mathuoc,ls.ngaydung,ls.lieu,ls.donvi,ls.hinhthucsudung"
-						+ " FROM BenhAn b, TABLE (b.LSdungthuoc_ntab) ls " + " WHERE MABENHAN='" + DungThuocView.mabenhan + "'");
+						+ " FROM BenhAn b, TABLE (b.LSdungthuoc_ntab) ls " + " WHERE MABENHAN='"
+						+ DungThuocView.mabenhan + "'");
 			else
 			{
 				switch (view.cbxTimKiem.getSelectedItem().toString())
 				{
-				case "Mã thuốc":
+				case "Ma thuoc":
 				{
-					rs = DungThuocModel.getData("SELECT ls.thuoc_ref.mathuoc,ls.ngaydung,ls.lieu,ls.donvi,ls.hinhthucsudung"
-							+ " FROM BenhAn b, TABLE (b.LSdungthuoc_ntab) ls " + " WHERE MABENHAN='" + DungThuocView.mabenhan
-							+ "'" + " and ls.thuoc_ref.mathuoc like '%" + view.txtTimKiem.getText() + "%'");
+					rs = DungThuocModel
+							.getData("SELECT ls.thuoc_ref.mathuoc,ls.ngaydung,ls.lieu,ls.donvi,ls.hinhthucsudung"
+									+ " FROM BenhAn b, TABLE (b.LSdungthuoc_ntab) ls " + " WHERE MABENHAN='"
+									+ DungThuocView.mabenhan + "'" + " and ls.thuoc_ref.mathuoc like '%"
+									+ view.txtTimKiem.getText() + "%'");
 					break;
 				}
-				case "Hình thức sử dụng":
+				case "Hinh thuc su dung":
 				{
-					rs = DungThuocModel.getData("SELECT ls.thuoc_ref.mathuoc,ls.ngaydung,ls.lieu,ls.donvi,ls.hinhthucsudung"
-							+ " FROM BenhAn b, TABLE (b.LSdungthuoc_ntab) ls " + " WHERE MABENHAN='" + DungThuocView.mabenhan
-							+ "'" + " and ls.hinhthucsudung like '%" + view.txtTimKiem.getText() + "%'");
+					rs = DungThuocModel
+							.getData("SELECT ls.thuoc_ref.mathuoc,ls.ngaydung,ls.lieu,ls.donvi,ls.hinhthucsudung"
+									+ " FROM BenhAn b, TABLE (b.LSdungthuoc_ntab) ls " + " WHERE MABENHAN='"
+									+ DungThuocView.mabenhan + "'" + " and ls.hinhthucsudung like '%"
+									+ view.txtTimKiem.getText() + "%'");
 					break;
 				}
 				}
@@ -121,7 +127,7 @@ public class DungThuocController extends ControllerBase<DungThuocModel, DungThuo
 		{
 			if (view.dateNgayDung.getDate() == null || view.txtMaThuoc.getText().isEmpty()
 					|| view.txtDonVi.getText().isEmpty() || view.txtLieu.getText().isEmpty())
-				JOptionPane.showMessageDialog(null, "Bạn hãy điền vào tất cả những trương cần thiết!");
+				JOptionPane.showMessageDialog(null, "Ban day dien vao tat ca nhung gia tri can thiet!");
 			else
 			{
 				try
@@ -136,17 +142,17 @@ public class DungThuocController extends ControllerBase<DungThuocModel, DungThuo
 						tiem = 0;
 					dateD = formatdate2.format(view.dateNgayDung.getDate());
 					query = "INSERT INTO TABLE ( " + "SELECT ba.LSdungthuoc_ntab " + "FROM BenhAn ba "
-							+ "WHERE ba.MaBenhAn = '" + DungThuocView.mabenhan + "') " + "select ref(t), " + "'" + dateD + "', "
-							+ "'" + view.txtLieu.getText() + "', " + "'" + view.txtDonVi.getText() + "', " + "'" + tiem
-							+ "' " + "from thuoc t where t.mathuoc='" + view.txtMaThuoc.getText() + "'";
+							+ "WHERE ba.MaBenhAn = '" + DungThuocView.mabenhan + "') " + "select ref(t), " + "'" + dateD
+							+ "', " + "'" + view.txtLieu.getText() + "', " + "'" + view.txtDonVi.getText() + "', " + "'"
+							+ tiem + "' " + "from thuoc t where t.mathuoc='" + view.txtMaThuoc.getText() + "'";
 					db.send(query);
-					JOptionPane.showMessageDialog(null, "Thêm thành công");
+					JOptionPane.showMessageDialog(null, "Them thanh cong");
 					loadData();
 				}
 				catch (Exception e1)
 				{
 					e1.printStackTrace();
-					JOptionPane.showMessageDialog(null, "Lỗi! Hãy kiểm tra chắc chắn liều là số!");
+					JOptionPane.showMessageDialog(null, "Loi! Hay kiem tra chac chan lieu la so!");
 				}
 			}
 		}
@@ -158,7 +164,7 @@ public class DungThuocController extends ControllerBase<DungThuocModel, DungThuo
 			row = view.tbDungThuoc.getSelectedRow();
 			if (row == -1)
 			{
-				JOptionPane.showMessageDialog(null, "Hãy chọn dòng cần xóa!");
+				JOptionPane.showMessageDialog(null, "Hay chon dong can xoa!");
 			}
 			else
 			{
@@ -167,15 +173,15 @@ public class DungThuocController extends ControllerBase<DungThuocModel, DungThuo
 					String dateND;
 					dateND = formatdate2.format(view.dateNgayDung.getDate());
 					String query = "DELETE FROM TABLE ( " + "SELECT b.LSDungThuoc_ntab " + "FROM BenhAn b "
-							+ "where b.mabenhan='" + DungThuocView.mabenhan + "') t " + "Where t.NgayDung='" + dateND + "' "
-							+ "and t.thuoc_ref.mathuoc='" + view.txtMaThuoc.getText() + "'";
+							+ "where b.mabenhan='" + DungThuocView.mabenhan + "') t " + "Where t.NgayDung='" + dateND
+							+ "' " + "and t.thuoc_ref.mathuoc='" + view.txtMaThuoc.getText() + "'";
 					db.send(query);
-					JOptionPane.showMessageDialog(null, "Đã xóa thành công!");
+					JOptionPane.showMessageDialog(null, "Da xoa thanh cong!");
 					loadData();
 				}
 				catch (Exception e1)
 				{
-					JOptionPane.showMessageDialog(null, "Xảy ra lỗi!");
+					JOptionPane.showMessageDialog(null, "Xay ra loi!");
 				}
 			}
 		}

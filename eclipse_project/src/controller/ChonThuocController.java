@@ -100,7 +100,7 @@ public class ChonThuocController extends ControllerBase<ChonThuocModel, ChonThuo
 			row = view.tbChonThuoc.getSelectedRow();
 			if (row == -1)
 			{
-				JOptionPane.showMessageDialog(null, "Hãy chọn một dòng!");
+				JOptionPane.showMessageDialog(null, "Hay chon 1 dong!");
 				return;
 			}
 			String var = view.tbChonThuoc.getModel().getValueAt(row, 0).toString();

@@ -29,6 +29,7 @@ import javax.swing.table.DefaultTableModel;
 
 import com.toedter.calendar.JDateChooser;
 
+import common.Constants;
 import common.Genner;
 import common.Layer;
 import controller.WarehouseManagerController;
@@ -64,11 +65,11 @@ public class WarehouseManagerView extends ViewBase
 	final private Border		_border						= BorderFactory.createLineBorder(Color.gray);
 	final private TitledBorder	_titleQuanLy, _titleTimKiem, _titleBotLeft, _titleBotRight;
 	public JRadioButton			_rdbtThuoc, _rdbtThucAn;
-	public JComboBox<String>			_cbxTimKiem;
+	public JComboBox<String>	_cbxTimKiem;
 	public JTextField			_txtfMaNCC, _txtfMaLoaiThucAn;
 	public JTextField			_txtfTimKiem, _txtfMa, _txtfTen, _txtfDonVi, _txtfConLai;
 	public JButton				_btnTimKiem, _btnChonNCC, _btnChonThucAn, _btnThem, _btnXoa, _btnCapNhat, _btnXuatKho,
-			_btnChuyenSangPhai, _btnChuyenSangTrai;
+			_btnChuyenSangPhai, _btnChuyenSangTrai, _btnTrangChu;
 	public JLabel				_lblMaNCC, _lblMa, _lblTen, _lblDonVi, _lblConLai, _lblNSX, _lblNHH, _lblMaLoaiThucAn,
 			_lblThanhPhan, _lblChiDinh;
 	public JTextArea			_txtaThanhPhan, _txtaChiDinh;
@@ -83,15 +84,15 @@ public class WarehouseManagerView extends ViewBase
 		contentpane.setLayout(sl_contentpane);
 
 		// _panelTopLeft
-		_titleQuanLy = BorderFactory.createTitledBorder(_border, "Quản lý");
+		_titleQuanLy = BorderFactory.createTitledBorder(_border, "Quan ly");
 		_panelTopLeft = new JPanel();
 		_panelTopLeft.setBorder(_titleQuanLy);
 		_panelTopLeft.setLayout(new BoxLayout(_panelTopLeft, BoxLayout.X_AXIS));
 		_panelTopLeft.setPreferredSize(new Dimension(200, 80));
 
-		_rdbtThuoc = new JRadioButton("Thuốc", true);
+		_rdbtThuoc = new JRadioButton("Thuoc", true);
 		_rdbtThuoc.setActionCommand(DRUG_SELECTED_COMMAND);
-		_rdbtThucAn = new JRadioButton("Thức ăn", false);
+		_rdbtThucAn = new JRadioButton("Thuc an", false);
 		_rdbtThucAn.setActionCommand(FOOD_SELECTED_COMMAND);
 
 		ButtonGroup _btngroup = new ButtonGroup();
@@ -104,7 +105,7 @@ public class WarehouseManagerView extends ViewBase
 		contentpane.add(_panelTopLeft);
 
 		// _panelTopRight
-		_titleTimKiem = BorderFactory.createTitledBorder(_border, "Tìm kiếm");
+		_titleTimKiem = BorderFactory.createTitledBorder(_border, "Tim kiem");
 		_titleTimKiem.setTitleJustification(TitledBorder.CENTER);
 		_panelTopRight = new JPanel();
 		_panelTopRight.setPreferredSize(new Dimension(200, 80));
@@ -113,10 +114,10 @@ public class WarehouseManagerView extends ViewBase
 		_panelTopRight.setLayout(sl_panelTopRight);
 
 		_cbxTimKiem = new JComboBox<String>();
-		_cbxTimKiem.addItem("Tên");
+		_cbxTimKiem.addItem("Ten");
 		_txtfTimKiem = new JTextField(20);
 
-		_btnTimKiem = Genner.createButton("Tìm kiếm", Genner.MEDIUM_SIZE);
+		_btnTimKiem = Genner.createButton("Tim kiem", Genner.MEDIUM_SIZE);
 		_btnTimKiem.setActionCommand(SEARCH_COMMAND);
 
 		sl_panelTopRight.putConstraint(SpringLayout.HORIZONTAL_CENTER, _txtfTimKiem, 0, SpringLayout.HORIZONTAL_CENTER,
@@ -145,13 +146,13 @@ public class WarehouseManagerView extends ViewBase
 		SpringLayout sl_panelMidLeft = new SpringLayout();
 		_panelMidLeft.setLayout(sl_panelMidLeft);
 
-		_btnChonNCC = Genner.createButton("Chọn", Genner.MEDIUM_SIZE);
+		_btnChonNCC = Genner.createButton("Chon", Genner.MEDIUM_SIZE);
 		_btnChonNCC.setActionCommand(SELECT_PROVIDER_COMMAND);
 
-		_lblMaNCC = new JLabel("Mã NCC");
-		_lblMa = new JLabel("Mã");
-		_lblTen = new JLabel("Tên");
-		_lblDonVi = new JLabel("Đơn vị");
+		_lblMaNCC = new JLabel("Ma NCC");
+		_lblMa = new JLabel("Ma");
+		_lblTen = new JLabel("Ten");
+		_lblDonVi = new JLabel("Don vi");
 
 		_txtfMaNCC = new JTextField(18);
 		_txtfMaNCC.setEditable(false);
@@ -198,10 +199,10 @@ public class WarehouseManagerView extends ViewBase
 		_panelMidCenter.setBorder(_border);
 		SpringLayout sl_panelMidCenter = new SpringLayout();
 		_panelMidCenter.setLayout(sl_panelMidCenter);
-		_lblConLai = new JLabel("Còn lại");
-		_lblNSX = new JLabel("Ngày sản xuất");
-		_lblNHH = new JLabel("Ngày hết hạn");
-		_lblMaLoaiThucAn = new JLabel("Mã loại thức ăn");
+		_lblConLai = new JLabel("Con lai");
+		_lblNSX = new JLabel("Ngay san xuat");
+		_lblNHH = new JLabel("Ngay het han");
+		_lblMaLoaiThucAn = new JLabel("Ma loai thuc an");
 
 		_txtfConLai = new JTextField(25);
 		_dateNSX = new JDateChooser();
@@ -210,7 +211,7 @@ public class WarehouseManagerView extends ViewBase
 		_txtfMaLoaiThucAn = new JTextField(18);
 		_txtfMaLoaiThucAn.setEditable(false);
 
-		_btnChonThucAn = Genner.createButton("Chọn", Genner.MEDIUM_SIZE);
+		_btnChonThucAn = Genner.createButton("Chon", Genner.MEDIUM_SIZE);
 		_btnChonThucAn.setActionCommand(SELECT_FOOD_COMMAND);
 
 		Layer.put(_txtfConLai).in(sl_panelMidCenter).atTop(_panelMidCenter).withMargin(10).atRight(_panelMidCenter)
@@ -254,8 +255,8 @@ public class WarehouseManagerView extends ViewBase
 		SpringLayout sl_panelMidRight = new SpringLayout();
 		_panelMidRight.setLayout(sl_panelMidRight);
 
-		_lblThanhPhan = new JLabel("Thành phần");
-		_lblChiDinh = new JLabel("Chỉ định");
+		_lblThanhPhan = new JLabel("Thanh phan");
+		_lblChiDinh = new JLabel("Chi dinh");
 		_txtaThanhPhan = new JTextArea(4, 36);
 		_txtaThanhPhan.setLineWrap(true);
 		_txtaThanhPhan.setWrapStyleWord(true);
@@ -307,7 +308,7 @@ public class WarehouseManagerView extends ViewBase
 
 		_tbXuatKho = new JTable();
 		final String[] _columnsTBXuatKho =
-		{ "Loại", "Mã", "Tên", "Số lượng", "Đơn vị", "Nhà cung cấp", "Ngày sản xuất", "Ngày hết hạn" };
+		{ "Loai", "Ma", "Ten", "So luong", "Don vi", "Nha cung cap", "Ngay san xuat", "Ngay het han" };
 		dtmXK = new DefaultTableModel(_columnsTBXuatKho, 0);
 		_tbXuatKho.setModel(dtmXK);
 		_tbXuatKho.setFillsViewportHeight(true);
@@ -320,18 +321,20 @@ public class WarehouseManagerView extends ViewBase
 
 		// _button on bottom
 
-		_btnThem = Genner.createButton("Thêm", Genner.MEDIUM_SIZE);
+		_btnThem = Genner.createButton("Them", Genner.MEDIUM_SIZE);
 		_btnThem.setActionCommand(ADD_COMMAND);
-		_btnXoa = Genner.createButton("Xóa", Genner.MEDIUM_SIZE);
+		_btnXoa = Genner.createButton("Xoa", Genner.MEDIUM_SIZE);
 		_btnXoa.setActionCommand(REMOVE_COMMAND);
-		_btnCapNhat = Genner.createButton("Cập nhật", Genner.MEDIUM_SIZE);
+		_btnCapNhat = Genner.createButton("Cap nhat", Genner.MEDIUM_SIZE);
 		_btnCapNhat.setActionCommand(UPDATE_COMMAND);
-		_btnXuatKho = Genner.createButton("Xuất kho", Genner.MEDIUM_SIZE);
+		_btnXuatKho = Genner.createButton("Xuat kho", Genner.MEDIUM_SIZE);
 		_btnXuatKho.setActionCommand(EXPORT_COMMAND);
 		_btnChuyenSangPhai = Genner.createButton(">>", Genner.SMALL_SIZE);
 		_btnChuyenSangPhai.setActionCommand(TRANSFER_TO_RIGHT_COMMAND);
 		_btnChuyenSangTrai = Genner.createButton("<<", Genner.SMALL_SIZE);
 		_btnChuyenSangTrai.setActionCommand(TRANSFER_TO_LEFT_COMMAND);
+		_btnTrangChu = Genner.createButton("Trang Chu", Genner.BIG_SIZE);
+		_btnTrangChu.setActionCommand(Constants.AC_HOME);
 
 		contentpane.add(_btnThem);
 		contentpane.add(_btnXoa);
@@ -339,6 +342,7 @@ public class WarehouseManagerView extends ViewBase
 		contentpane.add(_btnXuatKho);
 		contentpane.add(_btnChuyenSangPhai);
 		contentpane.add(_btnChuyenSangTrai);
+		contentpane.add(_btnTrangChu);
 
 		// Set Layer
 		Layer.put(_panelTopLeft).atTopLeft(contentpane).in(sl_contentpane).withMargin(5);
@@ -354,7 +358,9 @@ public class WarehouseManagerView extends ViewBase
 				.withMargin(5).atLeft(contentpane).withMargin(5);
 		Layer.put(_panelBotRight).atRight(contentpane).in(sl_contentpane).withMargin(5).atBottom(contentpane)
 				.withMargin(50).bottomOf(_panelMidRight).withMargin(5).leftOf(_panelBotLeft).withMargin(110);
-		Layer.put(_btnThem).in(sl_contentpane).atBottom(contentpane).withMargin(5).atLeft(contentpane).withMargin(120)
+		Layer.put(_btnTrangChu).in(sl_contentpane).atBottom(contentpane).withMargin(5).atLeft(contentpane)
+				.withMargin(90).bottomOf(_panelBotLeft).withMargin(5);
+		Layer.put(_btnThem).in(sl_contentpane).atBottom(contentpane).withMargin(5).leftOf(_btnTrangChu).withMargin(50)
 				.bottomOf(_panelBotLeft).withMargin(5);
 		Layer.put(_btnXoa).in(sl_contentpane).atBottom(contentpane).withMargin(5).leftOf(_btnThem).withMargin(80)
 				.bottomOf(_panelBotLeft).withMargin(5);
@@ -373,7 +379,7 @@ public class WarehouseManagerView extends ViewBase
 		// Set form
 		setPreferredSize(new Dimension(1366, 730));
 		setResizable(false);
-		setTitle("Quản lý kho");
+		setTitle("Quan ly kho");
 		setContentPane(new JScrollPane(contentpane));
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -399,16 +405,7 @@ public class WarehouseManagerView extends ViewBase
 
 	void notice(short code)
 	{
-		throw new UnsupportedOperationException("Not supported yet."); // To
-																		// change
-																		// body
-																		// of
-																		// generated
-																		// methods,
-																		// choose
-																		// Tools
-																		// |
-																		// Templates.
+
 	}
 
 }

@@ -22,9 +22,10 @@ import javax.swing.SpringLayout;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
-
+import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
 import com.toedter.calendar.JDateChooser;
 
+import common.Constants;
 import common.Genner;
 import common.Layer;
 import controller.ThaTinhController;
@@ -42,7 +43,7 @@ public class ThaTinhView extends ViewBase
 
 	private JPanel					contentpanel;
 
-	public JButton					btnTimKiem, btnChonNCC, btnThem, btnXoa, btnCapNhat, btnLuu, btnChonLSTK;
+	public JButton					btnTimKiem, btnChonNCC, btnThem, btnXoa, btnCapNhat, btnLuu, btnChonLSTK, btnTrangChu;
 	public JDateChooser				dateNgaySX, dateNgayHH;
 	public JTable					tbThaTinh;
 	public JComboBox<Object>		cbxTimKiem;
@@ -69,7 +70,7 @@ public class ThaTinhView extends ViewBase
 		// panelTop
 		// create border
 		final Border border = BorderFactory.createLineBorder(Color.gray);
-		final TitledBorder titleTimKiem = BorderFactory.createTitledBorder(border, "Tìm kiếm tinh");
+		final TitledBorder titleTimKiem = BorderFactory.createTitledBorder(border, "Tim kiem tinh");
 
 		panelTop = new JPanel();
 		panelTop.setBorder(titleTimKiem);
@@ -78,14 +79,14 @@ public class ThaTinhView extends ViewBase
 				.atRight(contentpanel).withMargin(10);
 
 		cbxTimKiem = new JComboBox<>();
-		cbxTimKiem.addItem("Mã tinh");
-		cbxTimKiem.addItem("Tên tinh");
-		cbxTimKiem.addItem("Nguồn gốc");
-		cbxTimKiem.addItem("Mã nhà cung cấp");
+		cbxTimKiem.addItem("Ma tinh");
+		cbxTimKiem.addItem("Ten tinh");
+		cbxTimKiem.addItem("Nguon goc");
+		cbxTimKiem.addItem("Ma nha cung cap");
 
 		txtTimKiem = new JTextField(20);
 		txtTimKiem.setText("");
-		btnTimKiem = new JButton("Tìm kiếm");
+		btnTimKiem = new JButton("Tim kiem");
 		btnTimKiem.setActionCommand(SEARCH_COMMAND);
 		SpringLayout sl_panelTop = new SpringLayout();
 		panelTop.setLayout(sl_panelTop);
@@ -115,14 +116,14 @@ public class ThaTinhView extends ViewBase
 		Layer.put(panelMidLeft).in(sl_contentpanel).atLeft(contentpanel).withMargin(10).bottomOf(panelTop)
 				.withMargin(10);
 
-		JLabel lblMaTinh = new JLabel("Mã Tinh");
+		JLabel lblMaTinh = new JLabel("Ma Tinh");
 		Layer.put(lblMaTinh).in(sl_panelMidLeft).atLeft(panelMidLeft).withMargin(10).atTop(panelMidLeft).withMargin(15);
 
-		JLabel lblTenTinh = new JLabel("Tên Tinh");
+		JLabel lblTenTinh = new JLabel("Ten Tinh");
 		Layer.put(lblTenTinh).in(sl_panelMidLeft).atLeft(panelMidLeft).withMargin(10).bottomOf(lblMaTinh)
 				.withMargin(15);
 
-		JLabel lblNguonGoc = new JLabel("Nguồn gốc");
+		JLabel lblNguonGoc = new JLabel("Nguon goc");
 		Layer.put(lblNguonGoc).in(sl_panelMidLeft).atLeft(panelMidLeft).withMargin(10).bottomOf(lblTenTinh)
 				.withMargin(15);
 
@@ -156,15 +157,15 @@ public class ThaTinhView extends ViewBase
 		Layer.put(panelMidCenter).in(sl_contentpanel).leftOf(panelMidLeft).withMargin(20).bottomOf(panelTop)
 				.withMargin(10);
 
-		JLabel lblDacDiem = new JLabel("Đặc điểm");
+		JLabel lblDacDiem = new JLabel("Dac diem");
 		Layer.put(lblDacDiem).in(sl_panelMidCenter).atLeft(panelMidCenter).withMargin(10).atTop(panelMidCenter)
 				.withMargin(15);
 
-		JLabel lblMaNCC = new JLabel("Mã nhà cung cấp");
+		JLabel lblMaNCC = new JLabel("Ma nha cung cap");
 		Layer.put(lblMaNCC).in(sl_panelMidCenter).atLeft(panelMidCenter).withMargin(10).bottomOf(lblDacDiem)
 				.withMargin(15);
 
-		JLabel lblNgaySX = new JLabel("Ngày sản xuất");
+		JLabel lblNgaySX = new JLabel("Ngay san xuat");
 		Layer.put(lblNgaySX).in(sl_panelMidCenter).atLeft(panelMidCenter).withMargin(10).bottomOf(lblMaNCC)
 				.withMargin(15);
 
@@ -180,7 +181,7 @@ public class ThaTinhView extends ViewBase
 		Layer.put(dateNgaySX).in(sl_panelMidCenter).atLeft(panelMidCenter).withMargin(130).atTop(lblNgaySX)
 				.withMargin(0).atRight(txtDacDiem).withMargin(0);
 
-		btnChonNCC = Genner.createButton("Chọn", Genner.MEDIUM_SIZE);
+		btnChonNCC = Genner.createButton("Chon", Genner.MEDIUM_SIZE);
 		Layer.put(btnChonNCC).in(sl_panelMidCenter).leftOf(txtMaNCC).withMargin(15).atTop(txtMaNCC).withMargin(0)
 				.atBottom(txtMaNCC).withMargin(0);
 		btnChonNCC.setActionCommand(SELECT_PROVIDER_COMMAND);
@@ -204,7 +205,7 @@ public class ThaTinhView extends ViewBase
 		Layer.put(panelMidRight).in(sl_contentpanel).leftOf(panelMidCenter).withMargin(20).bottomOf(panelTop)
 				.withMargin(10);
 
-		JLabel lblNgayHH = new JLabel("Ngày hết hạn");
+		JLabel lblNgayHH = new JLabel("Ngay het han");
 		Layer.put(lblNgayHH).in(sl_panelMidRight).atLeft(panelMidRight).withMargin(10).atTop(panelMidRight)
 				.withMargin(15);
 
@@ -212,14 +213,14 @@ public class ThaTinhView extends ViewBase
 		Layer.put(dateNgayHH).in(sl_panelMidRight).atLeft(panelMidRight).withMargin(130).atTop(lblNgayHH).withMargin(0)
 				.atRight(panelMidRight).withMargin(20);
 
-		JLabel lblMaLS = new JLabel("Mã lich sử thai kỳ");
+		JLabel lblMaLS = new JLabel("Ma lich su thai ky");
 		Layer.put(lblMaLS).in(sl_panelMidRight).atLeft(panelMidRight).withMargin(10).bottomOf(dateNgayHH)
 				.withMargin(15);
 
 		txtMaLS = new JTextField(15);
 		Layer.put(txtMaLS).in(sl_panelMidRight).atLeft(panelMidRight).withMargin(130).atTop(lblMaLS).withMargin(0);
 		txtMaLS.setEditable(false);
-		btnChonLSTK = Genner.createButton("Chọn", Genner.MEDIUM_SIZE);
+		btnChonLSTK = Genner.createButton("Chon", Genner.MEDIUM_SIZE);
 		Layer.put(btnChonLSTK).in(sl_panelMidRight).leftOf(txtMaLS).withMargin(15).atTop(txtMaLS).withMargin(0)
 				.atBottom(txtMaLS).withMargin(0);
 		btnChonLSTK.setActionCommand(SELECT_HISTORY_COMMAND);
@@ -241,8 +242,8 @@ public class ThaTinhView extends ViewBase
 		panelBot.setLayout(bl_panelBot);
 
 		final String[] columnThaTinh =
-		{ "Mã tinh", "Tên tinh", "Nguồn gốc", "Đặc điểm", "Mã nhà cung cấp", "Ngày sản xuất", "Ngày hết hạn",
-				"Mã lịch sử thai kỳ" };
+		{ "Ma tinh", "Ten tinh", "Nguon goc", "Dac diem", "Ma nha cung cap", "Ngay san xuat", "Ngay het han",
+				"Ma lich su thai ky" };
 		tbThaTinh = new JTable(new Object[0][0], columnThaTinh);
 		dtm = new DefaultTableModel(columnThaTinh, 0);
 		tbThaTinh.setFillsViewportHeight(true);
@@ -252,32 +253,37 @@ public class ThaTinhView extends ViewBase
 		panelBot.add(scrolltbThaTinh);
 
 		// control mainform
-		btnThem = Genner.createButton("Thêm", Genner.MEDIUM_SIZE);
+		btnThem = Genner.createButton("Them", Genner.MEDIUM_SIZE);
 		Layer.put(btnThem).in(sl_contentpanel).leftOf(panelBot).withMargin(60).bottomOf(panelMidRight).withMargin(100);
 		btnThem.setActionCommand(INSERT_COMMAND);
 
-		btnXoa = Genner.createButton("Xóa", Genner.MEDIUM_SIZE);
+		btnXoa = Genner.createButton("Xoa", Genner.MEDIUM_SIZE);
 		Layer.put(btnXoa).in(sl_contentpanel).leftOf(panelBot).withMargin(60).bottomOf(btnThem).withMargin(30);
 		btnXoa.setActionCommand(DELETE_COMMAND);
 
-		btnCapNhat = Genner.createButton("Cập nhật", Genner.MEDIUM_SIZE);
+		btnCapNhat = Genner.createButton("Cap nhat", Genner.MEDIUM_SIZE);
 		Layer.put(btnCapNhat).in(sl_contentpanel).leftOf(panelBot).withMargin(60).bottomOf(btnXoa).withMargin(30);
 		btnCapNhat.setActionCommand(UPDATE_COMMAND);
 
-		btnLuu = Genner.createButton("Lưu", Genner.MEDIUM_SIZE);
+		btnLuu = Genner.createButton("Luu", Genner.MEDIUM_SIZE);
 		Layer.put(btnLuu).in(sl_contentpanel).leftOf(panelBot).withMargin(60).bottomOf(btnCapNhat).withMargin(30);
 		btnLuu.setActionCommand(SAVE_COMMAND);
+		
+		btnTrangChu = Genner.createButton("Trang Chu", Genner.BIG_SIZE);
+		Layer.put(btnTrangChu).in(sl_contentpanel).leftOf(panelBot).withMargin(40).atBottom(contentpanel).withMargin(50).atRight(contentpanel).withMargin(40);
+		btnTrangChu.setActionCommand(Constants.AC_HOME);
 
 		contentpanel.add(btnThem);
 		contentpanel.add(btnXoa);
 		contentpanel.add(btnCapNhat);
-		contentpanel.add(btnLuu);
+//		contentpanel.add(btnLuu);
+		contentpanel.add(btnTrangChu);
 		contentpanel.add(panelBot);
 
 		// set mainform
 		setPreferredSize(new Dimension(1366, 730));
 		setResizable(false);
-		setTitle("Thả tinh");
+		setTitle("Tha tinh");
 		setContentPane(new JScrollPane(contentpanel));
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -294,6 +300,7 @@ public class ThaTinhView extends ViewBase
 		btnLuu.addActionListener(ttc);
 		btnChonLSTK.addActionListener(ttc);
 		tbThaTinh.setModel(dtm);
+		btnTrangChu.addActionListener(ttc);
 
 		tbThaTinh.addMouseListener(ttc);
 
