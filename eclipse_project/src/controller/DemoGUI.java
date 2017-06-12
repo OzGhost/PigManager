@@ -25,7 +25,8 @@ import view.StablesView;
 import view.ToolView;
 import db.db;
 import model.PigsManagerModel;
-import view.PigsManagerView;
+import view.*;
+import model.*;
 
 /**
  * For demo only
@@ -35,7 +36,7 @@ import view.PigsManagerView;
 public class DemoGUI {
     public static void main (String[] args) {
         // Database global connection initial
-         db.init("orcl", "c##java", "123");
+         db.init("xdb", "c##java", "1807");
         
         // Change look and feel
         try {
@@ -81,9 +82,14 @@ public class DemoGUI {
         cfm.addObserver(cfv);
         cfv.setController(cfc);
         cfv.showUp();
+<<<<<<< HEAD
         */
         
         /*
+=======
+*/
+/*        
+>>>>>>> ef43ad976aa88efeb6eb456b5e5a528d57c76e49
     	// block call Them chuong frame
         StablesView sv = new StablesView();
         StablesController sc = new StablesController();
@@ -95,6 +101,7 @@ public class DemoGUI {
         */
         
         //block call vatdung frame
+<<<<<<< HEAD
 //        ToolView tv= new ToolView();
 //        ToolController tc = new ToolController();
 //        ToolModel tm = new ToolModel();
@@ -129,6 +136,16 @@ public class DemoGUI {
             e.printStackTrace();
         }
         
+=======
+        ToolView tv= new ToolView();
+        ToolController tc = new ToolController();
+        ToolModel tm = new ToolModel();
+        tc.setView(tv);
+        tc.setModel(tm);
+        tv.setController(tc);
+        tv.showUp();
+       
+>>>>>>> ef43ad976aa88efeb6eb456b5e5a528d57c76e49
 //        WarehouseManagerModel whm = new WarehouseManagerModel();
 //        WarehouseManagerView whv = new WarehouseManagerView();
 //        WarehouseManagerController whc = new WarehouseManagerController();
@@ -137,7 +154,7 @@ public class DemoGUI {
 //        whv.setController(whc);
 //        whv.showUp();
         
-        
+/*       
         PigsManagerModel pmm = new PigsManagerModel();
         PigsManagerView pmv = new PigsManagerView();
         PigsManagerController pmc = new PigsManagerController();
@@ -145,7 +162,7 @@ public class DemoGUI {
         pmc.setModel(pmm);
         pmv.setController(pmc);
         pmv.showUp(); 
-        
+*/        
         
 //        BenhAnView bav=new BenhAnView();
 //        BenhAnController bac =new BenhAnController();

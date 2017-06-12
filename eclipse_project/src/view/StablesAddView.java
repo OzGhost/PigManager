@@ -43,23 +43,23 @@ public class StablesAddView extends ViewBase{
     
     public StablesAddView(){
         //
-        status_lb = new JLabel("Tình trạng");
+        status_lb = new JLabel("Tinh trang");
         status_tx = new JTextField(15);
-        status_tx.setText("Trống");
+        status_tx.setText("Trong");
         status_tx.setEditable(false);
-        number_lb = new JLabel("Số lượng tối đa");
+        number_lb = new JLabel("So luong toi da");
         number_tx = new JTextField(13);
-        location_lb = new JLabel("Vị trí");
+        location_lb = new JLabel("Vi tri");
         location_tx = new JTextField(18);
-        describe_lb = new JLabel("Mô tả");
+        describe_lb = new JLabel("Mo ta");
         //describe_tx = new JTextField(12);
         describe_tx = new JTextField();
         describe_tx.setPreferredSize(new Dimension(0, 114));
         
         // button
-        add_bt = Genner.createButton("Thêm", Genner.MEDIUM_SIZE);
+        add_bt = Genner.createButton("Them", Genner.MEDIUM_SIZE);
         add_bt.setActionCommand(ADD_COMMAND);
-        cancel_bt = Genner.createButton("Hủy", Genner.MEDIUM_SIZE);
+        cancel_bt = Genner.createButton("Huy", Genner.MEDIUM_SIZE);
         cancel_bt.setActionCommand(CANCEL_COMMAND);
         refresh_bt = Genner.createButton("Refresh", Genner.MEDIUM_SIZE);
         refresh_bt.setActionCommand(REFRESH_COMMAND);
@@ -98,7 +98,7 @@ public class StablesAddView extends ViewBase{
         Layer.put(refresh_bt).in(mainLayout).atBottom(panel).withMargin(7).rightOf(add_bt).withMargin(7);
         //set frame
         
-        this.setTitle("Thêm chuồng");
+        this.setTitle("Them chuong");
         this.setSize(500, 250);
         this.add(panel);
         this.setResizable(false);

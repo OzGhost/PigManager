@@ -5,6 +5,7 @@
  */
 package view;
 
+import common.Constants;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
@@ -50,6 +51,7 @@ public class StablesView extends ViewBase {
     private JButton deleteBt;
     private JButton cancelBt;
     private JButton selectBt;
+    private JButton homeBt;
     private JPanel panel;
     private JLabel stables_id_lb;
     private JLabel status_lb;
@@ -74,13 +76,13 @@ public class StablesView extends ViewBase {
      
 //constructors
     public StablesView(){
-        status = new JLabel("Tình trạng");
+        status = new JLabel("Tinh trang");
         statusCb = new JComboBox();
         statusCb.addItem(null);
-        statusCb.addItem("Trống");
-        statusCb.addItem("Đầy");
-        statusCb.addItem("Đang nuôi");
-        number = new JLabel("Số lượng tối đa");
+        statusCb.addItem("Trong");
+        statusCb.addItem("Day");
+        statusCb.addItem("Dang nuoi");
+        number = new JLabel("So luong toi da");
         numberCb = new JComboBox();
         numberCb.addItem(null);
         ResultSet rs = db.sendForResult(ADD_ITEM_CB_COMMAND);
@@ -92,38 +94,40 @@ public class StablesView extends ViewBase {
         } catch (SQLException ex) {
             Logger.getLogger(StablesView.class.getName()).log(Level.SEVERE, null, ex);
         }
-        stables_id_lb = new JLabel("Mã chuồng");
+        stables_id_lb = new JLabel("Ma chuong");
         stables_id_tx = new JTextField(15);
         stables_id_tx.setEditable(false);
-        status_lb = new JLabel("Tình trạng");
+        status_lb = new JLabel("Tinh trang");
         status_tx = new JTextField(6);
         status_tx.setEditable(false);
-        number_lb = new JLabel("Số lượng tối đa");
+        number_lb = new JLabel("So luong toi da");
         number_tx = new JTextField(13);
-        location_lb = new JLabel("Vị trí");
+        location_lb = new JLabel("Vi tri");
         location_tx = new JTextField(18);
-        describe_lb = new JLabel("Mô tả");
+        describe_lb = new JLabel("Mo ta");
         describe_tx = new JTextField();
         describe_tx.setPreferredSize(new Dimension(0,68));
      
         //init table
-        final String[] colNames ={"Mã chuồng", "Tình trạng", "Số lượng tối đa", "Vị trí","Mô tả"};
+        final String[] colNames ={"Ma chuong", "Tinh trang", "So luong toi da", "Vi tri","Mo ta"};
         gridTb = new JTable(new Object[0][0],colNames); 
         gridTb.setFillsViewportHeight(true);
         
        //button create
-       searchBt =Genner.createButton("Tìm", Genner.MEDIUM_SIZE);
+       searchBt =Genner.createButton("Tim", Genner.MEDIUM_SIZE);
        searchBt.setActionCommand(SEARCH_COMMAND);
-       saveBt = Genner.createButton("Cập nhật", Genner.MEDIUM_SIZE);
+       saveBt = Genner.createButton("Cap nhat", Genner.MEDIUM_SIZE);
        saveBt.setActionCommand(SAVE_COMMAND);
-       addBt = Genner.createButton("Thêm", Genner.MEDIUM_SIZE);
+       addBt = Genner.createButton("Them", Genner.MEDIUM_SIZE);
        addBt.setActionCommand(ADD_COMMAND);
-       deleteBt = Genner.createButton("Xóa", Genner.MEDIUM_SIZE);
+       deleteBt = Genner.createButton("Xoa", Genner.MEDIUM_SIZE);
        deleteBt.setActionCommand(DELETE_COMMAND);
-       cancelBt = Genner.createButton("Hủy", Genner.BIG_SIZE);
+       cancelBt = Genner.createButton("Huy", Genner.BIG_SIZE);
        cancelBt.setActionCommand(CANCEL_COMMAND);
-       selectBt = Genner.createButton("Chọn", Genner.BIG_SIZE);
+       selectBt = Genner.createButton("Chon", Genner.MEDIUM_SIZE);
        selectBt.setActionCommand(SELECT_COMMAND);
+       homeBt=Genner.createButton("Trang chu", Genner.BIG_SIZE);
+       homeBt.setActionCommand(Constants.AC_HOME);
        //panel
        panel = new JPanel();
        
@@ -134,7 +138,7 @@ public class StablesView extends ViewBase {
        
        final JPanel topLeftPanel = new JPanel();
        final SpringLayout TopLeftLayout = new SpringLayout();
-       final TitledBorder tlPanel =BorderFactory.createTitledBorder(colorBD, "Tìm theo");
+       final TitledBorder tlPanel =BorderFactory.createTitledBorder(colorBD, "Tim theo");
        topLeftPanel.setLayout(TopLeftLayout);
        topLeftPanel.setBorder(tlPanel);
        topLeftPanel.setPreferredSize(new Dimension(325,75));
@@ -147,7 +151,7 @@ public class StablesView extends ViewBase {
        //top right panel
        final JPanel topRightPanel= new JPanel();
        final SpringLayout TopRightLayout = new SpringLayout();
-       final TitledBorder trPanel =BorderFactory.createTitledBorder(colorBD, "Chỉnh sửa");
+       final TitledBorder trPanel =BorderFactory.createTitledBorder(colorBD, "Chinh sua");
        topRightPanel.setLayout(TopRightLayout);
        topRightPanel.setBorder(trPanel);
        topRightPanel.setPreferredSize(new Dimension(0,150));
@@ -165,7 +169,7 @@ public class StablesView extends ViewBase {
        //center panel
        
        final JPanel centerPanel = new JPanel();
-       final TitledBorder cPanel = BorderFactory.createTitledBorder(colorBD, "Chuồng");
+       final TitledBorder cPanel = BorderFactory.createTitledBorder(colorBD, "Chuong");
        centerPanel.setBorder(cPanel);
        centerPanel.setLayout(new BorderLayout());
        //---> add item
@@ -186,6 +190,7 @@ public class StablesView extends ViewBase {
        panel.add(deleteBt);
        panel.add(cancelBt);
        panel.add(selectBt);
+       panel.add(homeBt);
        //set location top left panel 
        Layer.put(topLeftPanel).atTop(panel).in(MainLayout).withMargin(78)
                .atLeft(panel).withMargin(3);
@@ -230,15 +235,17 @@ public class StablesView extends ViewBase {
        Layer.put(addBt).in(MainLayout).atBottom(panel).withMargin(23).rightOf(saveBt).withMargin(7);
        Layer.put(saveBt).in(MainLayout).atBottom(panel).withMargin(23).rightOf(deleteBt).withMargin(7);
        Layer.put(deleteBt).in(MainLayout).atBottom(panel).withMargin(23).rightOf(searchBt).withMargin(7);
-       Layer.put(searchBt).in(MainLayout).atBottom(panel).withMargin(23).rightOf(cancelBt).withMargin(7);
+       Layer.put(searchBt).in(MainLayout).atBottom(panel).withMargin(23).rightOf(selectBt).withMargin(7);
+       Layer.put(selectBt).in(MainLayout).atBottom(panel).withMargin(23).rightOf(cancelBt).withMargin(7);
        Layer.put(cancelBt).atBottomRight(panel).in(MainLayout).withMargin(15);
-       Layer.put(selectBt).atBottomLeft(panel).in(MainLayout).withMargin(15);
+       Layer.put(homeBt).atBottomLeft(panel).in(MainLayout).withMargin(15);
+       
        
        //add main panel into frame 
        add(panel);
        //
        
-       setTitle("Quản lý chuồng");
+       setTitle("Quan ly chuong");
        this.getRootPane().setDefaultButton(searchBt);
        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }

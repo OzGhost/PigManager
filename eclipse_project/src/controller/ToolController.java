@@ -22,6 +22,7 @@ import model.ToolModel;
 import view.StablesView;
 import view.ToolAddView;
 import view.ToolView;
+import common.*;
 
 /**
  *
@@ -156,6 +157,10 @@ public class ToolController extends ControllerBase<ToolModel, ToolView> implemen
            sc.setWatcher(this);
            sv.showUp();
        }
+       if(Constants.AC_HOME.equals(command)){
+           
+       }
+       
     }
 
     @Override

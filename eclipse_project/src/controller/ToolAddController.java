@@ -43,6 +43,8 @@ public class ToolAddController extends ControllerBase<ToolAddModel, ToolAddView>
             pmc.setView(pmv);
             pmc.setModel(pmm);
             pmc.setWatcher(this);
+            pmc.LoadProvider();
+	    pmv._btnChonNCC.setEnabled(true);
             pmv.showUp();
             
         }
