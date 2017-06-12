@@ -21,6 +21,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import view.StablesAddView;
 import view.ToolAddView;
+import common.*;
 /**
  *
  * @author duyphuoc
@@ -188,6 +189,11 @@ public class StablesController extends ControllerBase<StablesModel,StablesView> 
       watcher.beNoticed(var,2);
       view.dispose();
     }
+    if(Constants.AC_HOME.equals(command)){
+        //
+    }
+    
+    
 }
 
     @Override

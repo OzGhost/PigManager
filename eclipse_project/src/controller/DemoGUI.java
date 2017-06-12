@@ -9,7 +9,8 @@ import javax.swing.plaf.FontUIResource;
 import common.Constants;
 import db.db;
 import model.PigsManagerModel;
-import view.PigsManagerView;
+import view.*;
+import model.*;
 
 /**
  * For demo only
@@ -19,7 +20,7 @@ import view.PigsManagerView;
 public class DemoGUI {
     public static void main (String[] args) {
         // Database global connection initial
-         db.init("orcl", "c##java", "123");
+         db.init("xdb", "c##java", "1807");
         
         // Change look and feel
         try {
@@ -64,8 +65,8 @@ public class DemoGUI {
         cfv.setController(cfc);
         cfv.showUp();
 */
-        
-/*    	// block call Them chuong frame
+/*        
+    	// block call Them chuong frame
         StablesView sv = new StablesView();
         StablesController sc = new StablesController();
         StablesModel sm= new StablesModel();
@@ -75,15 +76,14 @@ public class DemoGUI {
 	sv.showUp();
 */      
         //block call vatdung frame
-//        ToolView tv= new ToolView();
-//        ToolController tc = new ToolController();
-//        ToolModel tm = new ToolModel();
-//        tc.setView(tv);
-//        tc.setModel(tm);
-//        tv.setController(tc);
-//        tv.showUp();
-
-        
+        ToolView tv= new ToolView();
+        ToolController tc = new ToolController();
+        ToolModel tm = new ToolModel();
+        tc.setView(tv);
+        tc.setModel(tm);
+        tv.setController(tc);
+        tv.showUp();
+       
 //        WarehouseManagerModel whm = new WarehouseManagerModel();
 //        WarehouseManagerView whv = new WarehouseManagerView();
 //        WarehouseManagerController whc = new WarehouseManagerController();
@@ -92,7 +92,7 @@ public class DemoGUI {
 //        whv.setController(whc);
 //        whv.showUp();
         
-        
+/*       
         PigsManagerModel pmm = new PigsManagerModel();
         PigsManagerView pmv = new PigsManagerView();
         PigsManagerController pmc = new PigsManagerController();
@@ -100,7 +100,7 @@ public class DemoGUI {
         pmc.setModel(pmm);
         pmv.setController(pmc);
         pmv.showUp(); 
-        
+*/        
         
 //        BenhAnView bav=new BenhAnView();
 //        BenhAnController bac =new BenhAnController();
