@@ -1,20 +1,28 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.util.Observable;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
+import javax.swing.JTextArea;
+import javax.swing.ListSelectionModel;
 import javax.swing.SpringLayout;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableColumnModel;
 
 import common.Constants;
 import common.FinalTableModel;
 import common.Genner;
 import common.Layer;
+import controller.CashFlowListController;
+import model.CashFlowListModel;
 
 public class CashFlowListView extends ViewBase {
 
@@ -25,7 +33,7 @@ public class CashFlowListView extends ViewBase {
     private FinalTableModel tm_entryList;
     private JTable tb_detail;
     private FinalTableModel tm_detail;
-    private JTextField tf_note;
+    private JTextArea ta_note;
     private JButton bt_export;
     private JButton bt_updateNote;
     private final SpringLayout layout = new SpringLayout();
@@ -54,6 +62,8 @@ public class CashFlowListView extends ViewBase {
             .atTopLeft(panel).withMargin(10, 5)
             .atRight(panel).withMargin(5)
             .topOf(bt_updateNote).withMargin(5);
+
+        setContentPane(panel);
     }
 
     private void buttonInit() {
@@ -79,6 +89,26 @@ public class CashFlowListView extends ViewBase {
         );
         tb_entryList = new JTable(tm_entryList);
 
+        // Cell align center
+        TableColumnModel tcm = tb_entryList.getColumnModel();
+        DefaultTableCellRenderer cr = new DefaultTableCellRenderer();
+        cr.setHorizontalAlignment(SwingConstants.CENTER);
+        for (int i = 2; i >= 0 ; i--) {
+            tcm.getColumn(i).setCellRenderer(cr);
+        }
+        // Cell with set
+        tcm.getColumn(1).setPreferredWidth(20);
+        tcm.getColumn(2).setPreferredWidth(40);
+
+        // Single selection
+        tb_entryList.getSelectionModel()
+            .setSelectionMode(ListSelectionModel.SINGLE_SELECTION)
+        ;
+
+        // Fill view height
+        tb_entryList.setFillsViewportHeight(true);
+
+
         final JPanel rs = new JPanel (new BorderLayout());
         rs.setBorder(
             BorderFactory.createTitledBorder(
@@ -94,6 +124,37 @@ public class CashFlowListView extends ViewBase {
     private JPanel rightMidInit () {
         final JPanel top = new JPanel(new BorderLayout());
         final JPanel bot = new JPanel(new BorderLayout());
+
+        tm_detail = new FinalTableModel(
+            new Object[0][0],
+            new Object[]{"ID", "Loai", "Gia", "Ghi Chu"},
+            new int[]{0,1,2,3}
+        );
+
+        tb_detail = new JTable(tm_detail);
+        // Fill view height
+        tb_detail.setFillsViewportHeight(true);
+
+        top.setBorder(
+            BorderFactory.createTitledBorder(
+                Constants.BD_GREYLINE,
+                "Chi tiet thu chi"
+            )
+        );
+        top.add(new JScrollPane(tb_detail), BorderLayout.CENTER);
+
+        ta_note = new JTextArea();
+        ta_note.setLineWrap(true);
+        
+        bot.setBorder(
+            BorderFactory.createTitledBorder(
+                Constants.BD_GREYLINE,
+                "Ghi chu thu chi"
+            )
+        );
+        
+        bot.add(new JScrollPane(ta_note), BorderLayout.CENTER);
+        bot.setPreferredSize(new Dimension(400, 150));
         
         final SpringLayout l = new SpringLayout();
         final JPanel rs = new JPanel(l);
@@ -112,4 +173,20 @@ public class CashFlowListView extends ViewBase {
         return rs;
     }
 
+    public void setController (CashFlowListController ctrler) {
+        tb_entryList.getSelectionModel().addListSelectionListener(ctrler);
+    }
+
+    public int currentLine () {
+        return tb_entryList.getSelectedRow();
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        short code = (short) arg;
+        CashFlowListModel model = (CashFlowListModel) o;
+        if (code == CashFlowListModel.LOAD_COMPLETE) {
+            model.getEntryList().forEach(e -> tm_entryList.addRow(e.toObjects()));
+        }
+    }
 }

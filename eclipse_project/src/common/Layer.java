@@ -288,6 +288,27 @@ public class Layer {
                     SpringLayout.WEST, secondary);
             return this;
         }
+        if (code == LAY_CODE_TOPLEFT) {
+        	layout.putConstraint(SpringLayout.NORTH, primary, m,
+        			SpringLayout.NORTH, secondary);
+        	layout.putConstraint(SpringLayout.WEST, primary, n,
+        			SpringLayout.WEST, secondary);
+        	return this;
+        }
+        if (code == LAY_CODE_TOPRIGHT) {
+        	layout.putConstraint(SpringLayout.NORTH, primary, m,
+        			SpringLayout.NORTH, secondary);
+        	layout.putConstraint(SpringLayout.EAST, primary, (-1) * n,
+        			SpringLayout.EAST, secondary);
+        	return this;
+        }
+        if (code == LAY_CODE_BOTTOMRIGHT){
+            layout.putConstraint(SpringLayout.SOUTH, primary, (-1) * m,
+                    SpringLayout.SOUTH, secondary);
+            layout.putConstraint(SpringLayout.EAST, primary, (-1) * n,
+                    SpringLayout.EAST, secondary);
+            return this;
+        }
         return this;
     }
 }

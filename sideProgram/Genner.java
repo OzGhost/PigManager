@@ -21,8 +21,8 @@ public class Genner {
 
     private static Date dateRandomer () {
         Calendar calen = Calendar.getInstance();
-        calen.set(Calendar.YEAR, randInRange(2016, 2017));
-        calen.set(Calendar.MONTH, randInRange(1, 12));
+        calen.set(Calendar.YEAR, randInRange(2015, 2016));
+        calen.set(Calendar.MONTH, randInRange(0, 16));
         calen.set(Calendar.DAY_OF_MONTH, randInRange(1, 31));
         return calen.getTime();
     }
@@ -136,6 +136,75 @@ public class Genner {
             heoPointer++;
         }
         return rs;
+    }
+
+    private static Map<String, String> cashFlowGenner (String[] type, int n) {
+        if (n < 1 || type == null || type.length < 1)
+            return null;
+        final int tl = type.length;
+        final Map<String, String> rs = new HashMap<>();
+        for (int i = 0; i < n; i++) {
+            int nod = randInRange(1, 10);
+            Map<String, String> pigs = pigGenner(nod);
+            Map<Integer, String> detail = cashFlowDetailGenner(
+                pigs.size(),
+                pigs.keySet().toArray(new String[pigs.size()])
+            );
+            String id = idRandomer();
+            Date occur = dateRandomer();
+            int type = randInRange(0, 1);
+            int cost = detail.keySet().stream()
+                .reduce((x,y) -> x+y)
+            ;
+            String compiledDetail = detailCompiler(detail.values());
+
+            StringBuilder sb = new StringBuilder();
+            sb.append("INSERT INTO ThuChi VALUES (\n");
+            sb.append(String.format("    '%s',\n", id));
+            sb.append(String.format("    '%s',\n", date4mat.format(occur)));
+            sb.append(String.format("    '%s',\n", "this is a note, believe it :D"));
+            sb.append(String.format("    %d,\n", type));
+            sb.append(String.format("    %d,\n", cost));
+            sb.append(String.format("    %s\n", compiledDetail));
+            sb.append(")");
+
+            rs.put(id, sb.toString());
+        }
+        return rs;
+    }
+
+    private static Map<Integer, String> cashFlowDetailGenner (int n, String[] ids) {
+        if (n < 1 || ids == null || ids.length != n)
+            return null;
+        final String prefix = "        ";
+        final String ctx_prefix = "            ";
+        Map<Integer, String> rs = new HashMap<>();
+        for (int i = 0; i < n; i++) {
+            int cost = randInRange(50, 250);
+            StringBuilder sb = new StringBuilder();
+            sb.append(prefix + "ChiTietThuChi_objtyp(\n");
+            sb.append(ctx_prefix + String.format("'%s',\n", ids[i]));
+            sb.append(ctx_prefix + "'H',\n");
+            sb.append(ctx_prefix + String.format("%d,\n", cost));
+            sb.append(ctx_prefix + String.format("'%s'\n", "this is some text"));
+            sb.append(prefix + ")");
+
+            rs.put(cost, sb.toString());
+        }
+        return rs;
+    }
+
+    private static String detailCompiler (String[] detail) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("ChiTietThuChi_ntabtyp(\n");
+        String prefix = "";
+        for (int i = 0; i < detail.length; i++) {
+            sb.append(prefix);
+            sb.append(detail[i]);
+            prefix = ",\n";
+        }
+        sb.append("    )");
+        return sb.toString();
     }
 
     public static void main (String[] args) {

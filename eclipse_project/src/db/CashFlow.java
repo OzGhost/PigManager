@@ -1,8 +1,11 @@
 package db;
 
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
 import common.Constants;
-import db.db;
 
 /**
  * Store data for each row of cash flow info
@@ -12,11 +15,97 @@ import db.db;
  * @author duchn
  * create: 12-05-2017
  */
-public class CashFlow {
+public class CashFlow extends Entity {
 
     public static String TABLE_NAME = "ThuChi";
     public static String ID_COLUMN = "MaThuChi";
     public static String OBJ_TYPE_NAME = "ThuChi_objtyp";
+
+
+    private static final String RETRIEVE_ALL_LITE_VERSION
+        = " SELECT MaThuChi mtc, NgayThuChi ntc,\n"
+        + "     GhiChu gc, LoaiThuChi ltc, TriGia tg\n"
+        + " FROM " + TABLE_NAME
+    ;
+
+    private static final String RETRIEVE_DETAIL_BY_ID
+        = " SELECT d.MaDoiTuongThuChi id, d.LoaiDoiTuongThuChi type,\n"
+        + "         d.Gia cost, d.GhiChu note\n"
+        + " FROM ThuChi t, TABLE(t.ChiTiet_ntab)\n"
+        + " WHERE t.MaThuChi = '%s'"
+
+    private static List<Payable> loadDetailById (String id) {
+        List<Payable> rs = new ArrayList<>();
+        ResultSet qRs = null;
+        try {
+            qRs = db.sendForResult(
+                String.format(
+                    RETRIEVE_DETAIL_BY_ID,
+                    id
+                )
+            );
+            
+            qRs.next();
+            String eId = qRs.getString("id");
+            int eCost = qRs.getInt("cost");
+            String eNote = qRs.getString("note");
+            switch (qRs.getString("type")) {
+                case "H":
+                    Pig e = new Pig(eId);
+                    e.setPayNote(eNote);
+                    e.Price(eCost);
+                    rs.add(e);
+                    break;
+                case "M":
+                    Money e = new Money();
+                    e.setPayNote(eNote);
+                    e.Price(eCost);
+                    rs.add(e);
+                    break;
+                case "V":
+                    Pig e = new Pig();
+                    e.setPayNote(eNote);
+                    e.Price(eCost);
+                    rs.add(e);
+                    break;
+                case "T":
+                    Pig e = new Pig();
+                    e.setPayNote(eNote);
+                    e.Price(eCost);
+                    rs.add(e);
+                    break;
+            }
+        } catch (Exception e) finally {
+            try {
+                qRs.close();
+            } catch (Exception e) {}
+        }
+        return rs;
+    }
+
+    public static List<CashFlow> findAllLiteVersion () {
+        List<CashFlow> rs = new ArrayList<>();
+        ResultSet qRs = null;
+        try {
+            qRs = db.sendForResult(RETRIEVE_ALL_LITE_VERSION);
+            while (qRs.next()) {
+                rs.add(
+                    new CashFlow(
+                        qRs.getString("mtc"),
+                        Constants.DATE4MAT.parse( qRs.getString("ntc") ),
+                        qRs.getString("gc"),
+                        (qRs.getInt("ltc") == 1),
+                        qRs.getInt("tg")
+                    )
+                );
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try { qRs.close(); } catch (Exception e) {}
+        }
+        return rs;
+    }
 
     /**
      * Save new data into database
@@ -70,17 +159,31 @@ public class CashFlow {
     }
 
     private String id;
-    private String occurDate;
+    private Date occurDate;
     private String note;
     private boolean payout;
     private int cost;
     private List<Payable> detail;
+
+    // Constructors
+    public CashFlow () {}
+    public CashFlow (
+        String id,
+        Date occurDate,
+        String note,
+        boolean payout,
+        int cost
+    ) {
+        this.id = id;
+        this.occurDate = occurDate;
+        this.note = note;
+        this.payout = payout;
+        this.cost = cost;
+        this.detail = new ArrayList<>(0);
+    }
     
 
     // Getter
-    public String getId() {
-        return this.id;
-    }
     public String getNote() {
         return this.note;
     }
@@ -102,4 +205,32 @@ public class CashFlow {
         this.detail = detail;
     }
 
+    // Methods
+
+    public Object[] toObjects () {
+        Object[] rs = new Object[3];
+        rs[0] = Constants.DATE4MAT.format(this.occurDate);
+        rs[1] = payout ? "Chi" : "Thu";
+        rs[2] = cost;
+        return rs;
+    }
+
+    @Override
+    public void selfCompleteFullVersion () {
+        if (isFullState()) {
+            return;
+        }
+        this.detail = loadDetailById(this.id);
+        super.selfCompleteFullVersion();
+    }
+
+    @Override
+    public String toString () {
+        return "\n id: " + id
+            + "\n occurDate: " + occurDate
+            + "\n note: " + note
+            + "\n payout: " + payout
+            + "\n cost: " + cost
+        ;
+    }
 }

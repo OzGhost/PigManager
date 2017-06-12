@@ -59,6 +59,11 @@ public class Constants {
     public static final String AC_CANCEL = "terminated";
     public static final String AC_ADD = "one_more";
     public static final String AC_RM = "one_less";
+    public static final String AC_PIG_FEAT = "pig_features";
+    public static final String AC_STOCK_FEAT = "stock_features";
+    public static final String AC_PASTURE_FEAT = "pasture_features";
+    public static final String AC_PROVIDER_FEAT = "provider_features";
+    public static final String AC_REPORT_FEAT = "report_features";
 
     // Date format
     public static final String FORMAT_OF_DATE = "yyyy-MM-dd HH:mm:ss";
@@ -91,6 +96,9 @@ public class Constants {
         return "";
     }
 
+    public static final Map<String, String> FULL_TYPE_NAME
+        = new HashMap<>();
+
     static {
         // load app icon
         try {
@@ -105,6 +113,12 @@ public class Constants {
         TIME_STAGE.put("Tháng","MON");
         TIME_STAGE.put("Tuần","WW");
         TIME_STAGE.put("Ngày","J");
+
+        // load type name
+        FULL_TYPE_NAME.put("H", "Heo");
+        FULL_TYPE_NAME.put("M", "Tien");
+        FULL_TYPE_NAME.put("V", "Vat Dung");
+        FULL_TYPE_NAME.put("T", "Tinh");
     }
 
 }

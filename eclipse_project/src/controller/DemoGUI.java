@@ -14,7 +14,6 @@ import javax.swing.UIManager;
 import javax.swing.plaf.FontUIResource;
 
 import common.Constants;
-<<<<<<< HEAD
 import db.Pig;
 import db.Provider;
 import db.db;
@@ -24,12 +23,10 @@ import model.ToolModel;
 import view.CashFlowView;
 import view.StablesView;
 import view.ToolView;
-=======
 import db.db;
 import model.PigsManagerModel;
 import view.PigsManagerView;
 
->>>>>>> 2d697a28ffa348d2b04bc5656ed7f30633c8eae8
 /**
  * For demo only
  * @author ducnh
@@ -76,7 +73,9 @@ public class DemoGUI {
         CashFlowModel cfm = new CashFlowModel();
         CashFlowView cfv = new CashFlowView(pigs);
         
-        cfc.setModel(cfm);
+        cfc.?(cfm); 
+        
+        
         cfc.setView(cfv);
         cfc.init(pigs);
         cfm.addObserver(cfv);
@@ -104,7 +103,6 @@ public class DemoGUI {
 //        tv.setController(tc);
 //        tv.showUp();
 
-<<<<<<< HEAD
         /*
         List<SickLog> sls = SickLog.findAllLiteVersion();
         SickLog s = sls.get(1);
@@ -130,7 +128,6 @@ public class DemoGUI {
         } catch (Exception e) {
             e.printStackTrace();
         }
-=======
         
 //        WarehouseManagerModel whm = new WarehouseManagerModel();
 //        WarehouseManagerView whv = new WarehouseManagerView();
@@ -172,6 +169,5 @@ public class DemoGUI {
 //        lsc.setView(lsv);
 //        lsc.loaddata();
 //        lsv.showUp();
->>>>>>> 2d697a28ffa348d2b04bc5656ed7f30633c8eae8
     }
 }
