@@ -25,6 +25,7 @@ import javax.swing.border.TitledBorder;
  * @author duyphuoc
  */
 public class ToolAddView extends ViewBase{
+    private static final long serialVersionUID = 4705025519974462517L;
     private JLabel tool_name;
     private JLabel cost;
     private JLabel describe;
@@ -51,11 +52,11 @@ public class ToolAddView extends ViewBase{
     public static final String TITLE="Thêm vật dụng";
     
     public ToolAddView(){
-        tool_name = new JLabel("Ten vat dung");
-        cost = new JLabel("Gia:");
-        describe = new JLabel("Mo ta:");
-        provider_id = new JLabel("Ma nha cung cap");
-        stables_id = new JLabel("Ma chuong");
+        tool_name = new JLabel("Tên vật dụng");
+        cost = new JLabel("Giá:");
+        describe = new JLabel("Mô tả:");
+        provider_id = new JLabel("Mã nhà cung cấp");
+        stables_id = new JLabel("Mã chuông");
         tool_name_tx = new JTextField(15);
         cost_tx = new JTextField(15);
         describe_tx = new JTextField(15);
@@ -65,21 +66,21 @@ public class ToolAddView extends ViewBase{
         stables_id_tx.setEditable(false);
         
         //button 
-        provider_sel = Genner.createButton("Chon", Genner.SMALL_SIZE);
+        provider_sel = Genner.createButton("Chọn", Genner.SMALL_SIZE);
         provider_sel.setActionCommand(SELECT_PROVIDER_COMMAND);
-        stables_sel = Genner.createButton("Chon", Genner.SMALL_SIZE);
+        stables_sel = Genner.createButton("Chọn", Genner.SMALL_SIZE);
         stables_sel.setActionCommand(SELECT_STABLES_COMMAND);
-        reset_bt = Genner.createButton("Reset", Genner.MEDIUM_SIZE);
+        reset_bt = Genner.createButton("Làm mới", Genner.MEDIUM_SIZE);
         reset_bt.setActionCommand(RESET_COMMAND);
-        add_bt = Genner.createButton("Them", Genner.MEDIUM_SIZE);
+        add_bt = Genner.createButton("Thêm", Genner.MEDIUM_SIZE);
         add_bt.setActionCommand(ADD_COMMAND);
-        cancel_bt =Genner.createButton("Huy", Genner.BIG_SIZE);
+        cancel_bt =Genner.createButton("Hủy", Genner.BIG_SIZE);
         cancel_bt.setActionCommand(CANCEL_COMMAND);
         //panel 
         panel = new JPanel();
         final SpringLayout layout=new SpringLayout();
         final Border colorBD = BorderFactory.createLineBorder(Color.gray);
-        final TitledBorder title = BorderFactory.createTitledBorder(colorBD, "Them vat dung");
+        final TitledBorder title = BorderFactory.createTitledBorder(colorBD, "Thêm vật dụng");
         panel.setLayout(layout);
         panel.setBorder(title);
         panel.setPreferredSize(new Dimension(100,100));

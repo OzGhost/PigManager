@@ -23,7 +23,6 @@ import javax.swing.SpringLayout;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
-import javax.xml.bind.annotation.XmlElement;
 import common.*;
 
 /**
@@ -31,6 +30,7 @@ import common.*;
  * @author duyphuoc
  */
 public class ToolView extends ViewBase{
+    private static final long serialVersionUID = 1857414447041145980L;
     private JLabel tool_id;
     private JLabel tool_name;
     private JLabel cost;
@@ -68,12 +68,12 @@ public class ToolView extends ViewBase{
     public static final String MOVE_COMMAND="move";
     //constructor
     public ToolView(){
-        tool_id= new JLabel("Ma vat dung");
-        tool_name = new JLabel("Ten vat dung:");
-        cost = new JLabel("Gia:");
-        describe = new JLabel("Mo ta:");
-        provider_id = new JLabel("Ma nha cung cap:");
-        stables_id = new JLabel("Ma chuong:");
+        tool_id= new JLabel("Mã vật dụng");
+        tool_name = new JLabel("Tên vật dụng:");
+        cost = new JLabel("Giá:");
+        describe = new JLabel("Mô tả:");
+        provider_id = new JLabel("Mã nhà cung cấp:");
+        stables_id = new JLabel("Mã chuồng:");
         tool_id_tx = new JTextField(15);
         tool_id_tx.setEditable(false);
         tool_name_tx = new JTextField(15);
@@ -86,26 +86,26 @@ public class ToolView extends ViewBase{
         search_tx = new JTextField();
         
         //table
-        final String[] colNames ={"Ma vat dung","Ten vat dung","Gia mua","Mo ta","Ma nha cung cap","Ma chuong"};
+        final String[] colNames ={"Mã vật dụng","Tên vật dụng","Giá mua","Mô tả","Mã nhà cung cấp","Mã chuồng"};
         tool_tb = new JTable(new Object[0][0], colNames);
         JScrollPane jsp= new JScrollPane(tool_tb);
         dtm = new DefaultTableModel(colNames,0);
         tool_tb.setFillsViewportHeight(true);
         
         //button
-        cancel_bt = Genner.createButton("Huy", Genner.BIG_SIZE);
+        cancel_bt = Genner.createButton("Hủy", Genner.BIG_SIZE);
         cancel_bt.setActionCommand(CANCEL_COMMAND);
-        search_bt = Genner.createButton("Tim", Genner.MEDIUM_SIZE);
+        search_bt = Genner.createButton("Tìm", Genner.MEDIUM_SIZE);
         search_bt.setActionCommand(SEARCH_COMMAND);
-        add_bt = Genner.createButton("Them", Genner.MEDIUM_SIZE);
+        add_bt = Genner.createButton("Thêm", Genner.MEDIUM_SIZE);
         add_bt.setActionCommand(ADD_COMMAND);
-        delete_bt = Genner.createButton("Xoa", Genner.MEDIUM_SIZE);
+        delete_bt = Genner.createButton("Xóa", Genner.MEDIUM_SIZE);
         delete_bt.setActionCommand(DELETE_COMMAND);
-        update_bt = Genner.createButton("Cap nhat", Genner.MEDIUM_SIZE);
+        update_bt = Genner.createButton("Cập nhật", Genner.MEDIUM_SIZE);
         update_bt.setActionCommand(UPDATE_COMMAND);
-        move_bt = Genner.createButton("Di chuyen", Genner.MEDIUM_SIZE);
+        move_bt = Genner.createButton("Di chuyển", Genner.MEDIUM_SIZE);
         move_bt.setActionCommand(MOVE_COMMAND);
-        home_bt= Genner.createButton("Trang chu", Genner.BIG_SIZE);
+        home_bt= Genner.createButton("Trang chủ", Genner.BIG_SIZE);
         home_bt.setActionCommand(Constants.AC_HOME);
         
         //panels
@@ -120,7 +120,7 @@ public class ToolView extends ViewBase{
         final SpringLayout bottomLayout = new SpringLayout();
         
         //init toppanel
-        final TitledBorder topPanelBorder = BorderFactory.createTitledBorder(colorBD, "Tim kiem vat dung");
+        final TitledBorder topPanelBorder = BorderFactory.createTitledBorder(colorBD, "Tìm kiếm vật dụng");
         topPanel.setLayout(topLayout);
         topPanel.setBorder(topPanelBorder);
         topPanel.setPreferredSize(new Dimension(100,100));
@@ -128,7 +128,7 @@ public class ToolView extends ViewBase{
             topPanel.add(search_tx);
             topPanel.add(search_bt);
         //init bottompanel
-        final TitledBorder bottomPanelBorder = BorderFactory.createTitledBorder(colorBD, "Vat dung");
+        final TitledBorder bottomPanelBorder = BorderFactory.createTitledBorder(colorBD, "Vật dụng");
         bottomPanel.setLayout(new BorderLayout());
         bottomPanel.setBorder(bottomPanelBorder);
         bottomPanel.setPreferredSize(new Dimension(400,0));
@@ -210,7 +210,7 @@ public class ToolView extends ViewBase{
 
         //
         add(mainPanel);
-        setTitle("Quan ly vat dung");
+        setTitle("Quản lý vật dụng");
         this.getRootPane().setDefaultButton(search_bt);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }

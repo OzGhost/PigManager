@@ -36,9 +36,6 @@ import controller.ProviderManagerController;
 public class ProviderManagerView extends ViewBase
 {
 
-	/**
-	 * 
-	 */
 	private static final long	serialVersionUID		= -5095900940267418128L;
 	public JPanel				contentpane, _panelTop, _panelMidLeft, _panelMidRight, _panelBot;
 	public JComboBox<String>	_cbxTimKiem;
@@ -62,7 +59,7 @@ public class ProviderManagerView extends ViewBase
 		final Border _border = BorderFactory.createLineBorder(Color.gray);
 
 		// _panelTimKiem
-		final TitledBorder _titleTimKiem = BorderFactory.createTitledBorder(_border, "Tim kiem nha cung cap");
+		final TitledBorder _titleTimKiem = BorderFactory.createTitledBorder(_border, "Tìm kiếm nhà cung cấp");
 		_titleTimKiem.setTitleJustification(TitledBorder.CENTER);
 		_panelTop = new JPanel();
 		_panelTop.setPreferredSize(new Dimension(400, 80));
@@ -71,10 +68,10 @@ public class ProviderManagerView extends ViewBase
 		_panelTop.setLayout(sl_panelTopRight);
 
 		_cbxTimKiem = new JComboBox<String>();
-		_cbxTimKiem.addItem("Ten");
+		_cbxTimKiem.addItem("Tên");
 		_txtfTimKiem = new JTextField(20);
 
-		_btnTimKiem = Genner.createButton("Tim kiem", Genner.MEDIUM_SIZE);
+		_btnTimKiem = Genner.createButton("Tìm kiếm", Genner.MEDIUM_SIZE);
 		_btnTimKiem.setActionCommand(SEARCH_COMMAND);
 
 		sl_panelTopRight.putConstraint(SpringLayout.HORIZONTAL_CENTER, _txtfTimKiem, 0, SpringLayout.HORIZONTAL_CENTER,
@@ -103,11 +100,11 @@ public class ProviderManagerView extends ViewBase
 		SpringLayout sl_panelMidLeft = new SpringLayout();
 		_panelMidLeft.setLayout(sl_panelMidLeft);
 
-		JLabel _lblMaNCC = new JLabel("Ma NCC");
-		JLabel _lblTenNCC = new JLabel("Ten NCC");
-		JLabel _lblSDT = new JLabel("So dien thoai");
-		JLabel _lblDiaChi = new JLabel("Dia chi");
-		JLabel _lblNoPhaiTra = new JLabel("No phai tra");
+		JLabel _lblMaNCC = new JLabel("Mã NCC");
+		JLabel _lblTenNCC = new JLabel("Tên NCC");
+		JLabel _lblSDT = new JLabel("Số điện thoại");
+		JLabel _lblDiaChi = new JLabel("Đỉa chỉ");
+		JLabel _lblNoPhaiTra = new JLabel("Nợ phải trả");
 
 		_txtfMaNCC = new JTextField(25);
 		_txtfMaNCC.setEditable(false);
@@ -157,7 +154,7 @@ public class ProviderManagerView extends ViewBase
 		SpringLayout sl_panelMidRight = new SpringLayout();
 		_panelMidRight.setLayout(sl_panelMidRight);
 
-		JLabel _lblMoTa = new JLabel("Mo ta");
+		JLabel _lblMoTa = new JLabel("Mô tả");
 		_txtaMoTa = new JTextArea(8, 45);
 		_txtaMoTa.setLineWrap(true);
 		_txtaMoTa.setWrapStyleWord(true);
@@ -176,11 +173,11 @@ public class ProviderManagerView extends ViewBase
 		// _panelBot
 		_panelBot = new JPanel();
 		_panelBot.setPreferredSize(new Dimension(750, 100));
-		final TitledBorder _titleBotLeft = BorderFactory.createTitledBorder(_border, "Danh sach nha cung cap");
+		final TitledBorder _titleBotLeft = BorderFactory.createTitledBorder(_border, "Danh sách nhà cung cấp");
 		_panelBot.setBorder(_titleBotLeft);
 
 		final String[] _columnsNCC =
-		{ "Ma chuong", "Tinh trang", "So luong toi da", "Vi tri", "Mo ta" };
+		{ "Mã chuồng", "Tình trạng", "Số lượng tối đa", "Vị trí", "Mô tả" };
 		_tbNCC = new JTable(new Object[0][0], _columnsNCC);
 		_tbNCC.setFillsViewportHeight(true);
 		JScrollPane _scrolltbNCC = new JScrollPane(_tbNCC, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
@@ -194,20 +191,20 @@ public class ProviderManagerView extends ViewBase
 		// Button
 		SpringLayout sl_contentpane = new SpringLayout();
 		contentpane.setLayout(sl_contentpane);
-		_btnThem = Genner.createButton("Them", Genner.MEDIUM_SIZE);
+		_btnThem = Genner.createButton("Thêm", Genner.MEDIUM_SIZE);
 		_btnThem.setActionCommand(ADD_COMMAND);
 
-		_btnXoa = Genner.createButton("Xoa", Genner.MEDIUM_SIZE);
+		_btnXoa = Genner.createButton("Xóa", Genner.MEDIUM_SIZE);
 		_btnXoa.setActionCommand(REMOVE_COMMAND);
 
-		_btnSua = Genner.createButton("Sua", Genner.MEDIUM_SIZE);
+		_btnSua = Genner.createButton("Sửa", Genner.MEDIUM_SIZE);
 		_btnSua.setActionCommand(UPDATE_COMMAND);
 
-		_btnChonNCC = Genner.createButton("Chon NCC", Genner.MEDIUM_SIZE);
+		_btnChonNCC = Genner.createButton("Chọn NCC", Genner.MEDIUM_SIZE);
 		_btnChonNCC.setActionCommand(SELECT_PROVIDER_COMMAND);
 		_btnChonNCC.setEnabled(false);
 		
-		_btnTrangChu = Genner.createButton("Trang Chu", Genner.BIG_SIZE);
+		_btnTrangChu = Genner.createButton("Trang chủ", Genner.BIG_SIZE);
 		_btnTrangChu.setActionCommand(Constants.AC_HOME);
 
 		contentpane.add(_btnThem);
@@ -239,7 +236,7 @@ public class ProviderManagerView extends ViewBase
 		// set form
 		setPreferredSize(new Dimension(1366, 730));
 		setResizable(false);
-		setTitle("Quan ly nha cung cap");
+		setTitle("Quản lý nhà cung cấp");
 		setContentPane(new JScrollPane(contentpane));
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

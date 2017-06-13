@@ -38,8 +38,7 @@ import java.util.logging.Logger;
  * @author duyphuoc
  */
 public class StablesView extends ViewBase {
-    
-    
+    private static final long serialVersionUID = -171200930677092136L;
     private JLabel status;
     public JComboBox statusCb;
     private JLabel number;
@@ -76,13 +75,13 @@ public class StablesView extends ViewBase {
      
 //constructors
     public StablesView(){
-        status = new JLabel("Tinh trang");
+        status = new JLabel("Tình trạng");
         statusCb = new JComboBox();
         statusCb.addItem(null);
-        statusCb.addItem("Trong");
-        statusCb.addItem("Day");
-        statusCb.addItem("Dang nuoi");
-        number = new JLabel("So luong toi da");
+        statusCb.addItem("Trống");
+        statusCb.addItem("Đầy");
+        statusCb.addItem("Đang nuôi");
+        number = new JLabel("Số lượng tối đa");
         numberCb = new JComboBox();
         numberCb.addItem(null);
         ResultSet rs = db.sendForResult(ADD_ITEM_CB_COMMAND);
@@ -94,39 +93,39 @@ public class StablesView extends ViewBase {
         } catch (SQLException ex) {
             Logger.getLogger(StablesView.class.getName()).log(Level.SEVERE, null, ex);
         }
-        stables_id_lb = new JLabel("Ma chuong");
+        stables_id_lb = new JLabel("Mã chuồng");
         stables_id_tx = new JTextField(15);
         stables_id_tx.setEditable(false);
-        status_lb = new JLabel("Tinh trang");
+        status_lb = new JLabel("Tình trạng");
         status_tx = new JTextField(6);
         status_tx.setEditable(false);
-        number_lb = new JLabel("So luong toi da");
+        number_lb = new JLabel("Số lượng tối đa");
         number_tx = new JTextField(13);
-        location_lb = new JLabel("Vi tri");
+        location_lb = new JLabel("Vị trí");
         location_tx = new JTextField(18);
-        describe_lb = new JLabel("Mo ta");
+        describe_lb = new JLabel("Mô tả");
         describe_tx = new JTextField();
         describe_tx.setPreferredSize(new Dimension(0,68));
      
         //init table
-        final String[] colNames ={"Ma chuong", "Tinh trang", "So luong toi da", "Vi tri","Mo ta"};
+        final String[] colNames ={"Mã chuông", "Tình trạng", "Số lượng tối đa", "Vị trí","Mô tả"};
         gridTb = new JTable(new Object[0][0],colNames); 
         gridTb.setFillsViewportHeight(true);
         
        //button create
-       searchBt =Genner.createButton("Tim", Genner.MEDIUM_SIZE);
+       searchBt =Genner.createButton("Tìm", Genner.MEDIUM_SIZE);
        searchBt.setActionCommand(SEARCH_COMMAND);
-       saveBt = Genner.createButton("Cap nhat", Genner.MEDIUM_SIZE);
+       saveBt = Genner.createButton("Cập nhật", Genner.MEDIUM_SIZE);
        saveBt.setActionCommand(SAVE_COMMAND);
-       addBt = Genner.createButton("Them", Genner.MEDIUM_SIZE);
+       addBt = Genner.createButton("Thêm", Genner.MEDIUM_SIZE);
        addBt.setActionCommand(ADD_COMMAND);
-       deleteBt = Genner.createButton("Xoa", Genner.MEDIUM_SIZE);
+       deleteBt = Genner.createButton("Xóa", Genner.MEDIUM_SIZE);
        deleteBt.setActionCommand(DELETE_COMMAND);
-       cancelBt = Genner.createButton("Huy", Genner.BIG_SIZE);
+       cancelBt = Genner.createButton("Hủy", Genner.BIG_SIZE);
        cancelBt.setActionCommand(CANCEL_COMMAND);
-       selectBt = Genner.createButton("Chon", Genner.MEDIUM_SIZE);
+       selectBt = Genner.createButton("Chọn", Genner.MEDIUM_SIZE);
        selectBt.setActionCommand(SELECT_COMMAND);
-       homeBt=Genner.createButton("Trang chu", Genner.BIG_SIZE);
+       homeBt=Genner.createButton("Trang chủ", Genner.BIG_SIZE);
        homeBt.setActionCommand(Constants.AC_HOME);
        //panel
        panel = new JPanel();
@@ -138,7 +137,7 @@ public class StablesView extends ViewBase {
        
        final JPanel topLeftPanel = new JPanel();
        final SpringLayout TopLeftLayout = new SpringLayout();
-       final TitledBorder tlPanel =BorderFactory.createTitledBorder(colorBD, "Tim theo");
+       final TitledBorder tlPanel =BorderFactory.createTitledBorder(colorBD, "Tìm theo");
        topLeftPanel.setLayout(TopLeftLayout);
        topLeftPanel.setBorder(tlPanel);
        topLeftPanel.setPreferredSize(new Dimension(325,75));
@@ -151,7 +150,7 @@ public class StablesView extends ViewBase {
        //top right panel
        final JPanel topRightPanel= new JPanel();
        final SpringLayout TopRightLayout = new SpringLayout();
-       final TitledBorder trPanel =BorderFactory.createTitledBorder(colorBD, "Chinh sua");
+       final TitledBorder trPanel =BorderFactory.createTitledBorder(colorBD, "Chỉnh sửa");
        topRightPanel.setLayout(TopRightLayout);
        topRightPanel.setBorder(trPanel);
        topRightPanel.setPreferredSize(new Dimension(0,150));
@@ -169,7 +168,7 @@ public class StablesView extends ViewBase {
        //center panel
        
        final JPanel centerPanel = new JPanel();
-       final TitledBorder cPanel = BorderFactory.createTitledBorder(colorBD, "Chuong");
+       final TitledBorder cPanel = BorderFactory.createTitledBorder(colorBD, "Chuồng");
        centerPanel.setBorder(cPanel);
        centerPanel.setLayout(new BorderLayout());
        //---> add item
@@ -245,7 +244,7 @@ public class StablesView extends ViewBase {
        add(panel);
        //
        
-       setTitle("Quan ly chuong");
+       setTitle("Quản lý chuồng");
        this.getRootPane().setDefaultButton(searchBt);
        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }

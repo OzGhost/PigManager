@@ -34,9 +34,6 @@ import controller.FoodController;
  */
 public class FoodView extends ViewBase
 {
-	/**
-	 * 
-	 */
 	private static final long	serialVersionUID	= -6023624857584267792L;
 	public JPanel				contentpane, _panelTop, _panelMid, _panelBot;
 	public JComboBox<String>	_cbxTimKiem;
@@ -49,7 +46,7 @@ public class FoodView extends ViewBase
 	private TitledBorder		_titleTimKiem;
 	public DefaultTableModel	dtm;
 
-	public static final short	SAVE_DONE_CODE		= 0;
+	public static final short	SAVE_DONE_CODE		= 0; 
 	public static final short	SAVE_FAILURE_CODE	= 1;
 	public static final String	SAVE_COMMAND		= "save";
 	public static final String	ADD_COMMAND			= "add";
@@ -66,18 +63,18 @@ public class FoodView extends ViewBase
 		// _panelTop
 		_panelTop = new JPanel();
 		_panelTop.setPreferredSize(new Dimension(450, 80));
-		_titleTimKiem = new TitledBorder(_border, "Tim kiem loai thuc an");
+		_titleTimKiem = new TitledBorder(_border, "Tìm kiếm loại thức ăn");
 		_panelTop.setBorder(_titleTimKiem);
 		SpringLayout sl_panelTop = new SpringLayout();
 		_panelTop.setLayout(sl_panelTop);
 
 		_cbxTimKiem = new JComboBox<String>();
-		_cbxTimKiem.addItem("Ten loai");
+		_cbxTimKiem.addItem("Tên loại");
 
 		_txtfTimKiem = new JTextField(18);
 		_txtfTimKiem.setText("");
 
-		_btnTimKiem = Genner.createButton("Tim kiem", Genner.MEDIUM_SIZE);
+		_btnTimKiem = Genner.createButton("Tìm kiếm", Genner.MEDIUM_SIZE);
 		_btnTimKiem.setActionCommand(SEARCH_COMMAND);
 
 		sl_panelTop.putConstraint(SpringLayout.HORIZONTAL_CENTER, _txtfTimKiem, 0, SpringLayout.HORIZONTAL_CENTER,
@@ -103,11 +100,11 @@ public class FoodView extends ViewBase
 		_panelMid.setPreferredSize(new Dimension(600, 150));
 		_panelMid.setBorder(_border);
 
-		_lblMaloai = new JLabel("Ma loai");
-		_lblTenLoai = new JLabel("Ten loai");
-		_lblMota = new JLabel("Mo ta");
-		_lblDonVi = new JLabel("Đon vi");
-		_lblMuaBaoDong = new JLabel("<html>Muc <br> bao <br>dong</html>");
+		_lblMaloai = new JLabel("Mã loại");
+		_lblTenLoai = new JLabel("Tên loại");
+		_lblMota = new JLabel("Mô tả");
+		_lblDonVi = new JLabel("Đơn vị");
+		_lblMuaBaoDong = new JLabel("<html>Mức <br> báo <br>động</html>");
 
 		_txtfMaLoai = new JTextField(20);
 		_txtfMaLoai.setEditable(false);
@@ -159,7 +156,7 @@ public class FoodView extends ViewBase
 		_panelBot.setPreferredSize(new Dimension(1000, 500));
 
 		final String[] _columnsTBThucAn =
-		{ "Ma loai thuc an", "Ten loai thuc an", "Mo ta", "Don vi", "Muc bao dong" };
+		{ "Mã loại thức ăn", "Tên loại thức ăn", "Mô tả", "Đơn vị", "Mức báo động" };
 		dtm = new DefaultTableModel(_columnsTBThucAn, 0);
 
 		_tbThucAn = new JTable();
@@ -171,11 +168,11 @@ public class FoodView extends ViewBase
 
 		contentpane.add(_panelBot);
 		// Button
-		_btnThem = Genner.createButton("Them", Genner.MEDIUM_SIZE);
+		_btnThem = Genner.createButton("Thêm", Genner.MEDIUM_SIZE);
 		_btnThem.setActionCommand(ADD_COMMAND);
-		_btnXoa = Genner.createButton("Xoa", Genner.MEDIUM_SIZE);
+		_btnXoa = Genner.createButton("Xóa", Genner.MEDIUM_SIZE);
 		_btnXoa.setActionCommand(REMOVE_COMMAND);
-		_btnCapNhat = Genner.createButton("Cap nhat", Genner.MEDIUM_SIZE);
+		_btnCapNhat = Genner.createButton("Cập nhật", Genner.MEDIUM_SIZE);
 		_btnCapNhat.setActionCommand(UPDATE_COMMAND);
 
 		_btnChonLoai = Genner.createButton("Chọn loại", Genner.MEDIUM_SIZE);
@@ -205,7 +202,7 @@ public class FoodView extends ViewBase
 
 		// set form
 		setPreferredSize(new Dimension(1366, 730));
-		setTitle("Quan ly thuc an");
+		setTitle("Quản lý thức ăn");
 		setResizable(false);
 		setContentPane(contentpane);
 		setLocationRelativeTo(null);

@@ -11,6 +11,7 @@ import controller.HomeController;
 
 public class HomeView extends ViewBase {
 
+    private static final long serialVersionUID = 5337391590871863765L;
     //Fields
     private JButton bt_pigFeature;
     private JButton bt_stockFeature;
@@ -43,22 +44,22 @@ public class HomeView extends ViewBase {
 
     //Methods
     private void initButton () {
-        bt_pigFeature = Genner.createButton("Quan ly Heo", Genner.BIG_SIZE);
+        bt_pigFeature = Genner.createButton("Quản lý heo", Genner.BIG_SIZE);
         bt_pigFeature.setActionCommand(Constants.AC_PIG_FEAT);
         
-        bt_stockFeature = Genner.createButton("Quan ly Kho", Genner.BIG_SIZE);
+        bt_stockFeature = Genner.createButton("Quản lý kho", Genner.BIG_SIZE);
         bt_stockFeature.setActionCommand(Constants.AC_STOCK_FEAT);
 
-        bt_pastureFeature = Genner.createButton("Quan ly Chuong", Genner.BIG_SIZE);
+        bt_pastureFeature = Genner.createButton("Quản lý chuồng", Genner.BIG_SIZE);
         bt_pastureFeature.setActionCommand(Constants.AC_PASTURE_FEAT);
 
-        bt_providerFeature = Genner.createButton("Quan ly NCC", Genner.BIG_SIZE);
+        bt_providerFeature = Genner.createButton("Quản lý nhà cung cấp", Genner.BIG_SIZE);
         bt_providerFeature.setActionCommand(Constants.AC_PROVIDER_FEAT);
 
-        bt_reportFeature = Genner.createButton("Ket xuat bao cao", Genner.BIG_SIZE);
+        bt_reportFeature = Genner.createButton("Kết xuất báo cáo", Genner.BIG_SIZE);
         bt_reportFeature.setActionCommand(Constants.AC_REPORT_FEAT);
 
-        bt_quit = Genner.createButton("Thoat", Genner.BIG_SIZE);
+        bt_quit = Genner.createButton("Thoát", Genner.BIG_SIZE);
         bt_quit.setActionCommand(Constants.AC_CANCEL);
     }
 

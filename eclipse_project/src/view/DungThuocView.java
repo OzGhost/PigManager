@@ -28,9 +28,6 @@ import controller.DungThuocController;
 public class DungThuocView extends ViewBase
 {
 
-	/**
-	 * 
-	 */
 	private static final long		serialVersionUID	= -2388455377284757616L;
 
 	private JPanel					panelMain;
@@ -58,7 +55,7 @@ public class DungThuocView extends ViewBase
 
 		// set panelTop
 		final Border border = BorderFactory.createLineBorder(Color.gray);
-		final TitledBorder titleTimKiem = BorderFactory.createTitledBorder(border, "Tim kiem lich su dung thuoc");
+		final TitledBorder titleTimKiem = BorderFactory.createTitledBorder(border, "Tìm kiếm lịch sử dùng thuốc");
 
 		panelTop = new JPanel();
 		panelTop.setBorder(titleTimKiem);
@@ -67,11 +64,11 @@ public class DungThuocView extends ViewBase
 				.atRight(panelMain).withMargin(10);
 
 		cbxTimKiem = new JComboBox<>();
-		cbxTimKiem.addItem("Ma thuoc");
-		cbxTimKiem.addItem("Hinh thuc su dung");
+		cbxTimKiem.addItem("Mã thuốc");
+		cbxTimKiem.addItem("Hình thức sử dụng");
 
 		txtTimKiem = new JTextField(20);
-		btnTimKiem = new JButton("Tim kiem");
+		btnTimKiem = new JButton("Tìm kiếm");
 		btnTimKiem.setActionCommand(SEARCH_COMMAND);
 		SpringLayout sl_panelTop = new SpringLayout();
 		panelTop.setLayout(sl_panelTop);
@@ -99,15 +96,15 @@ public class DungThuocView extends ViewBase
 
 		Layer.put(panelMidLeft).in(sl_panelMain).atLeft(panelMain).withMargin(10).bottomOf(panelTop).withMargin(10);
 
-		JLabel lblMaThuoc = new JLabel("Ma thuoc");
+		JLabel lblMaThuoc = new JLabel("Mã thuốc");
 		Layer.put(lblMaThuoc).in(sl_panelMidLeft).atLeft(panelMidLeft).withMargin(30).atTop(panelMidLeft)
 				.withMargin(15);
 
-		JLabel lblNgayDung = new JLabel("Ngay dung");
+		JLabel lblNgayDung = new JLabel("Ngày dùng");
 		Layer.put(lblNgayDung).in(sl_panelMidLeft).atLeft(panelMidLeft).withMargin(30).bottomOf(lblMaThuoc)
 				.withMargin(15);
 
-		JLabel lblLieu = new JLabel("Lieu");
+		JLabel lblLieu = new JLabel("Liều");
 		Layer.put(lblLieu).in(sl_panelMidLeft).atLeft(panelMidLeft).withMargin(30).bottomOf(lblNgayDung).withMargin(15);
 
 		txtMaThuoc = new JTextField(15);
@@ -121,7 +118,7 @@ public class DungThuocView extends ViewBase
 		txtLieu = new JTextField(25);
 		Layer.put(txtLieu).in(sl_panelMidLeft).atLeft(panelMidLeft).withMargin(120).atTop(lblLieu).withMargin(0);
 
-		btnChonMaThuoc = Genner.createButton("Chọn", Genner.MEDIUM_SIZE);
+		btnChonMaThuoc = Genner.createButton("Chọn thuốc", Genner.MEDIUM_SIZE);
 		Layer.put(btnChonMaThuoc).in(sl_panelMidLeft).leftOf(txtMaThuoc).withMargin(15).atTop(txtMaThuoc).withMargin(0)
 				.atBottom(txtMaThuoc).withMargin(0);
 		btnChonMaThuoc.setActionCommand(CHOOSE_COMMAND);
@@ -145,11 +142,11 @@ public class DungThuocView extends ViewBase
 
 		Layer.put(panelMidRight).in(sl_panelMain).leftOf(panelMidLeft).withMargin(30).bottomOf(panelTop).withMargin(10);
 
-		JLabel lblDonVi = new JLabel("Đon vi");
+		JLabel lblDonVi = new JLabel("Đơn vị");
 		Layer.put(lblDonVi).in(sl_panelMidRight).atLeft(panelMidRight).withMargin(30).atTop(panelMidRight)
 				.withMargin(15);
 
-		JLabel lblhtsd = new JLabel("Hinh thuc su dung");
+		JLabel lblhtsd = new JLabel("Hình thức sử dụng");
 		Layer.put(lblhtsd).in(sl_panelMidRight).atLeft(panelMidRight).withMargin(30).bottomOf(lblDonVi).withMargin(15);
 
 		txtDonVi = new JTextField(25);
@@ -172,11 +169,11 @@ public class DungThuocView extends ViewBase
 				.atBottom(panelMain).withMargin(5).atRight(panelMain).withMargin(200);
 		BorderLayout bl_panelBot = new BorderLayout();
 		panelBot.setLayout(bl_panelBot);
-		TitledBorder titleLichSu = BorderFactory.createTitledBorder(border, "Lich su dung thuoc");
+		TitledBorder titleLichSu = BorderFactory.createTitledBorder(border, "Lịch sử dùng thuốc");
 		panelBot.setBorder(titleLichSu);
 
 		final String[] columnDungThuoc =
-		{ "Ma thuoc", "Ngay dung", "Lieu", "Dơn vi", "Hinh thuc su dung" };
+		{ "Mã thuốc", "Ngày dùng", "Liều", "Đơn vị", "Hình thức sử dụng" };
 		tbDungThuoc = new JTable(new Object[0][0], columnDungThuoc);
 		dtm = new DefaultTableModel(columnDungThuoc, 0);
 		tbDungThuoc.setFillsViewportHeight(true);
@@ -187,11 +184,11 @@ public class DungThuocView extends ViewBase
 
 		// set controller main
 
-		btnThem = Genner.createButton("Them", Genner.MEDIUM_SIZE);
+		btnThem = Genner.createButton("Thêm", Genner.MEDIUM_SIZE);
 		Layer.put(btnThem).in(sl_panelMain).leftOf(panelBot).withMargin(60).bottomOf(panelMidRight).withMargin(80);
 		btnThem.setActionCommand(INSERT_COMMAND);
 
-		btnXoa = Genner.createButton("Xoa", Genner.MEDIUM_SIZE);
+		btnXoa = Genner.createButton("Xóa", Genner.MEDIUM_SIZE);
 		Layer.put(btnXoa).in(sl_panelMain).leftOf(panelBot).withMargin(60).bottomOf(btnThem).withMargin(30);
 		btnXoa.setActionCommand(DELETE_COMMAND);
 
@@ -201,7 +198,7 @@ public class DungThuocView extends ViewBase
 		// set mainform
 		setPreferredSize(new Dimension(1000, 720));
 		setResizable(false);
-		setTitle("Dung thuoc");
+		setTitle("Dùng thuốc");
 		setContentPane(new JScrollPane(panelMain));
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

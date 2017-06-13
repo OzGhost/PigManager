@@ -18,6 +18,15 @@ public class CashFlowListModel extends ModelBase {
 
     }
 
+    // Getters
+    public List<CashFlow> getEntryList() {
+        return this.entryList;
+    }
+
+    public CashFlow getCurrentItem () {
+        return entryList.get(chosingIndex);
+    }
+
     // Methods
     public void loadEntryList () {
         this.entryList = CashFlow.findAllLiteVersion();
@@ -26,17 +35,18 @@ public class CashFlowListModel extends ModelBase {
     }
 
     public void itemComplete (int i) {
-        System.out.println(i);
         chosingIndex = i;
         CashFlow chosingItem = entryList.get(i);
         if (chosingItem.getDetail().isEmpty()) {
-//            chosingItem.selftComplete();
+            chosingItem.selfCompleteFullVersion();
         }
         setChanged();
         notifyObservers(ITEM_CHANGE);
     }
 
-    public List<CashFlow> getEntryList() {
-        return this.entryList;
+    public void updateNote(String note) {
+        CashFlow cf = entryList.get(chosingIndex);
+        cf.setNote(note);
+        cf.selfUpdateNote();
     }
 }

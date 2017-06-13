@@ -28,9 +28,6 @@ import controller.CTBenhAnController;
 public class CTBenhAnView extends ViewBase
 {
 
-	/**
-	 * 
-	 */
 	private static final long		serialVersionUID	= -2649631143516978575L;
 	private JPanel					panelMain;
 	public JButton					btnTimKiem, btnChonBenh, btnThem, btnXoa;
@@ -57,7 +54,7 @@ public class CTBenhAnView extends ViewBase
 
 		// set panelTop
 		final Border border = BorderFactory.createLineBorder(Color.gray);
-		final TitledBorder titleTimKiem = BorderFactory.createTitledBorder(border, "Tim kiem chi tiet bệnh");
+		final TitledBorder titleTimKiem = BorderFactory.createTitledBorder(border, "Tìm kiếm chi tiết bệnh án");
 
 		panelTop = new JPanel();
 		panelTop.setBorder(titleTimKiem);
@@ -66,11 +63,11 @@ public class CTBenhAnView extends ViewBase
 				.atRight(panelMain).withMargin(10);
 
 		cbxTimKiem = new JComboBox<>();
-		cbxTimKiem.addItem("Ma benh");
-		cbxTimKiem.addItem("Tinh trang");
+		cbxTimKiem.addItem("Mã bệnh");
+		cbxTimKiem.addItem("Tình trạng");
 
 		txtTimKiem = new JTextField(20);
-		btnTimKiem = new JButton("Tim kiem");
+		btnTimKiem = new JButton("Tìm kiếm");
 //		btnTimKiem.setActionCommand(SEARCH_COMMAND);
 		SpringLayout sl_panelTop = new SpringLayout();
 		panelTop.setLayout(sl_panelTop);
@@ -97,14 +94,14 @@ public class CTBenhAnView extends ViewBase
 
 		Layer.put(panelMidLeft).in(sl_panelMain).atLeft(panelMain).withMargin(10).bottomOf(panelTop).withMargin(10);
 
-		JLabel lblMaBenh = new JLabel("Ma benh");
+		JLabel lblMaBenh = new JLabel("Mã bệnh");
 		Layer.put(lblMaBenh).in(sl_panelMidLeft).atLeft(panelMidLeft).withMargin(10).atTop(panelMidLeft).withMargin(15);
 
-		JLabel lblNgayPhatHien = new JLabel("Ngay phat hien");
+		JLabel lblNgayPhatHien = new JLabel("Ngày phát hiện");
 		Layer.put(lblNgayPhatHien).in(sl_panelMidLeft).atLeft(panelMidLeft).withMargin(10).bottomOf(lblMaBenh)
 				.withMargin(15);
 
-		JLabel lblNgayHetBenh = new JLabel("Ngay het benh");
+		JLabel lblNgayHetBenh = new JLabel("Ngày hết bệnh");
 		Layer.put(lblNgayHetBenh).in(sl_panelMidLeft).atLeft(panelMidLeft).withMargin(10).bottomOf(lblNgayPhatHien)
 				.withMargin(15);
 
@@ -120,7 +117,7 @@ public class CTBenhAnView extends ViewBase
 		Layer.put(dateNgayHetBenh).in(sl_panelMidLeft).atLeft(panelMidLeft).withMargin(130).atTop(lblNgayHetBenh)
 				.withMargin(0).atRight(panelMidLeft).withMargin(20);
 
-		btnChonBenh = Genner.createButton("Chon", Genner.MEDIUM_SIZE);
+		btnChonBenh = Genner.createButton("Chọn", Genner.MEDIUM_SIZE);
 		Layer.put(btnChonBenh).in(sl_panelMidLeft).leftOf(txtMaBenh).withMargin(15).atTop(txtMaBenh).withMargin(0)
 				.atBottom(txtMaBenh).withMargin(0);
 		btnChonBenh.setActionCommand(CHOOSE_COMMAND);
@@ -143,19 +140,19 @@ public class CTBenhAnView extends ViewBase
 
 		Layer.put(panelMidRight).in(sl_panelMain).atRight(panelMain).withMargin(10).bottomOf(panelTop).withMargin(10);
 
-		JLabel lblTinhTrang = new JLabel("Tinh trang");
+		JLabel lblTinhTrang = new JLabel("Tình trạng");
 		Layer.put(lblTinhTrang).in(sl_panelMidRight).atLeft(panelMidRight).withMargin(10).atTop(panelMidRight)
 				.withMargin(15);
 
 		cbxTinhTrang = new JComboBox<>();
 		Layer.put(cbxTinhTrang).in(sl_panelMidRight).atLeft(panelMidRight).withMargin(100).atTop(lblTinhTrang)
 				.withMargin(0);
-		cbxTinhTrang.addItem("Chua chua tri");
-		cbxTinhTrang.addItem("Dang chua tri");
-		cbxTinhTrang.addItem("Khong chua duoc");
-		cbxTinhTrang.addItem("Da het benh");
+		cbxTinhTrang.addItem("Chưa chữa trị");
+		cbxTinhTrang.addItem("Đang chữa trị");
+		cbxTinhTrang.addItem("Không chữa được");
+		cbxTinhTrang.addItem("Đã hết bệnh");
 
-		JLabel lblGhiChu = new JLabel("Ghi chu");
+		JLabel lblGhiChu = new JLabel("Ghi chú");
 		Layer.put(lblGhiChu).in(sl_panelMidRight).atLeft(panelMidRight).withMargin(10).bottomOf(lblTinhTrang)
 				.withMargin(20);
 
@@ -183,7 +180,7 @@ public class CTBenhAnView extends ViewBase
 		panelBot.setLayout(bl_panelBot);
 
 		final String[] columnCTBenh =
-		{ "Ma benh", "Ngay phat hien", "Ngay het benh", "Tinh trang", "Ghi chu" };
+		{ "Mã bệnh", "Ngày phát hiện", "Ngày hết bệnh", "Tình trạng", "Ghi chú" };
 		tbCTBenh = new JTable(new Object[0][0], columnCTBenh);
 		dtm = new DefaultTableModel(columnCTBenh, 0);
 		tbCTBenh.setFillsViewportHeight(true);
@@ -195,11 +192,11 @@ public class CTBenhAnView extends ViewBase
 
 		// set controller main
 
-		btnThem = Genner.createButton("Them", Genner.MEDIUM_SIZE);
+		btnThem = Genner.createButton("Thêm", Genner.MEDIUM_SIZE);
 		Layer.put(btnThem).in(sl_panelMain).leftOf(panelBot).withMargin(30).bottomOf(panelMidRight).withMargin(80);
 		btnThem.setActionCommand(INSERT_COMMAND);
 
-		btnXoa = Genner.createButton("Xoa", Genner.MEDIUM_SIZE);
+		btnXoa = Genner.createButton("Xóa", Genner.MEDIUM_SIZE);
 		Layer.put(btnXoa).in(sl_panelMain).leftOf(panelBot).withMargin(30).bottomOf(btnThem).withMargin(30);
 		btnXoa.setActionCommand(DELETE_COMMAND);
 
@@ -209,7 +206,7 @@ public class CTBenhAnView extends ViewBase
 		// set mainform
 		setPreferredSize(new Dimension(1000, 720));
 		setResizable(false);
-		setTitle("Chi tiet benh");
+		setTitle("Chi tiết bệnh");
 		setContentPane(new JScrollPane(panelMain));
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

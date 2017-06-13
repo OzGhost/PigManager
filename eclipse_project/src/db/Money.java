@@ -1,5 +1,7 @@
 package db;
 
+import common.Constants;
+
 public class Money extends Payable {
     // Fields
     // Constructors
@@ -8,7 +10,7 @@ public class Money extends Payable {
     // Methods
     @Override
     public String getType () {
-        return Constants.get("M");
+        return Constants.FULL_TYPE_NAME.get("M");
     }
 
     @Override

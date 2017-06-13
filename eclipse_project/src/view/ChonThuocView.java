@@ -23,9 +23,6 @@ import controller.ChonThuocController;
 
 public class ChonThuocView extends ViewBase
 {
-	/**
-	 * 
-	 */
 	private static final long		serialVersionUID	= -7660128175824496550L;
 	private JPanel					panelMain;
 	public JButton					btnChonThuoc, btnTimKiem;
@@ -45,7 +42,7 @@ public class ChonThuocView extends ViewBase
 
 		// panelTop
 		final Border border = BorderFactory.createLineBorder(Color.gray);
-		final TitledBorder titleTimKiem = BorderFactory.createTitledBorder(border, "Tim kiem benh");
+		final TitledBorder titleTimKiem = BorderFactory.createTitledBorder(border, "Tìm kiếm bệnh");
 
 		panelTop = new JPanel();
 		panelTop.setBorder(titleTimKiem);
@@ -54,11 +51,11 @@ public class ChonThuocView extends ViewBase
 				.atRight(panelMain).withMargin(10);
 
 		cbxTimKiem = new JComboBox<>();
-		cbxTimKiem.addItem("Ma thuoc");
-		cbxTimKiem.addItem("Ten thuoc");
+		cbxTimKiem.addItem("Mã thuốc");
+		cbxTimKiem.addItem("Tên thuốc");
 
 		txtTimKiem = new JTextField(20);
-		btnTimKiem = new JButton("Tim kiem");
+		btnTimKiem = new JButton("Tìm kiếm");
 		btnTimKiem.setActionCommand(SEARCH_COMMAND);
 		SpringLayout sl_panelTop = new SpringLayout();
 		panelTop.setLayout(sl_panelTop);
@@ -86,7 +83,7 @@ public class ChonThuocView extends ViewBase
 		panelBot.setLayout(bl_panelBot);
 
 		final String[] columnChonThuoc =
-		{ "Ma thuoc", "Ten thuoc", "Thanh phan" };
+		{ "Mã thuốc", "Tên thuốc", "Thành phần" };
 		tbChonThuoc = new JTable(new Object[0][0], columnChonThuoc);
 		dtm = new DefaultTableModel(columnChonThuoc, 0);
 		tbChonThuoc.setFillsViewportHeight(true);
@@ -98,7 +95,7 @@ public class ChonThuocView extends ViewBase
 
 		// set controller main
 
-		btnChonThuoc = Genner.createButton("Chon thuoc", Genner.MEDIUM_SIZE);
+		btnChonThuoc = Genner.createButton("Chọn thuốc", Genner.MEDIUM_SIZE);
 		btnChonThuoc.setEnabled(false);
 		Layer.put(btnChonThuoc).in(sl_panelMain).leftOf(panelBot).withMargin(20).bottomOf(panelTop).withMargin(80)
 				.atRight(panelMain).withMargin(20);

@@ -129,7 +129,7 @@ public class CashFlowView extends ViewBase {
         final JPanel topLeft = new JPanel();
         final TitledBorder tlBorder = BorderFactory.createTitledBorder(
                 Constants.BD_GREYLINE,
-                " Loại phiếu "
+                "Loại phiếu"
         );
 
         topLeft.setBorder(tlBorder);
@@ -148,7 +148,7 @@ public class CashFlowView extends ViewBase {
         final JPanel topRight = new JPanel();
         final TitledBorder trBorder = BorderFactory.createTitledBorder(
                 Constants.BD_GREYLINE,
-                " Ghi chú thu chi "
+                "Ghi chú thu/chi"
         );
         topRight.setBorder(trBorder);
         topRight.setLayout(new BorderLayout());
@@ -195,7 +195,7 @@ public class CashFlowView extends ViewBase {
         final JPanel center = new JPanel();
         final TitledBorder ctBorder = BorderFactory.createTitledBorder(
                 Constants.BD_GREYLINE,
-                " Đối tượng thu chi ");
+                "Đối tượng thu/chi");
         center.setBorder(ctBorder);
         center.setLayout(new BorderLayout());
         center.add(new JScrollPane(detailtab), BorderLayout.CENTER);
@@ -216,16 +216,16 @@ public class CashFlowView extends ViewBase {
     }
 
     private JPanel initEstimateCost () {
-        estimateTotalCost = Genner.createButton("Mao", Genner.MEDIUM_SIZE);
+        estimateTotalCost = Genner.createButton("Mão giá", Genner.MEDIUM_SIZE);
         estimateTotalCost.setActionCommand(AC_EST_TOTAL);
-        floorCost = Genner.createButton("Cao bang", Genner.MEDIUM_SIZE);
+        floorCost = Genner.createButton("Cào bằng", Genner.MEDIUM_SIZE);
         floorCost.setActionCommand(AC_FLOOR_COST);
         estimatedValue = Genner.createNumberField(Genner.MEDIUM_SIZE);
 
         final JPanel ePane = new JPanel(new FlowLayout(FlowLayout.CENTER));
         final TitledBorder tbd = BorderFactory.createTitledBorder(
                 Constants.BD_GREYLINE,
-                "Cost estimate");
+                "Định giá");
         ePane.setBorder(tbd);
         ePane.setPreferredSize(new Dimension(100, Constants.MEDIUM_HEIGHT + 32));
 
@@ -282,14 +282,14 @@ public class CashFlowView extends ViewBase {
                 try {
                     rs[i][2] = Integer.parseInt(((String)c3).trim());
                 } catch(Exception e) {
-                    noticeError("Enter number only into 'Cost' column please!");
+                    noticeError("Giá không hợp lệ!");
                     return null;
                 }
             } else if
             (c3 instanceof Integer) {
                 rs[i][2] = c3;
             } else {
-                noticeError("Cost column value unacceptable!");
+                noticeError("Giá không hợp lệ!");
                 System.out.println("c3 type: " + c3.getClass().toString());
             }
         }
@@ -299,8 +299,8 @@ public class CashFlowView extends ViewBase {
     public void noticeSaveResult(boolean rs) {
         noticeResult(
                 rs,
-                "Save done",
-                "Save failse!"
+                "Lưu hoàn tất",
+                "Xảy ra lỗi trong quá trình lưu!"
         );
     }
 

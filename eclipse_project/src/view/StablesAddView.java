@@ -24,6 +24,7 @@ import javax.swing.JFrame;
  * @author duyphuoc
  */
 public class StablesAddView extends ViewBase{
+    private static final long serialVersionUID = -3617338098446125739L;
     private JLabel status_lb;
     private JTextField status_tx;
     private JLabel number_lb;
@@ -42,26 +43,25 @@ public class StablesAddView extends ViewBase{
     public static final String REFRESH_COMMAND="refresh";
     
     public StablesAddView(){
-        //
-        status_lb = new JLabel("Tinh trang");
+        status_lb = new JLabel("Tình trạng");
         status_tx = new JTextField(15);
-        status_tx.setText("Trong");
+        status_tx.setText("Trống");
         status_tx.setEditable(false);
-        number_lb = new JLabel("So luong toi da");
+        number_lb = new JLabel("Số lương tối đa");
         number_tx = new JTextField(13);
-        location_lb = new JLabel("Vi tri");
+        location_lb = new JLabel("Vị trí");
         location_tx = new JTextField(18);
-        describe_lb = new JLabel("Mo ta");
+        describe_lb = new JLabel("Mô tả");
         //describe_tx = new JTextField(12);
         describe_tx = new JTextField();
         describe_tx.setPreferredSize(new Dimension(0, 114));
         
         // button
-        add_bt = Genner.createButton("Them", Genner.MEDIUM_SIZE);
+        add_bt = Genner.createButton("Thêm", Genner.MEDIUM_SIZE);
         add_bt.setActionCommand(ADD_COMMAND);
-        cancel_bt = Genner.createButton("Huy", Genner.MEDIUM_SIZE);
+        cancel_bt = Genner.createButton("Hủy", Genner.MEDIUM_SIZE);
         cancel_bt.setActionCommand(CANCEL_COMMAND);
-        refresh_bt = Genner.createButton("Refresh", Genner.MEDIUM_SIZE);
+        refresh_bt = Genner.createButton("Làm mới", Genner.MEDIUM_SIZE);
         refresh_bt.setActionCommand(REFRESH_COMMAND);
         //panel 
         panel = new JPanel();
@@ -98,7 +98,7 @@ public class StablesAddView extends ViewBase{
         Layer.put(refresh_bt).in(mainLayout).atBottom(panel).withMargin(7).rightOf(add_bt).withMargin(7);
         //set frame
         
-        this.setTitle("Them chuong");
+        this.setTitle("Thêm chuồng");
         this.setSize(500, 250);
         this.add(panel);
         this.setResizable(false);

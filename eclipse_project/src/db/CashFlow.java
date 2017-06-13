@@ -26,13 +26,21 @@ public class CashFlow extends Entity {
         = " SELECT MaThuChi mtc, NgayThuChi ntc,\n"
         + "     GhiChu gc, LoaiThuChi ltc, TriGia tg\n"
         + " FROM " + TABLE_NAME
+        + " ORDER BY NgayThuChi"
     ;
 
     private static final String RETRIEVE_DETAIL_BY_ID
         = " SELECT d.MaDoiTuongThuChi id, d.LoaiDoiTuongThuChi type,\n"
         + "         d.Gia cost, d.GhiChu note\n"
-        + " FROM ThuChi t, TABLE(t.ChiTiet_ntab)\n"
+        + " FROM ThuChi t, TABLE(t.ChiTiet_ntab) d\n"
         + " WHERE t.MaThuChi = '%s'"
+    ;
+    
+    private static final String UPDATE_NOTE_BY_ID
+        = " UPDATE ThuChi\n"
+        + " SET GhiChu = '%s'\n"
+        + " WHERE MaThuChi = '%s'"
+    ;
 
     private static List<Payable> loadDetailById (String id) {
         List<Payable> rs = new ArrayList<>();
@@ -44,38 +52,41 @@ public class CashFlow extends Entity {
                     id
                 )
             );
-            
-            qRs.next();
-            String eId = qRs.getString("id");
-            int eCost = qRs.getInt("cost");
-            String eNote = qRs.getString("note");
-            switch (qRs.getString("type")) {
-                case "H":
-                    Pig e = new Pig(eId);
-                    e.setPayNote(eNote);
-                    e.Price(eCost);
-                    rs.add(e);
-                    break;
-                case "M":
-                    Money e = new Money();
-                    e.setPayNote(eNote);
-                    e.Price(eCost);
-                    rs.add(e);
-                    break;
-                case "V":
-                    Pig e = new Pig();
-                    e.setPayNote(eNote);
-                    e.Price(eCost);
-                    rs.add(e);
-                    break;
-                case "T":
-                    Pig e = new Pig();
-                    e.setPayNote(eNote);
-                    e.Price(eCost);
-                    rs.add(e);
-                    break;
+
+            while (qRs.next()) {
+                String eId = qRs.getString("id");
+                int eCost = qRs.getInt("cost");
+                String eNote = qRs.getString("note");
+                switch (qRs.getString("type")) {
+                    case "H":
+                        Pig p = new Pig(eId);
+                        p.setPayNote(eNote);
+                        p.setPrice(eCost);
+                        rs.add(p);
+                        break;
+                    case "M":
+                        Money m = new Money();
+                        m.setPayNote(eNote);
+                        m.setPrice(eCost);
+                        rs.add(m);
+                        break;
+                    case "V":
+                        Tool v = new Tool(eId);
+                        v.setPayNote(eNote);
+                        v.setPrice(eCost);
+                        rs.add(v);
+                        break;
+                    case "T":
+                        Sperm t = new Sperm(eId);
+                        t.setPayNote(eNote);
+                        t.setPrice(eCost);
+                        rs.add(t);
+                        break;
+                }
             }
-        } catch (Exception e) finally {
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
             try {
                 qRs.close();
             } catch (Exception e) {}
@@ -206,13 +217,16 @@ public class CashFlow extends Entity {
     }
 
     // Methods
-
     public Object[] toObjects () {
         Object[] rs = new Object[3];
         rs[0] = Constants.DATE4MAT.format(this.occurDate);
         rs[1] = payout ? "Chi" : "Thu";
         rs[2] = cost;
         return rs;
+    }
+
+    public void selfUpdateNote () {
+        db.send(String.format(UPDATE_NOTE_BY_ID, this.note, this.id));
     }
 
     @Override

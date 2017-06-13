@@ -8,11 +8,10 @@ import db.QueryHolder;
  * @author ducnh
  * create: 15-04-2017
  */
-public class Provider {
+public class Provider extends Entity {
 
     public static final String TABLE_NAME = "NhaCungCap";
 
-    private String id;
     private String name;
     private String address;
     private String phone;
@@ -27,6 +26,9 @@ public class Provider {
         return q;
     }
     
+    public Provider (String id) {
+        super(id);
+    }
     /**
      * Lite constructor for pay log
      * 
@@ -34,7 +36,7 @@ public class Provider {
      * @param name
      */
     public Provider(String id, String name) {
-        this.id = id;
+        super(id);
         this.name = name;
     }
     

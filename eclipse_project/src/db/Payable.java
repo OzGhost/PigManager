@@ -9,6 +9,15 @@ package db;
  */
 public abstract class Payable extends Entity {
 
+    public static Object[] toObjects (Payable p) {
+        Object[] rs = new Object[4];
+        rs[0] = p.getId();
+        rs[1] = p.getType();
+        rs[2] = p.getPrice();
+        rs[3] = p.getPayNote();
+        return rs;
+    }
+
     protected String payNote;
     protected int price;
 

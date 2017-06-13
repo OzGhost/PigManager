@@ -35,9 +35,6 @@ import controller.PigsManagerController;
 public class PigsManagerView extends ViewBase
 {
 
-	/**
-	 * 
-	 */
 	private static final long	serialVersionUID						= 363771096351815249L;
 	public JPanel				contentpane, _panelTop, _panelMid, _panelBot;
 	public JButton				_btnTimKiem, _btnThem, _btnXoa, _btnCapNhat, _btnChoAn, _btnKhamBenh, _btnChonNCC,
@@ -74,7 +71,7 @@ public class PigsManagerView extends ViewBase
 
 		// Top Panel
 
-		final TitledBorder _titleTimKiem = BorderFactory.createTitledBorder(_border, "Tim kiem");
+		final TitledBorder _titleTimKiem = BorderFactory.createTitledBorder(_border, "Tìm kiếm");
 		_titleTimKiem.setTitleJustification(TitledBorder.CENTER);
 		_panelTop = new JPanel();
 		_panelTop.setPreferredSize(new Dimension(400, 80));
@@ -83,12 +80,12 @@ public class PigsManagerView extends ViewBase
 		_panelTop.setLayout(sl_panelTop);
 
 		_cbxTimKiem = new JComboBox<String>();
-		_cbxTimKiem.addItem("Ma heo");
-		_cbxTimKiem.addItem("Ten nha cung cap");
-		_cbxTimKiem.addItem("Ten thuc an");
+		_cbxTimKiem.addItem("Mã heo");
+		_cbxTimKiem.addItem("Tên nhà cung cấp");
+		_cbxTimKiem.addItem("Tên thức ăn");
 		_txtfTimKiem = new JTextField(20);
 
-		_btnTimKiem = Genner.createButton("Tim kiem", Genner.MEDIUM_SIZE);
+		_btnTimKiem = Genner.createButton("Tìm kiếm", Genner.MEDIUM_SIZE);
 		_btnTimKiem.setActionCommand(SEARCH_COMMAND);
 
 		sl_panelTop.putConstraint(SpringLayout.HORIZONTAL_CENTER, _txtfTimKiem, 0, SpringLayout.HORIZONTAL_CENTER,
@@ -115,17 +112,17 @@ public class PigsManagerView extends ViewBase
 		SpringLayout sl_panelMid = new SpringLayout();
 		_panelMid.setLayout(sl_panelMid);
 
-		_lblMaNCC = new JLabel("Ma NCC");
-		_lblMaChuong = new JLabel("Ma chuong");
-		_lblMaLoaiThucAn = new JLabel("Ma loai thuc an");
-		_lblMaNguon = new JLabel("Ma nguon");
-		_lblMaHeo = new JLabel("Ma heo");
-		_lblChieuCao = new JLabel("Chieu cao");
-		_lblChieuDai = new JLabel("Chieu dai");
-		_lblCanNang = new JLabel("Can nang");
-		_lblNgayNuoi = new JLabel("Ngay nuoi");
-		_lblNgayBan = new JLabel("Ngay ban");
-		_lblMaTheTai = new JLabel("Ma the tai");
+		_lblMaNCC = new JLabel("Mã NCC");
+		_lblMaChuong = new JLabel("Mã chuồng");
+		_lblMaLoaiThucAn = new JLabel("Mã loại thức ăn");
+		_lblMaNguon = new JLabel("Mã nguồn");
+		_lblMaHeo = new JLabel("Mã heo");
+		_lblChieuCao = new JLabel("Chiều cao");
+		_lblChieuDai = new JLabel("Chiều dài");
+		_lblCanNang = new JLabel("Cân nặng");
+		_lblNgayNuoi = new JLabel("Ngày nuôi");
+		_lblNgayBan = new JLabel("Ngày bán");
+		_lblMaTheTai = new JLabel("Mã thẻ tai");
 
 		_txtfMaNCC = new JTextField(18);
 		_txtfMaNCC.setEditable(false);
@@ -146,17 +143,17 @@ public class PigsManagerView extends ViewBase
 		_dateNgayBan.setEnabled(false);
 		_dateNgayNuoi = new JDateChooser();
 		
-		_cbNCC = new JCheckBox("Nha cung cap");
-		_cbMaNguon = new JCheckBox("Ma nguon");
+		_cbNCC = new JCheckBox("Nhà cung cấp");
+		_cbMaNguon = new JCheckBox("Mã nguồn");
 		ButtonGroup _btngroup = new ButtonGroup();
 		_btngroup.add(_cbNCC);
 		_btngroup.add(_cbMaNguon);
 
-		_btnChonNCC = Genner.createButton("Chon", Genner.MEDIUM_SIZE);
+		_btnChonNCC = Genner.createButton("Chọn", Genner.MEDIUM_SIZE);
 		_btnChonNCC.setActionCommand(SELECT_PROVIDER_COMMAND);
-		_btnChonMaChuong = Genner.createButton("Chon", Genner.MEDIUM_SIZE);
+		_btnChonMaChuong = Genner.createButton("Chọn", Genner.MEDIUM_SIZE);
 		_btnChonMaChuong.setActionCommand(SELECT_STABLES_COMMAND);
-		_btnChonMaLoaiThucAn = Genner.createButton("Chon", Genner.MEDIUM_SIZE);
+		_btnChonMaLoaiThucAn = Genner.createButton("Chọn", Genner.MEDIUM_SIZE);
 		_btnChonMaLoaiThucAn.setActionCommand(SELECT_FOOD_COMMAND);
 
 		Layer.put(_lblMaNCC).in(sl_panelMid).atTopLeft(_panelMid).withMargin(15);
@@ -259,11 +256,11 @@ public class PigsManagerView extends ViewBase
 		// Bot Panel
 		_panelBot = new JPanel();
 		_panelBot.setPreferredSize(new Dimension(1100, 350));
-		final TitledBorder _titleBotLeft = BorderFactory.createTitledBorder(_border, "Danh sach Heo");
+		final TitledBorder _titleBotLeft = BorderFactory.createTitledBorder(_border, "Danh sách heo");
 		_panelBot.setBorder(_titleBotLeft);
 
 		final String[] _columnsHeo =
-		{ "Ma chuong", "Tinh trang", "So luong toi da", "Vi tri", "Mo ta" };
+		{ "Mã chuồng", "Tình trạng", "Số lượng tối đa", "Vị trí", "Mô tả" };
 		_tbHeo = new JTable(new Object[0][0], _columnsHeo);
 		_tbHeo.setFillsViewportHeight(true);
 		JScrollPane _scrolltbNCC = new JScrollPane(_tbHeo, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
@@ -273,20 +270,20 @@ public class PigsManagerView extends ViewBase
 		_panelBot.add(_scrolltbNCC);
 
 		// Button
-		_btnThem = Genner.createButton("Them", Genner.MEDIUM_SIZE);
+		_btnThem = Genner.createButton("Thêm", Genner.MEDIUM_SIZE);
 		_btnThem.setActionCommand(ADD_COMMAND);
-		_btnXoa = Genner.createButton("Xoa", Genner.MEDIUM_SIZE);
+		_btnXoa = Genner.createButton("Xóa", Genner.MEDIUM_SIZE);
 		_btnXoa.setActionCommand(REMOVE_COMMAND);
-		_btnCapNhat = Genner.createButton("Cap nhat", Genner.MEDIUM_SIZE);
+		_btnCapNhat = Genner.createButton("Cập nhật", Genner.MEDIUM_SIZE);
 		_btnCapNhat.setActionCommand(UPDATE_COMMAND);
-		_btnChoAn = Genner.createButton("Cho an", Genner.MEDIUM_SIZE);
+		_btnChoAn = Genner.createButton("Cho ăn", Genner.MEDIUM_SIZE);
 		_btnChoAn.setActionCommand(EAT_COMMAND);
-		_btnKhamBenh = Genner.createButton("Kham benh", Genner.MEDIUM_SIZE);
+		_btnKhamBenh = Genner.createButton("Khám bệnh", Genner.MEDIUM_SIZE);
 		_btnKhamBenh.setActionCommand(KHAMBENH_COMMAND);
-		_btnChonMaHeo = Genner.createButton("Chon heo", Genner.MEDIUM_SIZE);
+		_btnChonMaHeo = Genner.createButton("Chọn heo", Genner.MEDIUM_SIZE);
 		_btnChonMaHeo.setEnabled(false);
 		_btnChonMaHeo.setActionCommand(SELECT_MAHEO_FROM_OTHER_JFRAME_COMMAND);
-		_btnTrangChu  = Genner.createButton("Trang Chu", Genner.BIG_SIZE);
+		_btnTrangChu  = Genner.createButton("Trang chủ", Genner.BIG_SIZE);
 		_btnTrangChu.setActionCommand(Constants.AC_HOME);
 
 
@@ -329,7 +326,7 @@ public class PigsManagerView extends ViewBase
 		// Set form
 		setPreferredSize(new Dimension(1366, 730));
 		setResizable(false);
-		setTitle("Quan ly heo");
+		setTitle("Quản lý heo");
 		setContentPane(new JScrollPane(contentpane));
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

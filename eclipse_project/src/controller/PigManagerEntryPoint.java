@@ -19,11 +19,9 @@ public class PigManagerEntryPoint {
         db.init("orcbase", "c##oz", "ngaymai");
 
         // View initiall
-        /*
         controller.setView(view);
         view.showUp();
-        */
-
+        /*
         CashFlowListModel cflm =  new CashFlowListModel();
 
         CashFlowListView cflv = new CashFlowListView();
@@ -38,5 +36,6 @@ public class PigManagerEntryPoint {
 
         cflv.showUp();
         cflm.loadEntryList();
+        */
     }
 }

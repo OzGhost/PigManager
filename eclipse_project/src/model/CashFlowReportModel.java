@@ -14,9 +14,10 @@ import java.util.Map;
 
 import common.CashFlowReportDto;
 import common.Constants;
+import common.Watcher;
 import db.db;
 
-public class CashFlowReportModel {
+public class CashFlowReportModel implements Runnable {
 
     private static String PrepareRetrieveQuery (
             Date from,
@@ -76,7 +77,7 @@ public class CashFlowReportModel {
         return rs;
     }
 
-    public static void BuildReport (
+    public static void buildReport (
             Date from,
             Date to,
             String period,
@@ -114,5 +115,39 @@ public class CashFlowReportModel {
                 data, 
                 param
         );
+    }
+
+    // Fields
+    private Date from;
+    private Date to;
+    private String period;
+    private File outputFile;
+    private Watcher watcher;
+
+    // Constructors
+    public CashFlowReportModel (
+            Date from,
+            Date to,
+            String period,
+            String filePath,
+            Watcher w
+    ) {
+        this.from = from;
+        this.to = to;
+        this.period = period;
+        this.outputFile = new File(filePath);
+        this.watcher = w;
+    }
+
+    @Override
+    public void run() {
+        int rs = 0;
+        try {
+            buildReport(this.from, this.to, this.period, this.outputFile);
+        } catch (Exception e) {
+            e.printStackTrace();
+            rs = -1;
+        }
+        this.watcher.beNoticed("", rs);
     }
 }

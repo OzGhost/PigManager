@@ -23,13 +23,9 @@ import model.ToolModel;
 import view.CashFlowView;
 import view.StablesView;
 import view.ToolView;
-import db.db;
-<<<<<<< HEAD
 import model.PigsManagerModel;
 import view.*;
 import model.*;
-=======
->>>>>>> 8ed67713e8e530d59f0b192fbfc46b4321f3c737
 
 /**
  * For demo only
@@ -85,14 +81,11 @@ public class DemoGUI {
         cfm.addObserver(cfv);
         cfv.setController(cfc);
         cfv.showUp();
-<<<<<<< HEAD
         */
         
         /*
-=======
 */
 /*        
->>>>>>> ef43ad976aa88efeb6eb456b5e5a528d57c76e49
     	// block call Them chuong frame
         StablesView sv = new StablesView();
         StablesController sc = new StablesController();
@@ -104,7 +97,6 @@ public class DemoGUI {
         */
         
         //block call vatdung frame
-<<<<<<< HEAD
 //        ToolView tv= new ToolView();
 //        ToolController tc = new ToolController();
 //        ToolModel tm = new ToolModel();
@@ -139,7 +131,6 @@ public class DemoGUI {
             e.printStackTrace();
         }
         
-=======
         ToolView tv= new ToolView();
         ToolController tc = new ToolController();
         ToolModel tm = new ToolModel();
@@ -148,7 +139,6 @@ public class DemoGUI {
         tv.setController(tc);
         tv.showUp();
        
->>>>>>> ef43ad976aa88efeb6eb456b5e5a528d57c76e49
 //        WarehouseManagerModel whm = new WarehouseManagerModel();
 //        WarehouseManagerView whv = new WarehouseManagerView();
 //        WarehouseManagerController whc = new WarehouseManagerController();
@@ -157,7 +147,6 @@ public class DemoGUI {
 //        whv.setController(whc);
 //        whv.showUp();
         
-<<<<<<< HEAD
 /*       
         PigsManagerModel pmm = new PigsManagerModel();
         PigsManagerView pmv = new PigsManagerView();
@@ -167,7 +156,6 @@ public class DemoGUI {
         pmv.setController(pmc);
         pmv.showUp(); 
 */        
-=======
         
 //        PigsManagerModel pmm = new PigsManagerModel();
 //        PigsManagerView pmv = new PigsManagerView();
@@ -176,8 +164,6 @@ public class DemoGUI {
 //        pmc.setModel(pmm);
 //        pmv.setController(pmc);
 //        pmv.showUp(); 
-        
->>>>>>> 8ed67713e8e530d59f0b192fbfc46b4321f3c737
         
 //        BenhAnView bav=new BenhAnView();
 //        BenhAnController bac =new BenhAnController();

@@ -39,7 +39,9 @@ public class Constants {
     
     // Button size configuration template
     public static final Dimension buttonSizeBg = new Dimension(120, 50);
+    public static final Dimension buttonSizeLBg = new Dimension(180, 50);
     public static final Dimension buttonSizeMd = new Dimension(90, 32);
+    public static final Dimension buttonSizeLMd = new Dimension(120, 32);
     public static final Dimension buttonSizeSm = new Dimension(50, 25);
     
     // Font size configuration template
@@ -56,6 +58,7 @@ public class Constants {
     // Action command
     public static final String AC_HOME = "go_home";
     public static final String AC_DONE = "finish";
+    public static final String AC_BROWSE = "browse";
     public static final String AC_CANCEL = "terminated";
     public static final String AC_ADD = "one_more";
     public static final String AC_RM = "one_less";
@@ -64,6 +67,7 @@ public class Constants {
     public static final String AC_PASTURE_FEAT = "pasture_features";
     public static final String AC_PROVIDER_FEAT = "provider_features";
     public static final String AC_REPORT_FEAT = "report_features";
+    public static final String AC_MAKE_REPORT = "make_some_report";
 
     // Date format
     public static final String FORMAT_OF_DATE = "yyyy-MM-dd HH:mm:ss";

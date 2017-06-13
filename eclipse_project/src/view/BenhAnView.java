@@ -28,9 +28,6 @@ import controller.BenhAnController;
 
 public class BenhAnView extends ViewBase
 {
-	/**
-	 * 
-	 */
 	private static final long		serialVersionUID	= -1282199101511235222L;
 
 	private JPanel					panelMain;
@@ -60,7 +57,7 @@ public class BenhAnView extends ViewBase
 
 		// set panelTop
 		final Border border = BorderFactory.createLineBorder(Color.gray);
-		final TitledBorder titleTimKiem = BorderFactory.createTitledBorder(border, "Tim kiem benh an");
+		final TitledBorder titleTimKiem = BorderFactory.createTitledBorder(border, "Tìm kiếm bệnh án");
 
 		panelTop = new JPanel();
 		panelTop.setBorder(titleTimKiem);
@@ -69,10 +66,10 @@ public class BenhAnView extends ViewBase
 				.atRight(panelMain).withMargin(10);
 
 		cbxTimKiem = new JComboBox<>();
-		cbxTimKiem.addItem("Ma benh an");
+		cbxTimKiem.addItem("Mã bệnh án");
 
 		txtTimKiem = new JTextField(20);
-		btnTimKiem = new JButton("Tim kiem");
+		btnTimKiem = new JButton("Tìm kiếm");
 		btnTimKiem.setActionCommand(SEARCH_COMMAND);
 		SpringLayout sl_panelTop = new SpringLayout();
 		panelTop.setLayout(sl_panelTop);
@@ -101,13 +98,13 @@ public class BenhAnView extends ViewBase
 		Layer.put(panelMid).in(sl_panelMain).atLeft(panelMain).withMargin(10).bottomOf(panelTop).withMargin(10)
 				.atRight(panelMain).withMargin(10);
 
-		JLabel lblMaBenhAn = new JLabel("Ma benh an");
+		JLabel lblMaBenhAn = new JLabel("Mã bệnh án");
 		Layer.put(lblMaBenhAn).in(sl_panelMid).atLeft(panelMid).withMargin(180).atTop(panelMid).withMargin(15);
 
-		JLabel lblMaSoHeo = new JLabel("Ma so heo");
+		JLabel lblMaSoHeo = new JLabel("Mã số heo");
 		Layer.put(lblMaSoHeo).in(sl_panelMid).atLeft(panelMid).withMargin(180).bottomOf(lblMaBenhAn).withMargin(15);
 
-		JLabel lblNgayTao = new JLabel("Ngay tao");
+		JLabel lblNgayTao = new JLabel("Ngày tạo");
 		Layer.put(lblNgayTao).in(sl_panelMid).atLeft(panelMid).withMargin(180).bottomOf(lblMaSoHeo).withMargin(15);
 
 		txtMaBenhAn = new JTextField(25);
@@ -122,7 +119,7 @@ public class BenhAnView extends ViewBase
 		Layer.put(dateNgayTao).in(sl_panelMid).atLeft(panelMid).withMargin(300).atTop(lblNgayTao).withMargin(0)
 				.atRight(txtMaBenhAn).withMargin(0);
 
-		btnChonHeo = Genner.createButton("Chon", Genner.MEDIUM_SIZE);
+		btnChonHeo = Genner.createButton("Chọn", Genner.MEDIUM_SIZE);
 		Layer.put(btnChonHeo).in(sl_panelMid).leftOf(txtMaSoHeo).withMargin(15).atTop(txtMaSoHeo).withMargin(0)
 				.atBottom(txtMaSoHeo).withMargin(0);
 		btnChonHeo.setActionCommand(PIG_COMMAND);
@@ -146,7 +143,7 @@ public class BenhAnView extends ViewBase
 		panelBot.setLayout(bl_panelBot);
 
 		final String[] columnBenhAn =
-		{ "Ma benh an", "Ma so heo", "Ngay tao" };
+		{ "Mã bệnh án", "Mã số heo", "Ngày tạo" };
 		tbBenhAn = new JTable(new Object[0][0], columnBenhAn);
 		dtm = new DefaultTableModel(columnBenhAn, 0);
 		tbBenhAn.setFillsViewportHeight(true);
@@ -158,32 +155,32 @@ public class BenhAnView extends ViewBase
 
 		// set controller main
 
-		btnThem = Genner.createButton("Them", Genner.MEDIUM_SIZE);
+		btnThem = Genner.createButton("Thêm", Genner.MEDIUM_SIZE);
 		Layer.put(btnThem).in(sl_panelMain).leftOf(panelBot).withMargin(50).bottomOf(panelMid).withMargin(30)
 				.atRight(panelMain).withMargin(50);
 		btnThem.setActionCommand(INSERT_COMMAND);
 
-		btnXoa = Genner.createButton("Xoa", Genner.MEDIUM_SIZE);
+		btnXoa = Genner.createButton("Xóa", Genner.MEDIUM_SIZE);
 		Layer.put(btnXoa).in(sl_panelMain).leftOf(panelBot).withMargin(50).bottomOf(btnThem).withMargin(20)
 				.atRight(panelMain).withMargin(50);
 		btnXoa.setActionCommand(DELETE_COMMAND);
 
-		btnCapNhat = Genner.createButton("Cap nhat", Genner.MEDIUM_SIZE);
+		btnCapNhat = Genner.createButton("Cập nhật", Genner.MEDIUM_SIZE);
 		Layer.put(btnCapNhat).in(sl_panelMain).leftOf(panelBot).withMargin(50).bottomOf(btnXoa).withMargin(20)
 				.atRight(panelMain).withMargin(50);
 		btnCapNhat.setActionCommand(UPDATE_COMMAND);
 
-		btnCTBenh = Genner.createButton("Chi tiet", Genner.MEDIUM_SIZE);
+		btnCTBenh = Genner.createButton("Chi tiết", Genner.MEDIUM_SIZE);
 		Layer.put(btnCTBenh).in(sl_panelMain).leftOf(panelBot).withMargin(50).bottomOf(btnCapNhat).withMargin(20)
 				.atRight(panelMain).withMargin(50);
 		btnCTBenh.setActionCommand(DETAIL_COMMAND);
 
-		btnDungThuoc = Genner.createButton("Dung thuoc", Genner.MEDIUM_SIZE);
+		btnDungThuoc = Genner.createButton("Dùng thuốc", Genner.MEDIUM_SIZE);
 		Layer.put(btnDungThuoc).in(sl_panelMain).leftOf(panelBot).withMargin(50).bottomOf(btnCTBenh).withMargin(20)
 				.atRight(panelMain).withMargin(50);
 		btnDungThuoc.setActionCommand(DRUG_COMMAND);
 		
-		btnTrangChu = Genner.createButton("Trang Chu", Genner.BIG_SIZE);
+		btnTrangChu = Genner.createButton("Trang chủ", Genner.BIG_SIZE);
 		Layer.put(btnTrangChu).in(sl_panelMain).leftOf(panelBot).withMargin(40).atBottom(panelMain).withMargin(10)
 				.atRight(panelMain).withMargin(40);
 		btnTrangChu.setActionCommand(Constants.AC_HOME);
@@ -198,7 +195,7 @@ public class BenhAnView extends ViewBase
 		// set mainform
 		setSize(new Dimension(800, 600));
 		setResizable(false);
-		setTitle("Quan ly benh an");
+		setTitle("Quản lý bệnh án");
 		setContentPane(new JScrollPane(panelMain));
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

@@ -29,9 +29,6 @@ import controller.LichSuThaiKyController;
 public class LichSuThaiKyView extends ViewBase
 {
 
-	/**
-	 * 
-	 */
 	private static final long		serialVersionUID		= 1259601497452384139L;
 	private JPanel					panelMain;
 	public JButton					btnThem, btnXoa, btnChonLS, btnCapNhat, btnTimKiem, btnChonHeo, btnTrangChu;
@@ -57,7 +54,7 @@ public class LichSuThaiKyView extends ViewBase
 
 		// set panelTop
 		final Border border = BorderFactory.createLineBorder(Color.gray);
-		final TitledBorder titleTimKiem = BorderFactory.createTitledBorder(border, "Tim kiem benh");
+		final TitledBorder titleTimKiem = BorderFactory.createTitledBorder(border, "Tìm kiếm bệnh");
 
 		panelTop = new JPanel();
 		panelTop.setBorder(titleTimKiem);
@@ -99,14 +96,14 @@ public class LichSuThaiKyView extends ViewBase
 
 		Layer.put(panelMidLeft).in(sl_panelMain).atLeft(panelMain).withMargin(10).bottomOf(panelTop).withMargin(10);
 
-		JLabel lblMaLSTK = new JLabel("Ma lich su thai ky");
+		JLabel lblMaLSTK = new JLabel("Mã lịch sử thai kỳ");
 		Layer.put(lblMaLSTK).in(sl_panelMidLeft).atLeft(panelMidLeft).withMargin(10).atTop(panelMidLeft).withMargin(15);
 
-		JLabel lblNgayGhiNhan = new JLabel("Ngay ghi nhan");
+		JLabel lblNgayGhiNhan = new JLabel("Ngày ghi nhận");
 		Layer.put(lblNgayGhiNhan).in(sl_panelMidLeft).atLeft(panelMidLeft).withMargin(10).bottomOf(lblMaLSTK)
 				.withMargin(20);
 
-		JLabel lblMaHeo = new JLabel("Ma heo");
+		JLabel lblMaHeo = new JLabel("Mã heo");
 		Layer.put(lblMaHeo).in(sl_panelMidLeft).atLeft(panelMidLeft).withMargin(10).bottomOf(lblNgayGhiNhan)
 				.withMargin(20);
 
@@ -122,7 +119,7 @@ public class LichSuThaiKyView extends ViewBase
 		Layer.put(txtMaHeo).in(sl_panelMidLeft).atLeft(panelMidLeft).withMargin(130).atTop(lblMaHeo).withMargin(0);
 		txtMaHeo.setEditable(false);
 
-		btnChonHeo = Genner.createButton("Chon", Genner.MEDIUM_SIZE);
+		btnChonHeo = Genner.createButton("Chọn", Genner.MEDIUM_SIZE);
 		Layer.put(btnChonHeo).in(sl_panelMidLeft).leftOf(txtMaHeo).withMargin(15).atTop(txtMaHeo).withMargin(0)
 				.atBottom(txtMaHeo).withMargin(0);
 		btnChonHeo.setActionCommand(SELECT_PIG);
@@ -146,7 +143,7 @@ public class LichSuThaiKyView extends ViewBase
 
 		Layer.put(panelMidRight).in(sl_panelMain).atRight(panelMain).withMargin(10).bottomOf(panelTop).withMargin(10);
 
-		JLabel lblNoiDung = new JLabel("Noi dung");
+		JLabel lblNoiDung = new JLabel("Nội dung");
 		Layer.put(lblNoiDung).in(sl_panelMidRight).atLeft(panelMidRight).withMargin(10).atTop(panelMidRight)
 				.withMargin(15);
 
@@ -172,11 +169,11 @@ public class LichSuThaiKyView extends ViewBase
 				.atBottom(panelMain).withMargin(5).atRight(panelMain).withMargin(150);
 		BorderLayout bl_panelBot = new BorderLayout();
 		panelBot.setLayout(bl_panelBot);
-		TitledBorder titleLichSu = BorderFactory.createTitledBorder(border, "Lich su thai ky");
+		TitledBorder titleLichSu = BorderFactory.createTitledBorder(border, "Lịch sử thai kỳ");
 		panelBot.setBorder(titleLichSu);
 
 		final String[] columnLSTK =
-		{ "Ma lich su thai ky", "Ngay ghi nhan", "Noi dung", "Ma heo" };
+		{ "Mã lịch sử thai kỳ", "Ngày ghi nhận", "Nội dung", "Mã heo" };
 		tbLSTK = new JTable(new Object[0][0], columnLSTK);
 		dtm = new DefaultTableModel(columnLSTK, 0);
 		tbLSTK.setFillsViewportHeight(true);
@@ -188,24 +185,24 @@ public class LichSuThaiKyView extends ViewBase
 
 		// set controller main
 
-		btnThem = Genner.createButton("Them", Genner.MEDIUM_SIZE);
+		btnThem = Genner.createButton("Thêm", Genner.MEDIUM_SIZE);
 		Layer.put(btnThem).in(sl_panelMain).leftOf(panelBot).withMargin(30).bottomOf(panelMidRight).withMargin(80);
 		btnThem.setActionCommand(INSERT_COMMAND);
 
-		btnXoa = Genner.createButton("Xoa", Genner.MEDIUM_SIZE);
+		btnXoa = Genner.createButton("Xóa", Genner.MEDIUM_SIZE);
 		Layer.put(btnXoa).in(sl_panelMain).leftOf(panelBot).withMargin(30).bottomOf(btnThem).withMargin(30);
 		btnXoa.setActionCommand(DELETE_COMMAND);
 
-		btnCapNhat = Genner.createButton("Cap nhat", Genner.MEDIUM_SIZE);
+		btnCapNhat = Genner.createButton("Cập nhật", Genner.MEDIUM_SIZE);
 		Layer.put(btnCapNhat).in(sl_panelMain).leftOf(panelBot).withMargin(30).bottomOf(btnXoa).withMargin(30);
 		btnCapNhat.setActionCommand(UPDATE_COMMAND);
 
-		btnChonLS = Genner.createButton("Chon LS", Genner.MEDIUM_SIZE);
+		btnChonLS = Genner.createButton("Chọn LS", Genner.MEDIUM_SIZE);
 		Layer.put(btnChonLS).in(sl_panelMain).leftOf(panelBot).withMargin(30).bottomOf(btnCapNhat).withMargin(30);
 		btnChonLS.setActionCommand(CHOOSE_HISTORY_COMMAND);
 		btnChonLS.setEnabled(false);
 		
-		btnTrangChu = Genner.createButton("Trang Chu", Genner.BIG_SIZE);
+		btnTrangChu = Genner.createButton("Trang chủ", Genner.BIG_SIZE);
 		Layer.put(btnTrangChu).in(sl_panelMain).leftOf(panelBot).withMargin(10).atBottom(panelMain).withMargin(50).atRight(panelMain).withMargin(10);;
 		btnTrangChu.setActionCommand(Constants.AC_HOME);
 
@@ -218,7 +215,7 @@ public class LichSuThaiKyView extends ViewBase
 		// set mainform
 		setPreferredSize(new Dimension(1000, 720));
 		setResizable(false);
-		setTitle("Ghi nhan thai ky");
+		setTitle("Ghi nhận thai kỳ");
 		setContentPane(new JScrollPane(panelMain));
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

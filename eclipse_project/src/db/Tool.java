@@ -1,5 +1,7 @@
 package db;
 
+import common.Constants;
+
 public class Tool extends Payable {
 
     // Fields
@@ -15,4 +17,18 @@ public class Tool extends Payable {
     }
 
     // Methods
+    @Override
+    public String getType () {
+        return Constants.FULL_TYPE_NAME.get("V");
+    }
+
+    @Override
+    public String getProviderId () {
+        return provider == null ? null : provider.getId();
+    }
+
+    @Override
+    public String getDescription() {
+        return this.description;
+    }
 }

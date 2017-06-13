@@ -30,11 +30,11 @@ public class ViewBase extends JFrame implements Observer {
     private void notice(String content, int mode) {
         String title = "";
         switch (mode) {
-            case JOptionPane.WARNING_MESSAGE: title = "WARNING"; break;
-            case JOptionPane.ERROR_MESSAGE: title = "ERROR!"; break;
-            case JOptionPane.QUESTION_MESSAGE: title = "Answer it, do you?"; break;
-            case JOptionPane.INFORMATION_MESSAGE: title = "INFORMATION"; break;
-            default : title = "Message"; break;
+            case JOptionPane.WARNING_MESSAGE: title = "Cảnh báo"; break;
+            case JOptionPane.ERROR_MESSAGE: title = "Lỗi!"; break;
+            case JOptionPane.QUESTION_MESSAGE: title = "?"; break;
+            case JOptionPane.INFORMATION_MESSAGE: title = "Thông báo"; break;
+            default : title = "Thông điệp"; break;
         }
         JOptionPane.showMessageDialog(
                 this,
