@@ -73,6 +73,8 @@ public class Constants {
     public static final String AC_SICK_FEAT = "sick_features";
     public static final String AC_SICKLOG_FEAT = "sick_log_features";
     public static final String AC_TOOL_FEAT = "tool_features";
+    public static final String AC_PREGLOG_FEAT = "pregnant_log_features";
+    public static final String AC_LANT_FEAT = "lant_features";
     public static final String AC_MAKE_REPORT = "make_some_report";
 
     // Date format

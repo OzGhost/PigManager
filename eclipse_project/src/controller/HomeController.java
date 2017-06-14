@@ -10,10 +10,12 @@ import model.BenhModel;
 import model.CashFlowListModel;
 import model.CashFlowModel;
 import model.FoodModel;
+import model.LichSuThaiKyModel;
 import model.ModelBase;
 import model.PigsManagerModel;
 import model.ProviderManagerModel;
 import model.StablesModel;
+import model.ThaTinhModel;
 import model.ToolModel;
 import model.WarehouseManagerModel;
 import view.BenhAnView;
@@ -22,9 +24,11 @@ import view.CashFlowListView;
 import view.CashFlowView;
 import view.FoodView;
 import view.HomeView;
+import view.LichSuThaiKyView;
 import view.PigsManagerView;
 import view.ProviderManagerView;
 import view.StablesView;
+import view.ThaTinhView;
 import view.ToolView;
 import view.ViewBase;
 import view.WarehouseManagerView;
@@ -128,6 +132,7 @@ public class HomeController
             BenhController c = new BenhController();
             assemble ((ViewBase)v, (ModelBase)m, (ControllerBase)c, this);
             view.shadow();
+            c.loadData();
             return;
         }
         if (Constants.AC_SICKLOG_FEAT.equals(cmd)) {
@@ -135,8 +140,8 @@ public class HomeController
             BenhAnModel m = new BenhAnModel();
             BenhAnController c = new BenhAnController();
             assemble ((ViewBase)v, (ModelBase)m, (ControllerBase)c, this);
-            c.loadData();
             view.shadow();
+            c.loadData();
             return;
         }
         if (Constants.AC_TOOL_FEAT.equals(cmd)) {
@@ -145,6 +150,24 @@ public class HomeController
             ToolController c = new ToolController();
             assemble ((ViewBase)v, (ModelBase)m, (ControllerBase)c, this);
             view.shadow();
+            return;
+        }
+        if (Constants.AC_PREGLOG_FEAT.equals(cmd)) {
+            LichSuThaiKyView v = new LichSuThaiKyView();
+            LichSuThaiKyModel m = new LichSuThaiKyModel();
+            LichSuThaiKyController c = new LichSuThaiKyController();
+            assemble ((ViewBase)v, (ModelBase)m, (ControllerBase)c, this);
+            view.shadow();
+            c.loaddata();
+            return;
+        }
+        if (Constants.AC_LANT_FEAT.equals(cmd)) {
+            ThaTinhView v = new ThaTinhView();
+            ThaTinhModel m = new ThaTinhModel();
+            ThaTinhController c = new ThaTinhController();
+            assemble ((ViewBase)v, (ModelBase)m, (ControllerBase)c, this);
+            view.shadow();
+            c.loaddata();
             return;
         }
         super.actionPerformed(e);

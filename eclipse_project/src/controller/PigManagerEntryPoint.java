@@ -17,15 +17,14 @@ public class PigManagerEntryPoint {
         // Database global connection initial
         db.init("orcbase", "c##oz", "ngaymai");
 
-        /*
         // Change look and feel
         try {
-           UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
+           //UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
            //UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch(Exception e) {
             e.printStackTrace();
         }
-
+/*
         res.jf myjf = new res.jf();
         myjf.setVisible(true);
 

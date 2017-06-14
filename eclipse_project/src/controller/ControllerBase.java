@@ -38,7 +38,9 @@ public class ControllerBase<M extends ModelBase, V extends ViewBase>
             return;
         if (Constants.AC_BACK.equals(cmd)) {
             view.dispose();
-            watcher.beNoticed(cmd, 0);
+            if (watcher != null){
+                watcher.beNoticed(cmd, 0);
+            }
         }
     }
 }
