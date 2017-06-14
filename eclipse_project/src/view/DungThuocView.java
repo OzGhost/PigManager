@@ -23,6 +23,7 @@ import com.toedter.calendar.JDateChooser;
 
 import common.Genner;
 import common.Layer;
+import controller.ControllerBase;
 import controller.DungThuocController;
 
 public class DungThuocView extends ViewBase
@@ -204,8 +205,10 @@ public class DungThuocView extends ViewBase
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 
-	public void setController(DungThuocController dtc)
+	@Override
+	public void setController(ControllerBase c)
 	{
+	    DungThuocController dtc = (DungThuocController) c;
 		btnChonMaThuoc.addActionListener(dtc);
 		btnThem.addActionListener(dtc);
 		btnTimKiem.addActionListener(dtc);

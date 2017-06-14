@@ -12,7 +12,7 @@ import db.db;
  *
  * @author SiMen
  */
-public class ThaTinhModel {
+public class ThaTinhModel extends ModelBase {
     public static ResultSet getData(String cmd){
     	return db.sendForResult(cmd);
     }

@@ -21,7 +21,7 @@ import view.BenhView;
 import view.CTBenhAnView;
 
 public class CTBenhAnController extends ControllerBase<CTBenhAnModel, CTBenhAnView>
-		implements MouseListener, ActionListener, Watcher
+		implements MouseListener, Watcher
 {
 
 	public ResultSet		rs			= null;
@@ -238,6 +238,7 @@ public class CTBenhAnController extends ControllerBase<CTBenhAnModel, CTBenhAnVi
 			bv.btnChonBenh.setEnabled(true);
 			bv.showUp();
 		}
+        super.actionPerformed(e);
 	}
 
 	@Override

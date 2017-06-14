@@ -161,6 +161,7 @@ public class ToolController extends ControllerBase<ToolModel, ToolView> implemen
            
        }
        
+        super.actionPerformed(ae);
     }
 
     @Override

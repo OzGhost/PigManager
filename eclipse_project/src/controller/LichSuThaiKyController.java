@@ -26,7 +26,7 @@ import view.LichSuThaiKyView;
 import view.PigsManagerView;
 
 public class LichSuThaiKyController extends ControllerBase<LichSuThaiKyModel, LichSuThaiKyView>
-		implements MouseListener, ActionListener, Watcher
+		implements MouseListener, Watcher
 {
 	public ResultSet		rs			= null;
 	public Vector			rowData;

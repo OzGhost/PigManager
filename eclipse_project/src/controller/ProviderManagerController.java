@@ -29,7 +29,9 @@ import view.WarehouseManagerView;
  *
  * @author Dang Nhat Hai Long
  */
-public class ProviderManagerController extends ControllerBase<ProviderManagerModel, ProviderManagerView> implements ActionListener, MouseListener
+public class ProviderManagerController 
+    extends ControllerBase<ProviderManagerModel, ProviderManagerView>
+    implements MouseListener
 {
 	
     public ResultSet resultSet = null;

@@ -30,6 +30,7 @@ import common.FinalTableModel;
 import common.Genner;
 import common.Layer;
 import controller.CashFlowController;
+import controller.ControllerBase;
 import db.Payable;
 import model.CashFlowModel;
 
@@ -79,7 +80,6 @@ public class CashFlowView extends ViewBase {
         panel.add(center);
         panel.add(estimate);
         panel.add(homebt);
-        panel.add(cancelbt);
         panel.add(removebt);
         panel.add(addbt);
         panel.add(savebt);
@@ -99,9 +99,6 @@ public class CashFlowView extends ViewBase {
             .atRight(panel).withMargin(5)
             .bottomOf(estimate).withMargin(10);
         Layer.put(homebt).atBottomLeft(panel).in(layout).withMargin(15, 5);
-        Layer.put(cancelbt).in(layout)
-            .atBottom(panel).withMargin(15)
-            .rightOf(removebt).withMargin(5);
         Layer.put(removebt).in(layout)
             .atBottom(panel).withMargin(15)
             .rightOf(addbt).withMargin(5);
@@ -205,10 +202,8 @@ public class CashFlowView extends ViewBase {
     private void initButton () {
         savebt = Genner.createButton("Lưu", Genner.BIG_SIZE);
         savebt.setActionCommand(Constants.AC_DONE);
-        homebt =  Genner.createButton("Trang chủ", Genner.MEDIUM_SIZE);
-        homebt.setActionCommand(Constants.AC_HOME);
-        cancelbt = Genner.createButton("Huỷ", Genner.MEDIUM_SIZE);
-        cancelbt.setActionCommand(Constants.AC_CANCEL);
+        homebt =  Genner.createButton("Trở lại", Genner.MEDIUM_SIZE);
+        homebt.setActionCommand(Constants.AC_BACK);
         addbt = Genner.createButton("Thêm", Genner.MEDIUM_SIZE);
         addbt.setActionCommand(Constants.AC_ADD);
         removebt = Genner.createButton("Loại bỏ", Genner.MEDIUM_SIZE);
@@ -240,14 +235,15 @@ public class CashFlowView extends ViewBase {
      * Add controller (aka listener) for components of view
      * @param cfc
      */
-    public void setController(CashFlowController cfc){
+    @Override
+    public void setController (ControllerBase c) {
+        CashFlowController cfc = (CashFlowController) c;
         payOut.addActionListener(cfc);
         payIn.addActionListener(cfc);
         savebt.addActionListener(cfc);
         homebt.addActionListener(cfc);
         addbt.addActionListener(cfc);
         removebt.addActionListener(cfc);
-        cancelbt.addActionListener(cfc);
         estimateTotalCost.addActionListener(cfc);
         floorCost.addActionListener(cfc);
     }

@@ -32,6 +32,7 @@ import com.toedter.calendar.JDateChooser;
 import common.Constants;
 import common.Genner;
 import common.Layer;
+import controller.ControllerBase;
 import controller.WarehouseManagerController;
 
 /**
@@ -330,8 +331,8 @@ public class WarehouseManagerView extends ViewBase
 		_btnChuyenSangPhai.setActionCommand(TRANSFER_TO_RIGHT_COMMAND);
 		_btnChuyenSangTrai = Genner.createButton("<<", Genner.SMALL_SIZE);
 		_btnChuyenSangTrai.setActionCommand(TRANSFER_TO_LEFT_COMMAND);
-		_btnTrangChu = Genner.createButton("Trang chủ", Genner.BIG_SIZE);
-		_btnTrangChu.setActionCommand(Constants.AC_HOME);
+		_btnTrangChu = Genner.createButton("Trở lại", Genner.MEDIUM_SIZE);
+		_btnTrangChu.setActionCommand(Constants.AC_BACK);
 
 		contentpane.add(_btnThem);
 		contentpane.add(_btnXoa);
@@ -381,9 +382,10 @@ public class WarehouseManagerView extends ViewBase
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
-
-	public void setController(WarehouseManagerController whc)
-	{
+	
+	@Override
+    public void setController(ControllerBase c){
+	    WarehouseManagerController whc = (WarehouseManagerController) c;
 		_btnTimKiem.addActionListener(whc);
 		_btnChonNCC.addActionListener(whc);
 		_btnChonThucAn.addActionListener(whc);
@@ -398,11 +400,6 @@ public class WarehouseManagerView extends ViewBase
 
 		_cbxTimKiem.addActionListener(whc);
 		_tbKho.addMouseListener(whc);
+		_btnTrangChu.addActionListener(whc);
 	}
-
-	void notice(short code)
-	{
-
-	}
-
 }

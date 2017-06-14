@@ -24,6 +24,7 @@ import common.Constants;
 import common.Genner;
 import common.Layer;
 import controller.CashFlowReportOptionController;
+import controller.ControllerBase;
 import model.CashFlowReportOptionModel;
 
 public class CashFlowReportOptionView extends ViewBase {
@@ -56,7 +57,7 @@ public class CashFlowReportOptionView extends ViewBase {
         bt_go = Genner.createButton("Kết xuất", Genner.MEDIUM_LONG_SIZE);
         bt_browse = Genner.createButton("...", Genner.MEDIUM_SIZE);
 
-        bt_back.setActionCommand(Constants.AC_CANCEL);
+        bt_back.setActionCommand(Constants.AC_BACK);
         bt_go.setActionCommand(Constants.AC_DONE);
         bt_browse.setActionCommand(Constants.AC_BROWSE);
 
@@ -101,7 +102,9 @@ public class CashFlowReportOptionView extends ViewBase {
         setLocationRelativeTo(null);
     }
 
-    public void setController (CashFlowReportOptionController roc) {
+    @Override
+    public void setController (ControllerBase c) {
+        CashFlowReportOptionController roc = (CashFlowReportOptionController) c;
         bt_back.addActionListener(roc);
         bt_go.addActionListener(roc);
         bt_browse.addActionListener(roc);
@@ -122,6 +125,8 @@ public class CashFlowReportOptionView extends ViewBase {
 
     public void specificFile () {
         File target = getSaveTo();
+        if (target == null)
+            return;
         tf_of.setText(target.getAbsolutePath());
     }
 
@@ -129,6 +134,7 @@ public class CashFlowReportOptionView extends ViewBase {
         String out = tf_of.getText();
         if (!out.toLowerCase().endsWith(".pdf")) {
             noticeError("Vui lòng chọn tập tin để lưu với định dạng PDF!");
+            release();
             return null;
         }
         Object[] rs = new Object[4];

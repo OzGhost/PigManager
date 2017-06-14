@@ -24,6 +24,7 @@ import com.toedter.calendar.JDateChooser;
 import common.Genner;
 import common.Layer;
 import controller.CTBenhAnController;
+import controller.ControllerBase;
 
 public class CTBenhAnView extends ViewBase
 {
@@ -212,8 +213,9 @@ public class CTBenhAnView extends ViewBase
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 
-	public void setController(CTBenhAnController ctc)
-	{
+	@Override
+    public void setController (ControllerBase c) {
+	    CTBenhAnController ctc = (CTBenhAnController) c;
 		btnTimKiem.addActionListener(ctc);
 		btnThem.addActionListener(ctc);
 		btnXoa.addActionListener(ctc);

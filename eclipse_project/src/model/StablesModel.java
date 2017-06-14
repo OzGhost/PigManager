@@ -11,7 +11,7 @@ import db.db;
  *
  * @author duyphuoc
  */
-public class StablesModel{
+public class StablesModel extends ModelBase {
     
     
     public static ResultSet getData(String cmd)

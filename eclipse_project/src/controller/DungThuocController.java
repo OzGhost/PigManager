@@ -21,7 +21,7 @@ import view.ChonThuocView;
 import view.DungThuocView;
 
 public class DungThuocController extends ControllerBase<DungThuocModel, DungThuocView>
-		implements MouseListener, ActionListener, Watcher
+		implements MouseListener, Watcher
 {
 
 	public ResultSet		rs			= null;
@@ -201,6 +201,7 @@ public class DungThuocController extends ControllerBase<DungThuocModel, DungThuo
 			ctc.loadData();
 			ctv.showUp();
 		}
+        super.actionPerformed(e);
 	}
 
 	@Override

@@ -194,6 +194,7 @@ public class StablesController extends ControllerBase<StablesModel,StablesView> 
     }
     
     
+        super.actionPerformed(ae);
 }
 
     @Override

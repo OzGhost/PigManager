@@ -12,7 +12,7 @@ import java.sql.ResultSet;
  *
  * @author Dang Nhat Hai Long
  */
-public class FoodModel
+public class FoodModel extends ModelBase
 {
     public static ResultSet getData(String cmd)
     {

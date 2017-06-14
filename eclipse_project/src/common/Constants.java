@@ -57,6 +57,7 @@ public class Constants {
 
     // Action command
     public static final String AC_HOME = "go_home";
+    public static final String AC_BACK = "go_back";
     public static final String AC_DONE = "finish";
     public static final String AC_BROWSE = "browse";
     public static final String AC_CANCEL = "terminated";
@@ -66,7 +67,12 @@ public class Constants {
     public static final String AC_STOCK_FEAT = "stock_features";
     public static final String AC_PASTURE_FEAT = "pasture_features";
     public static final String AC_PROVIDER_FEAT = "provider_features";
-    public static final String AC_REPORT_FEAT = "report_features";
+    public static final String AC_CASHFLOW_FEAT = "cash_flow_features";
+    public static final String AC_CASHLOG_FEAT = "cash_log_features";
+    public static final String AC_FOOD_FEAT = "food_features";
+    public static final String AC_SICK_FEAT = "sick_features";
+    public static final String AC_SICKLOG_FEAT = "sick_log_features";
+    public static final String AC_TOOL_FEAT = "tool_features";
     public static final String AC_MAKE_REPORT = "make_some_report";
 
     // Date format

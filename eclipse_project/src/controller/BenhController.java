@@ -16,7 +16,9 @@ import db.db;
 import model.BenhModel;
 import view.BenhView;
 
-public class BenhController extends ControllerBase<BenhModel, BenhView> implements MouseListener, ActionListener
+public class BenhController 
+    extends ControllerBase<BenhModel, BenhView> 
+    implements MouseListener
 {
 	public ResultSet		rs			= null;
 	public Vector			rowData;
@@ -205,7 +207,7 @@ public class BenhController extends ControllerBase<BenhModel, BenhView> implemen
 			}
 		}
 		
-		
+        super.actionPerformed(e);
 	}
 
 	@Override

@@ -35,7 +35,7 @@ import view.ProviderManagerView;
 import view.StablesView;
 
 public class PigsManagerController extends ControllerBase<PigsManagerModel, PigsManagerView>
-		implements ActionListener, MouseListener, Watcher
+		implements MouseListener, Watcher
 {
 
 	public ResultSet		resultSet	= null;

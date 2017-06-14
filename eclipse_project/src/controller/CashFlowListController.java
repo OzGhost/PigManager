@@ -49,6 +49,7 @@ public class CashFlowListController
 
             view.setVisible(false);
         }
+        super.actionPerformed(e);
     }
 
     @Override

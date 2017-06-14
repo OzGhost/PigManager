@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 
 import db.db;
 
-public class ChonThuocModel {
+public class ChonThuocModel extends ModelBase {
 	public static ResultSet getData(String cmd){
     	return db.sendForResult(cmd);
     }

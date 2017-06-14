@@ -9,6 +9,6 @@ package model;
  *
  * @author duyphuoc
  */
-public class ToolAddModel {
+public class ToolAddModel extends ModelBase {
     
 }

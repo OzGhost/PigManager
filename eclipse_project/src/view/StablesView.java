@@ -18,6 +18,7 @@ import javax.swing.SpringLayout;
 
 import common.Genner;
 import common.Layer;
+import controller.ControllerBase;
 import controller.StablesController;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -125,8 +126,8 @@ public class StablesView extends ViewBase {
        cancelBt.setActionCommand(CANCEL_COMMAND);
        selectBt = Genner.createButton("Chọn", Genner.MEDIUM_SIZE);
        selectBt.setActionCommand(SELECT_COMMAND);
-       homeBt=Genner.createButton("Trang chủ", Genner.BIG_SIZE);
-       homeBt.setActionCommand(Constants.AC_HOME);
+       homeBt=Genner.createButton("Trở lại", Genner.MEDIUM_SIZE);
+       homeBt.setActionCommand(Constants.AC_BACK);
        //panel
        panel = new JPanel();
        
@@ -249,9 +250,9 @@ public class StablesView extends ViewBase {
        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    
-    public void setController(StablesController sc)
-    {
+    @Override
+    public void setController(ControllerBase c){    
+        StablesController sc = (StablesController) c;
         searchBt.addActionListener(sc);
         saveBt.addActionListener(sc);
         addBt.addActionListener(sc);
@@ -260,5 +261,6 @@ public class StablesView extends ViewBase {
         selectBt.addActionListener(sc);
         gridTb.setModel(dtm);
         gridTb.addMouseListener(sc);
+        homeBt.addActionListener(sc);
     }
 }

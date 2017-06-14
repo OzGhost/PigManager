@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 
 import common.Constants;
 import common.Watcher;
+import model.ModelBase;
+import view.ViewBase;
 
 /**
  * Base class for controller
@@ -13,7 +15,9 @@ import common.Watcher;
  * @param <M>
  * @param <V>
  */
-public class ControllerBase<M, V> implements ActionListener {
+public class ControllerBase<M extends ModelBase, V extends ViewBase>
+    implements ActionListener
+{
     protected M model;
     protected V view;
     protected Watcher watcher;
@@ -32,8 +36,9 @@ public class ControllerBase<M, V> implements ActionListener {
         final String cmd = e.getActionCommand();
         if (cmd == null )
             return;
-        if (Constants.AC_HOME.equals(cmd)) {
-        
+        if (Constants.AC_BACK.equals(cmd)) {
+            view.dispose();
+            watcher.beNoticed(cmd, 0);
         }
     }
 }

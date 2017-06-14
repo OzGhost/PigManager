@@ -22,6 +22,7 @@ import common.FinalTableModel;
 import common.Genner;
 import common.Layer;
 import controller.CashFlowListController;
+import controller.ControllerBase;
 import db.CashFlow;
 import db.Payable;
 import model.CashFlowListModel;
@@ -76,11 +77,11 @@ public class CashFlowListView extends ViewBase {
     private void buttonInit() {
         bt_updateNote = Genner.createButton("Cập nhật ghi chú", Genner.BIG_LONG_SIZE);
         bt_export = Genner.createButton("Kết xuất báo cáo", Genner.MEDIUM_LONG_SIZE);
-        bt_home = Genner.createButton("Trang chủ", Genner.MEDIUM_SIZE);
+        bt_home = Genner.createButton("Trở lại", Genner.MEDIUM_SIZE);
 
         bt_updateNote.setActionCommand(Constants.AC_DONE);
         bt_export.setActionCommand(Constants.AC_MAKE_REPORT);
-        bt_home.setActionCommand(Constants.AC_HOME);
+        bt_home.setActionCommand(Constants.AC_BACK);
     }
 
     private JPanel middleInit () {
@@ -197,7 +198,9 @@ public class CashFlowListView extends ViewBase {
         return rs;
     }
 
-    public void setController (CashFlowListController ctrler) {
+    @Override
+    public void setController (ControllerBase c) {
+        CashFlowListController ctrler = (CashFlowListController) c;
         tb_entryList.getSelectionModel().addListSelectionListener(ctrler);
         bt_home.addActionListener(ctrler);
         bt_export.addActionListener(ctrler);

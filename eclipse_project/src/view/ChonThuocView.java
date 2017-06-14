@@ -20,6 +20,7 @@ import javax.swing.table.DefaultTableModel;
 import common.Genner;
 import common.Layer;
 import controller.ChonThuocController;
+import controller.ControllerBase;
 
 public class ChonThuocView extends ViewBase
 {
@@ -112,9 +113,10 @@ public class ChonThuocView extends ViewBase
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 
-	public void setController(ChonThuocController ctc)
-	{
-		btnChonThuoc.addActionListener(ctc);
+	@Override
+    public void setController (ControllerBase c) {
+	    ChonThuocController ctc = (ChonThuocController) c;
+	    btnChonThuoc.addActionListener(ctc);
 		btnTimKiem.addActionListener(ctc);
 		tbChonThuoc.setModel(dtm);
 		tbChonThuoc.addMouseListener(ctc);

@@ -16,6 +16,7 @@ import javax.swing.SpringLayout;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 import common.Layer;
+import controller.ControllerBase;
 import controller.StablesAddController;
 import java.awt.Dimension;
 import javax.swing.JFrame;
@@ -105,8 +106,9 @@ public class StablesAddView extends ViewBase{
         this.getRootPane().setDefaultButton(add_bt);
     }
 
-    
-    public void setController(StablesAddController sac){
+    @Override
+    public void setController(ControllerBase c){
+        StablesAddController sac = (StablesAddController) c;
         cancel_bt.addActionListener(sac);
         add_bt.addActionListener(sac);
         refresh_bt.addActionListener(sac);

@@ -1,5 +1,7 @@
 package controller;
 
+import javax.swing.UIManager;
+
 import db.db;
 import model.CashFlowListModel;
 import view.CashFlowListView;
@@ -17,6 +19,17 @@ public class PigManagerEntryPoint {
     private static void applicationConstruct() {
         // Database global connection initial
         db.init("orcbase", "c##oz", "ngaymai");
+
+        /*
+        // Change look and feel
+        try {
+           UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
+           //UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        */
+
 
         // View initiall
         controller.setView(view);
@@ -36,6 +49,6 @@ public class PigManagerEntryPoint {
 
         cflv.showUp();
         cflm.loadEntryList();
-        */
+         */
     }
 }

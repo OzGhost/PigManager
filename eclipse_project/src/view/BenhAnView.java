@@ -25,6 +25,7 @@ import common.Constants;
 import common.Genner;
 import common.Layer;
 import controller.BenhAnController;
+import controller.ControllerBase;
 
 public class BenhAnView extends ViewBase
 {
@@ -180,10 +181,10 @@ public class BenhAnView extends ViewBase
 				.atRight(panelMain).withMargin(50);
 		btnDungThuoc.setActionCommand(DRUG_COMMAND);
 		
-		btnTrangChu = Genner.createButton("Trang chủ", Genner.BIG_SIZE);
+		btnTrangChu = Genner.createButton("Trở lại", Genner.MEDIUM_SIZE);
 		Layer.put(btnTrangChu).in(sl_panelMain).leftOf(panelBot).withMargin(40).atBottom(panelMain).withMargin(10)
 				.atRight(panelMain).withMargin(40);
-		btnTrangChu.setActionCommand(Constants.AC_HOME);
+		btnTrangChu.setActionCommand(Constants.AC_BACK);
 
 		panelMain.add(btnThem);
 		panelMain.add(btnXoa);
@@ -201,8 +202,10 @@ public class BenhAnView extends ViewBase
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 
-	public void setController(BenhAnController bac)
+	@Override
+	public void setController(ControllerBase c)
 	{
+	    BenhAnController bac = (BenhAnController) c;
 		btnTimKiem.addActionListener(bac);
 		btnThem.addActionListener(bac);
 		btnXoa.addActionListener(bac);

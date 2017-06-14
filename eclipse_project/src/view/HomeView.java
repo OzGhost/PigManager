@@ -17,9 +17,14 @@ public class HomeView extends ViewBase {
     private JButton bt_stockFeature;
     private JButton bt_pastureFeature;
     private JButton bt_providerFeature;
-    private JButton bt_reportFeature;
+    private JButton bt_sickLogFeature;
+    private JButton bt_sickFeature;
+    private JButton bt_cashFlowFeature;
+    private JButton bt_cashFlowLogFeature;
+    private JButton bt_foodFeature;
+    private JButton bt_toolFeature;
     private JButton bt_quit;
-    private final JPanel panel = new JPanel(new GridLayout(0, 2));
+    private final JPanel panel = new JPanel(new GridLayout(0, 3));
     
     //Constructors
     public HomeView (HomeController ctl) {
@@ -29,14 +34,24 @@ public class HomeView extends ViewBase {
         bt_stockFeature.addActionListener(ctl);
         bt_pastureFeature.addActionListener(ctl);
         bt_providerFeature.addActionListener(ctl);
-        bt_reportFeature.addActionListener(ctl);
+        bt_sickLogFeature.addActionListener(ctl);
+        bt_sickFeature.addActionListener(ctl);
+        bt_cashFlowFeature.addActionListener(ctl);
+        bt_cashFlowLogFeature.addActionListener(ctl);
+        bt_foodFeature.addActionListener(ctl);
+        bt_toolFeature.addActionListener(ctl);
         bt_quit.addActionListener(ctl);
 
         panel.add(bt_pigFeature);
         panel.add(bt_stockFeature);
         panel.add(bt_pastureFeature);
         panel.add(bt_providerFeature);
-        panel.add(bt_reportFeature);
+        panel.add(bt_sickLogFeature);
+        panel.add(bt_sickFeature);
+        panel.add(bt_cashFlowFeature);
+        panel.add(bt_cashFlowLogFeature);
+        panel.add(bt_foodFeature);
+        panel.add(bt_toolFeature);
         panel.add(bt_quit);
 
         setContentPane(panel);
@@ -56,8 +71,23 @@ public class HomeView extends ViewBase {
         bt_providerFeature = Genner.createButton("Quản lý nhà cung cấp", Genner.BIG_SIZE);
         bt_providerFeature.setActionCommand(Constants.AC_PROVIDER_FEAT);
 
-        bt_reportFeature = Genner.createButton("Kết xuất báo cáo", Genner.BIG_SIZE);
-        bt_reportFeature.setActionCommand(Constants.AC_REPORT_FEAT);
+        bt_cashFlowFeature = Genner.createButton("Lich su thu chi", Genner.BIG_SIZE);
+        bt_cashFlowFeature.setActionCommand(Constants.AC_CASHFLOW_FEAT);
+
+        bt_cashFlowLogFeature = Genner.createButton("Ghi nhan thu chi", Genner.BIG_SIZE);
+        bt_cashFlowLogFeature.setActionCommand(Constants.AC_CASHLOG_FEAT);
+
+        bt_foodFeature = Genner.createButton("Quan ly thuc an", Genner.BIG_SIZE);
+        bt_foodFeature.setActionCommand(Constants.AC_FOOD_FEAT);
+
+        bt_sickFeature = Genner.createButton("Quan ly benh", Genner.BIG_SIZE);
+        bt_sickFeature.setActionCommand(Constants.AC_SICK_FEAT);
+
+        bt_sickLogFeature = Genner.createButton("Quan ly benh an", Genner.BIG_SIZE);
+        bt_sickLogFeature.setActionCommand(Constants.AC_SICKLOG_FEAT);
+
+        bt_toolFeature = Genner.createButton("Quan ly vat dung", Genner.BIG_SIZE);
+        bt_toolFeature.setActionCommand(Constants.AC_TOOL_FEAT);
 
         bt_quit = Genner.createButton("Thoát", Genner.BIG_SIZE);
         bt_quit.setActionCommand(Constants.AC_CANCEL);

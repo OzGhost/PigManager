@@ -94,6 +94,7 @@ public class ToolAddController extends ControllerBase<ToolAddModel, ToolAddView>
                 JOptionPane.showMessageDialog(null, "Cost must be number value");
             }
         }
+        super.actionPerformed(ae);
     }
 
     /*@Override

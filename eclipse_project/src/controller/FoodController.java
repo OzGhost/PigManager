@@ -26,7 +26,7 @@ import view.FoodView;
  *
  * @author Dang Nhat Hai Long
  */
-public class FoodController extends ControllerBase<FoodModel, FoodView> implements ActionListener, MouseListener
+public class FoodController extends ControllerBase<FoodModel, FoodView> implements MouseListener
 {
 
 	@Override
@@ -151,6 +151,7 @@ public class FoodController extends ControllerBase<FoodModel, FoodView> implemen
 			return;
 		}
 
+        super.actionPerformed(e);
 	}
 
 	public void mouseClicked(MouseEvent e)

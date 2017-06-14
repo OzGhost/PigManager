@@ -12,7 +12,7 @@ import java.sql.ResultSet;
  *
  * @author Dang Nhat Hai Long
  */
-public class WarehouseManagerModel
+public class WarehouseManagerModel extends ModelBase
 {
 
     public static ResultSet getData(String cmd)

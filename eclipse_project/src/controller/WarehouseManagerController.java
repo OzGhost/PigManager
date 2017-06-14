@@ -41,7 +41,7 @@ import view.WarehouseManagerView;
  * @author Dang Nhat Hai Long
  */
 public class WarehouseManagerController extends ControllerBase<WarehouseManagerModel, WarehouseManagerView>
-		implements ActionListener, MouseListener, Watcher
+		implements MouseListener, Watcher
 {
 	public ResultSet		resultSet	= null;
 	public Vector			rowData;
@@ -192,6 +192,7 @@ public class WarehouseManagerController extends ControllerBase<WarehouseManagerM
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
+	    super.actionPerformed(e);
 		String _command = e.getActionCommand();
 
 		// Radio button
@@ -502,7 +503,7 @@ public class WarehouseManagerController extends ControllerBase<WarehouseManagerM
 			return;
 		}
 		
-		super.actionPerformed(e);
+//		super.actionPerformed(e);
 	}
 
 	public void mouseClicked(MouseEvent e)

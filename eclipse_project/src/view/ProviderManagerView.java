@@ -27,6 +27,7 @@ import javax.swing.table.DefaultTableModel;
 import common.Constants;
 import common.Genner;
 import common.Layer;
+import controller.ControllerBase;
 import controller.ProviderManagerController;
 
 /**
@@ -204,8 +205,8 @@ public class ProviderManagerView extends ViewBase
 		_btnChonNCC.setActionCommand(SELECT_PROVIDER_COMMAND);
 		_btnChonNCC.setEnabled(false);
 		
-		_btnTrangChu = Genner.createButton("Trang chủ", Genner.BIG_SIZE);
-		_btnTrangChu.setActionCommand(Constants.AC_HOME);
+		_btnTrangChu = Genner.createButton("Trở lại", Genner.MEDIUM_SIZE);
+		_btnTrangChu.setActionCommand(Constants.AC_BACK);
 
 		contentpane.add(_btnThem);
 		contentpane.add(_btnXoa);
@@ -246,9 +247,10 @@ public class ProviderManagerView extends ViewBase
 	{
 
 	}
-
-	public void setController(ProviderManagerController pmc)
-	{
+	
+	@Override
+    public void setController(ControllerBase c){
+	    ProviderManagerController pmc = (ProviderManagerController) c;
 		_btnTimKiem.addActionListener(pmc);
 		_btnThem.addActionListener(pmc);
 		_btnXoa.addActionListener(pmc);

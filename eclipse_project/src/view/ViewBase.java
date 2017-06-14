@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import common.Constants;
+import controller.ControllerBase;
+import model.ModelBase;
 
 public class ViewBase extends JFrame implements Observer {
 
@@ -80,7 +82,7 @@ public class ViewBase extends JFrame implements Observer {
         }
     }
    
-    
+   public void setController(ControllerBase<ModelBase, ViewBase> c) {} 
     
     @Override
     public void update(Observable o, Object arg) {

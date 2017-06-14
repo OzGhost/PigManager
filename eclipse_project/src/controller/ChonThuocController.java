@@ -14,7 +14,7 @@ import model.ChonThuocModel;
 import view.ChonThuocView;
 
 public class ChonThuocController extends ControllerBase<ChonThuocModel, ChonThuocView>
-		implements MouseListener, ActionListener
+		implements MouseListener
 {
 	public ResultSet	rs	= null;
 	public Vector		rowData;
@@ -107,6 +107,7 @@ public class ChonThuocController extends ControllerBase<ChonThuocModel, ChonThuo
 			watcher.beNoticed(var, 5);
 			view.dispose();
 		}
+        super.actionPerformed(e);
 	}
 
 	@Override

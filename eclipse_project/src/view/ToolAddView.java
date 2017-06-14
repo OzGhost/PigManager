@@ -7,6 +7,7 @@ package view;
 
 import common.Genner;
 import common.Layer;
+import controller.ControllerBase;
 import controller.ToolAddController;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -134,8 +135,10 @@ public class ToolAddView extends ViewBase{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
     }
-    
-    public void setController(ToolAddController tac){
+
+    @Override
+    public void setController(ControllerBase c){
+        ToolAddController tac = (ToolAddController) c;
         provider_sel.addActionListener(tac);
         stables_sel.addActionListener(tac);
         cancel_bt.addActionListener(tac);

@@ -26,6 +26,7 @@ import javax.swing.table.DefaultTableModel;
 
 import common.Genner;
 import common.Layer;
+import controller.ControllerBase;
 import controller.FoodController;
 
 /**
@@ -210,8 +211,9 @@ public class FoodView extends ViewBase
 
 	}
 
-	public void setController(FoodController fc)
-	{
+	@Override
+    public void setController(ControllerBase c){
+	    FoodController fc = (FoodController) c;
 		_btnTimKiem.addActionListener(fc);
 		_btnThem.addActionListener(fc);
 		_btnXoa.addActionListener(fc);

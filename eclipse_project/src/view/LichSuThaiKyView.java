@@ -24,6 +24,7 @@ import com.toedter.calendar.JDateChooser;
 import common.Constants;
 import common.Genner;
 import common.Layer;
+import controller.ControllerBase;
 import controller.LichSuThaiKyController;
 
 public class LichSuThaiKyView extends ViewBase
@@ -202,9 +203,9 @@ public class LichSuThaiKyView extends ViewBase
 		btnChonLS.setActionCommand(CHOOSE_HISTORY_COMMAND);
 		btnChonLS.setEnabled(false);
 		
-		btnTrangChu = Genner.createButton("Trang chủ", Genner.BIG_SIZE);
+		btnTrangChu = Genner.createButton("Trở lại", Genner.MEDIUM_SIZE);
 		Layer.put(btnTrangChu).in(sl_panelMain).leftOf(panelBot).withMargin(10).atBottom(panelMain).withMargin(50).atRight(panelMain).withMargin(10);;
-		btnTrangChu.setActionCommand(Constants.AC_HOME);
+		btnTrangChu.setActionCommand(Constants.AC_BACK);
 
 		panelMain.add(btnThem);
 		panelMain.add(btnXoa);
@@ -222,8 +223,9 @@ public class LichSuThaiKyView extends ViewBase
 
 	}
 
-	public void setController(LichSuThaiKyController lstkc)
-	{
+	@Override
+    public void setController(ControllerBase c){
+	    LichSuThaiKyController lstkc = (LichSuThaiKyController) c;
 		btnThem.addActionListener(lstkc);
 		btnXoa.addActionListener(lstkc);
 		btnChonLS.addActionListener(lstkc);

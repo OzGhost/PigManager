@@ -22,6 +22,7 @@ import javax.swing.table.DefaultTableModel;
 import common.Genner;
 import common.Layer;
 import controller.BenhController;
+import controller.ControllerBase;
 
 public class BenhView extends ViewBase
 {
@@ -205,8 +206,10 @@ public class BenhView extends ViewBase
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 
-	public void setController(BenhController bc)
+	@Override
+	public void setController(ControllerBase c)
 	{
+	    BenhController bc = (BenhController) c;
 		btnThem.addActionListener(bc);
 		btnXoa.addActionListener(bc);
 		btnChonBenh.addActionListener(bc);

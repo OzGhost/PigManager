@@ -7,6 +7,7 @@ package view;
 
 import common.Genner;
 import common.Layer;
+import controller.ControllerBase;
 import controller.ToolController;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -105,8 +106,8 @@ public class ToolView extends ViewBase{
         update_bt.setActionCommand(UPDATE_COMMAND);
         move_bt = Genner.createButton("Di chuyển", Genner.MEDIUM_SIZE);
         move_bt.setActionCommand(MOVE_COMMAND);
-        home_bt= Genner.createButton("Trang chủ", Genner.BIG_SIZE);
-        home_bt.setActionCommand(Constants.AC_HOME);
+        home_bt= Genner.createButton("Trở lại", Genner.MEDIUM_SIZE);
+        home_bt.setActionCommand(Constants.AC_BACK);
         
         //panels
         mainPanel = new JPanel();
@@ -214,8 +215,10 @@ public class ToolView extends ViewBase{
         this.getRootPane().setDefaultButton(search_bt);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
-    
-    public void setController(ToolController tc){
+
+    @Override
+    public void setController(ControllerBase c){
+        ToolController tc = (ToolController) c;
         cancel_bt.addActionListener(tc);
         search_bt.addActionListener(tc);
         add_bt.addActionListener(tc);
@@ -224,6 +227,7 @@ public class ToolView extends ViewBase{
         move_bt.addActionListener(tc);
         tool_tb.setModel(dtm);
         tool_tb.addMouseListener(tc);
+        home_bt.addActionListener(tc);
     }
     
 }

@@ -27,6 +27,7 @@ public class CashFlowReportOptionController
             view.silent();
             model.go(view.getMetaData(), this);
         }
+        super.actionPerformed(e);
     }
 
     @Override

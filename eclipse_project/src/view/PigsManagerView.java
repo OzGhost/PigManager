@@ -26,6 +26,7 @@ import com.toedter.calendar.JDateChooser;
 import common.Genner;
 import common.Constants;
 import common.Layer;
+import controller.ControllerBase;
 import controller.PigsManagerController;
 
 /**
@@ -283,8 +284,8 @@ public class PigsManagerView extends ViewBase
 		_btnChonMaHeo = Genner.createButton("Chọn heo", Genner.MEDIUM_SIZE);
 		_btnChonMaHeo.setEnabled(false);
 		_btnChonMaHeo.setActionCommand(SELECT_MAHEO_FROM_OTHER_JFRAME_COMMAND);
-		_btnTrangChu  = Genner.createButton("Trang chủ", Genner.BIG_SIZE);
-		_btnTrangChu.setActionCommand(Constants.AC_HOME);
+		_btnTrangChu  = Genner.createButton("Trở lại", Genner.MEDIUM_SIZE);
+		_btnTrangChu.setActionCommand(Constants.AC_BACK);
 
 
 		// Layer
@@ -332,8 +333,9 @@ public class PigsManagerView extends ViewBase
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
-	public void setController(PigsManagerController pmc)
-	{
+	@Override
+    public void setController(ControllerBase c){
+	    PigsManagerController pmc = (PigsManagerController) c;
 		_btnTimKiem.addActionListener(pmc);
 		_btnChonNCC.addActionListener(pmc);
 		_btnChonMaChuong.addActionListener(pmc);
@@ -348,10 +350,4 @@ public class PigsManagerView extends ViewBase
 
 		_tbHeo.addMouseListener(pmc);
 	}
-
-	void notice(short code)
-	{
-
-	}
-
 }

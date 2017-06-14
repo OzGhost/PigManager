@@ -10,7 +10,7 @@ import db.db;
  *
  * @author duyphuoc
  */
-public class StablesAddModel {
+public class StablesAddModel extends ModelBase {
     public void editData(String cmd){
         db.saveAutoId(cmd);
     }

@@ -22,7 +22,9 @@ import view.BenhAnView;
 import view.CTBenhAnView;
 import view.DungThuocView;
 
-public class BenhAnController extends ControllerBase<BenhAnModel, BenhAnView> implements MouseListener, ActionListener
+public class BenhAnController
+    extends ControllerBase<BenhAnModel, BenhAnView>
+    implements MouseListener
 {
 	public ResultSet		rs			= null;
 	public Vector			rowData;
@@ -220,8 +222,7 @@ public class BenhAnController extends ControllerBase<BenhAnModel, BenhAnView> im
 			return;
 		}
 		
-		super.actionPerformed(e);
-
+        super.actionPerformed(e);
 	}
 
 	@Override

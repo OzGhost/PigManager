@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 
 import db.db;
 
-public class PigsManagerModel {
+public class PigsManagerModel extends ModelBase {
 	public static ResultSet getData(String cmd)
     {
         return db.sendForResult(cmd);

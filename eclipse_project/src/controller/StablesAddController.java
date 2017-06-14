@@ -49,6 +49,6 @@ public class StablesAddController extends ControllerBase<StablesAddModel, Stable
                     }   
                 
         }
-        //super.actionPerformed(ae);
+        super.actionPerformed(ae);
     }
 }

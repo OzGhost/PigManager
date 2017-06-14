@@ -28,7 +28,7 @@ import view.ProviderManagerView;
 import view.ThaTinhView;
 
 public class ThaTinhController extends ControllerBase<ThaTinhModel, ThaTinhView>
-		implements MouseListener, ActionListener, Watcher
+		implements MouseListener, Watcher
 {
 
 	public ResultSet		rs			= null;

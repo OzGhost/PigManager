@@ -28,6 +28,7 @@ import com.toedter.calendar.JDateChooser;
 import common.Constants;
 import common.Genner;
 import common.Layer;
+import controller.ControllerBase;
 import controller.ThaTinhController;
 
 /**
@@ -266,9 +267,9 @@ public class ThaTinhView extends ViewBase
 		Layer.put(btnLuu).in(sl_contentpanel).leftOf(panelBot).withMargin(60).bottomOf(btnCapNhat).withMargin(30);
 		btnLuu.setActionCommand(SAVE_COMMAND);
 		
-		btnTrangChu = Genner.createButton("Trang chủ", Genner.BIG_SIZE);
+		btnTrangChu = Genner.createButton("Trở lại", Genner.MEDIUM_SIZE);
 		Layer.put(btnTrangChu).in(sl_contentpanel).leftOf(panelBot).withMargin(40).atBottom(contentpanel).withMargin(50).atRight(contentpanel).withMargin(40);
-		btnTrangChu.setActionCommand(Constants.AC_HOME);
+		btnTrangChu.setActionCommand(Constants.AC_BACK);
 
 		contentpanel.add(btnThem);
 		contentpanel.add(btnXoa);
@@ -286,9 +287,10 @@ public class ThaTinhView extends ViewBase
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	}
-
-	public void setController(ThaTinhController ttc)
-	{
+	
+	@Override
+    public void setController(ControllerBase c){
+	    ThaTinhController ttc = (ThaTinhController) c;
 		btnTimKiem.addActionListener(ttc);
 		btnChonNCC.addActionListener(ttc);
 		btnThem.addActionListener(ttc);
@@ -302,9 +304,4 @@ public class ThaTinhView extends ViewBase
 		tbThaTinh.addMouseListener(ttc);
 
 	}
-
-	void notice(short code)
-	{
-	}
-
 }
