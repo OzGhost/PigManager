@@ -9,11 +9,12 @@ import java.util.Map;
 
 import common.Constants;
 import common.SickLogReportDto;
+import common.Watcher;
 import db.SickLog;
 
-public class SickReportModel {
+public class SickReportModel implements Runnable {
 
-    public static void BuildReport (
+    public static void buildReport (
             List<String> pigIds,
             File outputFile
     ) throws Exception {
@@ -34,12 +35,12 @@ public class SickReportModel {
         // Param prepare
         List<String> label = new ArrayList<>(
             Arrays.asList(
-                "Sick Log Report",
-                "Retrieve at: ",
-                "Pig's Ear Tag",
-                "Sick Name",
-                "Occur Date",
-                "Over Date"
+                "BÁO CÁO BỆNH ÁN",
+                "Kết xuất ngày: ",
+                "Mã thẻ tai",
+                "Tên bệnh",
+                "Ngày phát hiện",
+                "Ngày hết bệnh"
             )
         );
 
@@ -55,5 +56,32 @@ public class SickReportModel {
                 data, 
                 param
         );
+    }
+
+    // Fields
+    private List<String> pigIds;
+    private File out;
+    private Watcher watcher;
+
+    // Constructors
+    public SickReportModel (List<String> pigIds, File out, Watcher w) {
+        this.pigIds = pigIds;
+        this.out = out;
+        this.watcher = w;
+    }
+
+    @Override
+    public void run() {
+        if (pigIds == null || pigIds.isEmpty()) {
+            return;
+        }
+        int rs = 0;
+        try {
+            buildReport(this.pigIds, this.out);
+        } catch (Exception e) {
+            rs = -1;
+            e.printStackTrace();
+        }
+        this.watcher.beNoticed("rrs", rs);
     }
 }

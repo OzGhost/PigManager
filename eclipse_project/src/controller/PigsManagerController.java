@@ -351,8 +351,10 @@ public class PigsManagerController extends ControllerBase<PigsManagerModel, Pigs
 		
 		
 		//Trang chu
-		if (Constants.AC_HOME.equals(cmd))
+		if (Constants.AC_MAKE_REPORT.equals(cmd))
 		{
+		    view.silent();
+		    model.makeReport( view.getPigIds(), view.getSaveTo(), this);
 			return;
 		}
 
@@ -461,7 +463,10 @@ public class PigsManagerController extends ControllerBase<PigsManagerModel, Pigs
 			view._txtfMaLoaiThucAn.setText(var);
 			break;
 		}
-
+		if ("rrs".equals(var)) {
+		    view.noticeResult(num == 0);
+		    view.release();
+		}
 	}
 
 }

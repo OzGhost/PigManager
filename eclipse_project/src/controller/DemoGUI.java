@@ -115,7 +115,7 @@ public class DemoGUI {
 
         File outputFile = new File("/zz/t/tmp/sickLogrp.pdf");
         try {
-            SickReportModel.BuildReport(
+            SickReportModel.buildReport(
                     Arrays.asList(
                             "201709152645",
                             "201702042179",

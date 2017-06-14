@@ -1,6 +1,7 @@
 eclipse.preferences.version=1
 encoding//src/common/Constants.java=UTF-8
 encoding//src/model/CashFlowReportModel.java=UTF-8
+encoding//src/model/SickReportModel.java=UTF-8
 encoding//src/view/BenhAnView.java=UTF-8
 encoding//src/view/BenhView.java=UTF-8
 encoding//src/view/CTBenhAnView.java=UTF-8

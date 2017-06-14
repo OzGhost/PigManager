@@ -3,12 +3,16 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -16,15 +20,15 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
-import javax.swing.SpringLayout.Constraints;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
 import com.toedter.calendar.JDateChooser;
 
-import common.Genner;
 import common.Constants;
+import common.Genner;
 import common.Layer;
 import controller.ControllerBase;
 import controller.PigsManagerController;
@@ -40,6 +44,7 @@ public class PigsManagerView extends ViewBase
 	public JPanel				contentpane, _panelTop, _panelMid, _panelBot;
 	public JButton				_btnTimKiem, _btnThem, _btnXoa, _btnCapNhat, _btnChoAn, _btnKhamBenh, _btnChonNCC,
 			_btnChonMaChuong, _btnChonMaLoaiThucAn, _btnChonMaHeo, _btnTrangChu;
+	private JButton exportSickLog;
 	public JLabel				_lblMaNCC, _lblMaChuong, _lblMaLoaiThucAn, _lblMaNguon, _lblMaHeo, _lblChieuCao,
 			_lblChieuDai, _lblCanNang, _lblNgayNuoi, _lblNgayBan, _lblMaTheTai;
 	public JTextField			_txtfTimKiem, _txtfMaNCC, _txtfMaChuong, _txtfMaLoaiThucAn, _txtfMaNguon, _txtfMaHeo,
@@ -323,6 +328,15 @@ public class PigsManagerView extends ViewBase
 		contentpane.add(_btnKhamBenh);
 		contentpane.add(_btnChonMaHeo);
 		contentpane.add(_btnTrangChu);
+		
+		exportSickLog = Genner.createButton("Kết xuất báo cáo bệnh án", Genner.MEDIUM_LONG_SIZE);
+		exportSickLog.setActionCommand(Constants.AC_MAKE_REPORT);
+		contentpane.add(exportSickLog);
+		
+		Layer.put(exportSickLog).in(sl_contentpane)
+		    .atRight(contentpane).withMargin(25)
+		    .leftOf(_panelBot).withMargin(25)
+		    .topOf(_btnTrangChu).withMargin(10);
 
 		// Set form
 		setPreferredSize(new Dimension(1366, 730));
@@ -347,7 +361,42 @@ public class PigsManagerView extends ViewBase
 		_btnKhamBenh.addActionListener(pmc);
 		_btnChonMaHeo.addActionListener(pmc);
 		_btnTrangChu.addActionListener(pmc);
+		exportSickLog.addActionListener(pmc);
 
 		_tbHeo.addMouseListener(pmc);
+	}
+	
+	public List<String> getPigIds () {
+	    List<String> rs = new ArrayList<>();
+	    for (int i: this._tbHeo.getSelectedRows()) {
+	        rs.add((String) this.dtm.getValueAt(i, 0));
+	    }
+	    return rs;
+	}
+	
+	public File getSaveTo () {
+        JFileChooser fc = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter(
+                "PDF File", "pdf"
+        );
+        fc.setFileFilter(filter);
+        int returnVal = fc.showSaveDialog(null);
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            return fc.getSelectedFile();
+        }
+        return null;
+    }
+	
+	public void  noticeResult (boolean rs) {
+        String successMessage = "Kết xuất hoàn tất!";
+        String falseMessage = "Xảy ra lỗi trong quá trình kết xuất!";
+        super.noticeResult(rs, successMessage, falseMessage);
+    }
+	
+	public void silent () {
+	    this.exportSickLog.setEnabled(false);
+	}
+	public void release () {
+	    this.exportSickLog.setEnabled(true);
 	}
 }

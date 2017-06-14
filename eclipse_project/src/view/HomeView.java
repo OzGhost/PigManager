@@ -4,9 +4,12 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.File;
 
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.SpringLayout;
@@ -60,6 +63,16 @@ public class HomeView extends ViewBase {
         rs.setContentAreaFilled(false);
         rs.setPreferredSize(size);
         rs.setForeground(Color.WHITE);
+        rs.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.WHITE));
+        rs.addMouseListener(new MouseAdapter() {
+            public void mouseEntered(MouseEvent evt) {
+                rs.setBorder(BorderFactory.createMatteBorder(1, 15, 1, 1, Color.WHITE));
+            }
+
+            public void mouseExited(MouseEvent evt) {
+                rs.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.WHITE));
+            }
+        });
         return rs;
     }
     
@@ -88,7 +101,7 @@ public class HomeView extends ViewBase {
         panel.add(subpane);
 
         Layer.put(subpane).in(layout)
-            .atTop(panel).withMargin(30)
+            .atTop(panel).withMargin(10)
             .atRight(panel).withMargin(100);
 
         setContentPane(panel);

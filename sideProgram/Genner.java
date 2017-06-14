@@ -5,7 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Random;
 
@@ -93,19 +92,19 @@ public class Genner {
             Date ngayTao = dateRandomer();
 
             String prefix = "";
-            String benh_ref = String.format("(SELECT REF(b)"
-                + " FROM Benh b WHERE b.MaBenh='%s')",
-                maBenh[randInRange(0,2)]);
-            Date phatBenh = dateRandomer();
-            Calendar calen = Calendar.getInstance();
-            calen.setTime(phatBenh);
-            calen.add(Calendar.MONTH, randInRange(1, 5));
-            Date hetBenh = calen.getTime();
 
             StringBuilder chiTiet = new StringBuilder();
             chiTiet.append("    ChiTietBenh_ntabtyp(\n");
 
             for (int j = randInRange(1, 5); j >= 0; j--) {
+            	String benh_ref = String.format("(SELECT REF(b)"
+            			+ " FROM Benh b WHERE b.MaBenh='%s')",
+            			maBenh[randInRange(0,2)]);
+            	Date phatBenh = dateRandomer();
+            	Calendar calen = Calendar.getInstance();
+            	calen.setTime(phatBenh);
+            	calen.add(Calendar.MONTH, randInRange(1, 5));
+            	Date hetBenh = calen.getTime();
                 chiTiet.append(prefix);
                 chiTiet.append("        ChiTietBenh_objtyp(\n");
                 chiTiet.append(String.format("            %s,\n", benh_ref));
@@ -138,14 +137,15 @@ public class Genner {
         return rs;
     }
 
-    private static Map<String, String> cashFlowGenner (String[] type, int n) {
-        if (n < 1 || type == null || type.length < 1)
+    private static Map<String, String> cashFlowGenner (int n) {
+        if (n < 1)
             return null;
-        final int tl = type.length;
         final Map<String, String> rs = new HashMap<>();
         for (int i = 0; i < n; i++) {
             int nod = randInRange(1, 10);
             Map<String, String> pigs = pigGenner(nod);
+            rs.putAll(pigs);
+
             Map<Integer, String> detail = cashFlowDetailGenner(
                 pigs.size(),
                 pigs.keySet().toArray(new String[pigs.size()])
@@ -154,9 +154,11 @@ public class Genner {
             Date occur = dateRandomer();
             int type = randInRange(0, 1);
             int cost = detail.keySet().stream()
-                .reduce((x,y) -> x+y)
+            		.reduce(0, (x,y) -> x+y)
             ;
-            String compiledDetail = detailCompiler(detail.values());
+            String compiledDetail = detailCompiler(
+                detail.values().toArray(new String[detail.size()])
+            );
 
             StringBuilder sb = new StringBuilder();
             sb.append("INSERT INTO ThuChi VALUES (\n");
@@ -166,7 +168,7 @@ public class Genner {
             sb.append(String.format("    %d,\n", type));
             sb.append(String.format("    %d,\n", cost));
             sb.append(String.format("    %s\n", compiledDetail));
-            sb.append(")");
+            sb.append(");");
 
             rs.put(id, sb.toString());
         }
@@ -210,14 +212,17 @@ public class Genner {
     public static void main (String[] args) {
         System.out.println("#### start work");
         File f = (new File("/tmp/sqlScript/tmp.sql"));
-        Map<String, String> pigs = pigGenner(20);
+        Map<String, String> pigs = pigGenner(100);
         int idsOfPigs = pigs.size();
         PrintWriter pw = null;
         try {
             pw = new PrintWriter(new FileWriter(f));
             pigs.values().forEach(pw::println);
-            sickLogGenner(20, pigs.keySet().toArray(new String[idsOfPigs]))
+            sickLogGenner(100, pigs.keySet().toArray(new String[idsOfPigs]))
             	.values().forEach(pw::println);
+            /*
+            cashFlowGenner(100).values().forEach(pw::println);
+             */
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
