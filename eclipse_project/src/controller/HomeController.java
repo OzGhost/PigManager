@@ -135,6 +135,7 @@ public class HomeController
             BenhAnModel m = new BenhAnModel();
             BenhAnController c = new BenhAnController();
             assemble ((ViewBase)v, (ModelBase)m, (ControllerBase)c, this);
+            c.loadData();
             view.shadow();
             return;
         }

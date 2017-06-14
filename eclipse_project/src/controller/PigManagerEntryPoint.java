@@ -9,9 +9,6 @@ import view.HomeView;
 
 public class PigManagerEntryPoint {
     
-    private static final HomeController controller = new HomeController();
-    private static final HomeView view = new HomeView(controller);
-    
     public static void main (String[] args) {
         applicationConstruct();
     }
@@ -28,10 +25,15 @@ public class PigManagerEntryPoint {
         } catch(Exception e) {
             e.printStackTrace();
         }
+
+        res.jf myjf = new res.jf();
+        myjf.setVisible(true);
+
         */
 
-
         // View initiall
+        final HomeController controller = new HomeController();
+        final HomeView view = new HomeView(controller);
         controller.setView(view);
         view.showUp();
         /*
