@@ -117,6 +117,38 @@ public class CashFlowReportModel implements Runnable {
         );
     }
 
+    public static void buildReport (List<Object> data) throws Exception {
+        String template = new File("").getAbsolutePath()
+            + "/src/res/CashFlowReport.jrxml";
+        
+        // set label display inside report
+        List<String> label = new ArrayList<>(9);
+        label.addAll(Arrays.asList("BÁO CÁO THU CHI", 
+                "Ngày kết xuất:", 
+                "Từ ngày:", 
+                "Đến ngày:", 
+                "Cộng dồn theo:", 
+                "Ngày", 
+                "Loại", 
+                "Ngày phát sinh", 
+                "Số tiền"));
+        
+        // parameters mapping
+        Map<String, Object> param = new HashMap<>();
+        param.put("date4mat", Constants.DATE4MAT);
+        param.put("from", new Date());
+        param.put("to", new Date());
+        param.put("label", label);
+        param.put("number4mat", NumberFormat.getInstance());
+        
+        ReportModel.reportPrinter(
+                template, 
+                new File("/tmp/report.pdf"), 
+                data, 
+                param
+        );
+    }
+    
     // Fields
     private Date from;
     private Date to;

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import common.CashFlowReportDto;
 import common.Constants;
 
 /**
@@ -227,6 +228,10 @@ public class CashFlow extends Entity {
 
     public void selfUpdateNote () {
         db.send(String.format(UPDATE_NOTE_BY_ID, this.note, this.id));
+    }
+    
+    public CashFlowReportDto toReportDto () {
+        return new CashFlowReportDto(this.occurDate, this.cost, this.payout ? "Chi" : "Thu");
     }
 
     @Override

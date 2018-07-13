@@ -101,7 +101,7 @@
 				<reportElement x="-20" y="81" width="593" height="5" forecolor="#FFFFFF" backcolor="#FF6666" uuid="c61859f4-d4f2-4328-a5ac-19a19fed5844"/>
 			</rectangle>
 			<lineChart>
-				<chart evaluationTime="Report">
+				<chart evaluationTime="Report" customizerClass="common.MyChartCustomizer" renderType="draw">
 					<reportElement x="0" y="169" width="555" height="207" uuid="f143b8a0-2f62-46d5-9213-4ae33d15c36d"/>
 					<chartTitle/>
 					<chartSubtitle/>
@@ -115,8 +115,10 @@
 					</categorySeries>
 				</categoryDataset>
 				<linePlot>
-					<plot/>
-					<categoryAxisFormat>
+					<plot backgroundAlpha="0.5" foregroundAlpha="0.5" labelRotation="-45.0">
+						<seriesColor seriesOrder="0" color="#66FF66"/>
+					</plot>
+					<categoryAxisFormat labelRotation="-45.0">
 						<axisFormat/>
 					</categoryAxisFormat>
 					<valueAxisFormat>

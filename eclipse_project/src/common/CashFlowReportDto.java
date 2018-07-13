@@ -1,11 +1,21 @@
 package common;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
+import db.CashFlow;
 
 public class CashFlowReportDto {
     private Date time;
     private long cash;
     private String type;
+    
+    public static List<Object> cast(List<CashFlow> l) {
+        final List<Object> rs = new ArrayList<>();
+        l.forEach(e -> rs.add(e.toReportDto()));
+        return rs;
+    }
     
     public CashFlowReportDto () {
         

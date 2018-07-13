@@ -11,7 +11,7 @@ import javax.swing.SpringLayout;
  * create: 12-05-2017
  */
 public class Layer {
-    
+
     // lay code: specify what to do next
     private static final short LAY_CODE_TOPLEFT = 11;
     private static final short LAY_CODE_TOPRIGHT = 12;
@@ -121,7 +121,7 @@ public class Layer {
     public Layer rightOf(Component c) {
         return at(c, LAY_CODE_RIGHTOF);
     }
-    
+
     /**
      * Put primary component above secondary component
      * @param c
@@ -130,7 +130,7 @@ public class Layer {
     public Layer topOf(Component c) {
         return at(c, LAY_CODE_TOPOF);
     }
-    
+
     /**
      * Put primary component under secondary component
      * @param c
@@ -149,7 +149,7 @@ public class Layer {
     public Layer atLeft(Component c) {
         return at(c, LAY_CODE_ATLEFT);
     }
-    
+
     /**
      * Put primary component to right edge of
      * secondary component
@@ -189,7 +189,7 @@ public class Layer {
         this.layout = s;
         return this;
     }
-    
+
     /**
      * Set margin between primary and secondary component
      * and put constraint to layout
@@ -269,7 +269,7 @@ public class Layer {
         }
         return this;
     }
-    
+
     /**
      * Same as above method but have two margin
      * first for vertical margin
@@ -289,18 +289,18 @@ public class Layer {
             return this;
         }
         if (code == LAY_CODE_TOPLEFT) {
-        	layout.putConstraint(SpringLayout.NORTH, primary, m,
-        			SpringLayout.NORTH, secondary);
-        	layout.putConstraint(SpringLayout.WEST, primary, n,
-        			SpringLayout.WEST, secondary);
-        	return this;
+            layout.putConstraint(SpringLayout.NORTH, primary, m,
+                    SpringLayout.NORTH, secondary);
+            layout.putConstraint(SpringLayout.WEST, primary, n,
+                    SpringLayout.WEST, secondary);
+            return this;
         }
         if (code == LAY_CODE_TOPRIGHT) {
-        	layout.putConstraint(SpringLayout.NORTH, primary, m,
-        			SpringLayout.NORTH, secondary);
-        	layout.putConstraint(SpringLayout.EAST, primary, (-1) * n,
-        			SpringLayout.EAST, secondary);
-        	return this;
+            layout.putConstraint(SpringLayout.NORTH, primary, m,
+                    SpringLayout.NORTH, secondary);
+            layout.putConstraint(SpringLayout.EAST, primary, (-1) * n,
+                    SpringLayout.EAST, secondary);
+            return this;
         }
         if (code == LAY_CODE_BOTTOMRIGHT){
             layout.putConstraint(SpringLayout.SOUTH, primary, (-1) * m,

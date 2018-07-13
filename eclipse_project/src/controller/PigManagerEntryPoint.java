@@ -2,15 +2,25 @@ package controller;
 
 import javax.swing.UIManager;
 
+import common.CashFlowReportDto;
+import common.Util;
 import db.db;
-import model.CashFlowListModel;
-import view.CashFlowListView;
+import model.CashFlowReportModel;
 import view.HomeView;
 
 public class PigManagerEntryPoint {
     
     public static void main (String[] args) {
-        applicationConstruct();
+//        applicationConstruct();
+        try {
+            CashFlowReportModel.buildReport(
+                CashFlowReportDto.cast(
+                    Util.cashFlowGenner(50)
+                )
+            );
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private static void applicationConstruct() {
